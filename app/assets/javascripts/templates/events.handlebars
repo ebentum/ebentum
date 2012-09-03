@@ -1,0 +1,10 @@
+{{#each event in controller}}
+  <div class="thumbnail">
+    <img {{bindAttr src="event.photo"}}>
+    <div class="caption">
+      <h5>{{event.name}}</h5>
+      <p>{{event.description}}</p>
+      <p><a {{action showEvent event href=true}} class="btn btn-primary"><i class="icon-info-sign"></i> Más información</a></p>
+    </div>
+  </div>
+{{/each}}
