@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :active, :description, :name, :place, :start_datetime, :user_id
+  attr_accessible :active, :description, :name, :place, :start_datetime, :user_id, :photo
   
   has_many :appointments
   belongs_to :user 
