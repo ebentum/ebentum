@@ -1,2 +1,2 @@
-Bagoaz.NewEventView = Ember.View.extend
-  templateName: 'events/new'
+Bagoaz.NewUserView = Ember.View.extend
+  templateName: 'users/new'

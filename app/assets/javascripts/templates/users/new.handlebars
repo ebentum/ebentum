@@ -1,23 +1,16 @@
 <form {{action save on="submit"}} class="form-horizontal">
   <fieldset>
     <div class="control-group">
-      <label for="event_name" class="control-label">Name</label>
+      <label for="user_email" class="control-label">Email</label>
       <div class="controls">
-        {{view Em.TextField valueBinding="name" id="event_name" class="input-xlarge"}}
+        {{view Em.TextField valueBinding="email" id="user_email" class="input-xlarge"}}
       </div>
     </div>
 
     <div class="control-group">
-      <label for="event_description" class="control-label">Description</label>
+      <label for="user_password" class="control-label">Description</label>
       <div class="controls">
-        {{view Em.TextField valueBinding="description" id="description" class="input-xlarge"}}
-      </div>
-    </div>
-
-    <div class="control-group">
-      <label for="event_photo" class="control-label">Photo</label>
-      <div class="controls">
-        {{view Em.TextField valueBinding="photo" id="event_photo" class="input-xlarge"}}
+        {{view Em.TextField valueBinding="encrypted_password" id="user_password" class="input-xlarge"}}
       </div>
     </div>
 

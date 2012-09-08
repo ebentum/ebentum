@@ -1,9 +1,7 @@
 Bagoaz.Event = DS.Model.extend({
 
-  name: DS.attr('string'),
+  email: DS.attr('string'),
 
-  description: DS.attr('string'),
-
-  photo: DS.attr('string')
+  encrypted_password: DS.attr('string')
 
 });
