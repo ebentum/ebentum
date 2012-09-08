@@ -5,7 +5,7 @@ gem 'rails', '3.2.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem "ember-rails", "~> 0.7.0"
+gem "ember-rails", :git => 'https://github.com/emberjs/ember-rails.git'
 
 group :development do
   gem 'sqlite3'
