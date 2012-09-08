@@ -37,3 +37,31 @@ Bagoaz.Router = Ember.Router.extend
         unroutePath: (router, path) ->
           router.get('applicationController.transaction').rollback()
           @_super(router, path)
+
+    users: Ember.Route.extend
+      route: "/users"
+      createUser: Ember.Route.transitionTo('create')
+      cancel: (router, event) ->
+        router.get('applicationController.transaction').rollback()
+        router.transitionTo('index')
+      save: (router, event) ->
+        router.get('applicationController.transaction').commit()
+        router.transitionTo('index')
+      index: Ember.Route.extend
+        route: '/'
+        connectOutlets: (router) ->
+          router.get('applicationController').connectOutlet('events', Bagoaz.Event.find())
+      create: Ember.Route.extend
+        route: '/new'
+        connectOutlets: (router) ->
+          transaction = router.get('store').transaction()
+          user = transaction.createRecord(Bagoaz.User)
+          router.get('applicationController').set('transaction', transaction)
+          router.get('applicationController').connectOutlet
+            viewClass: Bagoaz.NewUserView
+            controller: router.get('userController')
+            context: user
+        unroutePath: (router, path) ->
+          router.get('applicationController.transaction').rollback()
+          @_super(router, path)
+
