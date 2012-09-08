@@ -55,7 +55,7 @@ Bagoaz.Router = Ember.Router.extend
         route: '/new'
         connectOutlets: (router) ->
           transaction = router.get('store').transaction()
-          user = transaction.createRecord(Bagoaz.User)
+          user = transaction.createRecord(Bagoaz.user)
           router.get('applicationController').set('transaction', transaction)
           router.get('applicationController').connectOutlet
             viewClass: Bagoaz.NewUserView
@@ -64,4 +64,7 @@ Bagoaz.Router = Ember.Router.extend
         unroutePath: (router, path) ->
           router.get('applicationController.transaction').rollback()
           @_super(router, path)
+    eventTransitions: 
+      createUser: 'users.create'
+      
 
