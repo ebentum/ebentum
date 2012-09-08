@@ -1,4 +1,4 @@
-Bagoaz.Event = DS.Model.extend({
+Bagoaz.User = DS.Model.extend({
 
   email: DS.attr('string'),
 
