@@ -2,11 +2,11 @@
  * Base js functions
  */
 
-$(document).ready(function(){
-    //Init jQuery Masonry layout
-    init_masonry();
-
-});
+// $(document).ready(function(){
+    // //Init jQuery Masonry layout
+    // init_masonry();
+// 
+// });
 
 
 function init_masonry(){
