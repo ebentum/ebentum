@@ -18,6 +18,7 @@ Bagoaz.Router = Ember.Router.extend
       index: Ember.Route.extend
         route: '/'
         connectOutlets: (router) ->
+          router.get('applicationController').connectOutlet('navbar', 'navbar')
           router.get('applicationController').connectOutlet('events', Bagoaz.Event.find())
       show: Ember.Route.extend
         route: '/:event_id'
