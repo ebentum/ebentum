@@ -16,7 +16,7 @@
 //= require ember
 //= require ember-data
 //= require_self
-//= require prueba_ember
+//= require bagoaz
 //= require_tree .
 
 Bagoaz = Ember.Application.create();

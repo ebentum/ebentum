@@ -1,2 +1,2 @@
 Bagoaz.NavbarView = Ember.View.extend
-  templateName: 'navbar'
+  templateName: 'layouts/navbar'
