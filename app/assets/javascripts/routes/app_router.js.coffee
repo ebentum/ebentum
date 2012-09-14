@@ -4,6 +4,9 @@ Bagoaz.Router = Ember.Router.extend
     index: Ember.Route.extend
       route: "/"
       redirectsTo: "events.index"
+
+################Events################
+
     events: Ember.Route.extend
       route: "/events"
       showEvent: Ember.Route.transitionTo("show.index")
@@ -41,6 +44,8 @@ Bagoaz.Router = Ember.Router.extend
         unroutePath: (router, path) ->
           router.get('applicationController.transaction').rollback()
           @_super(router, path)
+
+################Users################
 
     users: Ember.Route.extend
       route: "/users"

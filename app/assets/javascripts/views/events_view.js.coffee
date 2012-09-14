@@ -1,2 +1,2 @@
 Bagoaz.EventsView = Ember.View.extend
-  templateName: 'events'
+  templateName: 'events/index'
