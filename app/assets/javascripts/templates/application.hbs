@@ -1,0 +1,20 @@
+{{outlet navbar}}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    {{outlet sidebar}}
+
+    <div class="span10">
+      <div id="myContent" class="row-fluid">
+
+        {{outlet}}
+
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  {{outlet footer}}
+  
+</div>
