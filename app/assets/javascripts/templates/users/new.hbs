@@ -8,9 +8,16 @@
     </div>
 
     <div class="control-group">
-      <label for="user_password" class="control-label">Description</label>
+      <label for="user_password" class="control-label">Password</label>
       <div class="controls">
-        {{view Em.TextField valueBinding="encrypted_password" id="user_password" class="input-xlarge"}}
+        {{view Em.TextField valueBinding="password" id="user_password" class="input-xlarge"}}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="user_password_confirmation" class="control-label">Password confirmation</label>
+      <div class="controls">
+        {{view Em.TextField valueBinding="password_confirmation" id="user_password_confirmation" class="input-xlarge"}}
       </div>
     </div>
 
