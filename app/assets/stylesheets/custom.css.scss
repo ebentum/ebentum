@@ -6,7 +6,7 @@ body {
 	background: #F7F5F5 url(paper.jpg) repeat;
 }
 .thumbnail {
-	width: 290px;
+	width: 285px;
 	display: inline-block;
 	vertical-align: top;
 	margin-bottom: 15px;
@@ -16,4 +16,35 @@ body {
 
 .centered { 
 	margin: 0px auto;
+}
+
+
+/**** Masonry Transitions ****/
+.masonry {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -ms-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+
+  .masonry-brick {
+    -webkit-transition-duration: 0.7s;
+    -moz-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    -o-transition-duration: 0.7s;
+    transition-duration: 0.7s;
+
+    -webkit-transition-property: left, right, top;
+    -moz-transition-property: left, right, top;
+    -ms-transition-property: left, right, top;
+    -o-transition-property: left, right, top;
+    transition-property: left, right, top;
+  }
+
 }

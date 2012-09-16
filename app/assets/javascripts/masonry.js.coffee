@@ -1,7 +1,7 @@
 @init_masonry = ->
   $("#myContent").masonry
     itemSelector: ".thumbnail"
-    # isAnimated: not Modernizr.csstransitions
+    isAnimated: not Modernizr.csstransitions
     isFitWidth: true
 
   # $container = $("#myContent")
