@@ -7,4 +7,6 @@
 //= require_tree ./routes
 //= require_self
 
-Bagoaz.initialize();
+//Solucion chapu para que funcione de momento
+//Bagoaz.initialize();
+setTimeout('Bagoaz.initialize();',500);

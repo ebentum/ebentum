@@ -1,4 +1,7 @@
 Bagoaz.EventsView = Ember.View.extend
   templateName: 'events/index',
-  didInsertElement: ->
-  	init_masonry()
+    didInsertElement: ->
+      #Solución chapu de momento
+      #init_masonry();
+   	  setTimeout('init_masonry();',500);
+
