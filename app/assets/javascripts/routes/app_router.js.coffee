@@ -22,7 +22,6 @@ Bagoaz.Router = Ember.Router.extend
         route: '/'
         connectOutlets: (router) ->
           router.get('applicationController').connectOutlet('navbar', 'navbar')
-          router.get('applicationController').connectOutlet('sidebar', 'sidebar')
           router.get('applicationController').connectOutlet('footer', 'footer')
           router.get('applicationController').connectOutlet('events', Bagoaz.Event.find())
       show: Ember.Route.extend
