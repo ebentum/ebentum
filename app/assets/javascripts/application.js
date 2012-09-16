@@ -16,9 +16,13 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require jquery.masonry
+//= require masonry
 //= require_self
 //= require bagoaz
-//= require_tree .
+//= require store
+
+
 
 Bagoaz = Ember.Application.create();
 
