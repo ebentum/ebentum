@@ -27,3 +27,8 @@ body {
     @include transition-duration(0.7s);
   }
 }
+
+#map {
+  width: 500px;
+  height: 500px;
+}

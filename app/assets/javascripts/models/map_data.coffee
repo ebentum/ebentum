@@ -1,0 +1,1 @@
+Bagoaz.MapData = Ember.Object.create(map: null)
