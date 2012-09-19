@@ -40,3 +40,6 @@ gem 'jquery-rails', '~> 2.0.3'
 
 # Devise authentication
 gem 'devise'
+
+# Active model Serializers
+gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
