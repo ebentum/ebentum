@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
   
-  respond_to :json, :html
-  
   def index
-    @users = User.all
-    respond_with @users
+    users = User.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: users }
+    end
   end
 
   def show
-    @user = User.find(params[:id])
-    respond_with @user
+    user = User.find(params[:id])
+    render json: user
   end
 
 end
