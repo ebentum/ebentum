@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require jquery.masonry
 //= require masonry
+//= require events
 //= require_self
