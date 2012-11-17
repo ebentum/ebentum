@@ -11,8 +11,7 @@
     = render 'layouts/navbar'
     .container-fluid
       .row-fluid
-        #myContent.span12.centered
-          = yield
+        = yield
       %hr
         = render 'layouts/footer'
     = javascript_include_tag "application_post"
