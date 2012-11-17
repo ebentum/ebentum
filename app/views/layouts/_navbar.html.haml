@@ -1,0 +1,44 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "#"} Bagoaz
+      .nav-collapse
+        %ul.nav
+          %li.active
+            %a{:href => "#"} Inicio
+          %li
+            %a{:href => "#about"} Amigos
+          %li
+            %a{:href => "#contact"} Explorar
+          %li
+            %a{:href => "#"}
+              Registrase
+        %form.navbar-search.pull-left{:action => ""}
+          %input.search-query.span2{:placeholder => "Buscar", :type => "text"}
+  .nav-collapse
+    .navbar-inner
+      %ul.nav
+        %li.active
+          %a{:href => "#"}
+            %i.icon-home
+            Interesantes
+        %li
+          %a{:href => "#"}
+            %i.icon-pencil
+            Tuyos
+        %li
+          %a{:href => "#"}
+            %i.icon-user
+            De tus amigos
+        %li
+          %a{:href => "#"}
+            %i.icon-cog
+            De tu zona
+        %li
+          %a{:href => "#"}
+            %i.icon-cog
+            Nuevo
