@@ -17,18 +17,3 @@ body {
 .centered { 
 	margin: 0px auto;
 }
-
-/**** Masonry Transitions ****/
-.masonry {
-  @include transition-property(height width);
-  @include transition-duration(0.7s);
-  .masonry-brick {
-    @include transition-property(left right top);
-    @include transition-duration(0.7s);
-  }
-}
-
-#map {
-  width: 500px;
-  height: 500px;
-}

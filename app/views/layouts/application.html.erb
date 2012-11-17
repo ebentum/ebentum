@@ -9,6 +9,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  <%= render 'layouts/navbar' %>
+  <div class="container-fluid">
+  	<div class="row-fluid">
+      <div id="myContent" class="span12 centered">
+  	    <%= yield %>
+	  </div>
+	</div>
+    <hr>
+    <%= render 'layouts/footer' %>
+  </div>
+  <%= javascript_include_tag "application_post" %>
 </body>
 </html>

@@ -1,0 +1,15 @@
+- for event in @events
+  .thumbnail
+    %img{:alt => "", :src => event.photo}
+    .caption
+      %h5
+        = event.name
+      %p
+        = event.description
+      %p
+        %a.btn.btn-primary{:href => "#"}
+          %i.icon-thumbs-up.icon-white
+          ¡Me apunto!
+        %a.btn{:href => "#"}
+          %i.icon-info-sign
+          Más información
