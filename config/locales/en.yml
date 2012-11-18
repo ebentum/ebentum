@@ -1,0 +1,10 @@
+en:
+  #D
+  dame_de_alta: "Sign up!"
+  #E
+  email: "Email"
+  #P
+  password: "Password"
+  password_confirmation: "Confirm password"
+  #S
+  sign_up: "Sign up"
