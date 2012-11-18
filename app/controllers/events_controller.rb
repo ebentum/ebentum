@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     @event = Event.new
 
     respond_to do |format|
-      format.html { render :layout => nil if request.xhr? }
+      format.html { render :layout => 'modal_window' }
       format.json { render :json => @event }
     end
   end

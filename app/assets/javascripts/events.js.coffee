@@ -1,6 +1,6 @@
-$('#new_event').click ->
+$('#events_new').click ->
   $.ajax
     url: "/events/new"
     success: (data) ->
       $("body").append data
-      $('#new_event_modal').modal()
+      $('#events_new_modal').modal()
