@@ -16,6 +16,7 @@ $("#modal_windows").on "click", "#new_event_save", (event) ->
       alert('success')
     error: (xhr, status, error) ->
       alert('error')
-      # jsonValue = jQuery.parseJSON(xhr.responseText)
-      # $(jsonValue).each (index) ->
-      #   alert index
+      jsonValue = jQuery.parseJSON(xhr.responseText)
+      $.each jsonValue, (k, v) ->
+        alert(k)
+        alert(v)
