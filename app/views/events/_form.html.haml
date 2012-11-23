@@ -8,11 +8,10 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
 
-  .control-group.error
+  .control-group
     = f.label :name, :class => 'control-label'
     .controls
       = f.text_field :name, :placeholder => "Name"
-      %span.help-inline Please correct the error
   .control-group
     = f.label :description, :class => 'control-label'
     .controls
