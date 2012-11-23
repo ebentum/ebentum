@@ -17,9 +17,15 @@
     .controls
       = f.text_area :description, :placeholder => "Name"
   .control-group
-    = f.label :start_datetime, :class => 'control-label'
+    %label.control-label{:for => "event_start_date"} Start date
     .controls
-      = f.datetime_select :start_datetime, :placeholder => "Name"
+      %input{:type => "date", :id => "event_start_date", :name => "event[start_date]"}
+
+  .control-group
+    %label.control-label{:for => "event_start_time"} Start time
+    .controls
+      %input{:type => "time", :id => "event_start_time", :name => "event[start_time]"}
+
   .control-group
     = f.label :place, :class => 'control-label'
     .controls
