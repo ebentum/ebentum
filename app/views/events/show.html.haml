@@ -20,7 +20,7 @@
   = @event.active
 %p
   %b Photo:
-  = @event.photo
+  = image_tag @event.photo.url
 = link_to 'Edit', edit_event_path(@event)
 = link_to 'Back', events_path
 = link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete
