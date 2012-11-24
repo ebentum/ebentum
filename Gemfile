@@ -7,7 +7,6 @@ gem 'rails', '~> 3.2.9'
 
 group :development do
   gem 'sqlite3'
-  gem 'thin'
   gem 'annotate', ">=2.5.0"  # https://github.com/ctran/annotate_models
 end
 
