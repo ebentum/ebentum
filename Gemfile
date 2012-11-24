@@ -25,6 +25,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'thin'
 gem 'jquery-rails', '~> 2.1.3'
 
 # To use ActiveModel has_secure_password
