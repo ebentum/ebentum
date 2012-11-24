@@ -47,5 +47,4 @@ gem 'jquery-rails', '~> 2.1.3'
 gem 'devise', '~> 2.1.2'
 
 # Active model Serializers
-# TODO-JDA: ¿Hace falta? Si no, hacer limpia.
-gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
+#gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
