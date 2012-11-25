@@ -1,9 +1,9 @@
-%h2 Resend confirmation instructions
-= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div= f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+%div{:class => 'span4 offset4'}
+  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    %fieldset
+      = content_tag :legend, t(:resend_confirmation_instructions)
+      = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+      %br
+      = f.button t(:help_me), :class => 'btn btn-large btn-primary'
+  = render "devise/shared/links"

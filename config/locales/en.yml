@@ -1,10 +1,26 @@
 en:
+  #C
+  change_your_password: "Change your password"
+  confirm_new_password: "Confirm new password"
   #D
-  dame_de_alta: "Sign up!"
+  didnt_receive_confirmation_email: "Didn't receive confirmation instructions?"
   #E
   email: "Email"
+  #F
+  forgot_your_password: "Forgot your password?"
+  #H
+  help_me: "Help me!"
+  #N
+  new_password: "New password"
+  new_password_confirmation: "Confirm new password"
   #P
   password: "Password"
   password_confirmation: "Confirm password"
+  #R
+  remember_me: "Remember me"
+  resend_confirmation_instructions: "Resend confirmation instructions"
   #S
   sign_up: "Sign up"
+  sign_up_button: "Sign up and start now!"
+  sign_in: "Sign in"
+  sign_in_button: "Go!"

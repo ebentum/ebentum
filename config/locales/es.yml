@@ -1,10 +1,27 @@
 es:
+  #C
+  change_your_password: "Cambia tu contraseña"
+  confirm_new_password: "Confirmar nueva contraseña"
   #D
-  dame_de_alta: "¡Dame de alta!"
+  didnt_receive_confirmation_email: "¿No has recibido las intrucciones para la confirmación?"
   #E
   email: "Email"
+  #F
+  forgot_your_password: "¿Has olvidado tu contraseña?"
+  #H
+  help_me: "¡Ayudame!"
+  #N
+  new_password: "Nueva contraseña"
+  new_password_confirmation: "Confirmar nueva contraseña"
   #P
   password: "Contraseña"
   password_confirmation: "Confirmar contraseña"
+  #R
+  remember_me: "Recuerdame"
+  resend_confirmation_instructions: "Reenviame las instrucciones para la confirmación"
   #S
   sign_up: "Regístrate"
+  sign_up_button: "¡Quiero empezar ya!"
+  sign_in: "Entra"
+  sign_in_button: "¡Vamos!"
+

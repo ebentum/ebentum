@@ -1,14 +1,11 @@
-%h2 Change your password
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  %div
-    = f.label :password, "New password"
-    %br/
-    = f.password_field :password
-  %div
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit "Change my password"
-= render "devise/shared/links"
+%div{:class => 'span4 offset4'}
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    = f.hidden_field :reset_password_token
+    %fieldset
+      = content_tag :legend, t(:change_your_password)
+      = f.password_field :password, :id => 'password', :placeholder => t(:new_password), :class => 'input-xlarge'
+      = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:new_password_confirmation), :class => 'input-xlarge'
+      %br
+      = f.button t(:confirm_new_password), :class => 'btn btn-large btn-primary'
+  = render "devise/shared/links"

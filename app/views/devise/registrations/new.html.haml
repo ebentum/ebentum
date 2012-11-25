@@ -1,17 +1,11 @@
-%h2= t(:sign_up)
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %div
-    = f.label t(:email)
-    %br/
-    = f.email_field :email
-  %div
-    = f.label t(:password)
-    %br/
-    = f.password_field :password
-  %div
-    = f.label t(:password_confirmation)
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit t(:dame_de_alta)
-/ = render "devise/shared/links"
+%div{:class => 'span4 offset4'}
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %fieldset
+      = content_tag :legend, t(:sign_up)
+      = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+      = f.password_field :password, :id => 'password', :placeholder => t(:password), :class => 'input-xlarge'
+      = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:password_confirmation), :class => 'input-xlarge'
+      %br
+      = f.button t(:sign_up_button), :class => 'btn btn-large btn-primary'
+  = render "devise/shared/links"
