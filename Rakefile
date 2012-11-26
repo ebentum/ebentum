@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Bagoaz::Application.load_tasks
+Ebentum::Application.load_tasks

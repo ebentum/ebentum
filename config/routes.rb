@@ -1,4 +1,4 @@
-Bagoaz::Application.routes.draw do
+Ebentum::Application.routes.draw do
   devise_for :users
   
   resources :events
