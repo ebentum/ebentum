@@ -1,6 +1,7 @@
 es:
   #C
   change_your_password: "Cambia tu contraseña"
+  configuration: "Configuración"
   confirm_new_password: "Confirmar nueva contraseña"
   #D
   didnt_receive_confirmation_email: "¿No has recibido las intrucciones para la confirmación?"
@@ -10,12 +11,15 @@ es:
   forgot_your_password: "¿Has olvidado tu contraseña?"
   #H
   help_me: "¡Ayudame!"
+  #L
+  logout: "Salir"
   #N
   new_password: "Nueva contraseña"
   new_password_confirmation: "Confirmar nueva contraseña"
   #P
   password: "Contraseña"
   password_confirmation: "Confirmar contraseña"
+  profile: "Perfil"
   #R
   remember_me: "Recuerdame"
   resend_confirmation_instructions: "Reenviame las instrucciones para la confirmación"
