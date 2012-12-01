@@ -16,4 +16,5 @@
 //= require jquery.masonry
 //= require masonry
 //= require events
+//= require users
 //= require_self

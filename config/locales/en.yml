@@ -26,5 +26,8 @@ en:
   #S
   sign_up: "Sign up"
   sign_up_button: "Sign up and start now!"
+  sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
+  sign_up_ok_title: Yeah!
   sign_in: "Sign in"
   sign_in_button: "Go!"
+  signing_up: "Signing up..."

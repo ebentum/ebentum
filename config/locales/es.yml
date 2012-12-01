@@ -26,6 +26,9 @@ es:
   #S
   sign_up: "Regístrate"
   sign_up_button: "¡Quiero empezar ya!"
+  sign_up_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"
+  sign_up_ok_title: ¡Bien!
   sign_in: "Entra"
   sign_in_button: "¡Vamos!"
+  signing_up: "Registrando..."
 
