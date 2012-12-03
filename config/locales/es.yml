@@ -1,4 +1,11 @@
 es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "Email no encontrado"
   #C
   change_your_password: "Cambia tu contraseña"
   configuration: "Configuración"
@@ -11,6 +18,9 @@ es:
   forgot_your_password: "¿Has olvidado tu contraseña?"
   #H
   help_me: "¡Ayudame!"
+  help_me_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
+  help_me_ok_title: ¡Bien!
+  helping: "Ayudando..."
   #L
   logout: "Salir"
   #N
