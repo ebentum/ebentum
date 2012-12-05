@@ -24,6 +24,8 @@ es:
   #L
   logout: "Salir"
   #N
+  new_confirmation_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"
+  new_confirmation_ok_title: "¡Bien!"
   new_password: "Nueva contraseña"
   new_password_confirmation: "Confirmar nueva contraseña"
   #P
@@ -32,7 +34,7 @@ es:
   profile: "Perfil"
   #R
   remember_me: "Recuerdame"
-  resend_confirmation_instructions: "Reenviame las instrucciones para la confirmación"
+  resend_confirmation_instructions: "Reenvíame las instrucciones para la confirmación"
   #S
   sign_up: "Regístrate"
   sign_up_button: "¡Quiero empezar ya!"
