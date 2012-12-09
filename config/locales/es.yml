@@ -42,5 +42,8 @@ es:
   sign_up_ok_title: ¡Bien!
   sign_in: "Entra"
   sign_in_button: "¡Vamos!"
+  sign_in_error_text: El email o la contraseña introducidos no son correctos
+  sign_in_error_title: Ups...
+  signing_in: "Entrando..."
   signing_up: "Registrando..."
 

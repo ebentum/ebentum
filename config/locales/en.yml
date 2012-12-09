@@ -42,4 +42,7 @@ en:
   sign_up_ok_title: Yeah!
   sign_in: "Sign in"
   sign_in_button: "Go!"
+  sign_in_error_text: The email or password you entered are incorrect
+  sign_in_error_title: Ups...
+  signing_in: "Signing in..."
   signing_up: "Signing up..."
