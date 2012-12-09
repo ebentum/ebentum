@@ -1,17 +1,18 @@
 %div{:class => 'span5 offset4'}
-  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => 'new_password', :class => 'new_password'}) do |f|
     %fieldset
       = content_tag :legend, t(:forgot_your_password)
       .control-group
         .controls
           = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
           %span.help-inline
+      = f.button t(:help_me), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_password_button', :data => {'loading-text' => t(:helping)}
       %br
-      .alert.alert-success.hide{:id => 'help_send'}
+      %br
+      .alert.alert-success.hide{:id => 'new_password_succes'}
         %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %h4
-          = t(:help_me_ok_title)
-        %span{:id => 'help_me_ok_text'}
-          = t(:help_me_ok_text, :email => 'HELP_ME_EMAIL')
-      = f.button t(:help_me), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_password_button', :data => {'loading-text' => t(:helping)}
+          = t(:new_password_ok_title)
+        %span{:id => 'new_password_ok_text'}
+          = t(:new_password_ok_text, :email => 'EMAIL')
   = render "devise/shared/links"

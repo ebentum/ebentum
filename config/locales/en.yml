@@ -18,8 +18,6 @@ en:
   forgot_your_password: "Forgot your password?"
   #H
   help_me: "Help me!"
-  help_me_ok_text: "Follow the instructions that we have sent to %{email} to change your password"
-  help_me_ok_title: Yeah!
   helping: "Helping..."
   #L
   logout: "Logout"
@@ -28,6 +26,8 @@ en:
   new_confirmation_ok_title: "Yeah!"
   new_password: "New password"
   new_password_confirmation: "Confirm new password"
+  new_password_ok_title: Yeah!
+  new_password_ok_text: "Follow the instructions that we have sent to %{email} to change your password"
   #P
   password: "Password"
   password_confirmation: "Confirm password"

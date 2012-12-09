@@ -18,8 +18,6 @@ es:
   forgot_your_password: "¿Has olvidado tu contraseña?"
   #H
   help_me: "¡Ayudame!"
-  help_me_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
-  help_me_ok_title: ¡Bien!
   helping: "Ayudando..."
   #L
   logout: "Salir"
@@ -28,6 +26,8 @@ es:
   new_confirmation_ok_title: "¡Bien!"
   new_password: "Nueva contraseña"
   new_password_confirmation: "Confirmar nueva contraseña"
+  new_password_ok_title: ¡Bien!
+  new_password_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
   #P
   password: "Contraseña"
   password_confirmation: "Confirmar contraseña"
