@@ -14,14 +14,30 @@
             %a{:href => "#about"} Amigos
           %li
             %a{:href => "#contact"} Explorar
-          - if user_signed_in?
+        - if user_signed_in?
+          %ul.nav.pull-right
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = current_user.email
+                %b.caret
+              %ul.dropdown-menu{"aria-labelledby" => "dLabel", :role => "menu"}
+                %li
+                  %a{:href => '#', :tabindex => '-1'}
+                    %i.icon-user
+                    = t(:profile)
+                %li
+                  %a{:href => '#', :tabindex => '-1'}
+                    %i.icon-cog
+                    = t(:configuration)
+                %li.divider
+                %li
+                  %a{:href => destroy_user_session_path, :tabindex => '-1', :data => {:method => :delete}}
+                    %i.icon-off
+                    = t(:logout)
+        - else
+          %ul.nav.pull-right
             %li
-              = link_to current_user.email, '#'
-            %li    
-              = link_to "Salir", destroy_user_session_path, :method => :delete
-          - else
-            %li
-              = link_to "Registrate", new_user_registration_path
+              = link_to t(:sign_up), new_user_registration_path
             %li    
               = link_to t(:sign_in), new_user_session_path
         %form.navbar-search.pull-left{:action => ""}

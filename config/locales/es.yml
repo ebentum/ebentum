@@ -1,6 +1,14 @@
 es:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              not_found: "Email no encontrado"
   #C
   change_your_password: "Cambia tu contraseña"
+  configuration: "Configuración"
   confirm_new_password: "Confirmar nueva contraseña"
   #D
   didnt_receive_confirmation_email: "¿No has recibido las intrucciones para la confirmación?"
@@ -10,18 +18,32 @@ es:
   forgot_your_password: "¿Has olvidado tu contraseña?"
   #H
   help_me: "¡Ayudame!"
+  helping: "Ayudando..."
+  #L
+  logout: "Salir"
   #N
+  new_confirmation_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"
+  new_confirmation_ok_title: "¡Bien!"
   new_password: "Nueva contraseña"
   new_password_confirmation: "Confirmar nueva contraseña"
+  new_password_ok_title: ¡Bien!
+  new_password_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
   #P
   password: "Contraseña"
   password_confirmation: "Confirmar contraseña"
+  profile: "Perfil"
   #R
   remember_me: "Recuerdame"
-  resend_confirmation_instructions: "Reenviame las instrucciones para la confirmación"
+  resend_confirmation_instructions: "Reenvíame las instrucciones para la confirmación"
   #S
   sign_up: "Regístrate"
   sign_up_button: "¡Quiero empezar ya!"
+  sign_up_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"
+  sign_up_ok_title: ¡Bien!
   sign_in: "Entra"
   sign_in_button: "¡Vamos!"
+  sign_in_error_text: El email o la contraseña introducidos no son correctos
+  sign_in_error_title: Ups...
+  signing_in: "Entrando..."
+  signing_up: "Registrando..."
 

@@ -1,9 +1,18 @@
-%div{:class => 'span4 offset4'}
-  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-    = devise_error_messages!
+%div{:class => 'span5 offset4'}
+  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:method => :post, :id => 'new_confirmation', :class => 'new_confirmation'}) do |f|
     %fieldset
       = content_tag :legend, t(:resend_confirmation_instructions)
-      = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+      .control-group
+        .controls
+          = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+          %span.help-inline
+      = f.button t(:help_me), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_confirmation_button', :data => {'loading-text' => t(:helping)}
       %br
-      = f.button t(:help_me), :class => 'btn btn-large btn-primary'
+      %br
+      .alert.alert-success.hide{:id => 'new_confirmation_success'}
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        %h4
+          = t(:new_confirmation_ok_title)
+        %span{:id => 'new_confirmation_ok_text'}
+          = t(:new_confirmation_ok_text, :email => 'EMAIL')
   = render "devise/shared/links"
