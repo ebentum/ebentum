@@ -47,4 +47,14 @@ Ebentum::Application.configure do
                                           :authentication       => 'plain',
                                           :enable_starttls_auto => true  
                                           }
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'ebentum',
+      :access_key_id => 'AKIAJ5UBKCEKEXMFVEJQ',
+      :secret_access_key => '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'
+    }
+  }
+
 end
