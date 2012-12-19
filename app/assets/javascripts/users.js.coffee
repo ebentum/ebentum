@@ -113,8 +113,11 @@ $(document).on "click", "#sign_in_button", (event) ->
       # boton en estado loading
       $('#sign_in_button').button('loading')
     success: (data, status, xhr) ->
-      # activar el boton
-      $('#sign_in_button').button('reset')
+      # redirigir al root_path
+      $.ajax
+        url: "/home/"
+        type: 'GET'
+        dataType: 'script'
     error: (xhr, status, error) ->
       # ponemos el error
       # hacemos un timeout para que el efecto sea más suave
