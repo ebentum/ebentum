@@ -6,16 +6,16 @@ $('#events_new').click ->
       $('#events_new_modal').modal()
 
 
-$("#modal_windows").on "click", "#new_event_save", (event) ->
-  $.ajax
-    url: "/events"
-    type: 'POST'
-    data: $('#new_event').serialize()
-    dataType: 'json'
-    success: (data) ->
-      alert('success')
-    error: (xhr, status, error) ->
-      errorList = jQuery.parseJSON(xhr.responseText)
-      $.each errorList, (column, error) ->
-        $('#event_'+column).parent().append('<span class="help-inline">'+error+'</span>')
-        $('#event_'+column).parent().parent().addClass('error')
+# $("#modal_windows").on "click", "#new_event_save", (event) ->
+#   $.ajax
+#     url: "/events"
+#     type: 'POST'
+#     data: $('#new_event').serialize()
+#     dataType: 'json'
+#     success: (data) ->
+#       alert('success')
+#     error: (xhr, status, error) ->
+#       errorList = jQuery.parseJSON(xhr.responseText)
+#       $.each errorList, (column, error) ->
+#         $('#event_'+column).parent().append('<span class="help-inline">'+error+'</span>')
+#         $('#event_'+column).parent().parent().addClass('error')

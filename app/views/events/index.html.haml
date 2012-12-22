@@ -1,7 +1,8 @@
 #myContent.span12.centered
   - for event in @events
     .thumbnail
-      %img{:alt => "", :src => event.photo}
+      / %img{:alt => "", :src => event.photo}
+      = image_tag event.photo.url()
       .caption
         %h5
           = event.name
