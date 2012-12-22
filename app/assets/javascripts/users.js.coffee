@@ -109,6 +109,8 @@ $(document).on "click", "#sign_in_button", (event) ->
     data: $('#sign_in').serialize()
     dataType: 'json'
     beforeSend: ->
+      # quitar las marcas de error
+      $('div.control-group').removeClass('error')
       $('#sign_in_error').fadeOut('slow')
       # boton en estado loading
       $('#sign_in_button').button('loading')
