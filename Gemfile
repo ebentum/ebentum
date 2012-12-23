@@ -49,5 +49,9 @@ gem 'aws-sdk'
 # Devise authentication
 gem 'devise', '~> 2.1.2'
 
+# omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Active model Serializers
 #gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
