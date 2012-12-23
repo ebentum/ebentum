@@ -4,7 +4,11 @@ $('#events_new').click ->
     success: (data) ->
       $("#modal_windows").append data
       $('#events_new_modal').modal()
+      $('.date-picker').datepicker()
+      $('.time-picker').timepicker()
 
+$('#modal_windows').on 'click', '#create_event_btn', (event) ->
+  $("#new_event").submit()
 
 # $("#modal_windows").on "click", "#new_event_save", (event) ->
 #   $.ajax

@@ -7,7 +7,7 @@ gem 'rails', '~> 3.2.9'
 
 group :development do
   gem 'sqlite3'
-  gem 'annotate', ">=2.5.0"  # https://github.com/ctran/annotate_models
+  gem 'annotate', "~> 2.5.0"  # https://github.com/ctran/annotate_models
 end
 
 # Gems used only for assets and not required
@@ -15,7 +15,7 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
-  gem 'bootstrap-sass', '~> 2.2.1.1'
+  gem 'bootstrap-sass', '~> 2.2.2.0'
   gem 'compass-rails', '~> 1.0.3'
   gem 'uglifier', '>= 1.3.0'
 end
@@ -26,9 +26,12 @@ end
 
 gem 'thin'
 gem 'haml', '~> 3.1.7'
-gem 'jquery-rails', '~> 2.1.3'
-gem "paperclip", "~> 3.3.1"
-gem 'aws-sdk'
+gem 'jquery-rails', '~> 2.1.4'
+gem "paperclip", "~> 3.4.0"
+gem 'aws-sdk', "~> 1.8.0"
+
+# Devise authentication
+gem 'devise', '~> 2.1.2'
 
 
 # To use ActiveModel has_secure_password
@@ -52,6 +55,3 @@ gem 'devise', '~> 2.1.2'
 # omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
-
-# Active model Serializers
-#gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"

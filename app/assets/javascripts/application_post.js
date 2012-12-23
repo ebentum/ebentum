@@ -15,6 +15,10 @@
 //= require bootstrap
 //= require jquery.masonry
 //= require masonry
+//= require bootstrap-datepicker
+//= require bootstrap-timepicker
+
+
 //= require events
 //= require users
 //= require_self
