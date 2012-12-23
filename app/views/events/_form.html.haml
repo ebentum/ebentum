@@ -12,11 +12,20 @@
 
     = f.text_field :name, :required => true, :placeholder => "Name", :class => "input-block-level"
     = f.text_area :description, :rows => 2, :required => true, :placeholder => "Description", :class => "input-block-level"
-    .controls.controls-row
-      = f.text_field :start_date, :placeholder => "Date", :class => 'date-picker span3'
-      = f.text_field :start_time, :placeholder => "Time", :class => 'time-picker span2'
-    = f.text_field :place, :placeholder => "Place"
+    .row-fluid
+      .span6
+        .input-append
+          = f.text_field :start_date, :placeholder => "Date", :class => 'date-picker'
+          %span.add-on
+            %i.icon-calendar
+      .span6
+        .input-append
+          = f.text_field :start_time, :placeholder => "Time", :class => 'time-picker'
+          %span.add-on
+            %i.icon-time
+    = f.text_field :place, :placeholder => "Place", :class => "input-block-level"
     = f.file_field :photo
+
 
 .modal-footer
   %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => "Login"}
