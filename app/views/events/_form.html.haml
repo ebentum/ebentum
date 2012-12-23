@@ -1,5 +1,6 @@
-= form_for @event, :url => events_path, :html => { :multipart => true } do |f|
-  .modal-body
+
+.modal-body
+  = form_for @event, :url => events_path, :html => { :multipart => true } do |f|
     - if @event.errors.any?
       #error_explanation
         %h2
@@ -8,31 +9,21 @@
         %ul
           - @event.errors.full_messages.each do |msg|
             %li= msg
-    .control-group
-      = f.label :name, :class => 'control-label'
-      .controls
-        = f.text_field :name, :required => true, :placeholder => "Name"
-    .control-group
-      = f.label :description, :class => 'control-label'
-      .controls
-        = f.text_area :description, :required => true, :placeholder => "Name"
-    .control-group
-      = f.label :start_date, :class => 'control-label'
-      .controls
-        %input{:type => "date", :id => "event_start_date", :name => "event[start_date]"}
-    .control-group
-      = f.label :start_time, :class => 'control-label'
-      .controls
-        = f.time_select :start_time, :placeholder => "Time", :minute_step => 5
-    .control-group
-      = f.label :place, :class => 'control-label'
-      .controls
-        = f.text_field :place, :placeholder => "Name"
-    .control-group
-      = f.label :photo, :class => 'control-label'
-      .controls
-        = f.file_field :photo
-  .modal-footer
-    = f.submit "Save changes", :class => 'btn btn-primary'
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+
+    = f.text_field :name, :required => true, :placeholder => "Name", :class => "input-block-level"
+
+    = f.text_area :description, :rows => 2, :required => true, :placeholder => "Description", :class => "input-block-level"
+
+    .controls.controls-row
+      = f.text_field :start_date, :placeholder => "Date", :class => 'date-picker span3'
+
+      = f.text_field :start_time, :placeholder => "Time", :class => 'time-picker span2'
+          
+        
+    = f.text_field :place, :placeholder => "Place"
+
+    = f.file_field :photo
+    .form-actions
+      = f.submit "Save changes", :class => 'btn btn-primary'
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
     
