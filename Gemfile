@@ -30,9 +30,7 @@ gem 'jquery-rails', '~> 2.1.4'
 gem "paperclip", "~> 3.4.0"
 gem 'aws-sdk', "~> 1.8.0"
 
-# Devise authentication
-gem 'devise', '~> 2.1.2'
-
+#gem "jquery-fileupload-rails", "~> 0.4.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

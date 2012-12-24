@@ -6,6 +6,17 @@ $('#events_new').click ->
       $('#events_new_modal').modal()
       $('.date-picker').datepicker()
       $('.time-picker').timepicker()
+      # $('#event_photo').fileupload
+      #   add: (e, data) ->
+      #     alert('add')
+      #   done: (e, data) ->
+      #     alert('done')
+
+      input = document.getElementById("event_place")
+      autocomplete = new google.maps.places.Autocomplete(input)
+      google.maps.event.addListener autocomplete, "place_changed", ->
+        place = autocomplete.getPlace()
+        location = place.geometry.location
 
 $('#modal_windows').on 'click', '#create_event_btn', (event) ->
   $("#new_event").submit()
