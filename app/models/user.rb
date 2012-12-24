@@ -38,25 +38,14 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :provider, :uid
-  # attr_accessible :email, :encrypted_password
   
   has_many :appointments
   has_many :followings
   has_many :events, :through => :appointments
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.new(complete_name:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
-                         )
-      user.skip_confirmation! # si viene de facebook ya está confirmado
-      user.save!
-    end
-    user
+  # override de la función de devise para saber cuando debemos confirmar el email
+  def confirmation_required?
+    self.provider == nil
   end
   
 end

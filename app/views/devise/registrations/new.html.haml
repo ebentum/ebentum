@@ -1,10 +1,15 @@
 %div{:class => 'span5 offset4'}
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    - if is_omniauth_sign_up?
+      = f.hidden_field :email,         :value => omniauth_email
+      = f.hidden_field :complete_name, :value => omniauth_name
+      = f.hidden_field :provider,      :value => omniauth_provider
+      = f.hidden_field :uid,           :value => omniauth_uid
     %fieldset
       = content_tag :legend, t(:sign_up)
       .control-group
         .controls
-          = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+          = f.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge', :disabled => omniauth_email
           %span.help-inline
       .control-group
         .controls
