@@ -12,13 +12,21 @@ $(document).on "click", "#sign_up_button", (event) ->
       # boton en estado loading
       $('#sign_up_button').button('loading')
     success: (data, status, xhr) ->
-      # ponemos el email en el mensaje y lo enseñamos
-      txt = $('#sign_up_ok_text').text()
-      txt = txt.replace('SIGN_UP_EMAIL', $('#email').val())
-      $('#sign_up_ok_text').text(txt)
-      $('#sign_up_success').fadeIn('slow')
-      # ocultar el boton 
-      $('#sign_up_button').hide()
+      # si el alta es via omniauth
+      if $('#user_provider').length > 0 # si existe este input lo es
+        # redirigir al root_path
+        $.ajax
+          url: "/home/"
+          type: 'GET'
+          dataType: 'script' 
+      else
+        # ponemos el email en el mensaje y lo enseñamos
+        txt = $('#sign_up_ok_text').text()
+        txt = txt.replace('SIGN_UP_EMAIL', $('#email').val())
+        $('#sign_up_ok_text').text(txt)
+        $('#sign_up_success').fadeIn('slow')
+        # ocultar el boton 
+        $('#sign_up_button').hide()
     error: (xhr, status, error) ->
       # ponemos los errores
       # hacemos un timeout para que el efecto sea más suave

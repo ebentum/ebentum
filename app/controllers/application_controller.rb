@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  def store_omniauth_data(data)
+    session["devise.omniauth_data"] = data
+  end
+
   protected
 
   def layout_by_resource
