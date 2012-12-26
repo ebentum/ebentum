@@ -7,6 +7,15 @@
       = f.hidden_field :uid,           :value => omniauth_uid
     %fieldset
       = content_tag :legend, t(:sign_up)
+      - if is_omniauth_sign_up? and omniauth_provider == 'facebook'
+        .alert.alert-info
+          %p
+            = image_tag "f_logo.png", :size => "30x30"
+            = t(:sesion_started_as)
+            %strong
+              = omniauth_name
+        %a.thumbnail{:href => "#", :style => "width: 50px; height: 50px;"}
+          %img{:src => omniauth_image, :alt => "50x50", :style => "width: 50px; height: 50px;", :data => {:src => omniauth_image}}
       .control-group
         .controls
           = f.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge', :disabled => omniauth_email
@@ -20,11 +29,18 @@
           = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:password_confirmation), :class => 'input-xlarge'
           %span.help-inline
       %br
-      .alert.alert-success.hide{:id => 'sign_up_success'}
-        / %button.close{"data-dismiss" => "alert", :type => "button"} ×
-        %h4
-          = t(:sign_up_ok_title)
-        %span{:id => 'sign_up_ok_text'}
-          = t(:sign_up_ok_text, :email => 'SIGN_UP_EMAIL')
+      - if is_omniauth_sign_up?
+        .alert.alert-success.hide{:id => 'omniauth_sign_up_success'}
+          %h4
+            = t(:sign_up_ok_title)
+          %span{:id => 'omniauth_sign_up_ok_text'}
+            = t(:omniauth_sign_up_ok_text)
+        = link_to t(:start), root_path, :class => 'btn btn-large btn-primary hide', :id => 'start_button'
+      - else
+        .alert.alert-success.hide{:id => 'sign_up_success'}
+          %h4
+            = t(:sign_up_ok_title)
+          %span{:id => 'sign_up_ok_text'}
+            = t(:sign_up_ok_text, :email => 'SIGN_UP_EMAIL')
       = f.button t(:sign_up_button), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'sign_up_button', :data => {'loading-text' => t(:signing_up)}
   = render "devise/shared/links"

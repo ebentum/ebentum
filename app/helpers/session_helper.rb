@@ -18,6 +18,10 @@ module SessionHelper
     session["devise.omniauth_data"].uid
   end
 
+  def omniauth_image
+    session["devise.omniauth_data"].info.image  
+  end
+
   def is_omniauth_sign_up?
     session["devise.omniauth_data"] != nil  
   end

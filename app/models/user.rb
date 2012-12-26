@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?
+    # si tiene provider es que el alta se ha hecho con omniauth
     self.provider == nil
   end
   

@@ -14,11 +14,19 @@ $(document).on "click", "#sign_up_button", (event) ->
     success: (data, status, xhr) ->
       # si el alta es via omniauth
       if $('#user_provider').length > 0 # si existe este input lo es
-        # redirigir al root_path
-        $.ajax
-          url: "/home/"
-          type: 'GET'
-          dataType: 'script' 
+        # mostrar el mensaje
+        $('#omniauth_sign_up_success').fadeIn('slow')
+        # mostrae el boton
+        $('#start_button').fadeIn('slow')
+        # ocultar el boton 
+        $('#sign_up_button').hide()
+        setTimeout (->
+          # redirigir al root_path
+          $.ajax
+            url: "/home/"
+            type: 'GET'
+            dataType: 'script' 
+        ), 8000
       else
         # ponemos el email en el mensaje y lo enseñamos
         txt = $('#sign_up_ok_text').text()
