@@ -12,8 +12,9 @@ $(document).on "click", "#sign_up_button", (event) ->
       # boton en estado loading
       $('#sign_up_button').button('loading')
     success: (data, status, xhr) ->
-      # si el alta es via omniauth
-      if $('#user_provider').length > 0 # si existe este input lo es
+      # si el alta es via omniauth y el proveedor no es twitter la cuenta está confirmada
+      provider = $('#user_provider').val()
+      if provider and provider != 'twitter'
         # mostrar el mensaje
         $('#omniauth_sign_up_success').fadeIn('slow')
         # mostrae el boton

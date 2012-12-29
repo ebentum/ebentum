@@ -53,3 +53,4 @@ gem 'devise', '~> 2.1.2'
 # omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'

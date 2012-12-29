@@ -6,8 +6,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to new_user_registration_url
   end
 
+  def twitter
+    redirect_to new_user_registration_url
+  end
+
   def store_omniauth_data
-    flash[:omniauth_data] = request.env["omniauth.auth"]
+    flash[:omniauth_data] = request.env["omniauth.auth"].except('extra')
   end
 
 end

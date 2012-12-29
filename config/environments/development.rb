@@ -42,8 +42,8 @@ Ebentum::Application.configure do
                                           :address              => "smtp.gmail.com",
                                           :port                 => 587,
                                           :domain               => 'localhost',
-                                          :user_name            => 'dautsoft',
-                                          :password             => 'ammjdase',
+                                          :user_name            => 'dev.ebentum',
+                                          :password             => 'jdaammtjd',
                                           :authentication       => 'plain',
                                           :enable_starttls_auto => true  
                                           }

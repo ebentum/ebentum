@@ -13,18 +13,26 @@ module OmniauthHelper
 
   def omniauth_provider_info
     if is_omniauth_sign_up?
-      info = ''
-      if omniauth_provider == 'facebook'
-        info = content_tag :div, :class => 'alert alert-info' do
-          name = content_tag :strong, omniauth_name
-          content_tag :p do
-            image_tag("f_logo.png", :size => "30x30") + ' ' + 
-            t(:sesion_started_as) + ' ' + 
-            name
-          end
+      info = content_tag :div, :class => 'alert alert-info' do
+        name = content_tag :strong, omniauth_name
+        content_tag :p do
+          image_tag(provider_logo, :size => "30x30") + ' ' + 
+          t(:sesion_started_as) + ' ' + 
+          name
         end
       end
-      raw(info)
+    raw(info)
+    end
+  end
+
+  def provider_logo
+    case omniauth_provider
+    when 'facebook'
+      'f_logo.png'
+    when 'twitter'
+      't_logo.png'
+    else
+      nil
     end
   end
 
@@ -35,7 +43,7 @@ module OmniauthHelper
   end
 
   def omniauth_name
-    get_omniauth_data.extra.raw_info.name
+    get_omniauth_data.info.name
   end
 
   def omniauth_provider
