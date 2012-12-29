@@ -4,6 +4,8 @@
     %fieldset
       = content_tag :legend, t(:sign_up)
       = omniauth_provider_info
+      %a.thumbnail{:href => "#", :style => "width: 100px; height: 100px;"}
+        %img{:src => omniauth_image, :alt => "100x100", :style => "width: 100px; height: 100px;", :data => {:src => omniauth_image}}
       .control-group
         .controls
           = f.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge', :disabled => omniauth_email
