@@ -1,21 +1,9 @@
 %div{:class => 'span5 offset4'}
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    - if is_omniauth_sign_up?
-      = f.hidden_field :email,         :value => omniauth_email
-      = f.hidden_field :complete_name, :value => omniauth_name
-      = f.hidden_field :provider,      :value => omniauth_provider
-      = f.hidden_field :uid,           :value => omniauth_uid
+    = omniauth_form_data
     %fieldset
       = content_tag :legend, t(:sign_up)
-      - if is_omniauth_sign_up? and omniauth_provider == 'facebook'
-        .alert.alert-info
-          %p
-            = image_tag "f_logo.png", :size => "30x30"
-            = t(:sesion_started_as)
-            %strong
-              = omniauth_name
-        %a.thumbnail{:href => "#", :style => "width: 50px; height: 50px;"}
-          %img{:src => omniauth_image, :alt => "50x50", :style => "width: 50px; height: 50px;", :data => {:src => omniauth_image}}
+      = omniauth_provider_info
       .control-group
         .controls
           = f.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge', :disabled => omniauth_email
