@@ -12,14 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.widget
 //= require bootstrap
 //= require jquery.masonry
 //= require masonry
+//= require jquery.autosize
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
-//= require jquery.fileupload
-//= require jquery.iframe-transport
 
 
 //= require events

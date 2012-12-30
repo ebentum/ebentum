@@ -15,7 +15,7 @@
 #
 
 class Event < ActiveRecord::Base
-  attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo
+  attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo, :lat, :lng
   
   validates :name, :description, :presence => true
 

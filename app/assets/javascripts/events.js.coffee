@@ -4,19 +4,19 @@ $('#events_new').click ->
     success: (data) ->
       $("#modal_windows").append data
       $('#events_new_modal').modal()
+      $('textarea').autosize({append: "\n"})
       $('.date-picker').datepicker()
+      $('.timepicker-default').timepicker()
       $('.time-picker').timepicker()
-      # $('#event_photo').fileupload
-      #   add: (e, data) ->
-      #     alert('add')
-      #   done: (e, data) ->
-      #     alert('done')
+      $('#event_photo').change ->
+        loadImageFile()
 
       input = document.getElementById("event_place")
       autocomplete = new google.maps.places.Autocomplete(input)
       google.maps.event.addListener autocomplete, "place_changed", ->
         place = autocomplete.getPlace()
-        location = place.geometry.location
+        $('#event_lat').val(place.geometry.location.lat())
+        $('#event_lng').val(place.geometry.location.lng())
 
 $('#modal_windows').on 'click', '#create_event_btn', (event) ->
   $("#new_event").submit()
@@ -34,3 +34,29 @@ $('#modal_windows').on 'click', '#create_event_btn', (event) ->
 #       $.each errorList, (column, error) ->
 #         $('#event_'+column).parent().append('<span class="help-inline">'+error+'</span>')
 #         $('#event_'+column).parent().parent().addClass('error')
+
+loadImageFile = (->
+  if window.FileReader
+    oPreviewImg = null
+    oFReader = new window.FileReader()
+    rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i
+    oFReader.onload = (oFREvent) ->
+      unless oPreviewImg
+        newPreview = document.getElementById("imagePreview")
+        oPreviewImg = new Image()
+        oPreviewImg.style.width = (newPreview.offsetWidth).toString() + "px"
+        oPreviewImg.style.height = (newPreview.offsetHeight).toString() + "px"
+        newPreview.appendChild oPreviewImg
+      oPreviewImg.src = oFREvent.target.result
+
+    return ->
+      aFiles = document.getElementById("event_photo").files
+      return  if aFiles.length is 0
+      unless rFilter.test(aFiles[0].type)
+        alert "You must select a valid image file!"
+        return
+      oFReader.readAsDataURL aFiles[0]
+  if navigator.appName is "Microsoft Internet Explorer"
+    ->
+      document.getElementById("imagePreview").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("event_photo").value
+)()

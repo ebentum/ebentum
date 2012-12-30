@@ -19,5 +19,16 @@ body {
 }
 
 .pac-container {
-    z-index: 1200 !important;
+  z-index: 1200 !important;
+}
+
+.modal-backdrop {
+	background: white;
+}
+
+#imagePreview {
+	width: 160px;
+	height: 120px;
+	float: right;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
 }

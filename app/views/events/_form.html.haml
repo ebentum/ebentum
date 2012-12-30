@@ -11,7 +11,8 @@
             %li= msg
 
     %a.thumbnail{:href => "#"}
-      %img#foto{:alt => "", :src => "", "data-src" => "holder.js/300x200"}
+      #imagePreview
+    
 
 
     %span.btn.btn-success.fileinput-button
@@ -20,7 +21,7 @@
       = f.file_field :photo
 
     = f.text_field :name, :required => true, :placeholder => "Name", :class => "input-block-level"
-    = f.text_area :description, :rows => 2, :required => true, :placeholder => "Description", :class => "input-block-level"
+    = f.text_area :description, :required => true, :placeholder => "Description", :class => "input-block-level"
     .row-fluid
       .span6
         .input-append
@@ -38,7 +39,11 @@
           %span.add-on
             %i.icon-map-marker
           = f.text_field :place, :placeholder => "Place", :class => "input-block-level"
-          
+
+    = f.hidden_field :lat
+    = f.hidden_field :lng
+    
+    
 .modal-footer
   %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => "Create"}
   %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
