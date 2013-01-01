@@ -22,6 +22,7 @@
 #  bio                    :text
 #  active                 :boolean
 #
+#
 
 class User < ActiveRecord::Base
   devise :database_authenticatable, 
