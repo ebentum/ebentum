@@ -40,14 +40,21 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :provider, :uid
   
+  # atributos que no son del modelo
+  # email que viene de omniauth
+  attr_accessor   :omniauth_email
+  attr_accessible :omniauth_email
+  # si el usuario requiere confirmación de email true/false
+  attr_accessor   :user_confirmation_required
+  attr_accessible :user_confirmation_required
+  
   has_many :appointments
   has_many :followings
   has_many :events, :through => :appointments
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?
-    # twitter no da el email así que si el alta es vía twitter debemos confirmarlo
-    self.provider == nil or self.provider == 'twitter'
+    self.user_confirmation_required == 'true'
   end
   
 end

@@ -1,5 +1,7 @@
 $(document).on "click", "#sign_up_button", (event) ->
   event.preventDefault()
+  # controlar si hay que confirmar el email
+  $('#user_user_confirmation_required').val(user_confirmation_required())
   $.ajax
     url: "/users"
     type: 'POST'
@@ -12,12 +14,10 @@ $(document).on "click", "#sign_up_button", (event) ->
       # boton en estado loading
       $('#sign_up_button').button('loading')
     success: (data, status, xhr) ->
-      # si el alta es via omniauth y el proveedor no es twitter la cuenta está confirmada
-      provider = $('#user_provider').val()
-      if provider and provider != 'twitter'
+      if $('#user_user_confirmation_required').val() == 'false'
         # mostrar el mensaje
         $('#omniauth_sign_up_success').fadeIn('slow')
-        # mostrae el boton
+        # mostrar el boton
         $('#start_button').fadeIn('slow')
         # ocultar el boton 
         $('#sign_up_button').hide()
@@ -47,6 +47,16 @@ $(document).on "click", "#sign_up_button", (event) ->
         # activar el boton
         $('#sign_up_button').button('reset')
         ), 2000
+
+user_confirmation_required = (->
+  omniauth_email        = $('#user_omniauth_email').val()
+  user_email            = $('#email').val()
+  if omniauth_email != user_email
+    confirmation_required = 'true'
+  else
+    confirmation_required = 'false'
+  confirmation_required
+)
 
 $(document).on "click", "#new_password_button", (event) ->
   event.preventDefault()

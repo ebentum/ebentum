@@ -3,10 +3,10 @@ module OmniauthHelper
   def omniauth_form_data
     form_data = ''
     if is_omniauth_sign_up?
-      form_data += hidden_field_tag 'user[email]',         omniauth_email
-      form_data += hidden_field_tag 'user[complete_name]', omniauth_name
-      form_data += hidden_field_tag 'user[provider]',      omniauth_provider
-      form_data += hidden_field_tag 'user[uid]',           omniauth_uid
+      form_data += hidden_field_tag 'user[omniauth_email]', omniauth_email
+      form_data += hidden_field_tag 'user[complete_name]',  omniauth_name
+      form_data += hidden_field_tag 'user[provider]',       omniauth_provider
+      form_data += hidden_field_tag 'user[uid]',            omniauth_uid
     end
     raw(form_data)
   end
