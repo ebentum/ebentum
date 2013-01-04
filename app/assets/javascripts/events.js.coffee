@@ -6,8 +6,10 @@ $('#events_new').click ->
       $('#events_new_modal').modal()
       $('textarea').autosize({append: "\n"})
       $('.date-picker').datepicker()
-      $('.timepicker-default').timepicker()
-      $('.time-picker').timepicker()
+      $('.time-picker').timepicker
+        minuteStep: 5
+        showInputs: false
+        disableFocus: true
       $('#event_photo').change ->
         loadImageFile()
 
