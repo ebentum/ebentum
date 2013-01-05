@@ -20,6 +20,11 @@ $('#events_new').click ->
         $('#event_lat').val(place.geometry.location.lat())
         $('#event_lng').val(place.geometry.location.lng())
 
+      
+
+
+
+
 $('#modal_windows').on 'click', '#create_event_btn', (event) ->
   $("#new_event").submit()
 

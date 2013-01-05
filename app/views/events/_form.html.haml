@@ -1,6 +1,6 @@
 
 .modal-body
-  = form_for @event, :url => events_path, :html => { :multipart => true } do |f|
+  = form_for @event, :url => events_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
     - if @event.errors.any?
       #error_explanation
         %h2
@@ -11,8 +11,7 @@
             %li= msg
 
     %a.thumbnail{:href => "#"}
-      #imagePreview
-    
+      #imagePreview    
 
 
     %span.btn.btn-success.fileinput-button
@@ -35,12 +34,11 @@
             %i.icon-time
           = f.text_field :start_time, :placeholder => "Time", :class => 'time-picker'
           
-    .row-fluid
-      .span11
-        .input-prepend
-          %span.add-on
-            %i.icon-map-marker
-          = f.text_field :place, :placeholder => "Place", :class => "input-block-level"
+
+    .input-prepend
+      %span.add-on
+        %i.icon-map-marker
+      = f.text_field :place, :placeholder => "Place"
 
     = f.hidden_field :lat
     = f.hidden_field :lng
