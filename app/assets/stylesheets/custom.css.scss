@@ -1,3 +1,5 @@
+@import "events";
+
 html {
 	background: #F7F5F5 url(paper.jpg) repeat;
 }
@@ -18,17 +20,7 @@ body {
 	margin: 0px auto;
 }
 
-.pac-container {
-  z-index: 1200 !important;
-}
-
 .modal-backdrop {
 	background: white;
 }
 
-#imagePreview {
-	width: 160px;
-	height: 120px;
-	float: right;
-	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
-}

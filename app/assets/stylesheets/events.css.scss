@@ -1,0 +1,22 @@
+#imagePreview {
+  width: 160px;
+  height: 120px;
+  float: right;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+}
+
+.pac-container {
+  z-index: 1200 !important;
+}
+
+#event_place {
+  width: 92%;
+}
+
+#event_start_time {
+  width: 84%;
+}
+
+#event_start_date {
+  width: 84%;
+}
