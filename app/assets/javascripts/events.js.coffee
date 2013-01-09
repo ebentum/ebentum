@@ -15,17 +15,30 @@ $('#events_new').click ->
       $('#event_photo').change ->
         loadImageFile()
 
-      input = document.getElementById("event_place")
 
-      autocomplete = new google.maps.places.Autocomplete(input)
-      google.maps.event.addListener autocomplete, "place_changed", ->
-        place = autocomplete.getPlace()
-        $('#event_lat').val(place.geometry.location.lat())
-        $('#event_lng').val(place.geometry.location.lng())
+      $("#events_new_modal").modal().on "shown", ->
+        map_options =
+          center: new google.maps.LatLng(-6.21, 106.84)
+          zoom: 11
+          mapTypeId: google.maps.MapTypeId.ROADMAP
 
-      
+        map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
+        defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
+        input = document.getElementById("event_place")
+        autocomplete = new google.maps.places.Autocomplete(input)
+        autocomplete.bindTo "bounds", map
+        marker = new google.maps.Marker(map: map)
+        google.maps.event.addListener autocomplete, "place_changed", ->
+          place = autocomplete.getPlace()
+          if place.geometry.viewport
+            map.fitBounds place.geometry.viewport
+          else
+            map.setCenter place.geometry.location
+            map.setZoom 15
+          marker.setPosition place.geometry.location
 
-
+        google.maps.event.addListener map, "click", (event) ->
+          marker.setPosition event.latLng
 
 
 $('#modal_windows').on 'click', '#create_event_btn', (event) ->
