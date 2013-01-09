@@ -5,15 +5,18 @@ $('#events_new').click ->
       $("#modal_windows").append data
       $('#events_new_modal').modal()
       $('textarea').autosize({append: "\n"})
-      $('.date-picker').datepicker()
+      $('.date-picker').datepicker
+        autoclose: true
       $('.time-picker').timepicker
         minuteStep: 5
         showInputs: false
         disableFocus: true
+        showMeridian: false
       $('#event_photo').change ->
         loadImageFile()
 
       input = document.getElementById("event_place")
+
       autocomplete = new google.maps.places.Autocomplete(input)
       google.maps.event.addListener autocomplete, "place_changed", ->
         place = autocomplete.getPlace()
