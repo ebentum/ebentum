@@ -16,6 +16,8 @@
 //= require jquery.masonry
 //= require masonry
 //= require jquery.autosize
+//= require bootstrap-modalmanager
+//= require bootstrap-modal
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
 

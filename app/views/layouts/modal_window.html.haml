@@ -1,4 +1,4 @@
-.modal.hide.fade{:id => controller_name+'_'+action_name+'_modal', "aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+.modal.hide.fade{:id => controller_name+'_'+action_name+'_modal', "aria-hidden" => "true", :role => "dialog", :tabindex => "-1", "data-backdrop" => "static"}
   .modal-header
     = yield :modal_header
   = yield
