@@ -1,14 +1,6 @@
 
 .modal-body
   = form_for @event, :url => events_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
-    - if @event.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@event.errors.count, "error")
-          prohibited this event from being saved:
-        %ul
-          - @event.errors.full_messages.each do |msg|
-            %li= msg
 
     %a.thumbnail{:href => "#"}
       #imagePreview    
@@ -19,7 +11,7 @@
       %span Add image...
       = f.file_field :photo
 
-    = f.text_field :name, :required => true, :placeholder => "Name", :class => "input-block-level"
+    = f.text_field :name, :placeholder => "Name", :class => "input-block-level"
     = f.text_area :description, :required => true, :placeholder => "Description", :class => "input-block-level"
     .row-fluid
       .span6
@@ -44,7 +36,6 @@
 
     = f.hidden_field :lat
     = f.hidden_field :lng
-    
     
 .modal-footer
   %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => "Create"}

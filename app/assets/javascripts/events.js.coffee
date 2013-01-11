@@ -41,6 +41,18 @@ $('#events_new').click ->
           marker.setPosition event.latLng
 
 
+        $("#new_event").validate
+          rules:
+            "event[name]":
+              required: true
+            "event[date]":
+              required: true
+            "event[time]":
+              required: true
+            "event[place]":
+              required: true
+
+
 $('#modal_windows').on 'click', '#create_event_btn', (event) ->
   $("#new_event").submit()
 

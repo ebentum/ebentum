@@ -20,7 +20,7 @@
 //= require bootstrap-modal
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
-
+//= require jquery.validate
 
 //= require events
 //= require users
