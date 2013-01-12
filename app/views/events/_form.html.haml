@@ -2,14 +2,23 @@
 .modal-body
   = form_for @event, :url => events_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
 
-    %a.thumbnail{:href => "#"}
-      #imagePreview    
 
 
     %span.btn.btn-success.fileinput-button
       %i.icon-plus.icon-white
       %span Add image...
       = f.file_field :photo
+
+    .row-fluid
+      .span12
+        .centered_image
+          .thumbnail
+            #imagePreview
+              %i.icon-picture
+
+
+
+
 
     = f.text_field :name, :placeholder => "Name", :class => "input-block-level"
     = f.text_area :description, :required => true, :placeholder => "Description", :class => "input-block-level"
@@ -32,7 +41,7 @@
         %i.icon-map-marker
       = f.text_field :place, :placeholder => "Place"
 
-    #map_canvas{:style => "width:513px; height:300px"}
+    #map_canvas{:style => "width:530px; height:200px"}
 
     = f.hidden_field :lat
     = f.hidden_field :lng
