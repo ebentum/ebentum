@@ -1,6 +1,6 @@
 #myContent.span12.centered
   - for event in @events
-    .thumbnail
+    .thumbnail.box
       / %img{:alt => "", :src => event.photo}
       = image_tag event.photo.url()
       .caption
