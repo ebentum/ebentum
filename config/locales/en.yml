@@ -44,6 +44,7 @@ en:
   sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
   sign_up_ok_title: Yeah!
   sign_in: "Sign in"
+  sign_in_with: "You can sign in to ebentum with:"
   sign_in_button: "Go!"
   sign_in_error_text: The email or password you entered are incorrect
   sign_in_error_title: Ups...

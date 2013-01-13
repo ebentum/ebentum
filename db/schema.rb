@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224185207) do
+ActiveRecord::Schema.define(:version => 20130113173943) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "event_id"
@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(:version => 20121224185207) do
     t.string   "unconfirmed_email"
     t.string   "provider"
     t.string   "uid"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_url"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

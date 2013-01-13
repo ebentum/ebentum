@@ -55,7 +55,16 @@ module OmniauthHelper
   end
 
   def omniauth_image
-    get_omniauth_data.info.image  
+    if is_omniauth_sign_up?
+      case omniauth_provider
+      when 'facebook'
+        get_omniauth_data.info.image
+      when 'twitter'
+        get_omniauth_data.info.image.sub("_normal", "") #sin el '_normal' traerá la imagen 'grande'
+      else
+        nil
+      end
+    end
   end
 
   def is_omniauth_sign_up?

@@ -1,0 +1,12 @@
+.control-group
+  .controls
+    = form.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+    %span.help-inline
+.control-group
+  .controls
+    = form.password_field :password, :id => 'password', :placeholder => t(:password), :class => 'input-xlarge'
+    %span.help-inline
+.control-group
+  .controls
+    = form.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:password_confirmation), :class => 'input-xlarge'
+    %span.help-inline
