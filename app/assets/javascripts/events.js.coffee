@@ -8,7 +8,8 @@ $('#events_new').click ->
       $('textarea').autosize({append: "\n"})
       $('#event_start_date').datepicker
         autoclose: true
-      $('#event_start_time').timepicker()
+      $('#event_start_time').timepicker
+        timeFormat: "H:i"
       $('#event_photo').change ->
         $('#imagePreview i').remove()
         loadImageFile()
