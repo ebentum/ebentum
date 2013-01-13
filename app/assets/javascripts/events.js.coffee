@@ -6,19 +6,14 @@ $('#events_new').click ->
       $("#modal_windows").append data
       $('#events_new_modal').modal()
       $('textarea').autosize({append: "\n"})
-      $('.date-picker').datepicker
+      $('#event_start_date').datepicker
         autoclose: true
-      $('.time-picker').timepicker
-        minuteStep: 5
-        showInputs: false
-        disableFocus: true
-        showMeridian: false
+      $('#event_start_time').timepicker()
       $('#event_photo').change ->
         $('#imagePreview i').remove()
         loadImageFile()
 
-
-      $("#events_new_modal").modal().on "shown", ->
+      $("#events_new_modal").on "shown", ->
         map_options =
           center: new google.maps.LatLng(-6.21, 106.84)
           zoom: 11
@@ -26,12 +21,21 @@ $('#events_new').click ->
 
         map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
         defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
-        input = document.getElementById("event_place")
+        input = document.getElementById("event_place_autocomplete")
         autocomplete = new google.maps.places.SearchBox(input)
         autocomplete.bindTo "bounds", map
         marker = new google.maps.Marker(map: map)
         google.maps.event.addListener autocomplete, "places_changed", ->
           place = autocomplete.getPlaces()
+
+          if !place[0]
+            marker.setMap(null)
+            $('#event_lat').val(null)
+            $('#event_lng').val(null)
+            $('#event_place').val(null)
+            return
+          else
+            marker.setMap(map)
 
           if place[0].geometry.viewport
             map.fitBounds place[0].geometry.viewport
@@ -39,9 +43,10 @@ $('#events_new').click ->
             map.setCenter place[0].geometry.location
             map.setZoom 15
           marker.setPosition place[0].geometry.location
-
+          $('#event_lat').val(place[0].geometry.location.lat())
+          $('#event_lng').val(place[0].geometry.location.lng())
+          $('#event_place').val($('#event_place_autocomplete').val())
           #$('#event_place').val(place[0].formatted_address)
-
         #google.maps.event.addListener map, "click", (event) ->
         #  marker.setPosition event.latLng
 
@@ -55,8 +60,8 @@ $('#events_new').click ->
               date: true
             "event[start_time]":
               required: true
-            "event[place]":
-              required: true
+            #"event[place]":
+            #  required: true
           onkeyup: false
           onclick: false
           onfocusout: false

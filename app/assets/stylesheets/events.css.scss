@@ -10,7 +10,7 @@
   z-index: 1200 !important;
 }
 
-#event_place {
+#event_place_autocomplete {
   width: 92%;
 }
 
@@ -26,3 +26,7 @@
   width: 170px;
 }
 
+#map_canvas {
+  width:530px;
+  height:200px;
+}
