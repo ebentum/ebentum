@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
          #:lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :provider, :uid, :image, :image_url
   
   # atributos que no son del modelo
   # email que viene de omniauth
@@ -51,6 +51,8 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :followings
   has_many :events, :through => :appointments
+
+  has_attached_file :image
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?

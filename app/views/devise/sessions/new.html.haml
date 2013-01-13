@@ -3,14 +3,12 @@
     %fieldset
       = content_tag :legend, t(:sign_in)
       .alert.alert-error.hide{:id => 'sign_in_error'}
-        / %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %h4
           = t(:sign_in_error_title)
         %span{:id => 'sign_in_error_text'}
       .control-group
         .controls
           = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
-          %span.help-inline
       .control-group
         .controls
           = f.password_field :password, :id => 'password', :placeholder => t(:password), :class => 'input-xlarge'

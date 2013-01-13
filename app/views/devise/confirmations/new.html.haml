@@ -1,4 +1,4 @@
-%div{:class => 'span5 offset4'}
+%div{:class => 'span6 offset4'}
   = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:method => :post, :id => 'new_confirmation', :class => 'new_confirmation'}) do |f|
     %fieldset
       = content_tag :legend, t(:resend_confirmation_instructions)
