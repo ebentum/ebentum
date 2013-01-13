@@ -27,36 +27,43 @@ $('#events_new').click ->
         map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
         defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
         input = document.getElementById("event_place")
-        autocomplete = new google.maps.places.Autocomplete(input)
+        autocomplete = new google.maps.places.SearchBox(input)
         autocomplete.bindTo "bounds", map
         marker = new google.maps.Marker(map: map)
-        google.maps.event.addListener autocomplete, "place_changed", ->
-          place = autocomplete.getPlace()
-          if place.geometry.viewport
-            map.fitBounds place.geometry.viewport
-          else
-            map.setCenter place.geometry.location
-            map.setZoom 15
-          marker.setPosition place.geometry.location
+        google.maps.event.addListener autocomplete, "places_changed", ->
+          place = autocomplete.getPlaces()
 
-        google.maps.event.addListener map, "click", (event) ->
-          marker.setPosition event.latLng
+          if place[0].geometry.viewport
+            map.fitBounds place[0].geometry.viewport
+          else
+            map.setCenter place[0].geometry.location
+            map.setZoom 15
+          marker.setPosition place[0].geometry.location
+
+          #$('#event_place').val(place[0].formatted_address)
+
+        #google.maps.event.addListener map, "click", (event) ->
+        #  marker.setPosition event.latLng
 
 
         $("#new_event").validate
           rules:
             "event[name]":
               required: true
-            "event[date]":
+            "event[start_date]":
               required: true
-            "event[time]":
+              date: true
+            "event[start_time]":
               required: true
             "event[place]":
               required: true
+          onkeyup: false
+          onclick: false
+          onfocusout: false
 
 
-$('#modal_windows').on 'click', '#create_event_btn', (event) ->
-  $("#new_event").submit()
+        $('#create_event_btn').click ->
+          $("#new_event").submit()
 
 
 loadImageFile = (->
