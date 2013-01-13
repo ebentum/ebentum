@@ -51,6 +51,9 @@ $('#events_new').click ->
         #google.maps.event.addListener map, "click", (event) ->
         #  marker.setPosition event.latLng
 
+        $.validator.addMethod "time", ((value, element) ->
+          @optional(element) or /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value)
+        ), "Please enter a valid time."
 
         $("#new_event").validate
           rules:
@@ -61,6 +64,7 @@ $('#events_new').click ->
               date: true
             "event[start_time]":
               required: true
+              time: true
             #"event[place]":
             #  required: true
           onkeyup: false
