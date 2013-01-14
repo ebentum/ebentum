@@ -24,7 +24,7 @@
       - else
         .row-fluid
           %div{:class => 'span4'}
-            .thumbnail{:href => '#'}
+            .thumbnail
               = image_tag(omniauth_image, :size => '150x150')
               = f.hidden_field :image_url, :value => omniauth_image
           %div{:class => 'span8'}
