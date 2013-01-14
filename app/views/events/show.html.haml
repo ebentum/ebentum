@@ -1,26 +1,51 @@
-%p#notice
-  = notice
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Start date:
-  = @event.start_date
-%p
-  %b Place:
-  = @event.place
-%p
-  %b User:
-  = @event.user_id
-%p
-  %b Active:
-  = @event.active
-%p
-  %b Photo:
-  = image_tag @event.photo.url
-= link_to 'Edit', edit_event_path(@event)
-= link_to 'Back', events_path
-= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete
+.span12
+  .row-fluid
+    .span1
+    .span4
+      .thumbnail
+        = image_tag(@event.photo.url, :class => 'block')
+    .span1
+    .span5
+      %p
+        %b Name:
+        = @event.name
+      %p
+        %b Description:
+        = @event.description
+      %p
+        %b Start date:
+        = @event.start_date
+      %p
+        %b Place:
+        = @event.place
+      %p
+        %b User:
+        = @event.user_id 
+    .span1
+
+/ %p#notice
+/   = notice
+/ %p
+/   %b Name:
+/   = @event.name
+/ %p
+/   %b Description:
+/   = @event.description
+/ %p
+/   %b Start date:
+/   = @event.start_date
+/ %p
+/   %b Place:
+/   = @event.place
+/ %p
+/   %b User:
+/   = @event.user_id
+/ %p
+/   %b Active:
+/   = @event.active
+/ %p
+/   %b Photo:
+/   = image_tag @event.photo.url
+/ = link_to 'Edit', edit_event_path(@event)
+/ = link_to 'Back', events_path
+/ = link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete

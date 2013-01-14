@@ -3,10 +3,12 @@
 html {
 	background: #F7F5F5 url(paper.jpg) repeat;
 }
+
 body {
 	padding-bottom: 40px;
 	background: #F7F5F5 url(paper.jpg) repeat;
 }
+
 .box {
 	width: 285px;
 	display: inline-block;
@@ -14,6 +16,10 @@ body {
 	margin-bottom: 15px;
 	background-color: white;
 	margin: 5px;
+}
+
+.block {
+	width: 100%;
 }
 
 .centered { 
