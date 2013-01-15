@@ -16,16 +16,32 @@ $('#events_new').click ->
 
       $("#events_new_modal").on "shown", ->
         map_options =
-          center: new google.maps.LatLng(-6.21, 106.84)
-          zoom: 11
+        #  center: new google.maps.LatLng(-6.21, 106.84)
+          zoom: 13
           mapTypeId: google.maps.MapTypeId.ROADMAP
 
         map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-        defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
+        #defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
+
+
+        if navigator.geolocation
+          browserSupportFlag = true
+          navigator.geolocation.getCurrentPosition ((position) ->
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+            map.setCenter initialLocation
+          )
+
+
+
         input = document.getElementById("event_place_autocomplete")
         autocomplete = new google.maps.places.SearchBox(input)
         autocomplete.bindTo "bounds", map
         marker = new google.maps.Marker(map: map)
+
+        if google.loader.ClientLocation
+          zoom = 13
+          latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude)
+
         google.maps.event.addListener autocomplete, "places_changed", ->
           place = autocomplete.getPlaces()
 
