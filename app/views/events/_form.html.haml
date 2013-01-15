@@ -32,7 +32,7 @@
     .input-prepend
       %span.add-on
         %i.icon-map-marker
-      %input#event_place_autocomplete{:placeholder => "Place", :type => "text"}
+      %input#event_place_autocomplete{:placeholder => "Place", :type => "text", :name => "event[place_autocomplete]"}
       = f.hidden_field :place
       = f.hidden_field :lat
       = f.hidden_field :lng

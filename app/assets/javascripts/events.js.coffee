@@ -8,8 +8,10 @@ $('#events_new').click ->
       $('textarea').autosize({append: "\n"})
       $('#event_start_date').datepicker
         autoclose: true
+
       $('#event_start_time').timepicker
         timeFormat: "H:i"
+        scrollDefaultNow: true
       $('#event_photo').change ->
         $('#imagePreview i').remove()
         loadImageFile()
@@ -38,9 +40,6 @@ $('#events_new').click ->
         autocomplete.bindTo "bounds", map
         marker = new google.maps.Marker(map: map)
 
-        if google.loader.ClientLocation
-          zoom = 13
-          latlng = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude)
 
         google.maps.event.addListener autocomplete, "places_changed", ->
           place = autocomplete.getPlaces()
@@ -71,6 +70,13 @@ $('#events_new').click ->
           @optional(element) or /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value)
         ), "Please enter a valid time."
 
+        $.validator.addMethod "valid_place", ((value, element) ->
+          if $('#event_place').val() == ""
+            false
+          else
+            true
+        ), "You must indicate a correct place."
+
         $("#new_event").validate
           rules:
             "event[name]":
@@ -81,12 +87,12 @@ $('#events_new').click ->
             "event[start_time]":
               required: true
               time: true
-            #"event[place]":
-            #  required: true
+            "event[place_autocomplete]":
+              valid_place: true
+
           onkeyup: false
           onclick: false
           onfocusout: false
-
 
         $('#create_event_btn').click ->
           $("#new_event").submit()
