@@ -16,15 +16,15 @@
 
 class Event < ActiveRecord::Base
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo, :lat, :lng
-  
-  validates :name, :description, :presence => true
+
+
+  validates :name, :place, :start_date, :start_time, :user_id, :lat, :lng, :presence => true
 
   has_many :appointments
   belongs_to :user 
   has_many :users, :through => :appointments 
   
 
-  attr_accessible :photo
   has_attached_file :photo
 
 end

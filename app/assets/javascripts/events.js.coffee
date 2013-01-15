@@ -5,7 +5,7 @@ $('#events_new').click ->
     success: (data) ->
       $("#modal_windows").append data
       $('#events_new_modal').modal()
-      $('textarea').autosize({append: "\n"})
+      $('#event_description').autosize({append: "\n"})
       $('#event_start_date').datepicker
         autoclose: true
 
@@ -18,13 +18,10 @@ $('#events_new').click ->
 
       $("#events_new_modal").on "shown", ->
         map_options =
-        #  center: new google.maps.LatLng(-6.21, 106.84)
           zoom: 13
           mapTypeId: google.maps.MapTypeId.ROADMAP
 
         map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-        #defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(-6, 106.6), new google.maps.LatLng(-6.3, 107))
-
 
         if navigator.geolocation
           browserSupportFlag = true
@@ -33,13 +30,10 @@ $('#events_new').click ->
             map.setCenter initialLocation
           )
 
-
-
-        input = document.getElementById("event_place_autocomplete")
+        input = document.getElementById("place_autocomplete")
         autocomplete = new google.maps.places.SearchBox(input)
         autocomplete.bindTo "bounds", map
         marker = new google.maps.Marker(map: map)
-
 
         google.maps.event.addListener autocomplete, "places_changed", ->
           place = autocomplete.getPlaces()
@@ -61,7 +55,7 @@ $('#events_new').click ->
           marker.setPosition place[0].geometry.location
           $('#event_lat').val(place[0].geometry.location.lat())
           $('#event_lng').val(place[0].geometry.location.lng())
-          $('#event_place').val($('#event_place_autocomplete').val())
+          $('#event_place').val($('#place_autocomplete').val())
           #$('#event_place').val(place[0].formatted_address)
         #google.maps.event.addListener map, "click", (event) ->
         #  marker.setPosition event.latLng
@@ -87,7 +81,7 @@ $('#events_new').click ->
             "event[start_time]":
               required: true
               time: true
-            "event[place_autocomplete]":
+            "place_autocomplete":
               valid_place: true
 
           onkeyup: false
