@@ -1,4 +1,5 @@
-%div{:class => 'span5 offset4'}
+.span4
+.span4
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => 'new_password', :class => 'new_password'}) do |f|
     %fieldset
       = content_tag :legend, t(:forgot_your_password)
@@ -16,3 +17,4 @@
         %span{:id => 'new_password_ok_text'}
           = t(:new_password_ok_text, :email => 'EMAIL')
   = render "devise/shared/links"
+.span4
