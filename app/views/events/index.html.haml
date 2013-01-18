@@ -2,7 +2,7 @@
   - for event in @events
     .thumbnail.box
       / %img{:alt => "", :src => event.photo}
-      = image_tag event.photo.url()
+      = image_tag event.photo.url(:small)
       .caption
         %h5
           = event.name

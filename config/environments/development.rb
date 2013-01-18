@@ -55,4 +55,6 @@ Ebentum::Application.configure do
     }
   }
 
+  Paperclip.options[:command_path] = ENV['IMAGEMAGICK_PATH']
+
 end

@@ -17,7 +17,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo, :lat, :lng
 
-
   validates :name, :place, :start_date, :start_time, :user_id, :lat, :lng, :presence => true
 
   has_many :appointments
@@ -25,6 +24,6 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :appointments 
   
 
-  has_attached_file :photo
+  has_attached_file :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
 end
