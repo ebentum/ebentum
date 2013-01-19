@@ -1,6 +1,6 @@
 - if is_omniauth_sign_up?
   .span3
-  .span8{:class => 'maxw600'}
+  .span8{:id => 'omniauth_form'}
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       = omniauth_form_data
       = f.hidden_field :user_confirmation_required, :value => 'true'
@@ -30,7 +30,7 @@
         = content_tag :legend, t(:sign_up)
         = omniauth_provider_info   
         .row-fluid
-          .span12{:class => 'maxw270'}
+          .span12{:id => 'omniauth_options'}
             .control-group
               .controls
                 %label 
@@ -48,54 +48,3 @@
         = render 'sign_up_button', :form => f
     = render "devise/shared/links"
   .span4
-  
-
-
-/ .span4
-/ .span4
-/   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-/     = omniauth_form_data
-/     = f.hidden_field :user_confirmation_required, :value => 'true'
-/     %fieldset
-/       = content_tag :legend, t(:sign_up)
-/       = omniauth_provider_info
-/       - if !is_omniauth_sign_up?
-/         .row-fluid
-/           .span12
-/             .control-group
-/               .controls
-/                 %label 
-/                   = t(:sign_in_with)
-/                 %br
-/                 %a.btn.btn-primary.btn-large.pull-left{:href => "/users/auth/facebook"}
-/                   %i.icon-facebook
-/                   facebook
-/                 %a.btn.btn-info.btn-large.pull-right{:href => "/users/auth/twitter"}
-/                   %i.icon-twitter
-/                   twitter
-/         %br
-/         = render 'form_fields', :form => f
-/       - else
-/         .row-fluid
-/           %div{:class => 'span4'}
-/             .thumbnail{:class => 'omniauth_thumbnail centered'}
-/               = image_tag(omniauth_image, :class => 'block')
-/               = f.hidden_field :image_url, :value => omniauth_image
-/             %br
-/           %div{:class => 'span8'}
-/             = render 'form_fields', :form => f
-/       %br
-/       .alert.alert-success.hide{:id => 'omniauth_sign_up_success'}
-/         %h4
-/           = t(:sign_up_ok_title)
-/         %span{:id => 'omniauth_sign_up_ok_text'}
-/           = t(:omniauth_sign_up_ok_text)
-/       = link_to t(:start), root_path, :class => 'btn btn-large btn-primary hide', :id => 'start_button'
-/       .alert.alert-success.hide{:id => 'sign_up_success'}
-/         %h4
-/           = t(:sign_up_ok_title)
-/         %span{:id => 'sign_up_ok_text'}
-/           = t(:sign_up_ok_text, :email => 'SIGN_UP_EMAIL')
-/       = f.button t(:sign_up_button), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'sign_up_button', :data => {'loading-text' => t(:signing_up)}
-/   = render "devise/shared/links"
-/ .span4

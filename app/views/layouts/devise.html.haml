@@ -1,15 +1,8 @@
 !!!
 %html
-  %head
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-      %title Ebentum
-      = stylesheet_link_tag    "application", :media => "all"
-      = javascript_include_tag "application"
-      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
-      = csrf_meta_tags
+  = render 'layouts/head'
   %body
-    .container-fluid
+    .container-fluid#devise-container
       .row-fluid
         = yield
-    #modal_windows
     = javascript_include_tag "application_post"

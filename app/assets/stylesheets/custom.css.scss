@@ -22,12 +22,12 @@ body {
 	width: 100%;
 }
 
-.maxw270{
-  max-width: 270px;
+#omniauth_options{
+  max-width: 19.3em;
 }
 
-.maxw600{
-  max-width: 600px;
+#omniauth_form{
+  max-width: 43em;
 }
 
 .omniauth_thumbnail {
@@ -48,4 +48,10 @@ label.error {
   color: red;
   padding: 2px 8px;
   margin-top: 2px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  #devise-container {
+    margin-top: 11%;
+  }
 }
