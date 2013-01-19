@@ -8,8 +8,7 @@
       = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
       = csrf_meta_tags
   %body
-    .container-fluid
+    .container-fluid#devise-container
       .row-fluid
         = yield
-    #modal_windows
     = javascript_include_tag "application_post"
