@@ -1,5 +1,5 @@
 $container = $("#myContent")
 $container.imagesLoaded ->
   $("#myContent").masonry
-    itemSelector: ".thumbnail"
+    itemSelector: ".box"
     isFitWidth: true
