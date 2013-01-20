@@ -1,0 +1,21 @@
+
+.span12
+  = form_for @user, :url => users_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
+
+    %span.btn.btn-success.fileinput-button
+      %i.icon-plus.icon-white
+      %span Add image...
+      = f.file_field :photo
+
+    .row-fluid
+      .span12
+        .centered_image
+          .thumbnail.box
+            #imagePreview
+              %i.icon-picture
+
+    = f.text_field :username, :placeholder => "User name", :class => "input-block-level"
+    = f.text_field :complete_name, :placeholder => "Complete name", :class => "input-block-level"
+    = f.text_field :location, :placeholder => "Location", :class => "input-block-level"
+    = f.text_field :web, :placeholder => "Web", :class => "input-block-level"
+    = f.text_area :bio, :placeholder => "Location", :class => "input-block-level"

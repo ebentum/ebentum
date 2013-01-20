@@ -1,0 +1,31 @@
+.row-fluid
+  .span8
+    .row-fluid
+      .span6
+        .thumbnail
+          = image_tag(@user.image.url(:small), :class => 'block')
+      .span6
+        %h2
+          = "@user.complete_name"
+        %p
+          %b Location:
+          = "@user.location"
+        %p
+          %b Web:
+          = "@user.web"
+        %p
+          %b Bio:
+          = "@user.bio"
+  .span4
+    .btn.btn-primary
+      = "Edit"
+.row-fluid
+  .span6
+    .well
+      %h4
+        = "Tus eventos"
+  .span6
+    .well
+      %h4
+        = "Amigos"
+

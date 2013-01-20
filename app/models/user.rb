@@ -25,21 +25,22 @@
 #
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          #:token_authenticatable,
          :omniauthable,
          :confirmable,
          :recoverable,
          :registerable,
-         :rememberable, 
-         :trackable, 
+         :rememberable,
+         :trackable,
          #:timeoutable,
          :validatable
          #:lockable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :provider, :uid, :image, :image_url
-  
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :image, :image_url
+
+
   # atributos que no son del modelo
   # email que viene de omniauth
   attr_accessor   :omniauth_email
@@ -47,16 +48,16 @@ class User < ActiveRecord::Base
   # si el usuario requiere confirmación de email true/false
   attr_accessor   :user_confirmation_required
   attr_accessible :user_confirmation_required
-  
+
   has_many :appointments
   has_many :followings
   has_many :events, :through => :appointments
 
-  has_attached_file :image
+  has_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?
     self.user_confirmation_required == 'true'
   end
-  
+
 end

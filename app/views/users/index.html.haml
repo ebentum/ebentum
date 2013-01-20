@@ -1,0 +1,19 @@
+.span12
+  #myContent.centered
+    - for event in @events
+      .box
+        .thumbnail
+          / %img{:alt => "", :src => event.photo}
+          = image_tag event.photo.url(:small)
+          .caption
+            %h5
+              = event.name
+            %p
+              = event.description
+            %p
+              %a.btn.btn-primary{:href => "#"}
+                %i.icon-thumbs-up.icon-white
+                ¡Me apunto!
+              = link_to event, :class => "btn" do
+                %i.icon-info-sign
+                Más información
