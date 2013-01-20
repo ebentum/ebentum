@@ -91,6 +91,41 @@ $('#events_new').click ->
         $('#create_event_btn').click ->
           $("#new_event").submit()
 
+$(document).on "click", "#appoint", (event) ->
+  button = $(this)
+  $.ajax
+    url: "/appointments"
+    type: 'POST'
+    data: 
+      event_id: button.data('eventid')
+    dataType: 'json'
+    beforeSend: ->
+      # boton en estado loading
+      $('#appoint').button('loading')
+    success: (data, status, xhr) ->
+      setTimeout (->
+        button.button('reset')
+        button.addClass('hide')
+        $('#desappoint').removeClass('hide')
+        $('#desappoint').data('appointmentid', data.id)
+        alert '¡Bien! ¡Ya estas apuntado al evento!'
+      ), 2000
+
+$(document).on "click", "#desappoint", (event) ->
+  button = $(this)
+  $.ajax
+    url: "/appointments/"+button.data('appointmentid')
+    type: 'DELETE'
+    dataType: 'json'
+    beforeSend: ->
+      # boton en estado loading
+      $('#desappoint').button('loading')
+    success: (data, status, xhr) ->
+      setTimeout (->
+        button.button('reset')
+        button.addClass('hide')
+        $('#appoint').removeClass('hide')
+      ), 2000
 
 loadImageFile = (->
   if window.FileReader
