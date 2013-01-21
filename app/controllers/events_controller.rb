@@ -14,6 +14,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
+    @user_appointed = Appointment.appointment_exist(params[:id], current_user.id)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @event }

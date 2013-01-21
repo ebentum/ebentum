@@ -4,6 +4,7 @@ Ebentum::Application.routes.draw do
 
   resources :events
   resources :home
+  resources :appointments
 
   match '/homepage' => 'users#show', :as => :homepage
   match '/users/:id' => 'users#show', :as => :userpage
