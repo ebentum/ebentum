@@ -43,7 +43,9 @@ module OmniauthHelper
   end
 
   def omniauth_name
-    get_omniauth_data.info.name
+    if is_omniauth_sign_up?
+      get_omniauth_data.info.name
+    end
   end
 
   def omniauth_provider

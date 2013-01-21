@@ -50,6 +50,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :image, :image_url
 
+  validates :complete_name, :presence => true
+
 
   # atributos que no son del modelo
   # email que viene de omniauth

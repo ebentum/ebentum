@@ -8,6 +8,7 @@ es:
               not_found: "Email no encontrado"
   #C
   change_your_password: "Cambia tu contraseña"
+  complete_name: "Nombre completo"
   configuration: "Configuración"
   confirm_new_password: "Confirmar nueva contraseña"
   #D
