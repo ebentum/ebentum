@@ -3,19 +3,16 @@
     - for event in @events
       .box
         .thumbnail
-          / %img{:alt => "", :src => event.photo}
           = image_tag event.photo.url(:small)
           .caption
             %h5
               = event.name
             %p
-              = event.description
+              %i.icon-calendar
+              = l(event.start_date)
             %p
               %i.icon-map-marker
               = event.place
-            %p
-              %i.icon-calendar
-              = event.start_date
             %p
               %a.btn.btn-primary{:href => "#"}
                 %i.icon-thumbs-up.icon-white

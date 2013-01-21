@@ -2,16 +2,22 @@
 #
 # Table name: events
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  description    :text
-#  start_datetime :datetime
-#  place          :string(255)
-#  user_id        :integer
-#  active         :boolean
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  photo          :string(255)
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  description        :text
+#  place              :string(255)
+#  user_id            :integer
+#  active             :boolean
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  start_date         :date
+#  start_time         :time
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  lat                :decimal(10, 6)
+#  lng                :decimal(10, 6)
 #
 
 class Event < ActiveRecord::Base

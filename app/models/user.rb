@@ -21,7 +21,17 @@
 #  web                    :string(255)
 #  bio                    :text
 #  active                 :boolean
-#
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  image_file_name        :string(255)
+#  image_content_type     :string(255)
+#  image_file_size        :integer
+#  image_updated_at       :datetime
+#  image_url              :string(255)
 #
 
 class User < ActiveRecord::Base
