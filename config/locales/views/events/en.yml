@@ -1,0 +1,13 @@
+en:
+  events:
+    new:
+      create_event: "Create event"
+    form:
+      add_image: "Add image"
+      cancel: "Cancel"
+      create: "Create"
+      date: "Date"
+      description_optional: "Description (optional)"
+      name: "Name"
+      place: "Place"
+      time: "Time"

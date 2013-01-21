@@ -1,10 +1,11 @@
 
 .modal-body
-  = form_for @event, :url => events_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
+  = form_for @event, :url => events_path, :html => { :multipart => true } do |f|
 
     %span.btn.btn-success.fileinput-button
       %i.icon-plus.icon-white
-      %span Add image...
+      %span
+        = t('.add_image')
       = f.file_field :photo
 
     .row-fluid
@@ -14,25 +15,25 @@
             #imagePreview
               %i.icon-picture
 
-    = f.text_field :name, :placeholder => "Name", :class => "input-block-level"
-    = f.text_area :description, :placeholder => "Description (optional)", :class => "input-block-level"
+    = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
+    = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level"
     .row-fluid
       .span6
         .input-prepend
           %span.add-on
             %i.icon-calendar
-          = f.text_field :start_date, :placeholder => "Date"
+          = f.text_field :start_date, :placeholder => t(".date")
           
       .span6
         .input-prepend
           %span.add-on
             %i.icon-time
-          = f.text_field :start_time, :placeholder => "Time"
+          = f.text_field :start_time, :placeholder => t(".time")
 
     .input-prepend
       %span.add-on
         %i.icon-map-marker
-      %input#place_autocomplete{:placeholder => "Place", :type => "text", :name => "place_autocomplete"}
+      %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
       = f.hidden_field :place
       = f.hidden_field :lat
       = f.hidden_field :lng
@@ -40,5 +41,6 @@
     #map_canvas
 
 .modal-footer
-  %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => "Create"}
-  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Cancel
+  %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
+  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}
+    = t(".cancel")
