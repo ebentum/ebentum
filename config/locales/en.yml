@@ -8,6 +8,7 @@ en:
               not_found: "Email not found"
   #C
   change_your_password: "Change your password"
+  complete_name: "Complete name"
   configuration: "Configuration"
   confirm_new_password: "Confirm new password"
   #D

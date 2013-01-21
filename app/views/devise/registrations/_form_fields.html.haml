@@ -1,5 +1,9 @@
 .control-group
   .controls
+    = form.text_field :complete_name, :value => omniauth_name, :id => 'complete_name', :placeholder => t(:complete_name), :class => 'input-xlarge'
+    %span.help-inline
+.control-group
+  .controls
     = form.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
     %span.help-inline
 .control-group
