@@ -72,4 +72,8 @@ class User < ActiveRecord::Base
     self.user_confirmation_required == 'true'
   end
 
+  def display_name
+    self.username || self.complete_name
+  end
+
 end
