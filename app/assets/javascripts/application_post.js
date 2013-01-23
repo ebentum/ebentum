@@ -22,6 +22,9 @@
 //= require jquery.timepicker
 //= require jquery.validate
 
+//= require i18n
+//= require i18n/translations
+
 //= require events
 //= require users
 //= require_self

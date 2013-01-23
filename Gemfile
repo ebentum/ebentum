@@ -26,10 +26,12 @@ end
 
 gem 'thin'
 gem 'haml', '~> 3.1.7'
-gem 'jquery-rails', '~> 2.1.4'
+gem 'jquery-rails', '~> 2.2.0'
 gem "paperclip", "~> 3.4.0"
 gem 'aws-sdk', "~> 1.8.0"
 gem "font-awesome-sass-rails", "~> 3.0.0.1"
+
+gem "i18n-js", "~> 2.1.2"
 
 #gem "jquery-fileupload-rails", "~> 0.4.0"
 
