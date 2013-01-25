@@ -61,10 +61,6 @@ module Ebentum
     config.assets.version = '1.0'
     
     #Sin esta linea falla al hacer el deploy a heroku
-    #config.assets.initialize_on_precompile = false
-    unless Rails.env == "development"
-        config.assets.initialize_on_precompile = false
-        config.assets.precompile += %w( *.css *.js )
-    end
+    config.assets.initialize_on_precompile = false
   end
 end
