@@ -6,26 +6,38 @@
         = image_tag(@event.photo.url(:medium), :class => 'block')
     .span1
     .span5
-      %p
-        %b Name:
-        = @event.name
-      %p
-        %b Description:
-        = @event.description
-      %p
-        %b Start date:
-        = @event.start_date
-      %p
-        %b Start time:
-        = @event.start_time
-      %p
-        %b Place:
-        = @event.place
-      %p
-        = button_tag '¡Me apunto!', :type => 'button', :class => 'btn btn-large btn-primary', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id}
-        = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
-      %p
-        = @user_appointed
+      .hero-unit
+        %h1
+          = @event.name
+        %p
+          = @event.description
+        %p
+          = @event.start_date
+          = @event.start_time
+        #mapa
+        :javascript
+          alert('mapa');
+          
+      / %p
+      /   %b Name:
+      /   = @event.name
+      / %p
+      /   %b Description:
+      /   = @event.description
+      / %p
+      /   %b Start date:
+      /   = @event.start_date
+      / %p
+      /   %b Start time:
+      /   = @event.start_time
+      / %p
+      /   %b Place:
+      /   = @event.place
+      / %p
+      /   = button_tag '¡Me apunto!', :type => 'button', :class => 'btn btn-large btn-primary', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id}
+      /   = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
+      / %p
+      /   = @user_appointed
     .span1
 
 / %p#notice
