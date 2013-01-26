@@ -7,7 +7,8 @@
             = image_tag(@user.image.url(:small), :class => 'block')
           %span.btn.btn-success.fileinput-button
             %i.icon-plus.icon-white
-            %span t('.add_image')
+            %span 
+              = t('.add_image')
             = f.file_field :photo
 
         .span8
