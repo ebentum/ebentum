@@ -5,9 +5,7 @@ Ebentum::Application.routes.draw do
   resources :events
   resources :home
   resources :appointments
-
-  match '/homepage' => 'users#show', :as => :homepage
-  match '/users/:id' => 'users#show', :as => :userpage
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

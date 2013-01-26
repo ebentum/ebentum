@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
 
   validates :complete_name, :presence => true
 
-
   # atributos que no son del modelo
   # email que viene de omniauth
   attr_accessor   :omniauth_email

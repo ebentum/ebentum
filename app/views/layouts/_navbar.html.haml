@@ -5,24 +5,32 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{:href => "#"} ebentum
+      %a.brand{:href => root_url} ebentum
       .nav-collapse
         %ul.nav
           %li.active
-            %a{:href => root_url} Inicio
+            %a{:href => root_url} Actividad
           %li
-            %a{:href => "#about"} Amigos
+            %a{:href => "#"} Popular
           %li
-            %a{:href => "#contact"} Explorar
+            %a{:href => "#"} Última hora
+        %form.navbar-search.pull-left{:action => ""}
+          %input.search-query.span2{:placeholder => "Buscar", :type => "text"}
         - if user_signed_in?
           %ul.nav.pull-right
+            %li
+              %a#events_new{:href => "#"}
+                %i.icon-plus 
+                Crear
+            %li.divider-vertical
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-user
                 = current_user.complete_name
                 %b.caret
               %ul.dropdown-menu{"aria-labelledby" => "dLabel", :role => "menu"}
                 %li
-                  %a{:href => homepage_url, :tabindex => '-1'}
+                  %a{:href => user_path(current_user), :tabindex => '-1'}
                     %i.icon-user
                     = t(:profile)
                 %li
@@ -40,28 +48,3 @@
               = link_to t(:sign_up), new_user_registration_path
             %li
               = link_to t(:sign_in), new_user_session_path
-        %form.navbar-search.pull-left{:action => ""}
-          %input.search-query.span2{:placeholder => "Buscar", :type => "text"}
-  .nav-collapse
-    .navbar-inner
-      %ul.nav
-        %li.active
-          %a{:href => "#"}
-            %i.icon-home
-            Interesantes
-        %li
-          %a{:href => "#"}
-            %i.icon-pencil
-            Tuyos
-        %li
-          %a{:href => "#"}
-            %i.icon-user
-            De tus amigos
-        %li
-          %a{:href => "#"}
-            %i.icon-cog
-            De tu zona
-        %li
-          = link_to "#", :id => 'events_new' do
-            %i.icon-cog
-            Nuevo

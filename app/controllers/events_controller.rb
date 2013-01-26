@@ -14,7 +14,9 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
-    @user_appointed = Appointment.appointment_exist(params[:id], current_user.id)
+    @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
+
+    js_callback :params => {:lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
 
     respond_to do |format|
       format.html # index.html.erb

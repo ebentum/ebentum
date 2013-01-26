@@ -60,7 +60,6 @@ module Ebentum
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    #Sin esta linea falla al hacer el deploy a heroku
     config.assets.initialize_on_precompile = true
   end
 end

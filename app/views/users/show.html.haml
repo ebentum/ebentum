@@ -1,29 +1,46 @@
-.row-fluid.well
-  .span3
-    .thumbnail
-      = image_tag(@user.image.url(:small), :class => 'block')
-  .span8
-    %h3
-      = "@user.complete_name"
-    %p
-      %b Location:
-      = "@user.location"
-    %p
-      %b Web:
-      = "@user.web"
-    %p
-      %b Bio:
-      = "@user.bio"
-  .span1
-    .btn.btn-primary
-      = "Edit"
+.row-fluid
+  .span12.well
+    .span2
+      .thumbnail
+        = image_tag(@user.image.url(:small), :class => 'block')
+    .span8
+      .row-fluid
+        .span1
+          = render 'user_action_button'
+      .row-fluid
+        .span12
+          %h3
+            = @user.complete_name
+          %p
+            %b
+              = t(".location")
+            = @user.location
+          %p
+            %b
+              = t('.web')
+            = @user.web
+          %p
+            %b
+              = t('.bio')
+            = @user.bio
+
 .row-fluid
   .span6
     .well
       %h4
-        = "Tus eventos"
+        = t('.your_events')
   .span6
     .well
       %h4
-        = "Amigos"
+        = t('.appointed_events')
+.row-fluid
+  .span6
+    .well
+      %h4
+        = t('.following')
+  .span6
+    .well
+      %h4
+        = t('.followers')
+
 
