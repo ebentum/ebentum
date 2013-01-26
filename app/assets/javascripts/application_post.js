@@ -29,3 +29,5 @@
 //= require events
 //= require users
 //= require_self
+
+//= require paloma

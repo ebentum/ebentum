@@ -58,3 +58,6 @@ gem 'devise', '~> 2.1.2'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
+#gema paloma para organizar javascript
+gem 'paloma'

@@ -122,6 +122,8 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
+    paloma (1.2.2)
+      jquery-rails
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -203,6 +205,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-twitter
+  paloma
   paperclip (~> 3.4.0)
   pg
   rails (~> 3.2.11)
