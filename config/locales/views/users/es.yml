@@ -1,0 +1,26 @@
+es:
+  users:
+    edit:
+      editing_user: "Editando usuario"
+    form:
+      add_image: "Añadir imagen"
+      username: "Nombre de usuario"
+      complete_name: "Nombre completo"
+      gender: "Género"
+      location: "Ubicación habitual"
+      bio: "Biografía"
+      web: "Web"
+    show:
+      username: "Nombre de usuario"
+      complete_name: "Nombre completo"
+      gender: "Género"
+      location: "Ubicación habitual"
+      bio: "Biografía"
+      web: "Web"
+      your_events: "Tus eventos"
+      appointed_events: "Eventos apuntados"
+      following: "Siguiendo"
+      followers: "Seguidores"
+      follow: "Seguir"
+      isfollower: "Te sigue"
+      unfollow: "No seguir"

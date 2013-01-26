@@ -1,0 +1,17 @@
+es:
+  users:
+    edit:
+      editing_user: "Editing user"
+    form:
+      add_image: "Add image"
+      username: "User name"
+      complete_name: "Complete name"
+      gender: "Gender"
+      location: "Location"
+      bio: "Bio"
+      web: "Web"
+    show:
+      your_events: "Your Events"
+      appointed_events: "Appointed Events"
+      following: "Following"
+      followers: "Follower"
