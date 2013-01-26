@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def index
     users = User.all
     respond_to do |format|
@@ -14,8 +16,8 @@ class UsersController < ApplicationController
     @user = User.find(id)
 
     if @user != current_user
-      @am_i_following = current_user.followings.find(@user)
-      @is_follower = @user.followings.find(current_user)
+      @am_i_following = current_user.followings.find(@user) rescue nil
+      @is_follower = @user.followings.find(current_user) rescue nil
     end
 
     @following = @user.followings
@@ -31,6 +33,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      respond_to do |format|
+        format.html  { render :action => "show" }
+      end
+    end
   end
 
   def update
