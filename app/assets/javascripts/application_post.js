@@ -19,6 +19,7 @@
 //= require bootstrap-modalmanager
 //= require bootstrap-modal
 //= require bootstrap-datepicker
+//= require bootstrap-datepicker.es
 //= require jquery.timepicker
 //= require jquery.validate
 

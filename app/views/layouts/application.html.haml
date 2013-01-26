@@ -17,5 +17,8 @@
         = render 'layouts/footer'
     #modal_windows
     = javascript_include_tag "application_post"
+    :javascript
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}";
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"
     
