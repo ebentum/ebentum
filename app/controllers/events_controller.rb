@@ -16,6 +16,8 @@ class EventsController < ApplicationController
 
     @user_appointed = Appointment.appointment_exist(params[:id], current_user.id)
 
+    js_callback :params => {:lat => @event.lat, :lng => @event.lng}
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @event }
