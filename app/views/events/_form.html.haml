@@ -22,7 +22,7 @@
         .input-prepend
           %span.add-on
             %i.icon-calendar
-          = f.text_field :start_date, :placeholder => t(".date")
+          = f.text_field :start_date, :placeholder => t(".date"), :data => {"date-format" => t("date.formats.bootstrap_datepicker")}
           
       .span6
         .input-prepend
