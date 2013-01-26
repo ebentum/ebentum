@@ -8,6 +8,8 @@ $('#events_new').click ->
       $('#event_description').autosize({append: "\n"})
       $('#event_start_date').datepicker
         autoclose: true
+        language: I18n.locale
+
 
       $('#event_start_time').timepicker
         timeFormat: "H:i"
