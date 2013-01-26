@@ -122,7 +122,7 @@ $(document).on "click", "#desappoint", (event) ->
     beforeSend: ->
       # boton en estado loading
       $('#desappoint').button('loading')
-    success: (data, status, xhr) ->
+    complete: (data, status, xhr) ->
       setTimeout (->
         button.button('reset')
         button.addClass('hide')

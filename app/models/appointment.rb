@@ -17,8 +17,13 @@ class Appointment < ActiveRecord::Base
   belongs_to :user 
   belongs_to :event
 
-  def self.appointment_exist(event_id, user_id)
-    Appointment.where(:event_id => event_id, :user_id => user_id).size == 1
+  def self.user_appointment_id(event_id, user_id)
+    appoint = Appointment.where(:event_id => event_id, :user_id => user_id).first
+    if appoint != nil
+      appoint.id
+    else
+      0
+    end
   end
 
 end
