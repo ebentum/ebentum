@@ -8,10 +8,10 @@
       %a.brand{:href => root_url} ebentum
       .nav-collapse
         %ul.nav
-          %li.active
+          %li{ :class => (action_name == "index") ? "active" : nil }
             %a{:href => root_url} Actividad
-          %li
-            %a{:href => "#"} Popular
+          %li{ :class => (action_name == "popular") ? "active" : nil }
+            %a{:href => events_popular_url} Popular
           %li
             %a{:href => "#"} Última hora
         %form.navbar-search.pull-left{:action => ""}

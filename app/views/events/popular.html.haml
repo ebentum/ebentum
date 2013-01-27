@@ -1,0 +1,32 @@
+.span12
+  #myContent.centered
+    - for event in @events
+      .box
+        .thumbnail
+          .botones
+            %p
+              %a.btn{:href => "#"}
+                %i.icon-thumbs-up.icon-white
+                ¡Me apunto!
+            %p
+              = link_to event, :class => "btn" do
+                %i.icon-info-sign
+                Más información
+
+          = image_tag event.photo.url(:small)
+          .caption
+            %h5
+              = event.name
+            %p
+              %a{:href => user_path(event.user)}
+                %i.icon-user
+                = event.user.complete_name
+            %p
+              %i.icon-calendar
+              = l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short)
+            %p
+              %i.icon-map-marker
+              = event.place
+            .extra-info
+              %i.icon-thumbs-up 19 Apuntados
+              %i.icon-comment 5 Comentarios
