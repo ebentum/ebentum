@@ -35,3 +35,29 @@
   height: 12em;
 }
 
+
+.thumbnail {
+  a {
+    color: #8c7e7e;
+    font-weight: bold;
+  }
+}
+
+.extra-info {
+  background-color: #f2f0f0;
+  margin: 0 -13px -13px -13px;
+  @include border-bottom-radius(4px);
+  padding: 10px 15px;
+}
+
+.botones {
+  position: absolute;
+  top: 20px;
+  display: none;
+}
+
+.thumbnail:hover {
+  .botones {
+    display: block;
+  }
+}

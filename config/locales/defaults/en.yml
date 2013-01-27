@@ -32,7 +32,7 @@ en:
     - Saturday
     formats:
       default: ! '%Y-%m-%d'
-      long: ! '%B %d, %Y'
+      long: ! '%A, %B %d, %Y'
       short: ! '%b %d'
       bootstrap_datepicker: 'mm/dd/yyyy'
     month_names:
@@ -195,5 +195,5 @@ en:
     formats:
       default: ! '%a, %d %b %Y %H:%M:%S %z'
       long: ! '%B %d, %Y %H:%M'
-      short: ! '%d %b %H:%M'
+      short: ! '%H:%M'
     pm: pm

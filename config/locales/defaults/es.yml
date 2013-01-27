@@ -32,7 +32,7 @@ es:
     - sábado
     formats:
       default: ! '%d/%m/%Y'
-      long: ! '%d de %B de %Y'
+      long: ! '%a, %d de %B de %Y'
       short: ! '%d de %b'
       bootstrap_datepicker: 'dd/mm/yyyy'
     month_names:
@@ -189,5 +189,5 @@ es:
     formats:
       default: ! '%A, %d de %B de %Y %H:%M:%S %z'
       long: ! '%d de %B de %Y %H:%M'
-      short: ! '%d de %b %H:%M'
+      short: ! '%H:%M'
     pm: pm

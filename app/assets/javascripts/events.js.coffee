@@ -9,6 +9,7 @@ $('#events_new').click ->
       $('#event_start_date').datepicker
         autoclose: true
         language: I18n.locale
+        startDate: Date()
 
 
       $('#event_start_time').timepicker
@@ -58,9 +59,6 @@ $('#events_new').click ->
           $('#event_lat').val(place[0].geometry.location.lat())
           $('#event_lng').val(place[0].geometry.location.lng())
           $('#event_place').val($('#place_autocomplete').val())
-          #$('#event_place').val(place[0].formatted_address)
-        #google.maps.event.addListener map, "click", (event) ->
-        #  marker.setPosition event.latLng
 
         $.validator.addMethod "time", ((value, element) ->
           @optional(element) or /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value)
