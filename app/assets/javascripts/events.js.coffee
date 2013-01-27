@@ -108,6 +108,7 @@ $(document).on "click", "#appoint", (event) ->
         button.addClass('hide')
         $('#desappoint').removeClass('hide')
         $('#desappoint').data('appointmentid', data.id)
+        $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
         alert '¡Bien! ¡Ya estas apuntado al evento!'
       ), 2000
 
@@ -125,6 +126,7 @@ $(document).on "click", "#desappoint", (event) ->
         button.button('reset')
         button.addClass('hide')
         $('#appoint').removeClass('hide')
+        $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
       ), 2000
 
 loadImageFile = (->

@@ -12,12 +12,24 @@
         %p
           = @event.description
         %p
-          = @event.start_date
-          = @event.start_time
+          %i.icon-calendar
+          = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
         %p
+          %i.icon-map-marker
           = @event.place
         #map.block
         %br
+        %p
+          %i.icon-user
+          = t('.organized_by')
+          %a{:href => user_path(@event.user)}
+            = @event.user.complete_name
+        %p#appointed
+          %i.icon-thumbs-up
+          = t('.appointed')
+          %span.badge.badge-info
+            = @appointed
+          = t('.event_followings_followers_appointed', :following => @appointed, :followers => @appointed)
         %p
           = button_tag '¡Me apunto!', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id}
           = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}

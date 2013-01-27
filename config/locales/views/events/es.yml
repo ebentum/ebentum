@@ -11,3 +11,7 @@ es:
       name: "Nombre"
       place: "Lugar"
       time: "Hora"
+    show:
+      organized_by: "Organizado por"
+      appointed: "Apuntados"
+      event_followings_followers_appointed: "(Sigo a %{following} y me siguen %{followers})"

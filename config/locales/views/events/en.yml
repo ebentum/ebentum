@@ -11,3 +11,7 @@ en:
       name: "Name"
       place: "Place"
       time: "Time"
+    show:
+      organized_by: "Organized by"
+      appointed: "Appointed"
+      event_followings_followers_appointed: "(%{following} following and %{followers} followers)"
