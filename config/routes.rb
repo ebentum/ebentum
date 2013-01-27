@@ -2,11 +2,15 @@ Ebentum::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  match 'events/popular' => 'events#popular'
+
   resources :events
   resources :home
   resources :appointments
   resources :users
   resources :followings
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
