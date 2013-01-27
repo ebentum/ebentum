@@ -24,7 +24,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
+    if user_signed_in?
+      @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
+    end
     @appointed = @event.appointments.count
 
     js_callback :params => {:lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
