@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     @following = @user.followings
-    @followers = nil
+    @followers = @user.followers
     @user_events = nil
     @user_appointments = nil
 

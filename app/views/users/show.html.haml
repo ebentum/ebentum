@@ -41,9 +41,15 @@
     .well
       %h4
         = t('.following')
+        .badge.badge-info
+          = @following.count
+
   .span6
     .well
       %h4
         = t('.followers')
+        .badge.badge-info
+          = @followers.count
+
 
 
