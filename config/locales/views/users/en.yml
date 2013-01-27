@@ -1,4 +1,4 @@
-es:
+en:
   users:
     edit:
       editing_user: "Editing user"
@@ -20,7 +20,8 @@ es:
       your_events: "Your Events"
       appointed_events: "Appointed Events"
       following: "Following"
-      followers: "Follower"
+      followers: "Followers"
+    user_action_button:
       follow: "Follow"
       isfollower: "Is following you"
       unfollow: "Stop following"

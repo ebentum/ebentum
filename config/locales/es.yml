@@ -6,6 +6,8 @@ es:
           attributes:
             email:
               not_found: "Email no encontrado"
+  #B
+  back: "Volver"
   #C
   change_your_password: "Cambia tu contraseña"
   complete_name: "Nombre completo"
@@ -15,7 +17,7 @@ es:
   didnt_receive_confirmation_email: "¿No has recibido las intrucciones para la confirmación?"
   #E
   email: "Email"
-  edit: "Edit"
+  edit: "Editar"
   #F
   forgot_your_password: "¿Has olvidado tu contraseña?"
   #H
@@ -53,4 +55,5 @@ es:
   signing_in: "Entrando..."
   signing_up: "Registrando..."
   start: "Inicio"
+  save: "Guardar"
 

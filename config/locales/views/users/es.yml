@@ -21,6 +21,7 @@ es:
       appointed_events: "Eventos apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
+    user_action_button:
       follow: "Seguir"
       isfollower: "Te sigue"
       unfollow: "No seguir"

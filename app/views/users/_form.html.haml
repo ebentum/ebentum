@@ -7,7 +7,7 @@
             = image_tag(@user.image.url(:small), :class => 'block')
           %span.btn.btn-success.fileinput-button
             %i.icon-plus.icon-white
-            %span 
+            %span
               = t('.add_image')
             = f.file_field :photo
 
@@ -32,10 +32,10 @@
               %p
                 %b
                   = t('.bio')
-                = f.text_area :bio, :class => "input-block-level"
+                = f.text_area :bio, :class => "input-block-level", :rows => "5"
       .row-fluid
-        .span2
-          = f.submit "Save"
-          %a{:href => user_path(@user)}
-            .btn.btn-primary
-              = t('.back')
+        .form-actions
+          %button{:type => "submit", :class => "btn btn-primary"}
+            = t(:save)
+          %a{:href => user_path(@user), :class => "btn"}
+            = t(:back)

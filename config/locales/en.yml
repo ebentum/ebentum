@@ -6,6 +6,8 @@ en:
           attributes:
             email:
               not_found: "Email not found"
+  #B
+  back: "Back"
   #C
   change_your_password: "Change your password"
   complete_name: "Complete name"
@@ -53,3 +55,4 @@ en:
   signing_in: "Signing in..."
   signing_up: "Signing up..."
   start: "Start"
+  save: "Save"
