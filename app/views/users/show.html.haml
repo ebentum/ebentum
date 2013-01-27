@@ -5,12 +5,15 @@
         = image_tag(@user.image.url(:small), :class => 'block')
     .span8
       .row-fluid
-        .span1
+        .span6
           = render 'user_action_button'
       .row-fluid
         .span12
           %h3
             = @user.complete_name
+            - if @is_follower
+              .label.label-info
+                = t('.isfollower')
           %p
             %b
               = t(".location")

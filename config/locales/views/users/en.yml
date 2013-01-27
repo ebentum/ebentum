@@ -13,6 +13,7 @@ en:
     show:
       username: "User name"
       complete_name: "Complete name"
+      isfollower: "Follows you"
       gender: "Gender"
       location: "Location"
       bio: "Bio"
@@ -23,5 +24,4 @@ en:
       followers: "Followers"
     user_action_button:
       follow: "Follow"
-      isfollower: "Is following you"
       unfollow: "Stop following"

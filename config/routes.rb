@@ -6,6 +6,7 @@ Ebentum::Application.routes.draw do
   resources :home
   resources :appointments
   resources :users
+  resources :followings
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,13 +4,13 @@
       = t(:edit)
 - else
   - if @am_i_following
-    %a{:href => "#"}
-      .btn.btn-primary
-        = t('.unfollow')
+    = button_to t('.unfollow'), following_path(@am_i_following), :method => 'delete', :class => "btn btn-danger"
+    -# %a{:href => "#"  }
+    -#   .btn.btn-danger
+    -#     = t('.unfollow')
   - else
-    %a{:href => "#"}
-      .btn.btn-primary
+    = form_for @new_following, :url => followings_path do |f|
+      = f.hidden_field :user_id
+      = f.hidden_field :following_id
+      %button{:type => "submit", :class => "btn btn-primary"}
         = t('.follow')
-  - if @is_follower
-    .btn.btn-primary
-      = t('.isfollower')
