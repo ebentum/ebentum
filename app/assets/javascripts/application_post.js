@@ -22,6 +22,7 @@
 //= require bootstrap-datepicker.es
 //= require jquery.timepicker
 //= require jquery.validate
+//= require jquery.validate.es
 
 //= require i18n
 //= require i18n/translations

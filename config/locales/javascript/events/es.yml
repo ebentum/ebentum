@@ -1,0 +1,5 @@
+es:
+  javascript:
+    events:
+      new:
+        example: "Es un ejemplo"
