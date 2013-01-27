@@ -61,10 +61,11 @@ class User < ActiveRecord::Base
   attr_accessible :user_confirmation_required
 
   has_many :appointments
-  # has_many :followings
+
   has_many :followers, :class_name => 'Following', :foreign_key => 'following_id'
   has_many :followings, :class_name => 'Following', :foreign_key => 'user_id'
 
+  has_many :created_events, :class_name => 'Event'
   has_many :events, :through => :appointments
 
   has_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
