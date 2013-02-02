@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def omniauth_provider
+    flash[:omniauth_data].provider
+  end
+
+  def omniauth_uid
+    flash[:omniauth_data].uid
+  end
+
 end

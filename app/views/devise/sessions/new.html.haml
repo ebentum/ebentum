@@ -7,6 +7,20 @@
         %h4
           = t(:sign_in_error_title)
         %span{:id => 'sign_in_error_text'}
+      .row-fluid
+        .span12{:id => 'omniauth_options'}
+          .control-group
+            .controls
+              %label 
+                = t(:sign_in_with)
+              %br
+              %a.btn.btn-primary.btn-large.pull-left{:href => '/users/facebook_login'}
+                %i.icon-facebook
+                facebook
+              %a.btn.btn-info.btn-large.pull-right{:href => '/users/twitter_login'}
+                %i.icon-twitter
+                twitter
+      %br
       .control-group
         .controls
           = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
