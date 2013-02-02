@@ -3,7 +3,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_filter :store_omniauth_data, :except => [:facebook_login, :twitter_login]
 
   def facebook
-    sign_in_or_register
+    if params[:state] && current_user
+      current_user.update_social_fb(omniauth_provider, omniauth_uid)
+      redirect_to params[:state]
+    else
+      sign_in_or_register
+    end
   end
 
   def twitter
@@ -12,7 +17,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook_login
     session[:islogin] = true
-    redirect_to '/users/auth/facebook'
+    if params[:state]
+      redirect_to '/users/auth/facebook?state='+params[:state]  
+    else
+      redirect_to '/users/auth/facebook'
+    end 
   end
 
   def twitter_login

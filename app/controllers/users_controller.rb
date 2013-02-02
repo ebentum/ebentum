@@ -65,4 +65,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def social_fb_off
+    user = current_user
+    render :json => user.update_social_fb(nil, nil)
+  end
+
 end

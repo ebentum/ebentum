@@ -79,4 +79,10 @@ class User < ActiveRecord::Base
     self.provider == 'facebook' && self.uid != nil
   end
 
+  def update_social_fb(provider, uid)
+    self.provider = provider
+    self.uid      = uid
+    self.save
+  end
+
 end

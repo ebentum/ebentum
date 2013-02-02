@@ -12,6 +12,7 @@ Ebentum::Application.routes.draw do
   resources :events
   resources :home
   resources :appointments
+  match '/users/social_fb_off' => 'users#social_fb_off' 
   resources :users
   resources :followings
 

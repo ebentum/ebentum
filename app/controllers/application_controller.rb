@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     flash[:omniauth_data].uid
   end
 
+  def omniauth_email
+    flash[:omniauth_data].info.email  
+  end
+
 end

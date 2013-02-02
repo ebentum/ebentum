@@ -196,6 +196,11 @@ $(document).on "click", "#sign_in_button", (event) ->
         ), 2000
 
 $("#facebook").on "switch-change", (e, data) ->
-  console.log 'data'
-  # if data.value
-  #   window.location = '/auth/facebook/callback'
+  if data.value
+    window.location = '/users/facebook_login?state=/users/13/edit'
+  else
+    alert 'Aviso tipo Pinterest'
+    $.ajax
+      url: "/users/social_fb_off"
+      type: 'GET'
+      dataType: 'json'
