@@ -194,3 +194,8 @@ $(document).on "click", "#sign_in_button", (event) ->
           # activar el boton
           $('#sign_in_button').button('reset')
         ), 2000
+
+$("#facebook").on "switch-change", (e, data) ->
+  console.log 'data'
+  # if data.value
+  #   window.location = '/auth/facebook/callback'

@@ -75,4 +75,8 @@ class User < ActiveRecord::Base
     self.user_confirmation_required == 'true'
   end
 
+  def social_fb
+    self.provider == 'facebook' && self.uid != nil
+  end
+
 end

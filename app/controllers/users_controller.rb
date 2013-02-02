@@ -39,6 +39,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    @social_fb = @user.social_fb
+
     if @user != current_user
       respond_to do |format|
         format.html  { render :action => "show" }
