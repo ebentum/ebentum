@@ -29,5 +29,5 @@
               = event.place
             .extra-info
               %i.icon-thumbs-up
-              = "#{event.users.count} Apuntados"
+              = "#{event.appointments_count ? event.appointments_count.round : 0} Apuntados"
               %i.icon-comment 5 Comentarios

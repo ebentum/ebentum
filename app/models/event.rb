@@ -22,6 +22,7 @@
 
 class Event < ActiveRecord::Base
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo, :lat, :lng
+  attr_readonly :appointments_count
 
   validates :name, :place, :start_date, :start_time, :user_id, :lat, :lng, :presence => true
 

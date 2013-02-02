@@ -15,7 +15,7 @@ class Appointment < ActiveRecord::Base
   validates :event_id, :user_id, :presence => true
   
   belongs_to :user 
-  belongs_to :event
+  belongs_to :event, :counter_cache => true
 
   def self.user_appointment_id(event_id, user_id)
     appoint = Appointment.where(:event_id => event_id, :user_id => user_id).first
