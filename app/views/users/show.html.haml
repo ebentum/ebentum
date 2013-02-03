@@ -48,8 +48,8 @@
         #error.alert.alert-error.hidden
         .tab-pane{:id => "userevents", :data => {:url => "/events" , :params => { :user_id => @user.id }.to_json } }
         .tab-pane{:id => "userappointments", :data => {:url => "/events" , :params => { :user_id => @user.id, :appointments => true }.to_json } }
-        .tab-pane{:id => "userfollowing", :data => {:url => "/events" , :params => " " } }
-        .tab-pane{:id => "userfollowers", :data => {:url => "/events" , :params => " " } }
+        .tab-pane{:id => "userfollowing", :data => {:url => "/users" , :params => {:following_id => @user.id}.to_json} }
+        .tab-pane{:id => "userfollowers", :data => {:url => "/users" , :params => {:follower_id => @user.id}.to_json } }
 
 
 

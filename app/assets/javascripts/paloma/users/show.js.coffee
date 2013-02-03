@@ -24,6 +24,7 @@ Paloma.callbacks["users/show"] = (params) ->
           # e.relatedTarget # previous tab
         error: (xhr, status, error) ->
           # TODO
+          $(contentDiv).html(error)
           $(contentDiv).parent('#error').html(error)
           $(contentDiv).parent('#error').toggleClass('hidden')
         complete: ->
