@@ -15,7 +15,8 @@ Ebentum::Application.routes.draw do
   match '/users/social_fb_off' => 'users#social_fb_off' 
   resources :users
   resources :followings
-
+  resources :fbtokens
+  resources :twtokens
 
 
   # The priority is based upon order of creation:

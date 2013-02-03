@@ -25,4 +25,16 @@ class ApplicationController < ActionController::Base
     flash[:omniauth_data].info.email  
   end
 
+  def omniauth_token
+    flash[:omniauth_data].credentials.token  
+  end
+
+  def omniauth_token_expires_at
+    flash[:omniauth_data].credentials.expires_at  
+  end
+
+  def omniauth_secret
+    flash[:omniauth_data].credentials.secret  
+  end
+
 end

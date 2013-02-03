@@ -197,10 +197,20 @@ $(document).on "click", "#sign_in_button", (event) ->
 
 $("#facebook").on "switch-change", (e, data) ->
   if data.value
-    window.location = '/users/facebook_login?state=/users/13/edit'
+    window.location = '/users/facebook_login?state=/users/'+$('#user_id').val()+'/edit'
   else
     alert 'Aviso tipo Pinterest'
     $.ajax
-      url: "/users/social_fb_off"
-      type: 'GET'
+      url: "/fbtokens/"+$('input', $(this)).data('token')
+      type: 'DELETE'
+      dataType: 'json'
+
+$("#twitter").on "switch-change", (e, data) ->
+  if data.value
+    window.location = '/users/twitter_login?state=/users/'+$('#user_id').val()+'/edit'
+  else
+    alert 'Aviso tipo Pinterest'
+    $.ajax
+      url: "/twtokens/"+$('input', $(this)).data('token')
+      type: 'DELETE'
       dataType: 'json'

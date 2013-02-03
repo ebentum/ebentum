@@ -40,7 +40,10 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
 
-    @social_fb = @user.social_fb
+    # tiene token de acceso valido de facebook?
+    @has_fb_access_token = Fbtoken.access_token_id(current_user.id)
+    # tiene token de acceso valido de twitter?
+    @has_tw_access_token = Twtoken.access_token_id(current_user.id)
 
     if @user != current_user
       respond_to do |format|
@@ -63,11 +66,6 @@ class UsersController < ApplicationController
                       :status => :unprocessable_entity }
       end
     end
-  end
-
-  def social_fb_off
-    user = current_user
-    render :json => user.update_social_fb(nil, nil)
   end
 
 end

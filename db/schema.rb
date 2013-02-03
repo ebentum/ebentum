@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113173943) do
+ActiveRecord::Schema.define(:version => 20130203145835) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "event_id"
@@ -38,11 +38,27 @@ ActiveRecord::Schema.define(:version => 20130113173943) do
     t.decimal  "lng",                :precision => 10, :scale => 6
   end
 
+  create_table "fbtokens", :force => true do |t|
+    t.string   "token"
+    t.integer  "expires_at"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "followings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "following_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "twtokens", :force => true do |t|
+    t.string   "token"
+    t.string   "secret"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

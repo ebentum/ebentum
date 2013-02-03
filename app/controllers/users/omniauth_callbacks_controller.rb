@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     if params[:state] && current_user
-      current_user.update_social_fb(omniauth_provider, omniauth_uid)
+      save_fbtoken
       redirect_to params[:state]
     else
       sign_in_or_register
@@ -12,7 +12,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def twitter
-    sign_in_or_register
+    if params[:state] && current_user
+      save_twtoken
+      redirect_to params[:state]
+    else
+      sign_in_or_register
+    end
   end
 
   def facebook_login
@@ -26,7 +31,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter_login
     session[:islogin] = true
-    redirect_to '/users/auth/twitter'
+    if params[:state]
+      redirect_to '/users/auth/twitter?state='+params[:state]  
+    else
+      redirect_to '/users/auth/twitter'
+    end
   end
 
   def store_omniauth_data
@@ -50,6 +59,22 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       redirect_to new_user_registration_url
     end 
+  end
+
+  def save_fbtoken
+    token            = Fbtoken.new
+    token.token      = omniauth_token
+    token.expires_at = omniauth_token_expires_at
+    token.user_id    = current_user.id
+    token.save
+  end
+
+  def save_twtoken
+    token            = Twtoken.new
+    token.token      = omniauth_token
+    token.secret     = omniauth_secret
+    token.user_id    = current_user.id
+    token.save
   end
 
 end
