@@ -67,6 +67,8 @@ class User < ActiveRecord::Base
 
   has_many :created_events, :class_name => 'Event'
   has_many :events, :through => :appointments
+  
+  has_many :activities
 
   has_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
 

@@ -29,6 +29,7 @@ class Event < ActiveRecord::Base
   belongs_to :user 
   has_many :users, :through => :appointments 
   
+  has_many :activities
 
   has_attached_file :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
