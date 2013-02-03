@@ -19,14 +19,14 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#omniauth_sign_up_success').fadeIn('slow')
         # mostrar el boton
         $('#start_button').fadeIn('slow')
-        # ocultar el boton 
+        # ocultar el boton
         $('#sign_up_button').hide()
         setTimeout (->
           # redirigir al root_path
           $.ajax
             url: "/home/"
             type: 'GET'
-            dataType: 'script' 
+            dataType: 'script'
         ), 8000
       else
         # ponemos el email en el mensaje y lo enseñamos
@@ -34,7 +34,7 @@ $(document).on "click", "#sign_up_button", (event) ->
         txt = txt.replace('SIGN_UP_EMAIL', $('#email').val())
         $('#sign_up_ok_text').text(txt)
         $('#sign_up_success').fadeIn('slow')
-        # ocultar el boton 
+        # ocultar el boton
         $('#sign_up_button').hide()
     error: (xhr, status, error) ->
       # ponemos los errores

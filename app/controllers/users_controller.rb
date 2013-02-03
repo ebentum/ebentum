@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user! # se van a poder ver perfiles de usuario sin estar dado de alta?, :except => [:show, :index]
 
   def index
     users = User.all
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
 
     @following = @user.followings
     @followers = @user.followers
-    @user_events = nil
-    @user_appointments = nil
+    @user_events = @user.events
+    @user_appointments = @user.appointments
 
     respond_to do |format|
       format.html # index.html.erb
