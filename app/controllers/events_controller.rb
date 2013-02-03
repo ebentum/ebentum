@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
-    #Eventos que se han apuntado la gente a la que yo sigo
+    #Eventos que se han unido la gente a la que yo sigo
     #@events = Event.joins(:appointments, :users => :followings).where(:users => { :id => current_user }).order("appointments.created_at DESC")
 
     #Eventos creados por gente a la que sigo
@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     #Eventos creados por mi
     #@events = Event.where(:user_id => current_user).order("events.created_at DESC")
 
-    #Eventos a los que me he apuntado
+    #Eventos a los que me he unido
     #@events = Event.joins(:appointments, :users).where(:users => { :id => current_user }).order("appointments.created_at DESC")
 
     respond_to do |format|

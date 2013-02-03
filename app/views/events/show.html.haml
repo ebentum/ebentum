@@ -26,11 +26,11 @@
             = @event.user.complete_name
         %p#appointed
           %i.icon-thumbs-up
-          = t('.appointed')
+          = t('.joined')
           %span.badge.badge-info
             = @appointed
           = t('.event_followings_followers_appointed', :following => @appointed, :followers => @appointed)
         %p
-          = button_tag '¡Me apunto!', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id}
+          = button_tag '¡Unirme!', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {'loading-text' => 'Uniendome...', :eventid => @event.id}
           = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
     .span1

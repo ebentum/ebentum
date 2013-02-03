@@ -19,7 +19,7 @@ en:
       bio: "Bio"
       web: "Web"
       your_events: "Your Events"
-      appointed_events: "Appointed Events"
+      joined_events: "Joined Events"
       following: "Following"
       followers: "Followers"
     user_action_button:

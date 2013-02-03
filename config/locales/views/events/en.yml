@@ -13,5 +13,5 @@ en:
       time: "Time"
     show:
       organized_by: "Organized by"
-      appointed: "Appointed"
+      joined: "Joined"
       event_followings_followers_appointed: "(%{following} following and %{followers} followers)"

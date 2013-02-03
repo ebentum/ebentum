@@ -17,6 +17,11 @@ class Appointment < ActiveRecord::Base
   belongs_to :user 
   belongs_to :event
 
+  after_create do |event|
+    @activity = Activity.new(:user_id => self.user_id, :event_id => self.event_id, :action => 'JOIN')
+    @activity.save
+  end
+
   def self.user_appointment_id(event_id, user_id)
     appoint = Appointment.where(:event_id => event_id, :user_id => user_id).first
     if appoint != nil

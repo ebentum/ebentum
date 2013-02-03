@@ -13,5 +13,5 @@ es:
       time: "Hora"
     show:
       organized_by: "Organizado por"
-      appointed: "Apuntados"
+      joined: "Unidos"
       event_followings_followers_appointed: "(Sigo a %{following} y me siguen %{followers})"
