@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       save_fbtoken
       redirect_to params[:state]
     else
-      sign_in_or_register
+      sign_in_or_register('facebook')
     end
   end
 
@@ -46,12 +46,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def sign_in_or_register
+  def sign_in_or_register(provider)
     if session[:islogin]
       session.delete(:islogin)
-      user = User.find_by_provider_and_uid(omniauth_provider, omniauth_uid)
-      if user
-        sign_in(:user, user)
+      fbtoken = Fbtoken.find_by_token(omniauth_token)
+      if fbtoken
+        sign_in(:user, User.find_by_id(fbtoken.user_id))
         redirect_to root_url
       else
         redirect_to new_user_registration_url

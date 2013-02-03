@@ -21,12 +21,11 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#start_button').fadeIn('slow')
         # ocultar el boton 
         $('#sign_up_button').hide()
+        # guardar token de acceso
+        tokens.save_access_token()
         setTimeout (->
-          # redirigir al root_path
-          $.ajax
-            url: "/home/"
-            type: 'GET'
-            dataType: 'script' 
+          # redirigir al inicio
+          window.location = '/events/'
         ), 8000
       else
         # ponemos el email en el mensaje y lo enseñamos
@@ -177,11 +176,8 @@ $(document).on "click", "#sign_in_button", (event) ->
       # boton en estado loading
       $('#sign_in_button').button('loading')
     success: (data, status, xhr) ->
-      # redirigir al root_path
-      $.ajax
-        url: "/home/"
-        type: 'GET'
-        dataType: 'script'
+      # redirigir al inicio
+      window.location = '/events/'
     error: (xhr, status, error) ->
       # ponemos el error
       # hacemos un timeout para que el efecto sea más suave

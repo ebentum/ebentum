@@ -4,6 +4,12 @@
   - else
     %input{:type => "checkbox"} 
 Inicia sesión con Facebook
+- if @has_fb_access_token > 0
+  %br
+  %br
+  #facebook_post{:class => 'switch switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+    %input{:checked => "checked", :type => "checkbox", :data => {:token => @has_fb_access_token}}
+Publicar actividad en Facebook
 %br
 %br
 #twitter{:class => 'switch switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
