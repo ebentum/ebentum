@@ -4,15 +4,15 @@ class EventsController < ApplicationController
   before_filter :search_events, :only => [:index]
 
   def search_events
-    if params[:user]
-      @user = User.find(params[:user])
+    if params[:user_id]
+      @user = User.find(params[:user_id])
     end
 
     if @user
       if params[:appointments]
         @events = @user.events
       else
-        @events = @user.events
+        @events = @user.created_events
       end
     else
       @events = Event.all

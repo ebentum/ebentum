@@ -26,11 +26,6 @@ class UsersController < ApplicationController
       @is_follower = nil
     end
 
-    @following = @user.followings
-    @followers = @user.followers
-    @user_events = @user.events
-    @user_appointments = @user.appointments
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: user }
