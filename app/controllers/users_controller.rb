@@ -5,17 +5,18 @@ class UsersController < ApplicationController
 
   def search_users
 
-    @users = User.all
+    # @users = User.all
 
-    # if params[:follower_id]
-    #   user = User.find( params[:follower_id])
-    #   @users = user.followers
-    # elsif params[:following_id]
-    #   user = User.find( params[:follower_id])
-    #   @users = user.followings
-    # else
-    #   @users = User.all
-    # end
+    if params[:follower_id]
+      current_user = User.find( params[:follower_id])
+      @users = current_user.followers
+    elsif params[:following_id]
+      current_user = User.find( params[:following_id])
+      @users = current_user.friends
+    else
+      @users = User.all
+    end
+
   end
 
   def index
