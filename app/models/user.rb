@@ -62,8 +62,14 @@ class User < ActiveRecord::Base
 
   has_many :appointments
 
-  has_many :followers, :class_name => 'Following', :foreign_key => 'following_id'
+  # friend and follower relationships
   has_many :followings, :class_name => 'Following', :foreign_key => 'user_id'
+  has_many :followeds, :class_name => 'Following', :foreign_key => 'following_id'
+
+  has_many :friends, :through => :followings, :source => 'following', :class_name => 'User'
+  has_many :followers, :through => :followeds, :source => :user
+
+
 
   has_many :created_events, :class_name => 'Event'
   has_many :events, :through => :appointments

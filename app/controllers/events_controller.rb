@@ -1,21 +1,42 @@
 class EventsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :search_events, :only => [:index]
+
+  def search_events
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    end
+
+    if @user
+      if params[:appointments]
+        @events = @user.events
+      else
+        @events = @user.created_events
+      end
+    else
+      @events = Event.all
+    end
+
+  end
 
   def index
-    @events = Event.all
 
-    #@events = current_user.followings.events
-    
+    if params[:no_layout]
+      render_layout = false
+    else
+      render_layout = true
+    end
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => render_layout}# index.html.erb
       format.json { render json: @events }
     end
   end
 
   def popular
     @events = Event.all
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

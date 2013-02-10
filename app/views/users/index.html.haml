@@ -1,19 +1,17 @@
 .span12
-  #myContent.centered
-    - for event in @events
+  #users.centered
+    - for user in @users
       .box
         .thumbnail
-          / %img{:alt => "", :src => event.photo}
-          = image_tag event.photo.url(:small)
+          = image_tag user.image.url(:small)
           .caption
-            %h5
-              = event.name
             %p
-              = event.description
+              %a{:href => user_path(user)}
+                %i.icon-user
+                = user.complete_name
             %p
-              %a.btn.btn-primary{:href => "#"}
-                %i.icon-thumbs-up.icon-white
-                ¡Me apunto!
-              = link_to event, :class => "btn" do
-                %i.icon-info-sign
-                Más información
+              %i.icon-map-marker
+              = user.location
+            .extra-info
+              %i.icon-thumbs-up
+              = "99 Eventos"

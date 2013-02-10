@@ -5,9 +5,6 @@
 - else
   - if @am_i_following
     = button_to t('.unfollow'), following_path(@am_i_following), :method => 'delete', :class => "btn btn-danger"
-    -# %a{:href => "#"  }
-    -#   .btn.btn-danger
-    -#     = t('.unfollow')
   - else
     = form_for @new_following, :url => followings_path do |f|
       = f.hidden_field :user_id
