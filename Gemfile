@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 3.2.12'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,7 +26,7 @@ group :production do
 end
 
 gem 'thin'
-gem 'haml', '~> 3.1.7'
+gem 'haml', '~> 4.0.0'
 gem 'jquery-rails', '~> 2.2.0'
 gem "paperclip", "~> 3.4.0"
 gem 'aws-sdk', "~> 1.8.0"
