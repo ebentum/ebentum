@@ -1,6 +1,8 @@
 class Fbtoken < ActiveRecord::Base
 
   attr_accessible :token, :expires_at 
+
+  belongs_to :user 
   
   # id del token si lo tiene 0 si no
   def self.access_token_id(user_id)

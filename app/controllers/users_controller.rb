@@ -38,6 +38,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+
+    # prueba de permisos de la app
+    @api    = Koala::Facebook::API.new(current_user.fbtoken.token)
+    @result = @api.fql_query('SELECT publish_actions, publish_stream FROM permissions WHERE uid = ' + current_user.uid)
+
+    # prueba de postear en fb
+    @api = Koala::Facebook::API.new(current_user.fbtoken.token)
+    @api.put_wall_post("hey, i'm learning koala! lol")
+
     @user = User.find(params[:id])
 
     # tiene token de acceso valido de facebook?
