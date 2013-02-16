@@ -19,7 +19,10 @@ Paloma.callbacks["users/show"] = (params) ->
           $(contentDiv).parent('#error').toggleClass('hidden')
           $(contentDiv).html("Loading...")
         success: (data) ->
-          $(contentDiv).html(data)
+          $(contentDiv).html(data).imagesLoaded ->
+            $(".masonry_layout").masonry
+              itemSelector: ".box"
+              isFitWidth: true
           # e.target # activated tab
           # e.relatedTarget # previous tab
         error: (xhr, status, error) ->
