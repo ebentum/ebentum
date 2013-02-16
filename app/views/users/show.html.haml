@@ -14,18 +14,22 @@
             - if @is_follower
               .label.label-info
                 = t('.isfollower')
-          %p
-            %b
-              = t(".location")
-            = @user.location
-          %p
-            %b
-              = t('.web')
-            = @user.web
-          %p
-            %b
-              = t('.bio')
-            = @user.bio
+          %dl.dl-horizontal-left
+            %dt
+              %b
+                = t(".location")
+            %dd
+              = @user.location
+            %dt
+              %b
+                = t('.web')
+            %dd
+              = @user.web
+            %dt
+              %b
+                = t('.bio')
+            %dd
+              = @user.bio
   .row-fluid
     .span12
       %ul.nav.nav-pills{:id => "userpagetabs"}
