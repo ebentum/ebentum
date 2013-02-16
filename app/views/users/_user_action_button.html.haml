@@ -1,5 +1,5 @@
 - if @user == current_user
-  %a{:href => edit_user_path(@user)}
+  %a{:href => edit_user_registration_path(@user)}
     .btn.btn-primary
       = t(:edit)
 - else

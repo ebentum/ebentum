@@ -1,27 +1,91 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+-# %h2
+-#   Edit #{resource_name.to_s.humanize}
+-# = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+-#   = devise_error_messages!
+-#   %div
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email
+-#   %div
+-#     = f.label :password
+-#     %i (leave blank if you don't want to change it)
+-#     %br/
+-#     = f.password_field :password, :autocomplete => "off"
+-#   %div
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation
+-#   %div
+-#     = f.label :current_password
+-#     %i (we need your current password to confirm your changes)
+-#     %br/
+-#     = f.password_field :current_password
+-#   %div= f.submit "Update"
+-# %h3 Cancel my account
+-# %p
+-#   Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+-# = link_to "Back", :back
+-# = form_for @user, :url => users_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, :autocomplete => "off"
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %div
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password
-  %div= f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-= link_to "Back", :back
+  .row-fluid
+    .span12.well
+      .row-fluid
+        .span2
+          .thumbnail
+            = image_tag(@user.image.url(:small), :class => 'block')
+          %span.btn.btn-success.fileinput-button
+            %i.icon-plus.icon-white
+            %span
+              = t('.add_image')
+            = f.file_field :photo
+        .span8
+          .row-fluid
+            .span1
+              = " "
+          .row-fluid
+            .span12
+              %p
+                %b
+                  = t(".complete_name")
+                = f.text_field :complete_name, :class => "input-block-level"
+              %p
+                %b
+                  = t(".location")
+                = f.text_field :location, :class => "input-block-level"
+              %p
+                %b
+                  = t('.web')
+                = f.text_field :web, :class => "input-block-level"
+              %p
+                %b
+                  = t('.bio')
+                = f.text_area :bio, :class => "input-block-level", :rows => "5"
+          .row-fluid
+            .span12
+              %div
+                = f.label :email
+                %br/
+                = f.email_field :email
+              %div
+                = f.label :password
+                %i (leave blank if you don't want to change it)
+                %br/
+                = f.password_field :password, :autocomplete => "off"
+              %div
+                = f.label :password_confirmation
+                %br/
+                = f.password_field :password_confirmation
+              %div
+                = f.label :current_password
+                %i (we need your current password to confirm your changes)
+                %br/
+                = f.password_field :current_password
+
+      .row-fluid
+        .form-actions
+          %button{:type => "submit", :class => "btn btn-primary"}
+            = t(:save)
+          %a{:href => user_path(@user), :class => "btn"}
+            = t(:back)
+/ = render 'social_config'
