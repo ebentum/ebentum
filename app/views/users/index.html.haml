@@ -3,12 +3,15 @@
     - for user in @users
       .box
         .thumbnail
+          .botones
+            %p
+              = link_to user_path(user), :class => "btn" do
+                %i.icon-info-sign
+                Más información
           = image_tag user.image.url(:small)
           .caption
-            %p
-              %a{:href => user_path(user)}
-                %i.icon-user
-                = user.complete_name
+            %h5
+              = user.complete_name
             %p
               %i.icon-map-marker
               = user.location
