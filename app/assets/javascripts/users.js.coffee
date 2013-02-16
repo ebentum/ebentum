@@ -200,6 +200,15 @@ $("#facebook").on "switch-change", (e, data) ->
       url: "/fbtokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
       dataType: 'json'
+      success: (data, status, xhr) ->
+        $('#facebook_post').bootstrapSwitch('toggleActivation')
+        $('#facebook_post').bootstrapSwitch('setState', false)
+
+$("#facebook_post").on "switch-change", (e, data) ->
+  $.ajax
+    url: "/fbtokens/"+$('input', $(this)).data('token')
+    type: 'PUT'
+    dataType: 'json'
 
 $("#twitter").on "switch-change", (e, data) ->
   if data.value
@@ -210,3 +219,12 @@ $("#twitter").on "switch-change", (e, data) ->
       url: "/twtokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
       dataType: 'json'
+      success: (data, status, xhr) ->
+        $('#twitter_post').bootstrapSwitch('toggleActivation')
+        $('#twitter_post').bootstrapSwitch('setState', false)
+
+$("#twitter_post").on "switch-change", (e, data) ->
+  $.ajax
+    url: "/twtokens/"+$('input', $(this)).data('token')
+    type: 'PUT'
+    dataType: 'json'

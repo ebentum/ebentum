@@ -2,13 +2,13 @@ class Twtoken < ActiveRecord::Base
 
   belongs_to :user
   
-  # id del token si lo tiene 0 si no
-  def self.access_token_id(user_id)
+  # devuelve el token si lo tiene nil si no
+  def self.get_access_token(user_id)
     token = self.find_by_user_id(user_id)
     if token
-      token.id
+      token
     else
-      0
+      nil
     end  
   end
   

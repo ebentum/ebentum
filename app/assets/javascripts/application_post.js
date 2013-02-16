@@ -23,7 +23,7 @@
 //= require jquery.timepicker
 //= require jquery.validate
 //= require jquery.validate.es
-//= require jquery.switch
+//= require bootstrapSwitch
 
 //= require i18n
 //= require i18n/translations

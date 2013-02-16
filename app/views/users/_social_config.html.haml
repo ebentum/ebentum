@@ -1,20 +1,30 @@
-#facebook{:class => 'switch switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if @has_fb_access_token > 0
-    %input{:checked => "checked", :type => "checkbox", :data => {:token => @has_fb_access_token}}
+#facebook{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+  - if @fb_access_token
+    %input{:checked => "checked", :type => "checkbox", :data => {:token => @fb_access_token.id}}
   - else
     %input{:type => "checkbox"} 
-Inicia sesión con Facebook
-- if @has_fb_access_token > 0
-  %br
-  %br
-  #facebook_post{:class => 'switch switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-    %input{:checked => "checked", :type => "checkbox", :data => {:token => @has_fb_access_token}}
-Publicar actividad en Facebook
+= t('.log_with', :provider => 'Facebook')
 %br
 %br
-#twitter{:class => 'switch switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if @has_tw_access_token > 0
-    %input{:checked => "checked", :type => "checkbox", :data => {:token => @has_tw_access_token}}
+#facebook_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+  - if @fb_autopublish
+    %input{:checked => "checked", :disabled => !@fb_access_token, :type => "checkbox", :data => {:token => @fb_access_token}}
+  - else
+    %input{:disabled => !@fb_access_token, :type => "checkbox", :data => {:token => (@fb_access_token.id if @fb_access_token)}}
+= t('.publish_activity', :provider => 'Facebook')
+%br
+%br
+#twitter{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+  - if @tw_access_token
+    %input{:checked => "checked", :type => "checkbox", :data => {:token => @tw_access_token.id}}
   - else
     %input{:type => "checkbox"} 
-Inicia sesión con Twitter
+= t('.log_with', :provider => 'Twitter')
+%br
+%br
+#twitter_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+  - if @tw_autopublish
+    %input{:checked => "checked", :disabled => !@tw_access_token, :type => "checkbox", :data => {:token => @tw_access_token}}
+  - else
+    %input{:disabled => !@tw_access_token, :type => "checkbox", :data => {:token => (@tw_access_token.id if @tw_access_token)}}
+= t('.publish_activity', :provider => 'Twitter')

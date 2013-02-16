@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203145835) do
+ActiveRecord::Schema.define(:version => 20130216140047) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "event_id"
@@ -36,14 +36,16 @@ ActiveRecord::Schema.define(:version => 20130203145835) do
     t.datetime "photo_updated_at"
     t.decimal  "lat",                :precision => 10, :scale => 6
     t.decimal  "lng",                :precision => 10, :scale => 6
+    t.decimal  "appointments_count"
   end
 
   create_table "fbtokens", :force => true do |t|
     t.string   "token"
     t.integer  "expires_at"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "autopublish"
   end
 
   create_table "followings", :force => true do |t|
@@ -57,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20130203145835) do
     t.string   "token"
     t.string   "secret"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "autopublish"
   end
 
   create_table "users", :force => true do |t|

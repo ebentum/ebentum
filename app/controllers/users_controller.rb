@@ -39,20 +39,22 @@ class UsersController < ApplicationController
 
   def edit
 
-    # prueba de permisos de la app
-    @api    = Koala::Facebook::API.new(current_user.fbtoken.token)
-    @result = @api.fql_query('SELECT publish_actions, publish_stream FROM permissions WHERE uid = ' + current_user.uid)
+    # # prueba de permisos de la app
+    # @api    = Koala::Facebook::API.new(current_user.fbtoken.token)
+    # @result = @api.fql_query('SELECT publish_actions, publish_stream FROM permissions WHERE uid = ' + current_user.uid)
 
-    # prueba de postear en fb
-    @api = Koala::Facebook::API.new(current_user.fbtoken.token)
-    @api.put_wall_post("hey, i'm learning koala! lol")
+    # # prueba de postear en fb
+    # @api = Koala::Facebook::API.new(current_user.fbtoken.token)
+    # @api.put_wall_post("hey, i'm learning koala! lol")
 
     @user = User.find(params[:id])
 
     # tiene token de acceso valido de facebook?
-    @has_fb_access_token = Fbtoken.access_token_id(current_user.id)
+    @fb_access_token = Fbtoken.get_access_token(current_user.id)
+    @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
     # tiene token de acceso valido de twitter?
-    @has_tw_access_token = Twtoken.access_token_id(current_user.id)
+    @tw_access_token = Twtoken.get_access_token(current_user.id)
+    @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
 
     if @user != current_user
       respond_to do |format|
