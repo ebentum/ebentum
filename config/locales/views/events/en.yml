@@ -12,6 +12,13 @@ en:
       place: "Place"
       time: "Time"
     show:
-      organized_by: "Organized by"
+      appoint: "Appoint me!"
       appointed: "Appointed"
       event_followings_followers_appointed: "(%{following} following and %{followers} followers)"
+      organized_by: "Organized by"
+    confirm_appoint:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_text: "Confirm that you join the event"
+    share:
+      share_activity: "Share in %{provider}"

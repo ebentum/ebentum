@@ -91,7 +91,7 @@ $('#events_new').click ->
         $('#create_event_btn').click ->
           $("#new_event").submit()
 
-$(document).on "click", "#appoint", (event) ->
+$(document).on "click", "#confirm_appoint_btn", (event) ->
   button = $(this)
   $.ajax
     url: "/appointments"
@@ -100,17 +100,25 @@ $(document).on "click", "#appoint", (event) ->
       event_id: button.data('eventid')
     dataType: 'json'
     beforeSend: ->
+      # cerrar modal
+      $('#confirm_appoint').modal('hide')
       # boton en estado loading
       $('#appoint').button('loading')
     success: (data, status, xhr) ->
       setTimeout (->
-        button.button('reset')
-        button.addClass('hide')
+        $('#appoint').button('reset')
+        $('#appoint').addClass('hide')
         $('#desappoint').removeClass('hide')
         $('#desappoint').data('appointmentid', data.id)
         $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
-        alert '¡Bien! ¡Ya estas apuntado al evento!'
       ), 2000
+
+  $.ajax
+    url: "/share/share_event_appoint"
+    data:
+      fb_share: $('#facebook_share').bootstrapSwitch('status') 
+      tw_share: $('#twitter_share').bootstrapSwitch('status')
+    dataType: 'json'
 
 $(document).on "click", "#desappoint", (event) ->
   button = $(this)

@@ -12,6 +12,14 @@ es:
       place: "Lugar"
       time: "Hora"
     show:
-      organized_by: "Organizado por"
+      appoint: "¡Me apunto!"
       appointed: "Apuntados"
       event_followings_followers_appointed: "(Sigo a %{following} y me siguen %{followers})"
+      organized_by: "Organizado por"
+    confirm_appoint:
+      close: "Cerrar"
+      confirm: "Confirmar"
+      confirm_text: "Confirma que te apuntas al evento"
+    share:
+      share_activity: "Compartir en %{provider}"
+
