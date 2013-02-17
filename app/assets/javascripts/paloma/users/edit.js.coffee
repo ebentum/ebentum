@@ -1,1 +1,0 @@
-Paloma.callbacks["users/edit"] = (params) ->
