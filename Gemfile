@@ -58,7 +58,10 @@ gem 'devise', '~> 2.1.2'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+# fabebook api
 gem 'koala'
+# twitter api
+gem "twitter", "~> 4.5.0"
 
 #gema paloma para organizar javascript
 gem 'paloma'
