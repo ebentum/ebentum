@@ -122,7 +122,7 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
-    paloma (1.2.2)
+    paloma (1.2.5)
       jquery-rails
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -132,6 +132,8 @@ GEM
       mime-types
     pg (0.14.1)
     pg (0.14.1-x86-mingw32)
+    polyamorous (0.5.0)
+      activerecord (~> 3.0)
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)
@@ -170,6 +172,10 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     sqlite3 (1.3.7-x86-mingw32)
+    squeel (1.0.15)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      polyamorous (~> 0.5.0)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -205,11 +211,12 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-twitter
-  paloma
+  paloma (~> 1.2.5)
   paperclip (~> 3.4.0)
   pg
   rails (~> 3.2.11)
   sass-rails (~> 3.2.5)
   sqlite3
+  squeel (~> 1.0.15)
   thin
   uglifier (>= 1.3.0)

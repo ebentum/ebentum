@@ -60,4 +60,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 #gema paloma para organizar javascript
-gem 'paloma'
+gem "paloma", "~> 1.2.5"
+
+gem "squeel", "~> 1.0.15"
