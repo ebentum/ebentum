@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202181119) do
+ActiveRecord::Schema.define(:version => 20130224104138) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "event_id"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20130202181119) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -76,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20130202181119) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image_url"
+    t.decimal  "friends_count"
+    t.decimal  "followers_count"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

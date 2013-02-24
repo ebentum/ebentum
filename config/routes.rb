@@ -13,7 +13,7 @@ Ebentum::Application.routes.draw do
   resources :home
   resources :appointments
   resources :users
-  resources :followings
+  resources :relationships
 
 
 

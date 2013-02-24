@@ -5,16 +5,20 @@ class UsersController < ApplicationController
 
   def search_users
 
-    # @users = User.all
-
     if params[:follower_id]
+
       current_user = User.find( params[:follower_id])
+      @users = current_user.followed_users
+
+    elsif params[:followed_id]
+
+      current_user = User.find( params[:followed_id])
       @users = current_user.followers
-    elsif params[:following_id]
-      current_user = User.find( params[:following_id])
-      @users = current_user.friends
+
     else
+
       @users = User.all
+
     end
 
   end
@@ -39,11 +43,11 @@ class UsersController < ApplicationController
     @user = User.find(id)
 
     if @user != current_user
-      @am_i_following = current_user.followings.where(:following_id => @user.id).first
+      @am_i_following = current_user.following?(@user)
       if not @am_i_following
-        @new_following = Following.new(:user_id => current_user.id, :following_id => @user.id )
+        @new_relationship = Relationship.new(:follower_id => current_user.id, :followed_id => @user.id )
       end
-      @is_follower = @user.followings.where(:following_id => current_user.id).first rescue nil
+      @is_follower = @user.following?(current_user )
     else
       @am_i_following = nil
       @is_follower = nil

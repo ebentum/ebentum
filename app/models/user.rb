@@ -62,14 +62,20 @@ class User < ActiveRecord::Base
 
   has_many :appointments
 
-  # friend and follower relationships
-  has_many :followings, :class_name => 'Following', :foreign_key => 'user_id'
-  has_many :followeds, :class_name => 'Following', :foreign_key => 'following_id'
+  # user_followeds and followers relationships
+  # has_many :followings, :class_name => 'Following', :foreign_key => 'user_id'
+  # has_many :followeds, :class_name => 'Following', :foreign_key => 'following_id'
 
-  has_many :friends, :through => :followings, :source => 'following', :class_name => 'User'
-  has_many :followers, :through => :followeds, :source => :user
+  # has_many :friends, :through => :followings, :source => 'following', :class_name => 'User'
+  # has_many :followers, :through => :followeds, :source => :user
 
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
 
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_relationships, source: :follower
 
   has_many :created_events, :class_name => 'Event'
   has_many :events, :through => :appointments
@@ -83,6 +89,18 @@ class User < ActiveRecord::Base
 
   def social_fb
     self.provider == 'facebook' && self.uid != nil
+  end
+
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
   end
 
 end
