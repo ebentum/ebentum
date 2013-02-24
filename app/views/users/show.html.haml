@@ -5,13 +5,21 @@
         = image_tag(@user.image.url(:small), :class => 'block')
     .span8
       .row-fluid
-        .span6
-          = render 'user_action_button'
+        #user_action_button.span6
+          - if @user == current_user
+            %a{:href => edit_user_registration_path(@user)}
+              .btn.btn-primary
+                = t(:edit)
+          - else
+            - if current_user.following?(@user)
+              = render 'unfollow'
+            - else
+              = render 'follow'
       .row-fluid
         .span12
           %h3
             = @user.complete_name
-            - if @is_follower
+            - if @user.following?(current_user)
               .label.label-info
                 = t('.isfollower')
           %dl.dl-horizontal-left
@@ -54,7 +62,7 @@
         %li
           %a{:href => "#userfollowers", "data-toggle" => "pill"}
             = t('.followers')
-            .badge.badge-info
+            #followers_count_badge.badge.badge-info
               = @user.followers.count
       .tab-content
         #error.alert.alert-error.hidden
