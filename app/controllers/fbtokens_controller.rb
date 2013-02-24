@@ -1,5 +1,13 @@
 class FbtokensController < ApplicationController
 
+  def create
+    fbtoken = Fbtoken.new(params[:fbtoken])
+    fbtoken.autopublish = false
+    if fbtoken.save
+      render :json => fbtoken
+    end
+  end
+
   def update
     @fbtoken = Fbtoken.find_by_id(params[:id])
     if @fbtoken

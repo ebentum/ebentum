@@ -22,7 +22,7 @@ $(document).on "click", "#sign_up_button", (event) ->
         # ocultar el boton 
         $('#sign_up_button').hide()
         # guardar token de acceso
-        tokens.save_access_token()
+        tokens.save_access_token(data.id)
         setTimeout (->
           # redirigir al inicio
           window.location = '/events/'
@@ -35,6 +35,8 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#sign_up_success').fadeIn('slow')
         # ocultar el boton 
         $('#sign_up_button').hide()
+        # guardar token de acceso
+        tokens.save_access_token(data.id)
     error: (xhr, status, error) ->
       # ponemos los errores
       # hacemos un timeout para que el efecto sea más suave

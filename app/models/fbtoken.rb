@@ -1,6 +1,6 @@
 class Fbtoken < ActiveRecord::Base
 
-  attr_accessible :token, :expires_at 
+  attr_accessible :token, :expires_at, :user_id 
 
   belongs_to :user 
   

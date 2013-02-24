@@ -31,9 +31,10 @@
             = @appointed
           = t('.event_followings_followers_appointed', :following => @appointed, :followers => @appointed)
         %p
-          / = button_tag '¡Me apunto!', :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id, :toggle => 'modal', :target => '#confirm_appoint', :fbautopublish => current_user.fbtoken.autopublish, :twautopublish => current_user.twtoken.autopublish}
-          / = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
+          .fb-like{"data-send" => "false", "data-href" => "http://www.ebentum.com", "data-show-faces" => "false", "data-width" => "450"}
+          / .fb-like{"data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
           = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
-          = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
+          = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
     .span1
 = render 'confirm_appoint'
+= render 'confirm_desappoint'

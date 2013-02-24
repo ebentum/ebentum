@@ -1,5 +1,7 @@
 class Twtoken < ActiveRecord::Base
 
+  attr_accessible :token, :secret, :user_id
+
   belongs_to :user
   
   # devuelve el token si lo tiene nil si no
