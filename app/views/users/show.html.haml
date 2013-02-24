@@ -55,7 +55,7 @@
             .badge.badge-info
               = @user.events.count
         %li
-          %a{:href => "#userfollowedusers", "data-toggle" => "pill"}
+          %a{:href => "#userfollowing", "data-toggle" => "pill"}
             = t('.following')
             .badge.badge-info
               = @user.followed_users.count
@@ -66,10 +66,10 @@
               = @user.followers.count
       .tab-content
         #error.alert.alert-error.hidden
-        .tab-pane{:id => "userevents", :data => {:url => "/events" , :params => { :user_id => @user.id }.to_json } }
-        .tab-pane{:id => "userappointments", :data => {:url => "/events" , :params => { :user_id => @user.id, :appointments => true }.to_json } }
-        .tab-pane{:id => "userfollowedusers", :data => {:url => "/users" , :params => {:follower_id => @user.id}.to_json} }
-        .tab-pane{:id => "userfollowers", :data => {:url => "/users" , :params => {:followed_id => @user.id}.to_json } }
+        .tab-pane{:id => "userevents", :data => {:url => events_user_path(@user.id) } }
+        .tab-pane{:id => "userappointments", :data => {:url => appointments_user_path(@user.id) } }
+        .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
+        .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
 
 
 

@@ -22,14 +22,8 @@ class EventsController < ApplicationController
 
   def index
 
-    if params[:no_layout]
-      render_layout = false
-    else
-      render_layout = true
-    end
-
     respond_to do |format|
-      format.html { render :layout => render_layout}# index.html.erb
+      format.html # index.html.erb
       format.json { render json: @events }
     end
   end

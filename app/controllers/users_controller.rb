@@ -25,17 +25,12 @@ class UsersController < ApplicationController
 
   def index
 
-    if params[:no_layout]
-      render_layout = false
-    else
-      render_layout = true
-    end
-
     respond_to do |format|
-      format.html { render :layout => render_layout} # index.html.erb
+      format.html
       format.json { render json: users }
     end
   end
+
 
   def show
     id = params[:id]
@@ -43,8 +38,60 @@ class UsersController < ApplicationController
     @user = User.find(id)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: user }
+    end
+  end
+
+  def following
+    @user = User.find(params[:id])
+    @users = @user.followed_users
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'index', :layout => false}
+      else
+        format.html { render 'index'}
+      end
+      format.json { render json: @users }
+    end
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'index', :layout => false}
+      else
+        format.html { render 'index'}
+      end
+      format.json { render json: @users }
+    end
+  end
+
+  def events
+    @user = User.find(params[:id])
+    @events = @user.created_events
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { redirect_to @events , :layout => false}
+      else
+        format.html { render 'events/index'}
+      end
+      format.json { render json: @events }
+    end
+  end
+
+  def appointments
+    @user = User.find(params[:id])
+    @events = @user.events
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'events/index' , :layout => false}
+      else
+        format.html { render 'events/index'}
+      end
+      format.json { render json: @events }
     end
   end
 

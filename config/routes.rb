@@ -12,7 +12,11 @@ Ebentum::Application.routes.draw do
   resources :events
   resources :home
   resources :appointments
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers, :events, :appointments
+    end
+  end
   resources :relationships
 
 
