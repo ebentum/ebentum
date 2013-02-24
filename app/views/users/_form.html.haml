@@ -1,4 +1,5 @@
 = form_for @user, :url => users_path, :html => { :multipart => true, :class => "form-horiztonal" } do |f|
+  = f.hidden_field :id
   .row-fluid
     .span12.well
       .row-fluid
@@ -39,4 +40,8 @@
             = t(:save)
           %a{:href => user_path(@user), :class => "btn"}
             = t(:back)
-/ = render 'social_config'
+  .row-fluid
+    .span12.well
+      .row-fluid
+        .span12
+          = render 'social_config'

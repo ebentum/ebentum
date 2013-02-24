@@ -21,12 +21,11 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#start_button').fadeIn('slow')
         # ocultar el boton
         $('#sign_up_button').hide()
+        # guardar token de acceso
+        tokens.save_access_token(data.id)
         setTimeout (->
-          # redirigir al root_path
-          $.ajax
-            url: "/home/"
-            type: 'GET'
-            dataType: 'script'
+          # redirigir al inicio
+          window.location = '/events/'
         ), 8000
       else
         # ponemos el email en el mensaje y lo enseñamos
@@ -36,6 +35,8 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#sign_up_success').fadeIn('slow')
         # ocultar el boton
         $('#sign_up_button').hide()
+        # guardar token de acceso
+        tokens.save_access_token(data.id)
     error: (xhr, status, error) ->
       # ponemos los errores
       # hacemos un timeout para que el efecto sea más suave
@@ -177,11 +178,8 @@ $(document).on "click", "#sign_in_button", (event) ->
       # boton en estado loading
       $('#sign_in_button').button('loading')
     success: (data, status, xhr) ->
-      # redirigir al root_path
-      $.ajax
-        url: "/home/"
-        type: 'GET'
-        dataType: 'script'
+      # redirigir al inicio
+      window.location = '/events/'
     error: (xhr, status, error) ->
       # ponemos el error
       # hacemos un timeout para que el efecto sea más suave
@@ -196,6 +194,39 @@ $(document).on "click", "#sign_in_button", (event) ->
         ), 2000
 
 $("#facebook").on "switch-change", (e, data) ->
-  console.log 'data'
-  # if data.value
-  #   window.location = '/auth/facebook/callback'
+  if data.value
+    window.location = '/users/facebook_login?state=/users/'+$('#user_id').val()+'/edit'
+  else
+    alert 'Aviso tipo Pinterest'
+    $.ajax
+      url: "/fbtokens/"+$('input', $(this)).data('token')
+      type: 'DELETE'
+      dataType: 'json'
+      success: (data, status, xhr) ->
+        $('#facebook_post').bootstrapSwitch('toggleActivation')
+        $('#facebook_post').bootstrapSwitch('setState', false)
+
+$("#facebook_post").on "switch-change", (e, data) ->
+  $.ajax
+    url: "/fbtokens/"+$('input', $(this)).data('token')
+    type: 'PUT'
+    dataType: 'json'
+
+$("#twitter").on "switch-change", (e, data) ->
+  if data.value
+    window.location = '/users/twitter_login?state=/users/'+$('#user_id').val()+'/edit'
+  else
+    alert 'Aviso tipo Pinterest'
+    $.ajax
+      url: "/twtokens/"+$('input', $(this)).data('token')
+      type: 'DELETE'
+      dataType: 'json'
+      success: (data, status, xhr) ->
+        $('#twitter_post').bootstrapSwitch('toggleActivation')
+        $('#twitter_post').bootstrapSwitch('setState', false)
+
+$("#twitter_post").on "switch-change", (e, data) ->
+  $.ajax
+    url: "/twtokens/"+$('input', $(this)).data('token')
+    type: 'PUT'
+    dataType: 'json'

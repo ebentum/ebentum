@@ -2,6 +2,9 @@ en:
   users:
     edit:
       editing_user: "Editing user"
+    social_config:
+      log_with: "Log with %{provider}"
+      publish_activity: "Publish activity in %{provider}"
     form:
       add_image: "Add image"
       username: "User name"

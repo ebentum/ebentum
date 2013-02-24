@@ -1,0 +1,16 @@
+- if @fb_access_token
+  %p
+    #facebook_share{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if @fb_access_token.autopublish
+        %input{:type => "checkbox", :checked => "checked"}
+      - else
+        %input{:type => "checkbox"}  
+    = t('.share_activity', :provider => 'Facebook')
+- if @tw_access_token
+  %p
+    #twitter_share{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if @tw_access_token.autopublish
+        %input{:type => "checkbox", :checked => "checked"}
+      - else
+        %input{:type => "checkbox"} 
+    = t('.share_activity', :provider => 'Twitter')

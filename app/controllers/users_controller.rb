@@ -58,7 +58,12 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
 
-    @social_fb = @user.social_fb
+    # tiene token de acceso valido de facebook?
+    @fb_access_token = Fbtoken.get_access_token(current_user.id)
+    @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
+    # tiene token de acceso valido de twitter?
+    @tw_access_token = Twtoken.get_access_token(current_user.id)
+    @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
 
     if @user != current_user
       respond_to do |format|

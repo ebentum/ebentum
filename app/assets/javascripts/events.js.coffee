@@ -91,7 +91,7 @@ $('#events_new').click ->
         $('#create_event_btn').click ->
           $("#new_event").submit()
 
-$(document).on "click", "#appoint", (event) ->
+$(document).on "click", "#confirm_appoint_btn", (event) ->
   button = $(this)
   $.ajax
     url: "/appointments"
@@ -100,31 +100,42 @@ $(document).on "click", "#appoint", (event) ->
       event_id: button.data('eventid')
     dataType: 'json'
     beforeSend: ->
+      # cerrar modal
+      $('#confirm_appoint').modal('hide')
       # boton en estado loading
       $('#appoint').button('loading')
     success: (data, status, xhr) ->
       setTimeout (->
-        button.button('reset')
-        button.addClass('hide')
+        $('#appoint').button('reset')
+        $('#appoint').addClass('hide')
         $('#desappoint').removeClass('hide')
-        $('#desappoint').data('appointmentid', data.id)
+        $('#confirm_desappoint_btn').data('appointmentid', data.id)
         $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
-        alert '¡Bien! ¡Ya estas apuntado al evento!'
       ), 2000
 
-$(document).on "click", "#desappoint", (event) ->
+  $.ajax
+    url: "/share/share_event_appoint"
+    data:
+      fb_share: $('#facebook_share').bootstrapSwitch('status') 
+      tw_share: $('#twitter_share').bootstrapSwitch('status')
+      event_id: button.data('eventid')
+    dataType: 'json'
+
+$(document).on "click", "#confirm_desappoint_btn", (event) ->
   button = $(this)
   $.ajax
     url: "/appointments/"+button.data('appointmentid')
     type: 'DELETE'
     dataType: 'json'
     beforeSend: ->
+      # cerrar modal
+      $('#confirm_desappoint').modal('hide')
       # boton en estado loading
       $('#desappoint').button('loading')
     complete: (data, status, xhr) ->
       setTimeout (->
-        button.button('reset')
-        button.addClass('hide')
+        $('#desappoint').button('reset')
+        $('#desappoint').addClass('hide')
         $('#appoint').removeClass('hide')
         $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
       ), 2000

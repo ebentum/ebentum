@@ -7,6 +7,12 @@ module OmniauthHelper
       form_data += hidden_field_tag 'user[complete_name]',  omniauth_name
       form_data += hidden_field_tag 'user[provider]',       omniauth_provider
       form_data += hidden_field_tag 'user[uid]',            omniauth_uid
+      form_data += hidden_field_tag 'token',                omniauth_token
+      if omniauth_provider == 'facebook'
+        form_data += hidden_field_tag 'expires_at', omniauth_token_expires_at
+      else
+        form_data += hidden_field_tag 'secret', omniauth_secret
+      end
     end
     raw(form_data)
   end
@@ -54,6 +60,18 @@ module OmniauthHelper
 
   def omniauth_uid
     get_omniauth_data.uid
+  end
+  
+  def omniauth_token
+    get_omniauth_data.credentials.token
+  end
+
+  def omniauth_token_expires_at
+    get_omniauth_data.credentials.expires_at
+  end
+
+  def omniauth_secret
+    get_omniauth_data.credentials.secret
   end
 
   def omniauth_image

@@ -56,3 +56,6 @@ en:
   signing_up: "Signing up..."
   start: "Start"
   save: "Save"
+
+  #
+  share_message: "I just joined the event ${event_name} in www.ebentum.com. Take a look! %{event_url}"
