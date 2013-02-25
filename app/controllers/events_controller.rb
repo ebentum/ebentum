@@ -56,7 +56,7 @@ class EventsController < ApplicationController
     end
     @appointed = @event.appointments.count
 
-    js_callback :params => {:lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
+    js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
 
     respond_to do |format|
       format.html # index.html.erb

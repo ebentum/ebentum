@@ -33,4 +33,6 @@ class Event < ActiveRecord::Base
 
   has_attached_file :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
+  acts_as_commentable
+
 end

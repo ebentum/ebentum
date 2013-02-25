@@ -18,6 +18,7 @@ Ebentum::Application.routes.draw do
   resources :twtokens
   match '/share/share_event_appoint' => 'share#share_event_appoint'
   resources :share
+  resources :comments
 
 
   # The priority is based upon order of creation:

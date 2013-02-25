@@ -63,5 +63,8 @@ gem 'koala'
 # twitter api
 gem "twitter", "~> 4.5.0"
 
-#gema paloma para organizar javascript
+# gema paloma para organizar javascript
 gem 'paloma'
+
+# sistema de comentarios
+gem "acts_as_commentable_with_threading", "~> 1.1.2"

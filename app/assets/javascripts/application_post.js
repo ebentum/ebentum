@@ -31,6 +31,7 @@
 //= require events
 //= require users
 //= require tokens
+//= require comments
 //= require_self
 
 //= require paloma
