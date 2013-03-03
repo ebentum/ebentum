@@ -74,9 +74,9 @@ class UsersController < ApplicationController
     @events = @user.created_events
     respond_to do |format|
       if params[:no_layout]
-        format.html { redirect_to @events , :layout => false}
+        format.html { render 'events/_list' , :layout => false}
       else
-        format.html { render 'events/index'}
+        format.html { render 'events/_list' }
       end
       format.json { render json: @events }
     end
@@ -87,9 +87,9 @@ class UsersController < ApplicationController
     @events = @user.events
     respond_to do |format|
       if params[:no_layout]
-        format.html { render 'events/index' , :layout => false}
+        format.html { render 'events/_list' , :layout => false}
       else
-        format.html { render 'events/index'}
+        format.html { render 'events/_list'}
       end
       format.json { render json: @events }
     end
