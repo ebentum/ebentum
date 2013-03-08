@@ -12,7 +12,7 @@ es:
       place: "Lugar"
       time: "Hora"
     show:
-      join: "¡Me uno!"
+      join: "Â¡Me uno!"
       joined: "Unidos"
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"

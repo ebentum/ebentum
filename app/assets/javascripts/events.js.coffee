@@ -111,7 +111,7 @@ $(document).on "click", "#confirm_appoint_btn", (event) ->
         $('#desappoint').removeClass('hide')
         $('#confirm_desappoint_btn').data('appointmentid', data.id)
         $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
-        alert '¡Bien! ¡Te has unido al evento!'
+        alert 'Â¡Bien! Â¡Te has unido al evento!'
       ), 2000
 
   $.ajax
