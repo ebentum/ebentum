@@ -17,6 +17,14 @@ class EventsController < ApplicationController
     #Eventos a los que me he unido
     #@events = Event.joins(:appointments, :users).where(:users => { :id => current_user }).order("appointments.created_at DESC")
 
+    #@events = Activity.joins(:event, :user => :followings).where(:users => { :id => User.first })
+    #Activity.joins(:event, :user => :followings).where([:users =>{:id => User.first}] | [:events => {:user_id => User.first}])
+    #Activity.joins(:event, :user => :followings).where{[users.id == User.first)] | [:events => (:user_id => User.first)]}
+    #Activity.joins(:event, :user).where{(users.id == User.first) | (events.user_id == User.first)}
+    #Activity.joins(:event, :user).where{users.id >> User.all}
+    #@events = Activity.where{(action=='CREATE') | (action=='CREATE')}
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
