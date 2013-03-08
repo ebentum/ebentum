@@ -7,7 +7,7 @@
             %p
               %a.btn{:href => "#"}
                 %i.icon-thumbs-up.icon-white
-                ¡Me apunto!
+                ¡Unirme!
             %p
               = link_to event, :class => "btn" do
                 %i.icon-info-sign
@@ -29,5 +29,5 @@
               = event.place
             .extra-info
               %i.icon-thumbs-up
-              = "#{event.appointments_count ? event.appointments_count.round : 0} Apuntados"
+              = "#{event.appointments_count ? event.appointments_count.round : 0} Unidos"
               %i.icon-comment 5 Comentarios

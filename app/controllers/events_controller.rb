@@ -22,6 +22,25 @@ class EventsController < ApplicationController
 
   def index
 
+    #Eventos que se han unido la gente a la que yo sigo
+    #@events = Event.joins(:appointments, :users => :followings).where(:users => { :id => current_user }).order("appointments.created_at DESC")
+
+    #Eventos creados por gente a la que sigo
+    #@events = Event.joins(:user => :followings).where(:users => { :id => current_user }).order("events.created_at DESC")
+
+    #Eventos creados por mi
+    #@events = Event.where(:user_id => current_user).order("events.created_at DESC")
+
+    #Eventos a los que me he unido
+    #@events = Event.joins(:appointments, :users).where(:users => { :id => current_user }).order("appointments.created_at DESC")
+
+    #@events = Activity.joins(:event, :user => :followings).where(:users => { :id => User.first })
+    #Activity.joins(:event, :user => :followings).where([:users =>{:id => User.first}] | [:events => {:user_id => User.first}])
+    #Activity.joins(:event, :user => :followings).where{[users.id == User.first)] | [:events => (:user_id => User.first)]}
+    #Activity.joins(:event, :user).where{(users.id == User.first) | (events.user_id == User.first)}
+    #Activity.joins(:event, :user).where{users.id >> User.all}
+    #@events = Activity.where{(action=='CREATE') | (action=='CREATE')}
+
     if params[:no_layout]
       render_layout = false
     else

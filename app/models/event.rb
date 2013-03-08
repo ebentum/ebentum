@@ -30,7 +30,14 @@ class Event < ActiveRecord::Base
   belongs_to :user 
   has_many :users, :through => :appointments 
   
+  has_many :activities
 
   has_attached_file :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
+
+
+  after_create do |event|
+    @activity = Activity.new(:user_id => self.user_id, :event_id => self.id, :action => 'CREATE')
+    @activity.save
+  end
 
 end

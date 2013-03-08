@@ -23,7 +23,7 @@ es:
       web: "Web"
       your_events: "Tus eventos"
       user_events: "Eventos creados"
-      appointed_events: "Eventos apuntados"
+      joined_events: "Eventos apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
     user_action_button:

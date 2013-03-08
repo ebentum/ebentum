@@ -73,6 +73,8 @@ class User < ActiveRecord::Base
 
   has_many :created_events, :class_name => 'Event'
   has_many :events, :through => :appointments
+  
+  has_many :activities
 
   has_one :fbtoken
   has_one :twtoken

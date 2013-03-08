@@ -12,9 +12,9 @@ es:
       place: "Lugar"
       time: "Hora"
     show:
-      appoint: "Â¡Me apunto!"
-      appointed: "Apuntados"
-      event_followings_followers_appointed: "(Sigo a %{following} y me siguen %{followers})"
+      join: "¡Me uno!"
+      joined: "Unidos"
+      event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
     confirm_appoint:
       close: "Cerrar"

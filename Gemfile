@@ -64,4 +64,6 @@ gem 'koala'
 gem "twitter", "~> 4.5.0"
 
 #gema paloma para organizar javascript
-gem 'paloma'
+gem "paloma", "~> 1.2.5"
+
+gem "squeel", "~> 1.0.15"
