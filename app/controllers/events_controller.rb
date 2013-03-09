@@ -10,9 +10,9 @@ class EventsController < ApplicationController
 
     if @user
       if params[:appointments]
-        @events = @user.events
+        @events = @user.joined_events
       else
-        @events = @user.created_events
+        @events = @user.events
       end
     else
       @events = Event.all

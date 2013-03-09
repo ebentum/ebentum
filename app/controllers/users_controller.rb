@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
   def events
     @user = User.find(params[:id])
-    @events = @user.created_events
+    @events = @user.events
     respond_to do |format|
       if params[:no_layout]
         format.html { render 'events/_list' , :layout => false}
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 
   def appointments
     @user = User.find(params[:id])
-    @events = @user.events
+    @events = @user.joined_events
     respond_to do |format|
       if params[:no_layout]
         format.html { render 'events/_list' , :layout => false}

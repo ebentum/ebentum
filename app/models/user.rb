@@ -62,13 +62,6 @@ class User < ActiveRecord::Base
 
   has_many :appointments
 
-  # user_followeds and followers relationships
-  # has_many :followings, :class_name => 'Following', :foreign_key => 'user_id'
-  # has_many :followeds, :class_name => 'Following', :foreign_key => 'following_id'
-
-  # has_many :friends, :through => :followings, :source => 'following', :class_name => 'User'
-  # has_many :followers, :through => :followeds, :source => :user
-
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
@@ -77,8 +70,8 @@ class User < ActiveRecord::Base
   has_many :followed_users, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_many :created_events, :class_name => 'Event'
-  has_many :events, :through => :appointments
+  has_many :events
+  has_many :joined_events, :through => :appointments , :source => :event
 
   has_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
 
