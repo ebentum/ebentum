@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   validates :name, :place, :start_date, :start_time, :user_id, :lat, :lng, :presence => true
 
   has_many :appointments
-  belongs_to :user 
+  belongs_to :user  , :counter_cache => true
   has_many :users, :through => :appointments 
   
   has_many :activities

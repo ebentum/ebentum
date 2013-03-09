@@ -13,8 +13,8 @@ class Appointment < ActiveRecord::Base
   attr_accessible :event_id, :user_id
 
   validates :event_id, :user_id, :presence => true
-  
-  belongs_to :user 
+
+  belongs_to :user , :counter_cache => true
   belongs_to :event, :counter_cache => true
 
   after_create do |event|

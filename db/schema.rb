@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217181120) do
+ActiveRecord::Schema.define(:version => 20130303210257) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -56,12 +56,16 @@ ActiveRecord::Schema.define(:version => 20130217181120) do
     t.boolean  "autopublish"
   end
 
-  create_table "followings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "following_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "twtokens", :force => true do |t|
     t.string   "token"
@@ -102,6 +106,10 @@ ActiveRecord::Schema.define(:version => 20130217181120) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image_url"
+    t.integer  "appointments_count",     :default => 0
+    t.integer  "events_count",           :default => 0
+    t.integer  "followed_users_count",   :default => 0
+    t.integer  "followers_count",        :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -10,9 +10,9 @@ class EventsController < ApplicationController
 
     if @user
       if params[:appointments]
-        @events = @user.events
+        @events = @user.joined_events
       else
-        @events = @user.created_events
+        @events = @user.events
       end
     else
       @events = Event.all
@@ -41,14 +41,8 @@ class EventsController < ApplicationController
     #Activity.joins(:event, :user).where{users.id >> User.all}
     #@events = Activity.where{(action=='CREATE') | (action=='CREATE')}
 
-    if params[:no_layout]
-      render_layout = false
-    else
-      render_layout = true
-    end
-
     respond_to do |format|
-      format.html { render :layout => render_layout}# index.html.erb
+      format.html # index.html.erb
       format.json { render json: @events }
     end
   end

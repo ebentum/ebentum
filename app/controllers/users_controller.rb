@@ -5,55 +5,57 @@ class UsersController < ApplicationController
 
   def search_users
 
-    # @users = User.all
-
     if params[:follower_id]
+
       current_user = User.find( params[:follower_id])
+      @users = current_user.followed_users
+
+    elsif params[:followed_id]
+
+      current_user = User.find( params[:followed_id])
       @users = current_user.followers
-    elsif params[:following_id]
-      current_user = User.find( params[:following_id])
-      @users = current_user.friends
+
     else
+
       @users = User.all
+
     end
 
   end
 
   def index
 
-    if params[:no_layout]
-      render_layout = false
-    else
-      render_layout = true
-    end
-
     respond_to do |format|
-      format.html { render :layout => render_layout} # index.html.erb
+      format.html
       format.json { render json: users }
     end
   end
+
 
   def show
     id = params[:id]
 
     @user = User.find(id)
 
-    if @user != current_user
-      @am_i_following = current_user.followings.where(:following_id => @user.id).first
-      if not @am_i_following
-        @new_following = Following.new(:user_id => current_user.id, :following_id => @user.id )
-      end
-      @is_follower = @user.followings.where(:following_id => current_user.id).first rescue nil
-    else
-      @am_i_following = nil
-      @is_follower = nil
-    end
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: user }
     end
   end
+
+  def following
+    @user = User.find(params[:id])
+    @users = @user.followed_users
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'index', :layout => false}
+      else
+        format.html { render 'index'}
+      end
+      format.json { render json: @users }
+    end
+  end
+
 
   def edit
     @user = User.find(params[:id])
@@ -85,6 +87,45 @@ class UsersController < ApplicationController
         format.json  { render :json => @user.errors,
                       :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'index', :layout => false}
+      else
+        format.html { render 'index'}
+      end
+      format.json { render json: @users }
+    end
+  end
+
+  def events
+    @user = User.find(params[:id])
+    @events = @user.events
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'events/_list' , :layout => false}
+      else
+        format.html { render 'events/_list' }
+      end
+      format.json { render json: @events }
+    end
+  end
+
+  def appointments
+    @user = User.find(params[:id])
+    @events = @user.joined_events
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'events/_list' , :layout => false}
+      else
+        format.html { render 'events/_list'}
+      end
+      format.json { render json: @events }
     end
   end
 

@@ -26,6 +26,7 @@ en:
       joined_events: "Joined Events"
       following: "Following"
       followers: "Followers"
-    user_action_button:
+    follow:
       follow: "Follow"
+    unfollow:
       unfollow: "Stop following"

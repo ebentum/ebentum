@@ -1,8 +1,8 @@
-Paloma.users = {
+Paloma.devise = {
 
   /*
     Put here code which can be used by all callbacks
-      under the users folder.
+      under the devise folder.
     
     Example:
       
@@ -13,8 +13,8 @@ Paloma.users = {
       };
       
     To use the variable and function:
-      Paloma.users.variableName
-      Paloma.users.functionName(params);
+      Paloma.devise.variableName
+      Paloma.devise.functionName(params);
   */
   
 };

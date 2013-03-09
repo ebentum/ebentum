@@ -26,6 +26,7 @@ es:
       joined_events: "Eventos apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
-    user_action_button:
+    follow:
       follow: "Seguir"
+    unfollow:
       unfollow: "No seguir"
