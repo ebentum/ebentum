@@ -43,6 +43,39 @@ class UsersController < ApplicationController
     end
   end
 
+  # def edit
+  #   @user = User.find(params[:id])
+
+  #   # tiene token de acceso valido de facebook?
+  #   @fb_access_token = Fbtoken.get_access_token(current_user.id)
+  #   @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
+  #   # tiene token de acceso valido de twitter?
+  #   @tw_access_token = Twtoken.get_access_token(current_user.id)
+  #   @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
+
+  #   if @user != current_user
+  #     respond_to do |format|
+  #       format.html  { render :action => "show" }
+  #     end
+  #   end
+  # end
+
+  # def update
+  #   @user = User.find(params[:id])
+
+  #   respond_to do |format|
+  #     if @user.update_attributes(params[:user])
+  #       format.html  { redirect_to(@user,
+  #                     :notice => 'User was successfully updated.') }
+  #       format.json  { head :no_content }
+  #     else
+  #       format.html  { render :action => "edit" }
+  #       format.json  { render :json => @user.errors,
+  #                     :status => :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   def following
     @user = User.find(params[:id])
     @users = @user.followed_users
@@ -56,40 +89,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def edit
-    @user = User.find(params[:id])
-
-    # tiene token de acceso valido de facebook?
-    @fb_access_token = Fbtoken.get_access_token(current_user.id)
-    @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
-    # tiene token de acceso valido de twitter?
-    @tw_access_token = Twtoken.get_access_token(current_user.id)
-    @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
-
-    if @user != current_user
-      respond_to do |format|
-        format.html  { render :action => "show" }
-      end
-    end
-  end
-
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html  { redirect_to(@user,
-                      :notice => 'User was successfully updated.') }
-        format.json  { head :no_content }
-      else
-        format.html  { render :action => "edit" }
-        format.json  { render :json => @user.errors,
-                      :status => :unprocessable_entity }
-      end
-    end
-  end
-  
   def followers
     @user = User.find(params[:id])
     @users = @user.followers
