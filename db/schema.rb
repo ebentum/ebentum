@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224122721) do
+ActiveRecord::Schema.define(:version => 20130303210257) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "event_id"
@@ -80,8 +80,10 @@ ActiveRecord::Schema.define(:version => 20130224122721) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "image_url"
-    t.decimal  "friends_count"
-    t.decimal  "followers_count"
+    t.integer  "appointments_count",     :default => 0
+    t.integer  "events_count",           :default => 0
+    t.integer  "followed_users_count",   :default => 0
+    t.integer  "followers_count",        :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
