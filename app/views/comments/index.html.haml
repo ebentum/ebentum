@@ -1,3 +1,5 @@
-- @comments.each do |comment|
-  %p
-    = comment.body
+%ul.media-list{:id => 'event_comments'}
+  - @comments.each do |comment|
+    = render 'comment', :comment => comment
+= render 'new_comment'
+= render 'confirm_delete'

@@ -1,0 +1,23 @@
+- commentid = 'comment'+comment.id.to_s
+%li.media{:id => commentid}
+  %a.pull-left{:href => "#"}
+    %img.media-object{"data-src" => comment.user.image_url, :style => "width: 64px; height: 64px;"}/
+  .media-body
+    %small
+      %a{:href => user_path(comment.user)}
+        = comment.user.complete_name
+    %span{:id => 'body'+commentid}
+      = comment.body
+    %br
+    %span{:id => 'edit'+commentid, :class => 'hide'}
+      %textarea{:rows => "1", :id => 'edit_comment_textarea', :data => {:commentid => comment.id}}
+        = comment.body
+    %br
+    %small
+      = l(comment.updated_at, :format => :long)
+    - if current_user.id == comment.user_id
+      %span{:id => 'editdelete'+commentid}
+        %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
+          %i.icon-pencil
+        %a{:href => '#confirm_delete', :id => 'delete_comment', :data => {:commentid => comment.id, :toggle => 'modal', :target => '#confirm_delete'}}
+          %i.icon-trash
