@@ -97,4 +97,8 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
+  def image_path
+    self.image_url || self.image.url(:small)  
+  end
+
 end

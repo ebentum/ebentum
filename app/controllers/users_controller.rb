@@ -47,10 +47,10 @@ class UsersController < ApplicationController
   #   @user = User.find(params[:id])
 
   #   # tiene token de acceso valido de facebook?
-  #   @fb_access_token = Fbtoken.get_access_token(current_user.id)
+  #   @fb_access_token = Fbtoken.get_access_token(current_user)
   #   @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
   #   # tiene token de acceso valido de twitter?
-  #   @tw_access_token = Twtoken.get_access_token(current_user.id)
+  #   @tw_access_token = Twtoken.get_access_token(current_user)
   #   @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
 
   #   if @user != current_user

@@ -2,7 +2,7 @@
   .span12.well
     .span2
       .thumbnail
-        = image_tag(@user.image_url || @user.image.url(:small), :class => 'block')
+        = image_tag(@user.image_path, :class => 'block')
     .span8
       .row-fluid
         #user_action_button.span6

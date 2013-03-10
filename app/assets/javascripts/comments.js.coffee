@@ -11,14 +11,14 @@ window.comments = comments =
         $('#comments').html(data)
 
   comment_edit_mode_off: (id) ->
-    $('#editcomment'+id).addClass('hide')
-    $('#bodycomment'+id).removeClass('hide')
-    $('#editdeletecomment'+id).removeClass('hide')
+    $('#editcomment'+id).fadeOut('slow')
+    $('#bodycomment'+id).fadeIn('slow')
+    $('#editdeletecomment'+id).fadeIn('slow')
 
   comment_edit_mode_on: (id) ->  
-    $('#editcomment'+id).removeClass('hide')
-    $('#bodycomment'+id).addClass('hide')
-    $('#editdeletecomment'+id).addClass('hide')
+    $('#editcomment'+id).fadeIn('slow')
+    $('#bodycomment'+id).fadeOut('slow')
+    $('#editdeletecomment'+id).fadeOut('slow')
 
 $(document).on "click", "#delete_comment", (event) ->
   id = $(this).data('commentid')
@@ -32,6 +32,7 @@ $(document).on "click", "#confirm_delete_btn", (event) ->
     type: 'DELETE'
     dataType: 'json'
     success: (data, status, xhr) ->
+      $('#comment'+id).fadeOut('slow')
       $('#comment'+id).remove()
       # cerrar modal
       $('#confirm_delete').modal('hide')
@@ -52,7 +53,7 @@ $(document).on "click", "#edit_comment", (event) ->
   comments.comment_edit_mode_on(id)
 
   # ocultar el form de nuevo comentario
-  $('#new_comment').addClass('hide')
+  $('#new_comment').fadeOut('slow')
   
 
 $(document).on "keydown", "#new_comment_textarea", (event) ->
@@ -74,6 +75,8 @@ $(document).on "keydown", "#new_comment_textarea", (event) ->
             dataType: 'html'
             success: (data, status, xhr) ->
               $('#event_comments').append(data)
+              $('#event_comments li:last').hide()
+              $('#event_comments li:last').fadeIn('slow')
               $('#new_comment_textarea').val('')
 
 $(document).on "keydown", "#edit_comment_textarea", (event) ->
@@ -94,7 +97,7 @@ $(document).on "keydown", "#edit_comment_textarea", (event) ->
   else if event.keyCode == 27 # ESC
     commentid = $(this).data('commentid')
     comments.comment_edit_mode_off(commentid)
-    # mostrar el form de nuevo comentario
-    $('#new_comment').removeClass('hide')
+  # mostrar el form de nuevo comentario
+  $('#new_comment').fadeIn('slow')
 
     
