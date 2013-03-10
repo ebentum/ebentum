@@ -1,0 +1,11 @@
+%ul.media-list{:id => 'new_comment'}
+  %li.media
+    %a.pull-left{:href => "#"}
+      %img.media-object{"data-src" => current_user.image_url, :style => "width: 64px; height: 64px;"}/
+    .media-body
+      %small
+        %a{:href => user_path(current_user)}
+          = current_user.complete_name
+      %br
+      %span
+        %textarea{:rows => "1", :id => 'new_comment_textarea', :placeholder => t('.write_comment'), :data => {:eventid => @event.id}}

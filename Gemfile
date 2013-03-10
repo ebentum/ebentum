@@ -67,3 +67,6 @@ gem "twitter", "~> 4.5.0"
 gem "paloma", "~> 1.2.5"
 
 gem "squeel", "~> 1.0.15"
+
+# sistema de comentarios
+gem "acts_as_commentable_with_threading", "~> 1.1.2"

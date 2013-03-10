@@ -14,3 +14,6 @@ Paloma.callbacks["events/show"] = (params) ->
     $('#desappoint').data('appointmentid', params['user_appointment_id'])
   else
     $('#appoint').removeClass('hide')
+
+  # cargar comentarios
+  comments.load_event_comments(params['event_id'])
