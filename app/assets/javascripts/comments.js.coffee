@@ -54,6 +54,8 @@ $(document).on "click", "#edit_comment", (event) ->
 
   # ocultar el form de nuevo comentario
   $('#new_comment').fadeOut('slow')
+  # poner el cursos al final del texto del textarea que queremos editar
+  $('#edit_comment_textarea_'+id).caretToEnd()
   
 
 $(document).on "keydown", "#new_comment_textarea", (event) ->
@@ -79,25 +81,28 @@ $(document).on "keydown", "#new_comment_textarea", (event) ->
               $('#event_comments li:last').fadeIn('slow')
               $('#new_comment_textarea').val('')
 
-$(document).on "keydown", "#edit_comment_textarea", (event) ->
+$(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->
   if event.keyCode == 13
     event.preventDefault()
-    if $('#edit_comment_textarea').val().trim().length > 0
-      commentid = $(this).data('commentid')
+    commentid = $(this).data('commentid')
+    if $('#edit_comment_textarea_'+commentid).val().trim().length > 0
       $.ajax
         url: "/comments/"+commentid
         type: 'PUT'
         dataType: 'json'
         data:
           comment:
-            body: $('#editcomment'+commentid+' #edit_comment_textarea').val()
+            body: $('#editcomment'+commentid+' #edit_comment_textarea_'+commentid).val()
         success: (data, status, xhr) ->
           $('#bodycomment' + data.id).text(data.body)
+          $('#comment_date_'+ data.id).text(data.updated_at_formated)
           comments.comment_edit_mode_off(data.id)
+          # mostrar el form de nuevo comentario
+          $('#new_comment').fadeIn('slow')  
   else if event.keyCode == 27 # ESC
     commentid = $(this).data('commentid')
     comments.comment_edit_mode_off(commentid)
-  # mostrar el form de nuevo comentario
-  $('#new_comment').fadeIn('slow')
+    # mostrar el form de nuevo comentario
+    $('#new_comment').fadeIn('slow')
 
     

@@ -10,10 +10,10 @@
       = comment.body
     %br
     %span{:id => 'edit'+commentid, :class => 'hide'}
-      %textarea{:rows => "1", :id => 'edit_comment_textarea', :data => {:commentid => comment.id}}
+      %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :data => {:commentid => comment.id}}
         = comment.body
     %br
-    %small
+    %small{:id => 'comment_date_'+comment.id.to_s}
       = l(comment.updated_at, :format => :long)
     - if current_user && current_user.id == comment.user_id
       %span{:id => 'editdelete'+commentid}

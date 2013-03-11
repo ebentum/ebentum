@@ -35,3 +35,4 @@
 //= require_self
 
 //= require paloma
+//= require jquery.caret
