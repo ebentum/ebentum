@@ -11,14 +11,16 @@ window.comments = comments =
         $('#comments').html(data)
 
   comment_edit_mode_off: (id) ->
-    $('#editcomment'+id).fadeOut('slow')
-    $('#bodycomment'+id).fadeIn('slow')
-    $('#editdeletecomment'+id).fadeIn('slow')
+    $('#editcomment'+id).fadeOut 'fast', ->
+      $('#bodycomment'+id).fadeIn 'fast'
+      $('#editdeletecomment'+id).fadeIn 'fast'
+      $('#new_comment').fadeIn 'fast'
 
   comment_edit_mode_on: (id) ->  
-    $('#editcomment'+id).fadeIn('slow')
-    $('#bodycomment'+id).fadeOut('slow')
-    $('#editdeletecomment'+id).fadeOut('slow')
+    $('#editcomment'+id).fadeIn 'fast', ->
+      $('#bodycomment'+id).fadeOut 'fast'
+      $('#editdeletecomment'+id).fadeOut 'fast'
+      $('#new_comment').fadeOut 'fast'
 
 $(document).on "click", "#delete_comment", (event) ->
   id = $(this).data('commentid')
@@ -32,7 +34,7 @@ $(document).on "click", "#confirm_delete_btn", (event) ->
     type: 'DELETE'
     dataType: 'json'
     success: (data, status, xhr) ->
-      $('#comment'+id).fadeOut('slow')
+      $('#comment'+id).fadeOut('fast')
       $('#comment'+id).remove()
       # cerrar modal
       $('#confirm_delete').modal('hide')
@@ -51,9 +53,6 @@ $(document).on "click", "#edit_comment", (event) ->
   # el comentario a editar, lo ponemos editable
   $('#editcomment'+id).addClass('editing')
   comments.comment_edit_mode_on(id)
-
-  # ocultar el form de nuevo comentario
-  $('#new_comment').fadeOut('slow')
   # poner el cursos al final del texto del textarea que queremos editar
   $('#edit_comment_textarea_'+id).caretToEnd()
   
@@ -78,7 +77,7 @@ $(document).on "keydown", "#new_comment_textarea", (event) ->
             success: (data, status, xhr) ->
               $('#event_comments').append(data)
               $('#event_comments li:last').hide()
-              $('#event_comments li:last').fadeIn('slow')
+              $('#event_comments li:last').fadeIn('fast')
               $('#new_comment_textarea').val('')
 
 $(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->
@@ -97,12 +96,9 @@ $(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->
           $('#bodycomment' + data.id).text(data.body)
           $('#comment_date_'+ data.id).text(data.updated_at_formated)
           comments.comment_edit_mode_off(data.id)
-          # mostrar el form de nuevo comentario
-          $('#new_comment').fadeIn('slow')  
+           
   else if event.keyCode == 27 # ESC
     commentid = $(this).data('commentid')
     comments.comment_edit_mode_off(commentid)
-    # mostrar el form de nuevo comentario
-    $('#new_comment').fadeIn('slow')
 
     
