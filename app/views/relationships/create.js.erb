@@ -1,7 +1,0 @@
-// refresh follow / unfollow button
-$("#user_action_button").html("<%= escape_javascript(render('users/unfollow')) %>").fadeIn('slow')
-
-$("#followers_count_badge").html('<%= @user.followers.count %>')
-
-// refresh followers tab if needed
-Paloma.users.refreshTab("#userfollowers")

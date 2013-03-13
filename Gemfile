@@ -16,6 +16,8 @@ gem 'compass-rails', '~> 1.0.3'
 gem 'thin'
 gem 'haml', '~> 4.0.0'
 gem 'jquery-rails', '~> 2.2.0'
+gem 'aws-sdk', "~> 1.8.0"
+gem "paperclip", "~> 3.4.0"
 gem "font-awesome-sass-rails", "~> 3.0.0.1"
 
 gem "i18n-js", "~> 2.1.2"
