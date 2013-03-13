@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
   def search_users
 
-    if params[:follower_id]
+    # @users = User.all
 
+    if params[:follower_id]
       current_user = User.find( params[:follower_id])
       @users = current_user.followed_users
 
@@ -89,14 +90,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def followers
+  def edit
     @user = User.find(params[:id])
-    @users = @user.followers
-    respond_to do |format|
-      if params[:no_layout]
-        format.html { render 'index', :layout => false}
-      else
-        format.html { render 'index'}
+
+    # tiene token de acceso valido de facebook?
+    #@fb_access_token = Fbtoken.get_access_token(current_user.id)
+    @fb_access_token = current_user.fbtoken.token
+    @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
+    # tiene token de acceso valido de twitter?
+    #@tw_access_token = Twtoken.get_access_token(current_user.id)
+    @tw_access_token = current_user.twtoken.token
+    @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
+
+    if @user != current_user
+      respond_to do |format|
+        format.html  { render :action => "show" }
       end
       format.json { render json: @users }
     end

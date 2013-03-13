@@ -28,21 +28,14 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts_as_commentable_with_threading (1.1.2)
-      activerecord (>= 3.0)
-      activesupport (~> 3.0)
-      awesome_nested_set (>= 2.0)
     addressable (2.3.3)
-    annotate (2.5.0)
-      rake
     arel (3.0.2)
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
     aws-sdk (1.8.3.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
@@ -72,6 +65,7 @@ GEM
       warden (~> 1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    eventmachine (1.0.3-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.6)
@@ -104,9 +98,19 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    mongo_followable (0.3.2)
+    mongoid (3.1.2)
+      activemodel (~> 3.2)
+      moped (~> 1.4.2)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.22)
+    mongoid-paperclip (0.0.8)
+      paperclip (>= 2.3.6)
+    moped (1.4.3)
     multi_json (1.6.1)
     multipart-post (1.2.0)
     nokogiri (1.5.6)
+    nokogiri (1.5.6-x86-mingw32)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -128,6 +132,7 @@ GEM
     omniauth-twitter (0.0.14)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    origin (1.0.11)
     orm_adapter (0.4.0)
     paloma (1.2.5)
       jquery-rails
@@ -137,9 +142,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    pg (0.14.1)
-    polyamorous (0.5.0)
-      activerecord (~> 3.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -177,11 +179,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.7)
-    squeel (1.0.18)
-      activerecord (~> 3.0)
-      activesupport (~> 3.0)
-      polyamorous (~> 0.5.0)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -205,10 +202,9 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
-  acts_as_commentable_with_threading (~> 1.1.2)
-  annotate (~> 2.5.0)
   aws-sdk (~> 1.8.0)
   bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.2)
@@ -218,17 +214,16 @@ DEPENDENCIES
   haml (~> 4.0.0)
   i18n-js (~> 2.1.2)
   jquery-rails (~> 2.2.0)
-  koala
-  omniauth
-  omniauth-facebook
-  omniauth-twitter
+  koala (~> 1.6.0)
+  mongo_followable (~> 0.3.2)
+  mongoid (~> 3.1.2)
+  mongoid-paperclip (~> 0.0.8)
+  omniauth (~> 1.1.3)
+  omniauth-facebook (~> 1.4.1)
+  omniauth-twitter (~> 0.0.14)
   paloma (~> 1.2.5)
-  paperclip (~> 3.4.0)
-  pg
   rails (~> 3.2.12)
   sass-rails (~> 3.2.5)
-  sqlite3
-  squeel (~> 1.0.15)
   thin
   twitter (~> 4.5.0)
   uglifier (>= 1.3.0)

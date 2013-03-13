@@ -59,15 +59,19 @@ class EventsController < ApplicationController
   def show
 
     # tiene token de acceso valido de facebook?
-    @fb_access_token = Fbtoken.get_access_token(current_user)
+    #@fb_access_token = Fbtoken.get_access_token(current_user.id)
+    @fb_access_token = current_user.fbtoken ? current_user.fbtoken.token : nil
+    
     # tiene token de acceso valido de twitter?
-    @tw_access_token = Twtoken.get_access_token(current_user)
+    #@tw_access_token = Twtoken.get_access_token(current_user.id)
+    @tw_access_token = current_user.twtoken ? current_user.twtoken.token : nil
 
     @event = Event.find(params[:id])
-    if user_signed_in?
-      @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
-    end
-    @appointed = @event.appointments.count
+    # if user_signed_in?
+    #   @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
+    # end
+    # @appointed = @event.appointments.count
+    @event_users = @event.users.count
 
     js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
 
@@ -89,7 +93,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
 
-    @event.user_id = current_user.id
+    #@event = current_user.events{ Event.new(params[:event]) }
+
+    @event.creator = current_user
 
     respond_to do |format|
       if @event.save

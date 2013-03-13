@@ -18,9 +18,9 @@
             %h5
               = event.name
             %p
-              %a{:href => user_path(event.user)}
+              %a{:href => user_path(event.creator)}
                 %i.icon-user
-                = event.user.complete_name
+                = event.creator.complete_name
             %p
               %i.icon-calendar
               = l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short)
