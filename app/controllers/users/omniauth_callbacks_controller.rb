@@ -20,6 +20,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def failure
+    redirect_to params[:state]  
+  end
+
   def facebook_login
     session[:islogin] = true
     if params[:state]
