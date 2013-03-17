@@ -113,7 +113,7 @@ GEM
     mongoid-paperclip (0.0.8)
       paperclip (>= 2.3.6)
     moped (1.4.3)
-    multi_json (1.6.1)
+    multi_json (1.7.0)
     multipart-post (1.2.0)
     nokogiri (1.5.6)
     nokogiri (1.5.6-x86-mingw32)

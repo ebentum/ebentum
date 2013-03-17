@@ -2,7 +2,7 @@
   .span12.well
     .span2
       .thumbnail
-        = image_tag(@user.image_path, :class => 'block')
+        = image_tag(@user.image.url(:medium), :class => 'block')
     .span8
       .row-fluid
         #user_action_button.span6
@@ -11,7 +11,7 @@
               .btn.btn-primary
                 = t(:edit)
           - else
-            - if current_user.following?(@user)
+            - if current_user.follower_of?(@user)
               = render 'unfollow'
             - else
               = render 'follow'
@@ -19,7 +19,7 @@
         .span12
           %h3
             = @user.complete_name
-            - if @user.following?(current_user)
+            - if @user.follower_of?(current_user)
               .label.label-info
                 = t('.isfollower')
           %dl.dl-horizontal-left
@@ -48,17 +48,17 @@
             - else
               = t('.user_events')
             .badge.badge-info
-              = @user.events_count
+              = @user.created_events.count
         %li
           %a{:href => "#userappointments", "data-toggle" => "pill"}
             = t('.joined_events')
             .badge.badge-info
-              = @user.appointments_count
+              = @user.events.count
         %li
           %a{:href => "#userfollowing", "data-toggle" => "pill"}
             = t('.following')
             .badge.badge-info
-              = @user.followed_users_count
+              = @user.followees_count
         %li
           %a{:href => "#userfollowers", "data-toggle" => "pill"}
             = t('.followers')
@@ -66,8 +66,8 @@
               = @user.followers_count
       .tab-content
         #error.alert.alert-error.hidden
-        .tab-pane{:id => "userevents", :data => {:url => events_user_path(@user.id) } }
-        .tab-pane{:id => "userappointments", :data => {:url => appointments_user_path(@user.id) } }
+        .tab-pane{:id => "userevents", :data => {:url => created_events_user_path(@user.id) } }
+        .tab-pane{:id => "userappointments", :data => {:url => events_user_path(@user.id) } }
         .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
         .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
 

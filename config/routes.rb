@@ -10,9 +10,8 @@ Ebentum::Application.routes.draw do
   match 'events/popular' => 'events#popular'
 
   resources :events
-  resources :appointments
 
-  match '/users/social_fb_off' => 'users#social_fb_off' 
+  match '/users/social_fb_off' => 'users#social_fb_off'
   resources :fbtokens
   resources :twtokens
   match '/share/share_event_appoint' => 'share#share_event_appoint'
@@ -22,10 +21,10 @@ Ebentum::Application.routes.draw do
   match '/users/save_token' => 'users#save_token'
   resources :users do
     member do
-      get :following, :followers, :events, :appointments
+      get :following, :followers, :created_events, :events
+      put :follow, :unfollow
     end
   end
-  resources :relationships
 
 
   # The priority is based upon order of creation:

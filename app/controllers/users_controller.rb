@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = @user.followed_users
+    @users = @user.all_followees
     respond_to do |format|
       if params[:no_layout]
         format.html { render 'index', :layout => false}
@@ -57,9 +57,43 @@ class UsersController < ApplicationController
     end
   end
 
-  def events
+  def followers
     @user = User.find(params[:id])
-    @events = @user.events
+    @users = @user.all_followers
+    respond_to do |format|
+      if params[:no_layout]
+        format.html { render 'index', :layout => false}
+      else
+        format.html { render 'index'}
+      end
+      format.json { render json: @users }
+    end
+  end
+
+  def follow
+    @user = User.find(params[:id])
+    current_user.follow(@user)
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.unfollow(@user)
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+
+  end
+
+  def created_events
+    @user = User.find(params[:id])
+    @events = @user.created_events
     respond_to do |format|
       if params[:no_layout]
         format.html { render 'events/_list' , :layout => false}
@@ -70,9 +104,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def appointments
+  def events
     @user = User.find(params[:id])
-    @events = @user.joined_events
+    @events = @user.events
     respond_to do |format|
       if params[:no_layout]
         format.html { render 'events/_list' , :layout => false}

@@ -17,7 +17,7 @@
               = user.location
             .extra-info
               %i.icon-thumbs-up
-              = "#{user.events_count} Eventos"
+              = "#{user.created_events.count} Eventos"
               %i.icon-thumbs-up
-              = "#{user.appointments_count} Apuntados"
+              = "#{user.events.count} Apuntados"
 
