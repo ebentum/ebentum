@@ -19,6 +19,7 @@ Ebentum::Application.routes.draw do
   resources :share
   resources :comments
 
+  match '/users/save_token' => 'users#save_token'
   resources :users do
     member do
       get :following, :followers, :events, :appointments

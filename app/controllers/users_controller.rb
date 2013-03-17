@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user! # se van a poder ver perfiles de usuario sin estar dado de alta?, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:save_token] # se van a poder ver perfiles de usuario sin estar dado de alta?
   before_filter :search_users, :only => [:index]
 
   def search_users
@@ -44,39 +44,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-
-  #   # tiene token de acceso valido de facebook?
-  #   @fb_access_token = Fbtoken.get_access_token(current_user)
-  #   @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
-  #   # tiene token de acceso valido de twitter?
-  #   @tw_access_token = Twtoken.get_access_token(current_user)
-  #   @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
-
-  #   if @user != current_user
-  #     respond_to do |format|
-  #       format.html  { render :action => "show" }
-  #     end
-  #   end
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-
-  #   respond_to do |format|
-  #     if @user.update_attributes(params[:user])
-  #       format.html  { redirect_to(@user,
-  #                     :notice => 'User was successfully updated.') }
-  #       format.json  { head :no_content }
-  #     else
-  #       format.html  { render :action => "edit" }
-  #       format.json  { render :json => @user.errors,
-  #                     :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   def following
     @user = User.find(params[:id])
     @users = @user.followed_users
@@ -85,26 +52,6 @@ class UsersController < ApplicationController
         format.html { render 'index', :layout => false}
       else
         format.html { render 'index'}
-      end
-      format.json { render json: @users }
-    end
-  end
-
-  def edit
-    @user = User.find(params[:id])
-
-    # tiene token de acceso valido de facebook?
-    #@fb_access_token = Fbtoken.get_access_token(current_user.id)
-    @fb_access_token = current_user.fbtoken.token
-    @fb_autopublish  = @fb_access_token.autopublish if @fb_access_token
-    # tiene token de acceso valido de twitter?
-    #@tw_access_token = Twtoken.get_access_token(current_user.id)
-    @tw_access_token = current_user.twtoken.token
-    @tw_autopublish  = @tw_access_token.autopublish if @tw_access_token
-
-    if @user != current_user
-      respond_to do |format|
-        format.html  { render :action => "show" }
       end
       format.json { render json: @users }
     end
@@ -134,6 +81,10 @@ class UsersController < ApplicationController
       end
       format.json { render json: @events }
     end
+  end
+
+  def save_token
+    render :json => User.find(params[:user_id]).save_token(params[:provider], params[:token])
   end
 
 end
