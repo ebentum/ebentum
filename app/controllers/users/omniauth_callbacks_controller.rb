@@ -50,7 +50,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if session[:islogin]
       session.delete(:islogin)
       if provider == 'facebook'
-        user = User.where('fbtoken.token' => omniauth_token).first
+        user = User.where('fbtoken.token' => omniauth_token, 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
       else
         user = User.where('twtoken.token' => omniauth_token).first
       end
