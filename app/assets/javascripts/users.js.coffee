@@ -193,40 +193,42 @@ $(document).on "click", "#sign_in_button", (event) ->
           $('#sign_in_button').button('reset')
         ), 2000
 
+$(document).on 'switch-change', '#facebook_post, #twitter_post', ->
+  provider = $('input', $(this)).data('provider')
+  token_id = $('input', $(this)).data('token')
+  $.ajax
+    url: "/tokens/"+token_id
+    type: 'PUT'
+    dataType: 'json'
+    data:
+      provider: provider
+
 $("#facebook").on "switch-change", (e, data) ->
   if data.value
-    window.location = '/users/facebook_login?state=/users/'+$('#user_id').val()+'/edit'
+    window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()
   else
     alert 'Aviso tipo Pinterest'
     $.ajax
-      url: "/fbtokens/"+$('input', $(this)).data('token')
+      url: "/tokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
+      data:
+        provider: 'facebook'
       dataType: 'json'
       success: (data, status, xhr) ->
         $('#facebook_post').bootstrapSwitch('toggleActivation')
         $('#facebook_post').bootstrapSwitch('setState', false)
 
-$("#facebook_post").on "switch-change", (e, data) ->
-  $.ajax
-    url: "/fbtokens/"+$('input', $(this)).data('token')
-    type: 'PUT'
-    dataType: 'json'
-
 $("#twitter").on "switch-change", (e, data) ->
   if data.value
-    window.location = '/users/twitter_login?state=/users/'+$('#user_id').val()+'/edit'
+    window.location = '/users/twitter_login?state=/users/edit.'+$('#user_id').val()
   else
     alert 'Aviso tipo Pinterest'
     $.ajax
-      url: "/twtokens/"+$('input', $(this)).data('token')
+      url: "/tokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
+      data:
+        provider: 'twitter'
       dataType: 'json'
       success: (data, status, xhr) ->
         $('#twitter_post').bootstrapSwitch('toggleActivation')
         $('#twitter_post').bootstrapSwitch('setState', false)
-
-$("#twitter_post").on "switch-change", (e, data) ->
-  $.ajax
-    url: "/twtokens/"+$('input', $(this)).data('token')
-    type: 'PUT'
-    dataType: 'json'

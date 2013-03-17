@@ -140,8 +140,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def save_token
-    render :json => User.find(params[:user_id]).save_token(params[:provider], params[:token])
-  end
-
 end

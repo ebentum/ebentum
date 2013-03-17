@@ -83,15 +83,4 @@ class User
     self.user_confirmation_required == 'true'
   end
 
-  def save_token(provider, token_hash)
-    if provider == 'facebook'
-      token        = Fbtoken.new(token_hash)
-      self.fbtoken = token  
-    elsif provider == 'twitter'
-      token        = Twtoken.new(token_hash)  
-      self.twtoken = token
-    end
-    self.save
-  end
-
 end

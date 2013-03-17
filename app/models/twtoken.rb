@@ -3,21 +3,11 @@ class Twtoken
   include Mongoid::Timestamps
 
   field :token, type: String
-  field :expires_at, type: Integer
+  field :secret, type: String
   field :autopublish, type: Boolean, default: false
 
-  attr_accessible :token, :secret, :user_id
+  attr_accessible :token, :secret, :autopublish
 
   embedded_in :user
-  
-  # devuelve el token si lo tiene nil si no
-  # def self.get_access_token(user_id)
-  #   token = self.find_by_user_id(user_id)
-  #   if token
-  #     token
-  #   else
-  #     nil
-  #   end  
-  # end
   
 end

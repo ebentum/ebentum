@@ -10,15 +10,11 @@ Ebentum::Application.routes.draw do
   match 'events/popular' => 'events#popular'
 
   resources :events
-
-  match '/users/social_fb_off' => 'users#social_fb_off'
-  resources :fbtokens
-  resources :twtokens
+  resources :tokens
   match '/share/share_event_appoint' => 'share#share_event_appoint'
   resources :share
   resources :comments
 
-  match '/users/save_token' => 'users#save_token'
   resources :users do
     member do
       get :following, :followers, :created_events, :events

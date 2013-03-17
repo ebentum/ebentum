@@ -6,18 +6,8 @@ class Fbtoken
   field :expires_at, type: Integer
   field :autopublish, type: Boolean, default: false
 
-  attr_accessible :token, :expires_at
+  attr_accessible :token, :expires_at, :autopublish
 
   embedded_in :user
-  
-  # devuelve el token si lo tiene nil si no
-  # def self.get_access_token(user_id)
-  #   token = self.find_by_user_id(user_id)
-  #   if token
-  #     token
-  #   else
-  #     nil
-  #   end  
-  # end
 
 end

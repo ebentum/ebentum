@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     if params[:state] && current_user
-      save_fbtoken
+      save_token('facebook')
       redirect_to params[:state]
     else
       sign_in_or_register('facebook')
@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     if params[:state] && current_user
-      save_twtoken
+      save_token('twitter')
       redirect_to params[:state]
     else
       sign_in_or_register('twitter')
@@ -50,12 +50,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if session[:islogin]
       session.delete(:islogin)
       if provider == 'facebook'
-        token = Fbtoken.find_by_token(omniauth_token)
+        user = User.where('fbtoken.token' => omniauth_token).first
       else
-        token = Twtoken.find_by_token(omniauth_token)
+        user = User.where('twtoken.token' => omniauth_token).first
       end
-      if token
-        sign_in(:user, User.find_by_id(token.user_id))
+      if user
+        sign_in(:user, user)
         redirect_to root_url
       else
         redirect_to new_user_registration_url
@@ -65,22 +65,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end 
   end
 
-  def save_fbtoken
-    token             = Fbtoken.new
-    token.token       = omniauth_token
-    token.expires_at  = omniauth_token_expires_at
-    token.user_id     = current_user.id
-    token.autopublish = false
-    token.save
-  end
-
-  def save_twtoken
-    token             = Twtoken.new
-    token.token       = omniauth_token
-    token.secret      = omniauth_secret
-    token.user_id     = current_user.id
-    token.autopublish = false
-    token.save
+  def save_token(provider)
+    if provider == 'facebook'
+      token                = Fbtoken.new 
+      token.token          = omniauth_token
+      token.expires_at     = omniauth_token_expires_at
+      current_user.fbtoken = token
+    elsif provider == 'twitter'
+      token                = Twtoken.new  
+      token.token          = omniauth_token
+      token.secret         = omniauth_secret
+      current_user.twtoken = token
+    end
+    current_user.save
   end
 
 end
