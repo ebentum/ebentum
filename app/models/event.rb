@@ -25,10 +25,16 @@ class Event
   belongs_to :creator, class_name: "User", inverse_of: :created
   #embeds_one :creator, class_name: "User", inverse_of: :created
 
+  embeds_one :main_picture, class_name: "Picture", as: :pictureable
+
   has_and_belongs_to_many :users
 
   has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
   #acts_as_commentable
+
+  after_create do |event|
+    self.creator.publish_activity(:new_event, :object => self)
+  end
 
 end
