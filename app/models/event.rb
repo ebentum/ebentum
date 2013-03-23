@@ -23,11 +23,10 @@ class Event
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 
   belongs_to :creator, class_name: "User", inverse_of: :created
-  #embeds_one :creator, class_name: "User", inverse_of: :created
 
   embeds_one :main_picture, class_name: "Picture", as: :pictureable
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, inverse_of: :events
 
   has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 

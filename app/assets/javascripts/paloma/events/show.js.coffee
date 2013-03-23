@@ -9,11 +9,10 @@ Paloma.callbacks["events/show"] = (params) ->
     position: new google.maps.LatLng(params["lat"], params["lng"])
   marker = new google.maps.Marker(marker_options)
 
-  if params['user_appointment_id'] > 0
+  if params['joined']
     $('#desappoint').removeClass('hide')
-    $('#desappoint').data('appointmentid', params['user_appointment_id'])
   else
     $('#appoint').removeClass('hide')
 
   # cargar comentarios
-  comments.load_event_comments(params['event_id'])
+  #comments.load_event_comments(params['event_id'])

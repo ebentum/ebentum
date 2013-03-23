@@ -9,5 +9,5 @@
   .modal-footer
     %a.btn{:href => "#", "data-dismiss" => "modal"}
       = t('.close')
-    %a.btn.btn-primary{:href => "#", :id => 'confirm_desappoint_btn', :data => {:appointmentid => 0}}
+    %a.btn.btn-primary{:href => "#", :id => 'confirm_desappoint_btn', :data => {:eventid => @event.id}}
       = t('.confirm')

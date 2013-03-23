@@ -94,10 +94,8 @@ $('#events_new').click ->
 $(document).on "click", "#confirm_appoint_btn", (event) ->
   button = $(this)
   $.ajax
-    url: "/appointments"
+    url: "/events/add_user/"+button.data('eventid')
     type: 'POST'
-    data:
-      event_id: button.data('eventid')
     dataType: 'json'
     beforeSend: ->
       # cerrar modal
@@ -125,7 +123,7 @@ $(document).on "click", "#confirm_appoint_btn", (event) ->
 $(document).on "click", "#confirm_desappoint_btn", (event) ->
   button = $(this)
   $.ajax
-    url: "/appointments/"+button.data('appointmentid')
+    url: "/events/remove_user/"+button.data('eventid')
     type: 'DELETE'
     dataType: 'json'
     beforeSend: ->

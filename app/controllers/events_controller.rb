@@ -47,13 +47,18 @@ class EventsController < ApplicationController
     @tw_access_token = current_user.twtoken ? current_user.twtoken.token : nil
 
     @event = Event.find(params[:id])
-    # if user_signed_in?
-    #   @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
-    # end
-    # @appointed = @event.appointments.count
-    @event_users = @event.users.count
+    if user_signed_in?
+      @joined = @event.users.find(current_user) != nil
+      # en caso de => raise_not_found_error: true
+      # begin
+      #   @joined = @event.users.find(current_user) != nil
+      # rescue Mongoid::Errors::DocumentNotFound
+      #   @joined = false
+      # end
+    end
+    @event_users = @event.users.size
 
-    js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
+    js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -117,6 +122,21 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  def add_user
+    event_id = params[:eventid]
+    event    = Event.find(event_id)
+    event.users.push(current_user)
+    render :json => event.save
+  end
+
+  def remove_user
+    event_id = params[:eventid]
+    event    = Event.find(event_id)
+    user     = current_user
+    event.users.delete(user)
+    render :json => event.save
   end
 
 end

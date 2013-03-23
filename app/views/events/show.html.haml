@@ -22,14 +22,15 @@
         %p
           %i.icon-user
           = t('.organized_by')
-          %a{:href => user_path(@event.user)}
-            = @event.user.complete_name
+          - user = User.find(@event.creator)
+          %a{:href => user_path(user)}
+            = user.complete_name
         %p#appointed
           %i.icon-thumbs-up
           = t('.joined')
           %span.badge.badge-info
-            = @appointed
-          = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
+            = @event_users
+          / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
         %p
           .fb-like{"data-send" => "false", "data-href" => "http://www.ebentum.com", "data-show-faces" => "false", "data-width" => "450"}
           / .fb-like{"data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}

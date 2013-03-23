@@ -71,9 +71,8 @@ class User
   attr_accessible :user_confirmation_required
 
   has_many :created_events, class_name: "Event", inverse_of: :creator
-  #embedded_in :created_events, class_name: "Event", inverse_of: :creator
 
-  has_and_belongs_to_many :events
+  has_and_belongs_to_many :events, inverse_of: :users
   embeds_one :fbtoken
   embeds_one :twtoken
 

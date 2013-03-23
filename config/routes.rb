@@ -7,8 +7,9 @@ Ebentum::Application.routes.draw do
   end
 
 
-  match 'events/popular' => 'events#popular'
-
+  match 'events/popular'              => 'events#popular'
+  match 'events/add_user/:eventid'    => 'events#add_user'
+  match 'events/remove_user/:eventid' => 'events#remove_user'
   resources :events
   resources :tokens
   match '/share/share_event_appoint' => 'share#share_event_appoint'
