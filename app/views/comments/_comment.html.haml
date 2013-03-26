@@ -1,11 +1,11 @@
 - commentid = 'comment'+comment.id.to_s
 %li.media{:id => commentid}
   %a.pull-left{:href => "#"}
-    %img.media-object{"data-src" => comment.user.image_path, :src => comment.user.image_path, :style => "width: 64px; height: 64px;"}/
+    %img.media-object{"data-src" => comment.creator.image_path, :src => comment.creator.image_path, :style => "width: 64px; height: 64px;"}/
   .media-body
     %small
-      %a{:href => user_path(comment.user)}
-        = comment.user.complete_name
+      %a{:href => user_path(comment.creator)}
+        = comment.creator.complete_name
     %span{:id => 'body'+commentid}
       = comment.body
     %br
@@ -15,7 +15,7 @@
     %br
     %small{:id => 'comment_date_'+comment.id.to_s}
       = l(comment.updated_at, :format => :long)
-    - if current_user && current_user.id == comment.user_id
+    - if current_user && current_user.id == comment.creator.id
       %span{:id => 'editdelete'+commentid}
         %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
           %i.icon-pencil

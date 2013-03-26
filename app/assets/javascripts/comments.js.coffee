@@ -69,9 +69,9 @@ $(document).on "keydown", "#new_comment_textarea", (event) ->
           comment_text: $('#new_comment_textarea').val()
           event_id: $('#new_comment_textarea').data('eventid')
         success: (data, status, xhr) ->
-          comment_id = data.id
+          comment_id = data._id
           $.ajax
-            url: "/comments/"+data.id
+            url: "/comments/"+comment_id
             type: 'GET'
             dataType: 'html'
             success: (data, status, xhr) ->
@@ -93,9 +93,9 @@ $(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->
           comment:
             body: $('#editcomment'+commentid+' #edit_comment_textarea_'+commentid).val()
         success: (data, status, xhr) ->
-          $('#bodycomment' + data.id).text(data.body)
-          $('#comment_date_'+ data.id).text(data.updated_at_formated)
-          comments.comment_edit_mode_off(data.id)
+          $('#bodycomment' + data._id).text(data.body)
+          $('#comment_date_'+ data._id).text(data.updated_at_formated)
+          comments.comment_edit_mode_off(data._id)
            
   else if event.keyCode == 27 # ESC
     commentid = $(this).data('commentid')

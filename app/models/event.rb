@@ -27,10 +27,9 @@ class Event
   embeds_one :main_picture, class_name: "Picture", as: :pictureable
 
   has_and_belongs_to_many :users, inverse_of: :events
+  has_many :comments, inverse_of: :event
 
   has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
-
-  #acts_as_commentable
 
   after_create do |event|
     self.creator.publish_activity(:new_event, :object => self)

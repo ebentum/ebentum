@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def index
     @event    = Event.find(params[:event_id])
-    @comments = @event.comment_threads
+    @comments = @event.comments
     
     respond_to do |format|
       format.html { render :layout => false }
@@ -19,9 +19,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    event   = Event.find(params[:event_id])
-    comment = Comment.build_from(event, current_user.id, params[:comment_text])
-    if comment.save
+    event           = Event.find(params[:event_id])
+    comment         = Comment.new
+    comment.body    = params[:comment_text]
+    comment.creator = current_user.id
+    event.comments.push(comment)
+    if event.save
       render :json => comment
     end
   end
@@ -29,7 +32,7 @@ class CommentsController < ApplicationController
   def update
     comment = Comment.find(params[:id])
     if comment.body != params[:comment][:body]
-      if comment.user_id == current_user.id
+      if comment.creator.id == current_user.id
         comment.updated_at = Time.now
         if comment.update_attributes(params[:comment])
           comment['updated_at_formated'] = l(comment.updated_at, :format => :long)
@@ -47,7 +50,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    if comment.user_id == current_user.id
+    if comment.creator.id == current_user.id
       comment.destroy
       render :json => true
     else

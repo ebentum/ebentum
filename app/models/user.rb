@@ -76,7 +76,12 @@ class User
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  has_mongoid_attached_file  :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
+  has_mongoid_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
+
+  # ¿?
+  def image_path
+    self.image_url || self.image.url(:small)  
+  end
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?

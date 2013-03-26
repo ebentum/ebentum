@@ -48,7 +48,5 @@ gem 'mongo_followable', "~> 0.3.2"
 # gestión de adjuntos
 gem "mongoid-paperclip", "~> 0.0.8", :require => "mongoid_paperclip"
 
-gem "acts_as_commentable_with_threading", "~> 1.1.2"
-
 # stream de actividad
 gem "streama", "~> 0.3.6", :git => "https://github.com/andermujika/streama.git"
