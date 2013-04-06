@@ -27,17 +27,17 @@
               %b
                 = t(".location")
             %dd
-              = @user.location
+              = @user.location.blank? ? raw('&nbsp;') : @user.location
             %dt
               %b
                 = t('.web')
             %dd
-              = @user.web
+              = @user.web.blank? ? raw('&nbsp;') : @user.web
             %dt
               %b
                 = t('.bio')
             %dd
-              = @user.bio
+              = @user.bio.blank? ? raw('&nbsp;') : @user.bio
   .row-fluid
     .span12
       %ul.nav.nav-pills{:id => "userpagetabs"}
