@@ -76,11 +76,16 @@ class User
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  has_mongoid_attached_file :image, :styles => {:thumb => "100x100#",  :small => "300x300>", :medium => "600x600>" }
+  has_mongoid_attached_file :image, :styles => {:thumb => "100x100",  :small => "300x300>", :medium => "600x600>" }
 
-  # ¿?
-  def image_path
-    self.image_url || self.image.url(:small)  
+  def image_path(style = nil)
+    _style = style || :medium
+    uploaded_image_path = self.image.url(_style)
+    if uploaded_image_path.include? "missing" and self.image_url
+      self.image_url  
+    else
+      uploaded_image_path 
+    end
   end
 
   # override de la función de devise para saber cuando debemos confirmar el email

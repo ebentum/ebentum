@@ -2,7 +2,7 @@
   %ul.media-list{:id => 'new_comment'}
     %li.media
       %a.pull-left{:href => "#"}
-        %img.media-object{"data-src" => current_user.image_path, :src => current_user.image_path, :style => "width: 64px; height: 64px;"}/
+        = image_tag(current_user.image_path(:thumb), :class => 'block media-object thumb_image')
       .media-body
         %small
           %a{:href => user_path(current_user)}

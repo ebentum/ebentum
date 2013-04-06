@@ -11,4 +11,3 @@ window.tokens = tokens =
       type: 'POST'
       data: _data
       dataType: 'json'
-    
