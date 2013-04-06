@@ -3,45 +3,46 @@
 
   .row-fluid
     .span12.well
-      .row-fluid
-        .span2
-          #usersImagePreview.thumbnail
-            = image_tag(@user.image.url(:small), :class => 'block')
-          %span.btn.btn-success.fileinput-button
+      .span2
+        #usersImagePreview.thumbnail
+          = image_tag(@user.image_path(:medium), :class => 'block')
+          %span.btn.btn-success.fileinput-button.center
             %i.icon-plus.icon-white
             %span
               = t('.add_image')
             = f.file_field :image
-        .span8
-          .row-fluid
-            .span1
-              = " "
-          .row-fluid
-            .span12
-              %p
+      .span8
+        .row-fluid
+          #user_action_button.span6
+            %button{:type => "submit", :class => "btn btn-primary"}
+              = t(:save)
+            %a{:href => user_path(@user), :class => "btn"}
+              = t(:back)
+        .row-fluid
+          .span12
+            %p
+
+            %dl.dl-horizontal-left
+              %dt
                 %b
-                  = t(".complete_name")
+                  = t(".name")
+              %dd
                 = f.text_field :complete_name, :class => "input-block-level"
-              %p
+              %dt
                 %b
                   = t(".location")
+              %dd
                 = f.text_field :location, :class => "input-block-level"
-              %p
+              %dt
                 %b
                   = t('.web')
+              %dd
                 = f.text_field :web, :class => "input-block-level"
-              %p
+              %dt
                 %b
                   = t('.bio')
+              %dd
                 = f.text_area :bio, :class => "input-block-level", :rows => "5"
-      .row-fluid
-        .form-actions
-          %button{:type => "submit", :class => "btn btn-primary"}
-            = t(:save)
-          %a{:href => user_path(@user), :class => "btn"}
-            = t(:back)
-  .row-fluid
-    .span12.well
-      .row-fluid
-        .span12
+        .row-fluid
           = render 'social_config'
+

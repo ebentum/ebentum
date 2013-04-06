@@ -2,7 +2,17 @@
 %html
   = render 'layouts/head'
   %body
+    = render 'layouts/navbar'
+    - if flash[:notice]
+      .alert.alert-success
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        %h4
+          = flash[:notice]
+        %span
+          = flash[:notice]
     .container-fluid#devise-container
       .row-fluid
         = yield
+      %hr
+        = render 'layouts/footer'
     = javascript_include_tag "application_post"
