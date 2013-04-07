@@ -58,7 +58,7 @@ class User
   field :uid,       :type => String
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :image, :image_url
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :image, :image_url, :image_delete
 
   validates :complete_name, :presence => true
 
@@ -78,14 +78,29 @@ class User
 
   has_mongoid_attached_file :image, :styles => {:thumb => "100x100",  :small => "300x300>", :medium => "600x600>" }
 
+  before_save :destroy_image?
+
   def image_path(style = nil)
     _style = style || :medium
     uploaded_image_path = self.image.url(_style)
     if uploaded_image_path.include? "missing" and self.image_url
-      self.image_url  
+      self.image_url
     else
-      uploaded_image_path 
+      uploaded_image_path
     end
+  end
+
+  # tratamiento de eliminacion de imagen de usuario y volver a la por defecto
+  def image_delete
+    @image_delete ||= "0"
+  end
+
+  def image_delete=(value)
+    @image_delete = value
+  end
+
+  def destroy_image?
+    self.image.clear if @image_delete == "1"
   end
 
   # override de la función de devise para saber cuando debemos confirmar el email

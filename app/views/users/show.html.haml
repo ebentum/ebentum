@@ -1,11 +1,11 @@
 .row-fluid
   .span12.well
-    .span2
+    .span4
       .thumbnail
         = image_tag(@user.image_path(:medium), :class => 'block')
     .span8
       .row-fluid
-        #user_action_button.span6
+        #user_action_button.span12
           - if @user == current_user
             %a{:href => edit_user_registration_path(@user)}
               .btn.btn-primary

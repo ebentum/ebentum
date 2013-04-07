@@ -3,14 +3,22 @@
 
   .row-fluid
     .span12.well
-      .span2
-        #usersImagePreview.thumbnail
+      .span4
+        #userImage.thumbnail
           = image_tag(@user.image_path(:medium), :class => 'block')
-        %span.btn.btn-success.fileinput-button.center
+        #socialUserImage.thumbnail.hidden
+          = image_tag(@user.image_url, :class => 'block')
+        %button.btn.btn-block.btn-success.fileinput-button
           %i.icon-plus.icon-white
           %span
             = t('.add_image')
           = f.file_field :image
+        - if @user.image?
+          %button#imageDeleteButton.btn.btn-block.btn-danger
+            %i.icon-remove.icon-white
+            %span
+              = t('.delete_image')
+              = f.hidden_field :image_delete, :value => "0"
       .span8
         .row-fluid
           #user_action_button.span6
@@ -46,3 +54,4 @@
         .row-fluid
           = render 'social_config'
 
+= render 'confirm_image_delete'
