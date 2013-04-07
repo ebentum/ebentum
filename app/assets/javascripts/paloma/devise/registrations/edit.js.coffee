@@ -1,5 +1,8 @@
 Paloma.callbacks["devise/registrations/edit"] = (params) ->
 
+  $(document).on "click", "#user_action_button button", (event) ->
+    $(this).button('loading')
+
   $('#user_image').change ->
     $('#userImage').empty()
     Paloma.ImageProcessing.loadImageFile("user_image","userImage")

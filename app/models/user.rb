@@ -83,8 +83,9 @@ class User
   def image_path(style = nil)
     _style = style || :medium
     uploaded_image_path = self.image.url(_style)
-    if uploaded_image_path.include? "missing" and self.image_url
-      self.image_url
+    _image_url = self.image_url rescue nil
+    if uploaded_image_path.include? "missing" and _image_url
+      _image_url
     else
       uploaded_image_path
     end
