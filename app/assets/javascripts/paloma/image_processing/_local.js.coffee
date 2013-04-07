@@ -9,8 +9,10 @@ Paloma.ImageProcessing =
         unless oPreviewImg
           newPreview = document.getElementById(previewDomId)
           oPreviewImg = new Image()
-          oPreviewImg.style.width = (newPreview.offsetWidth).toString() + "px"
-          oPreviewImg.style.height = (newPreview.offsetHeight).toString() + "px"
+          # en principio no hacen falta, activar el código da problemas
+          # oPreviewImg.style.width = (newPreview.offsetWidth).toString() + "px"
+          # oPreviewImg.style.height = (newPreview.offsetHeight).toString() + "px"
+
           newPreview.appendChild oPreviewImg
         oPreviewImg.src = oFREvent.target.result
 
