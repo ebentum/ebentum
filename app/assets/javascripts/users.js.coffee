@@ -203,6 +203,28 @@ $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
     data:
       provider: provider
 
+$(document).on 'click', '#import_fb, #import_tw', ->
+  provider = $(this).data('provider')
+  $('#confirm_import_social_btn').data('provider', provider)
+  $('#confirm_import_social').modal()
+
+$(document).on 'click', '#confirm_import_social_btn', ->
+  provider = $(this).data('provider')
+  $.ajax
+    url: "/social/get_social_data"
+    type: 'GET'
+    dataType: 'json'
+    data:
+      provider: provider
+    success: (data, status, xhr) ->
+      $('#confirm_import_social').modal('hide')
+      $('#user_complete_name').val(data.complete_name)
+      $('#user_location').val(data.location)
+      $('#user_web').val(data.web)
+      $('#user_bio').val(data.bio)
+      $('#userImage img').attr('src', data.image)
+      $('#image_url').val(data.image)
+
 $("#facebook").on "switch-change", (e, data) ->
   if data.value
     window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()

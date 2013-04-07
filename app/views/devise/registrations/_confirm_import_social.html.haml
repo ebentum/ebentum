@@ -1,0 +1,13 @@
+.modal.hide.fade{:id  => 'confirm_import_social'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3
+      = t('.confirm')
+  .modal-body
+    %p
+      = t('.confirm_text')
+  .modal-footer
+    %a.btn{:href => "#", "data-dismiss" => "modal"}
+      = t('.close')
+    %a.btn.btn-primary{:href => "#", :id => 'confirm_import_social_btn', :data => {:provider => 'provider'}}
+      = t('.confirm')
