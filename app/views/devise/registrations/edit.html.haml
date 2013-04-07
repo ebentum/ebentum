@@ -6,11 +6,11 @@
       .span2
         #usersImagePreview.thumbnail
           = image_tag(@user.image_path(:medium), :class => 'block')
-          %span.btn.btn-success.fileinput-button.center
-            %i.icon-plus.icon-white
-            %span
-              = t('.add_image')
-            = f.file_field :image
+        %span.btn.btn-success.fileinput-button.center
+          %i.icon-plus.icon-white
+          %span
+            = t('.add_image')
+          = f.file_field :image
       .span8
         .row-fluid
           #user_action_button.span6
@@ -25,7 +25,7 @@
             %dl.dl-horizontal-left
               %dt
                 %b
-                  = t(".name")
+                  = t(".complete_name")
               %dd
                 = f.text_field :complete_name, :class => "input-block-level"
               %dt
