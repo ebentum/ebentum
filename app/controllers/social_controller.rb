@@ -42,8 +42,10 @@ class SocialController < ActionController::Base
   end
 
   def get_twitter_data
-    tw = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)  
-    logger.info tw
+    tw = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)
+    me = tw.verify_credentials
+    #puts me.description_urls.to_yaml
+    logger.info render :json => {:complete_name => me.name, :location => me.location, :web => 'FALTA TRAER URL', :bio => me.description, :image => me.profile_image_url}
   end
   
 end

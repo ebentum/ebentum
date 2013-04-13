@@ -218,12 +218,19 @@ $(document).on 'click', '#confirm_import_social_btn', ->
       provider: provider
     success: (data, status, xhr) ->
       $('#confirm_import_social').modal('hide')
-      $('#user_complete_name').val(data.complete_name)
-      $('#user_location').val(data.location)
-      $('#user_web').val(data.web)
-      $('#user_bio').val(data.bio)
-      $('#userImage img').attr('src', data.image)
-      $('#image_url').val(data.image)
+      $('#user_complete_name').val(data.complete_name) if $('#import_complete_name').is(':checked')
+      $('#user_location').val(data.location) if $('#import_location').is(':checked')
+      $('#user_web').val(data.web) if $('#import_web').is(':checked')
+      $('#user_bio').val(data.bio) if $('#import_bio').is(':checked')
+      $('#userImage img').attr('src', data.image) if $('#import_image').is(':checked')
+      $('#image_url').val(data.image) if $('#import_image').is(':checked')
+
+$(document).on 'change', '#select_import_social', ->
+  if $(this).val() == 'ALL'
+    $('#import_social input').prop('disabled', true)
+    $('#import_social input').prop('checked', true)
+  else
+    $('#import_social input').prop('disabled', false)
 
 $("#facebook").on "switch-change", (e, data) ->
   if data.value

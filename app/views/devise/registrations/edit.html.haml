@@ -27,12 +27,14 @@
               = t(:save)
             %a{:href => user_path(@user), :class => "btn"}
               = t(:back)
-            %a.btn.btn-primary{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-              %i.icon-facebook
-              importar de facebook
-            %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-              %i.icon-twitter
-              importar de twitter
+          .span6
+            .pull-right
+              %a.btn.btn-primary{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                %i.icon-facebook
+                Importar de facebook
+              %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                %i.icon-twitter
+                Importar de twitter
         .row-fluid
           .span12
             %p
