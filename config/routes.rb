@@ -12,8 +12,9 @@ Ebentum::Application.routes.draw do
   match 'events/remove_user/:eventid' => 'events#remove_user'
   resources :events
   resources :tokens
-  match '/share/share_event_appoint' => 'share#share_event_appoint'
-  resources :share
+  match '/social/share_event_appoint' => 'social#share_event_appoint'
+  match '/social/get_social_data'     => 'social#get_social_data'
+  resources :social
   resources :comments
 
   resources :users do

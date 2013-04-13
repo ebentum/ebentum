@@ -9,6 +9,7 @@
         #socialUserImage.thumbnail.hidden
           - social_image_url = @user.image_url rescue "/photos/medium/missing.png"
           = image_tag(social_image_url , :class => 'block')
+          = hidden_field_tag 'user[image_url]', social_image_url, :id => 'image_url'
         %button.btn.btn-block.btn-success.fileinput-button
           %i.icon-plus.icon-white
           %span
@@ -27,6 +28,14 @@
               = t(:save)
             %a{:href => user_path(@user), :class => "btn"}
               = t(:back)
+          .span6
+            .pull-right
+              %a.btn.btn-primary{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                %i.icon-facebook
+                Importar de facebook
+              %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                %i.icon-twitter
+                Importar de twitter
         .row-fluid
           .span12
             %p
@@ -56,3 +65,4 @@
           = render 'social_config'
 
 = render 'confirm_image_delete'
+= render 'confirm_import_social'

@@ -113,7 +113,7 @@ $(document).on "click", "#confirm_appoint_btn", (event) ->
       ), 2000
 
   $.ajax
-    url: "/share/share_event_appoint"
+    url: "/social/share_event_appoint"
     data:
       fb_share: $('#facebook_share').bootstrapSwitch('status') 
       tw_share: $('#twitter_share').bootstrapSwitch('status')

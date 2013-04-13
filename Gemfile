@@ -34,7 +34,7 @@ gem 'omniauth-twitter', '~> 0.0.14'
 gem 'koala', "~> 1.6.0"
 
 # twitter api
-gem "twitter", "~> 4.5.0"
+gem "twitter", "~> 4.6.0"
 
 #gema paloma para organizar javascript
 gem "paloma", "~> 1.2.5"
