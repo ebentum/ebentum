@@ -71,6 +71,14 @@ $('#events_new').click ->
             true
         ), "You must indicate a correct place."
 
+        $.validator.addMethod "dateRange", (->
+          today = new moment()
+          # event_date = new Date($("#event_start_date").val())
+          event_date = new moment($("#event_start_date").val(),$("#event_start_date").data('date-format').toUpperCase())
+          return true  if event_date >= today
+          false
+        ), "Please specify a correct date."
+
         $("#new_event").validate
           rules:
             "event[name]":
@@ -78,6 +86,7 @@ $('#events_new').click ->
             "event[start_date]":
               required: true
               date: true
+              dateRange: "event_start_date"
             "event[start_time]":
               required: true
               time: true

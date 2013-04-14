@@ -24,6 +24,8 @@
 //= require jquery.validate
 //= require jquery.validate.es
 //= require bootstrapSwitch
+//= require moment
+//= require moment-es
 
 //= require i18n
 //= require i18n/translations

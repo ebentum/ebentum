@@ -1025,8 +1025,13 @@ $.extend($.validator, {
     date: function( value, element ) {
       // Parchear libreria hasta que se solucione el problema con fechas
       // https://github.com/jzaefferer/jquery-validation/issues/549
+      // codigo original:
       // return this.optional(element) || !/Invalid|NaN/.test(new Date(value).toString());
-      return this.optional(element) || !/Invalid|NaN/.test(new Date(value)) || /^(\d+)\/(\d+)\/(\d{2,})$/.test(value);
+      // parche propuesto (traga cualquier cosa):
+      // return this.optional(element) || !/Invalid|NaN/.test(new Date(value)) || /^(\d+)\/(\d+)\/(\d{2,})$/.test(value);
+      // nosotros vamos a usar moment.js
+      return this.optional(element) || moment(value, $(element).data('date-format').toUpperCase() ).isValid()
+
     },
 
     // http://docs.jquery.com/Plugins/Validation/Methods/dateISO
