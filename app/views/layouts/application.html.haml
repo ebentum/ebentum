@@ -1,8 +1,9 @@
 !!!
-%html
+%html{"xmlns:fb" => "http://ogp.me/ns/fb#"}
   = render 'layouts/head'
   %body
     = render 'layouts/fb_js_sdk'
+    = render 'layouts/tw_js_sdk'
     = render 'layouts/navbar'
     - if flash[:notice]
       .alert.alert-success

@@ -31,9 +31,9 @@
           %span.badge.badge-info
             = @event_users
           / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
-        %p
-          .fb-like{"data-send" => "false", "data-href" => "http://www.ebentum.com", "data-show-faces" => "false", "data-width" => "450"}
-          / .fb-like{"data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+        .pull-right
+          = render 'share_event'
+        .pull-left
           = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
           = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
     .span1
