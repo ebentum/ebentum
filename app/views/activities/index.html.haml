@@ -9,25 +9,7 @@
                 %i.icon-thumbs-up.icon-white
                 ¡Unirme!
             %p
-              = link_to event_path(activity.object["id"]), :class => "btn" do
+              = link_to event_path(activity.subject), :class => "btn" do
                 %i.icon-info-sign
                 Más información
-
-          /= image_tag activity.object.photo.url(:small)
-          .caption
-            %h5
-              = activity.object["name"]
-            %p
-              %a{:href => user_path(activity.actor["id"])}
-                %i.icon-user
-                = activity.actor["complete_name"]
-            %p
-              %i.icon-calendar
-              = l(activity.object["start_date"], :format => :long)+', '+l(activity.object["start_time"], :format => :short)
-            %p
-              %i.icon-map-marker
-              = activity.object["place"]
-            .extra-info
-              %i.icon-thumbs-up
-              /= "#{event.appointments_count ? event.appointments_count.round : 0} Unidos"
-              %i.icon-comment 5 Comentarios
+          = image_tag activity.subject.photo

@@ -32,7 +32,12 @@ class Event
   has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
   after_create do |event|
-    self.creator.publish_activity(:new_event, :object => self)
+    activity = Activity.new
+    activity.actor = self.creator
+    activity.subject = self
+    activity.verb = 'create'
+    #activity.receivers = self.creator.all_followers
+    activity.save!
   end
 
 end

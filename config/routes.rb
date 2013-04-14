@@ -6,6 +6,7 @@ Ebentum::Application.routes.draw do
     match '/users/twitter_login'  => 'users/omniauth_callbacks#twitter_login'
   end
 
+  resources :activities
 
   match 'events/popular'              => 'events#popular'
   match 'events/add_user/:eventid'    => 'events#add_user'
@@ -24,7 +25,7 @@ Ebentum::Application.routes.draw do
     end
   end
 
-  resources :activities
+  
 
 
   # The priority is based upon order of creation:
