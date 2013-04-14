@@ -115,7 +115,7 @@ $(document).on "click", "#confirm_appoint_btn", (event) ->
   $.ajax
     url: "/social/share_event_appoint"
     data:
-      fb_share: $('#facebook_share').bootstrapSwitch('status') 
+      fb_share: $('#facebook_share').bootstrapSwitch('status')
       tw_share: $('#twitter_share').bootstrapSwitch('status')
       event_id: button.data('eventid')
     dataType: 'json'
@@ -138,30 +138,3 @@ $(document).on "click", "#confirm_desappoint_btn", (event) ->
         $('#appoint').removeClass('hide')
         $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
       ), 2000
-
-
-# loadImageFile = (->
-#   if window.FileReader
-#     oPreviewImg = null
-#     oFReader = new window.FileReader()
-#     rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i
-#     oFReader.onload = (oFREvent) ->
-#       unless oPreviewImg
-#         newPreview = document.getElementById("imagePreview")
-#         oPreviewImg = new Image()
-#         oPreviewImg.style.width = (newPreview.offsetWidth).toString() + "px"
-#         oPreviewImg.style.height = (newPreview.offsetHeight).toString() + "px"
-#         newPreview.appendChild oPreviewImg
-#       oPreviewImg.src = oFREvent.target.result
-
-#     return ->
-#       aFiles = document.getElementById("event_photo").files
-#       return  if aFiles.length is 0
-#       unless rFilter.test(aFiles[0].type)
-#         alert "You must select a valid image file!"
-#         return
-#       oFReader.readAsDataURL aFiles[0]
-#   if navigator.appName is "Microsoft Internet Explorer"
-#     ->
-#       document.getElementById("imagePreview").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("event_photo").value
-# )()
