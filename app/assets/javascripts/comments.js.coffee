@@ -9,6 +9,7 @@ window.comments = comments =
       dataType: 'html'
       success: (data, status, xhr) ->
         $('#comments').html(data)
+        $('#new_comment_textarea').autosize()
 
   comment_edit_mode_off: (id) ->
     $('#editcomment'+id).fadeOut 'fast', ->
@@ -18,6 +19,7 @@ window.comments = comments =
 
   comment_edit_mode_on: (id) ->  
     $('#editcomment'+id).fadeIn 'fast', ->
+      $('#editcomment'+id+' textarea').autosize()
       $('#bodycomment'+id).fadeOut 'fast'
       $('#editdeletecomment'+id).fadeOut 'fast'
       $('#new_comment').fadeOut 'fast'
