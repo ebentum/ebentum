@@ -2,8 +2,6 @@ class Event
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
-  include PublicActivity::Model
-  tracked
 
   field :name, type: String
   field :description, type: String
