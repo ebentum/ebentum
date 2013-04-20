@@ -38,12 +38,12 @@ class EventsController < ApplicationController
 
   def show
 
-    # tiene token de acceso valido de facebook?
-    @fb_access_token = current_user.fbtoken || nil
+    # tiene token de acceso validos?
+    if current_user
+      @fb_access_token = current_user.fbtoken || nil
+      @tw_access_token = current_user.twtoken || nil
+    end
     
-    # tiene token de acceso valido de twitter?
-    @tw_access_token = current_user.twtoken || nil
-
     @event = Event.find(params[:id])
     if user_signed_in?
       @joined = @event.users.find(current_user) != nil

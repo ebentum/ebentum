@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
   def index
     @event    = Event.find(params[:event_id])
-    @comments = @event.comments
+    @page     = params[:page] || 1
+    @comments = @event.comments.page(@page)
     
     respond_to do |format|
       format.html { render :layout => false }

@@ -1,7 +1,7 @@
 - commentid = 'comment'+comment.id.to_s
 %li.media{:id => commentid}
   %a.pull-left{:href => "#"}
-    = image_tag(current_user.image_path(:thumb), :class => 'block media-object thumb_image')
+    = image_tag(comment.creator.image_path(:thumb), :class => 'block media-object thumb_image')
   .media-body
     %small
       %a{:href => user_path(comment.creator)}

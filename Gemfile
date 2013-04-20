@@ -50,3 +50,6 @@ gem "mongoid-paperclip", "~> 0.0.8", :require => "mongoid_paperclip"
 
 # stream de actividad
 gem "streama", "~> 0.3.6", :git => "https://github.com/andermujika/streama.git"
+
+# paginación
+gem "kaminari", "~> 0.14.1"

@@ -2,5 +2,8 @@
   .row-fluid
     .span3
     .span6
-      #comments
+      #comments{:data => {:comments_page => 1}}
+        %ul.media-list{:id => 'event_comments'}
+      = render 'comments/new_comment'
+      = render 'comments/confirm_delete'
     .span3

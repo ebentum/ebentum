@@ -8,8 +8,19 @@ window.comments = comments =
         event_id: event_id
       dataType: 'html'
       success: (data, status, xhr) ->
-        $('#comments').html(data)
+        $('#comments ul').html(data)
         $('#new_comment_textarea').autosize()
+
+  load_event_comments_page: (page) ->
+    $.ajax
+      url: "/comments"
+      type: 'GET'
+      data:
+        event_id: $('#event_id').val()
+        page: page
+      dataType: 'html'
+      success: (data, status, xhr) ->
+        $('#comments ul li:last').append(data)
 
   comment_edit_mode_off: (id) ->
     $('#editcomment'+id).fadeOut 'fast', ->
@@ -23,7 +34,7 @@ window.comments = comments =
       $('#bodycomment'+id).fadeOut 'fast'
       $('#editdeletecomment'+id).fadeOut 'fast'
       $('#new_comment').fadeOut 'fast'
-
+        
 $(document).on "click", "#delete_comment", (event) ->
   id = $(this).data('commentid')
   $('#confirm_delete_btn').data('commentid', id)
@@ -101,6 +112,4 @@ $(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->
            
   else if event.keyCode == 27 # ESC
     commentid = $(this).data('commentid')
-    comments.comment_edit_mode_off(commentid)
-
-    
+    comments.comment_edit_mode_off(commentid)    
