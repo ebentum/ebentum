@@ -1,10 +1,10 @@
 class Activity
-  include Streama::Activity
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  activity :new_event do
-    actor :user, :cache => [:complete_name]
-    object :event
-    #target_object :album, :cache => [:title]
-  end
+  field :verb, type: String
 
+  embeds_one :actor
+  embeds_one :subject
+  embeds_one :target
 end

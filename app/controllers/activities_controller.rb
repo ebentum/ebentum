@@ -1,8 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-
-    @activities = current_user.published_activities
+    @activities = Activity.all
 
     respond_to do |format|
       format.html

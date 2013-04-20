@@ -5,7 +5,6 @@ class User
   include Mongo::Followable::Followed
   include Mongo::Followable::Follower
   include Mongo::Followable::History
-  include Streama::Actor
 
   devise :database_authenticatable,
          #:token_authenticatable,
@@ -107,10 +106,6 @@ class User
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?
     self.user_confirmation_required == 'true'
-  end
-
-  def streama_followers
-    self.all_followers
   end
 
 end
