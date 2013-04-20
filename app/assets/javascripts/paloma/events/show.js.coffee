@@ -16,3 +16,5 @@ Paloma.callbacks["events/show"] = (params) ->
 
   # cargar comentarios
   comments.load_event_comments(params['event_id'])
+  # configurar scroll de comentarios
+  scroll.activate_comments_scroll()

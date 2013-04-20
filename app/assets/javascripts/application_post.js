@@ -34,6 +34,7 @@
 //= require users
 //= require tokens
 //= require comments
+//= require scroll
 //= require_self
 
 //= require paloma
