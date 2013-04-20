@@ -9,7 +9,21 @@
                 %i.icon-thumbs-up.icon-white
                 ¡Unirme!
             %p
-              = link_to event_path(activity.subject), :class => "btn" do
+              %a{:href => activity.subject.url, :class => "btn"}
                 %i.icon-info-sign
                 Más información
-          = image_tag activity.subject.photo
+
+          = image_tag activity.subject.photoUrl
+          .caption
+            %h5
+              = activity.subject.displayName
+            %p
+              %a{:href => activity.actor.url}
+                %i.icon-user
+                = activity.actor.displayName
+            %p
+              %i.icon-calendar
+              = l(activity.subject.startDate, :format => :long)+', '+l(activity.subject.startTime, :format => :short)
+            %p
+              %i.icon-map-marker
+              = activity.subject.address

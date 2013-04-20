@@ -2,6 +2,8 @@ class Event
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
+  include PublicActivity::Model
+  tracked
 
   field :name, type: String
   field :description, type: String
@@ -31,13 +33,26 @@ class Event
 
   has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
 
+
   after_create do |event|
     activity = Activity.new
-    activity.actor = self.creator
-    activity.subject = self
-    activity.verb = 'create'
-    #activity.receivers = self.creator.all_followers
-    activity.save!
-  end
+    activity.verb = "create"
 
+    activity.actor = Actor.new
+    activity.actor.url = Rails.application.routes.url_helpers.user_path(self.creator)
+    activity.actor.objectType = "user"
+    activity.actor.displayName = self.creator.complete_name
+    activity.actor.photoUrl = self.creator.image.url(:thumb)
+  
+    activity.subject = Subject.new
+    activity.subject.objectType = "event"
+    activity.subject.url = Rails.application.routes.url_helpers.event_path(self)
+    activity.subject.displayName = self.name
+    activity.subject.photoUrl = self.photo.url(:medium)
+    activity.subject.address = self.place
+    activity.subject.startDate = self.start_date
+    activity.subject.startTime = self.start_time
+
+    activity.save
+  end
 end
