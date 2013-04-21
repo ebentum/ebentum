@@ -54,6 +54,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if session[:islogin]
       session.delete(:islogin)
       if provider == 'facebook'
+        logger.info 'ACCESS_TOKEN: '+params[:access_token]
         user = User.where('fbtoken.token' => omniauth_token, 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
       else
         user = User.where('twtoken.token' => omniauth_token).first
@@ -74,6 +75,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       token                = Fbtoken.new 
       token.token          = omniauth_token
       token.expires_at     = omniauth_token_expires_at
+      token.uid            = omniauth_uid
       current_user.fbtoken = token
     elsif provider == 'twitter'
       token                = Twtoken.new  

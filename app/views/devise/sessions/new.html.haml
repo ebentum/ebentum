@@ -14,7 +14,7 @@
               %label 
                 = t(:sign_in_with)
               %br
-              %a.btn.btn-primary.btn-large.pull-left{:href => '/users/facebook_login'}
+              %a.btn.btn-primary.btn-large.pull-left{:href => 'https://www.facebook.com/dialog/oauth?client_id=469588653104372&redirect_uri=http://localhost:3000/users/auth/facebook/callback&scope=email,publish_actions,user_location,user_website, user_about_me&response_type=token'}
                 %i.icon-facebook
                 facebook
               %a.btn.btn-info.btn-large.pull-right{:href => '/users/twitter_login'}
