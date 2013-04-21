@@ -2,12 +2,12 @@
 @import "users";
 
 html {
-	background: #F7F5F5 url(paper.jpg) repeat;
+	background: #F7F5F5 url(fondo.png) repeat-x;
 }
 
 body {
 	padding-bottom: 40px;
-	background: #F7F5F5 url(paper.jpg) repeat;
+	background: #F7F5F5 url(fondo.png) repeat-x;
 }
 
 .box {
@@ -95,15 +95,23 @@ label.error {
   color: #dd5c14;
 }
 
+.navbar .nav > li > a {
+  color: #16537a;
+}
+
 .badge-info {
   color: #ffffff;
   background-color: #dd7a14;
 }
 
-.ProfilePanel {
+.Panel {
   float: left;
   background: #fff;
+  margin-top: 20px;
   margin-bottom: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(34,25,25,0.5);
   -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
   -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
@@ -130,4 +138,3 @@ label.error {
   border: 0px;
   text-align: center;
 }
-
