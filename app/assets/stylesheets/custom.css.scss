@@ -57,3 +57,77 @@ label.error {
     margin-top: 11%;
   }
 }
+
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #dd5c14;
+  *background-color: #dd7a14;
+  background-image: -moz-linear-gradient(top, #dd4814, #dd7a14);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4814), to(#dd7a14));
+  background-image: -webkit-linear-gradient(top, #dd4814, #dd7a14);
+  background-image: -o-linear-gradient(top, #dd4814, #dd7a14);
+  background-image: linear-gradient(to bottom, #dd4814, #dd7a14);
+  background-repeat: repeat-x;
+  border-color: #dd7a14 #dd7a14 #97530e;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4814', endColorstr='#ffdd7a14', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #dd7a14;
+  *background-color: #c66d12;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #ae6010 \9;
+}
+
+.navbar .brand{
+  color: #dd5c14;
+}
+
+.badge-info {
+  color: #ffffff;
+  background-color: #dd7a14;
+}
+
+.ProfilePanel {
+  float: left;
+  background: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(34,25,25,0.5);
+  -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
+}
+
+.ProfileInfo {
+  // height: 165px;
+  // width: 698px;
+  position: relative;
+  color: #534f4f;
+  padding: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ProfileInfo h3{
+  font-size: 30px;
+}
+
+.ProfileTabs {
+  margin-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 0px;
+  text-align: center;
+}
+
