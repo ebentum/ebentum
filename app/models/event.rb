@@ -46,7 +46,7 @@ class Event
     activity.subject.objectType = "event"
     activity.subject.url = Rails.application.routes.url_helpers.event_path(self)
     activity.subject.displayName = self.name
-    activity.subject.photoUrl = self.photo.url(:medium)
+    activity.subject.photoUrl = self.photo.url(:small)
     activity.subject.address = self.place
     activity.subject.startDate = self.start_date
     activity.subject.startTime = self.start_time
