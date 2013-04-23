@@ -3,11 +3,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_filter :store_omniauth_data, :except => [:facebook_login, :twitter_login]
 
   def facebook
+    logger.info params.to_yaml
     if params[:state] && current_user
       save_token('facebook')
       redirect_to params[:state]
     else
-      sign_in_or_register('facebook')
+      oauth = Koala::Facebook::OAuth.new('469588653104372', 'b9a94623ec3554e0b081f1cf91b7002f', 'http://localhost:3000/auth_login/callback')
+      token = oauth.get_access_token(params[:code])
+      sign_in_or_register('facebook', token)
     end
   end
 
@@ -29,7 +32,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if params[:state]
       redirect_to '/users/auth/facebook?state='+params[:state]  
     else
-      redirect_to '/users/auth/facebook'
+      oauth = Koala::Facebook::OAuth.new('469588653104372', 'b9a94623ec3554e0b081f1cf91b7002f', 'http://localhost:3000/auth_login/callback')
+      redirect_to oauth.url_for_oauth_code
     end 
   end
 
@@ -50,12 +54,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def sign_in_or_register(provider)
+  def sign_in_or_register(provider, token)
     if session[:islogin]
       session.delete(:islogin)
       if provider == 'facebook'
-        logger.info 'ACCESS_TOKEN: '+params[:access_token]
-        user = User.where('fbtoken.token' => omniauth_token, 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
+        fb = Koala::Facebook::API.new(token)
+        me = fb.get_object("me")
+        user = User.where('fbtoken.uid' => me['id'], 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
       else
         user = User.where('twtoken.token' => omniauth_token).first
       end

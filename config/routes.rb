@@ -4,6 +4,7 @@ Ebentum::Application.routes.draw do
   devise_scope :user do
     match '/users/facebook_login' => 'users/omniauth_callbacks#facebook_login'
     match '/users/twitter_login'  => 'users/omniauth_callbacks#twitter_login'
+    match '/auth_login/callback'  => 'users/omniauth_callbacks#facebook'
   end
 
   resources :activities
