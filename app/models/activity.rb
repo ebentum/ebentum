@@ -7,4 +7,5 @@ class Activity
   embeds_one :actor
   embeds_one :subject
   embeds_one :target
+  has_and_belongs_to_many :receivers, class_name: "User", inverse_of: :activities
 end
