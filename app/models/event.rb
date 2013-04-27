@@ -51,6 +51,9 @@ class Event
     activity.subject.startDate = self.start_date
     activity.subject.startTime = self.start_time
 
+    activity.receivers = self.creator.all_followers
+    activity.receivers.push(self.creator)
+
     activity.save
   end
 end

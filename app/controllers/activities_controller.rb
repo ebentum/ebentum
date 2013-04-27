@@ -1,7 +1,12 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+    #@activities = Activity.all
+    @activities = current_user.activities
+    #@activities = Activity.where(:receivers => User.last)
+    #@activities = Activity.receivers.find(User.last)
+
+
 
     respond_to do |format|
       format.html
