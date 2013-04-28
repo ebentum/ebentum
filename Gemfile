@@ -50,3 +50,6 @@ gem "mongoid-paperclip", "~> 0.0.8", :require => "mongoid_paperclip"
 
 # paginación
 gem "kaminari", "~> 0.14.1"
+
+# gestiónde variables de entorno
+gem "figaro", "~> 0.6.3"

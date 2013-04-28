@@ -17,3 +17,6 @@ pickle-email-*.html
 .project
 
 /test/*
+
+# Ignore application configuration
+#/config/application.yml
