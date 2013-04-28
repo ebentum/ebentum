@@ -1,68 +1,103 @@
-= form_for @user, :url => user_path(@user), :html => { :method => :put } do |f|
-  = devise_error_messages!
+.span12
+  = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
+    = devise_error_messages!
 
-  .row-fluid
-    .span12.well
+    .row-fluid.visible-phone
+      .span12.well.Panel
+        #user_action_button
+          %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
+            = t(:save)
+          %a.btn.pull-right{:href => user_path(@user)}
+            = t(:back)
+
+    .row-fluid
       .span4
-        #userImage.thumbnail
-          = image_tag(@user.image_path(:medium), :class => 'block')
-        #socialUserImage.thumbnail.hidden
-          - social_image_url = @user.image_url rescue "/photos/medium/missing.png"
-          = image_tag(social_image_url , :class => 'block')
-          = hidden_field_tag 'user[image_url]', social_image_url, :id => 'image_url'
-        %button.btn.btn-block.btn-success.fileinput-button
-          %i.icon-plus.icon-white
-          %span
-            = t('.add_image')
-          = f.file_field :image
-        - if @user.image?
-          %button#imageDeleteButton.btn.btn-block.btn-danger
-            %i.icon-remove.icon-white
-            %span
-              = t('.delete_image')
-              = f.hidden_field :image_delete, :value => "0"
-      .span8
         .row-fluid
-          #user_action_button.span6
-            %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-              = t(:save)
-            %a{:href => user_path(@user), :class => "btn"}
-              = t(:back)
-          .span6
+          .span12.well.Panel
+            %h4
+              = t('.avatar_title')
+            %hr
+            .row-fluid
+              .span12
+                #userImage.thumbnail
+                  = image_tag(@user.image_path(:medium), :class => 'block')
+                #socialUserImage.thumbnail.hidden
+                  - social_image_url = @user.image_url rescue "/photos/medium/missing.png"
+                  = image_tag(social_image_url , :class => 'block')
+                  = hidden_field_tag 'user[image_url]', social_image_url, :id => 'image_url'
+            %hr
+            .row-fluid
+              .span12
+                %button.btn.btn-block.btn-success.fileinput-button
+                  %i.icon-plus.icon-white
+                  %span
+                    = t('.add_image')
+                  = f.file_field :image
+                - if @user.image?
+                  %button#imageDeleteButton.btn.btn-block.btn-danger
+                    %i.icon-remove.icon-white
+                    %span
+                      = t('.delete_image')
+                      = f.hidden_field :image_delete, :value => "0"
+
+        .row-fluid
+          .span12.well.Panel
+            %h4
+              = t('.social_title')
+            %hr
+            = render 'social_config'
+      .span8
+        .row-fluid.hidden-phone
+          .span12.well.Panel
+            #user_action_button.pull-left
+              %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
+                = t(:save)
+              %a{:href => user_path(@user), :class => "btn"}
+                = t(:back)
             .pull-right
-              %a.btn.btn-primary{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+              %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
                 %i.icon-facebook
                 Importar de facebook
               %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
                 %i.icon-twitter
                 Importar de twitter
-        .row-fluid
-          .span12
-            %p
 
-            %dl.dl-horizontal-left
-              %dt
-                %b
-                  = t(".complete_name")
-              %dd
+        .row-fluid
+          .span12.well.Panel
+            %h4
+              = t('.basicinfo_title')
+            %hr
+            .btn-group.btn-group-vertical.visible-phone
+              %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                %i.icon-facebook
+                Importar de facebook
+              %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                %i.icon-twitter
+                Importar de twitter
+            %hr.visible-phone
+            .control-group
+              %label.control-label
+                = t(".complete_name")
+              .controls
                 = f.text_field :complete_name, :class => "input-block-level"
-              %dt
-                %b
-                  = t(".location")
-              %dd
+            %hr
+            .control-group
+              %label.control-label
+                = t(".location")
+              .controls
                 = f.text_field :location, :class => "input-block-level"
-              %dt
-                %b
-                  = t('.web')
-              %dd
+            %hr
+            .control-group
+              %label.control-label
+                = t('.web')
+              .controls
                 = f.text_field :web, :class => "input-block-level"
-              %dt
-                %b
-                  = t('.bio')
-              %dd
+            %hr
+            .control-group
+              %label.control-label
+                = t('.bio')
+              .controls
                 = f.text_area :bio, :class => "input-block-level", :rows => "5"
-        .row-fluid
-          = render 'social_config'
 
-= render 'confirm_image_delete'
-= render 'confirm_import_social'
+  = render 'confirm_image_delete'
+  = render 'confirm_import_social'
