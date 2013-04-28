@@ -237,6 +237,10 @@ $("#facebook").on "switch-change", (e, data) ->
     window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()
   else
     alert 'Aviso tipo Pinterest'
+    FB.getLoginStatus (response) ->
+      if response.status == 'connected'
+        FB.api "/me/permissions", "DELETE", (response) ->
+          console.log response if !response
     $.ajax
       url: "/tokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
