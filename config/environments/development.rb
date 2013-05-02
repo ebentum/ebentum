@@ -43,7 +43,7 @@ Ebentum::Application.configure do
                                                 :user_name            => 'dev.ebentum',
                                                 :password             => 'jdaammtjd',
                                                 :authentication       => 'plain',
-                                                :enable_starttls_auto => true  
+                                                :enable_starttls_auto => true
                                                 }
 
   config.paperclip_defaults = {

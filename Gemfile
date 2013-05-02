@@ -47,6 +47,7 @@ gem 'mongo_followable', "~> 0.3.2"
 
 # gestión de adjuntos
 gem "mongoid-paperclip", "~> 0.0.8", :require => "mongoid_paperclip"
+gem 'paperclip-dimension'
 
 # paginación
 gem "kaminari", "~> 0.14.1"

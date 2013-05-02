@@ -79,7 +79,7 @@ GEM
     fssm (0.2.10)
     haml (4.0.2)
       tilt
-    hashie (2.0.3)
+    hashie (2.0.4)
     hike (1.2.2)
     httpauth (0.2.0)
     i18n (0.6.1)
@@ -138,7 +138,7 @@ GEM
     omniauth-twitter (0.0.16)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
-    origin (1.0.11)
+    origin (1.1.0)
     orm_adapter (0.4.0)
     paloma (1.2.6)
       jquery-rails
@@ -148,6 +148,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    paperclip-dimension (0.2.0)
+      paperclip (>= 3.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -174,7 +176,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
-    sass (3.2.7)
+    sass (3.2.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -202,7 +204,7 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    uuidtools (2.1.3)
+    uuidtools (2.1.4)
     warden (1.2.1)
       rack (>= 1.0)
 
@@ -231,6 +233,7 @@ DEPENDENCIES
   omniauth-twitter (~> 0.0.14)
   paloma (~> 1.2.5)
   paperclip (~> 3.4.0)
+  paperclip-dimension
   rails (~> 3.2.12)
   sass-rails (~> 3.2.5)
   thin

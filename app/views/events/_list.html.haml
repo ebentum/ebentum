@@ -1,33 +1,65 @@
 .span12
   .masonry_layout.centered
     - for event in @events
-      .box
-        .thumbnail
-          .botones
-            %p
-              %a.btn{:href => "#"}
-                %i.icon-thumbs-up.icon-white
-                ¡Unirme!
-            %p
-              = link_to event, :class => "btn" do
-                %i.icon-info-sign
-                Más información
+      .poster{:style => "width: #{event.photo_dimensions["poster"][0]}px; height: #{event.photo_dimensions["poster"][1]}px"}
+        .botones
+          %p
+            %a.btn{:href => "#"}
+              %i.icon-thumbs-up.icon-white
+              ¡Unirme!
+          %p
+            = link_to event, :class => "btn" do
+              %i.icon-info-sign
+              Más información
 
-          = image_tag event.photo.url(:small)
-          .caption
-            %h4
-              = event.name
-            .extra-info
-              %p
-                %a{:href => user_path(event.creator)}
-                  %i.icon-user
-                  = event.creator.complete_name
-              %p
-                %i.icon-calendar
-                = l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short)
-              %p
-                %i.icon-map-marker
-                = event.place
-              %i.icon-thumbs-up
-              = "#{event.appointments_count ? event.appointments_count.round : 0} Unidos"
-              %i.icon-comment 5 Comentarios
+        = image_tag event.photo.url(:poster)
+
+        -# .caption
+        -#   %h4
+        -#     = event.name
+        -# .extra-info
+        -#   %p
+        -#     %a{:href => user_path(event.creator)}
+        -#       %i.icon-user
+        -#       = event.creator.complete_name
+        -#   %p
+        -#     %i.icon-calendar
+        -#     = l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short)
+        -#   %p
+        -#     %i.icon-map-marker
+        -#     = event.place
+        -#   %i.icon-thumbs-up
+        -#   = "#{event.appointments_count ? event.appointments_count.round : 0} Unidos"
+        -#   %i.icon-comment 5 Comentarios
+
+
+      -# .box
+      -#   .thumbnail
+      -#     .botones
+      -#       %p
+      -#         %a.btn{:href => "#"}
+      -#           %i.icon-thumbs-up.icon-white
+      -#           ¡Unirme!
+      -#       %p
+      -#         = link_to event, :class => "btn" do
+      -#           %i.icon-info-sign
+      -#           Más información
+
+      -#     -# = image_tag event.photo.url(:small)
+      -#     .caption
+      -#       %h4
+      -#         = event.name
+      -#       .extra-info
+      -#         %p
+      -#           %a{:href => user_path(event.creator)}
+      -#             %i.icon-user
+      -#             = event.creator.complete_name
+      -#         %p
+      -#           %i.icon-calendar
+      -#           = l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short)
+      -#         %p
+      -#           %i.icon-map-marker
+      -#           = event.place
+      -#         %i.icon-thumbs-up
+      -#         = "#{event.appointments_count ? event.appointments_count.round : 0} Unidos"
+      -#         %i.icon-comment 5 Comentarios
