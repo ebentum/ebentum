@@ -237,10 +237,12 @@ $("#facebook").on "switch-change", (e, data) ->
     window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()
   else
     alert 'Aviso tipo Pinterest'
+    # borrar app del perfil
     FB.getLoginStatus (response) ->
       if response.status == 'connected'
         FB.api "/me/permissions", "DELETE", (response) ->
           console.log response if !response
+    # borrar token
     $.ajax
       url: "/tokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
@@ -250,6 +252,9 @@ $("#facebook").on "switch-change", (e, data) ->
       success: (data, status, xhr) ->
         $('#facebook_post').bootstrapSwitch('toggleActivation')
         $('#facebook_post').bootstrapSwitch('setState', false)
+        # quitar boton de importar desde FB
+        $('a.btn-facebook').fadeOut 'slow', ->
+          $('a.btn-facebook').remove()
 
 $("#twitter").on "switch-change", (e, data) ->
   if data.value
@@ -265,3 +270,6 @@ $("#twitter").on "switch-change", (e, data) ->
       success: (data, status, xhr) ->
         $('#twitter_post').bootstrapSwitch('toggleActivation')
         $('#twitter_post').bootstrapSwitch('setState', false)
+        # quitar boton de importar desde TW
+        $('a.btn-twitter').fadeOut 'slow', ->
+          $('a.btn-twitter').remove()

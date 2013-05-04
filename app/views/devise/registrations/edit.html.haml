@@ -55,12 +55,14 @@
               %a{:href => user_path(@user), :class => "btn"}
                 = t(:back)
             .pull-right
-              %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                %i.icon-facebook
-                Importar de facebook
-              %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                %i.icon-twitter
-                Importar de twitter
+              - if @user.fbtoken
+                %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                  %i.icon-facebook
+                  Importar de facebook
+              - if @user.twtoken
+                %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                  %i.icon-twitter
+                  Importar de twitter
 
         .row-fluid
           .span12.well.Panel
@@ -68,12 +70,14 @@
               = t('.basicinfo_title')
             %hr
             .btn-group.btn-group-vertical.visible-phone
-              %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                %i.icon-facebook
-                Importar de facebook
-              %a.btn.btn-info{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                %i.icon-twitter
-                Importar de twitter
+              - if @user.fbtoken
+                %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                  %i.icon-facebook
+                  Importar de facebook
+              - if @user.twtoken
+                %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                  %i.icon-twitter
+                  Importar de twitter
             %hr.visible-phone
             .control-group
               %label.control-label
