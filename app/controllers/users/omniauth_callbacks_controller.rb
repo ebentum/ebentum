@@ -9,8 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       save_token('facebook')
       redirect_to params[:state]
     else
-      token = @oauth.get_access_token(params[:code])
-      sign_in_or_register('facebook', token)
+      sign_in_or_register('facebook')
     end
   end
 
@@ -53,13 +52,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def sign_in_or_register(provider, token)
+  def sign_in_or_register(provider)
     if session[:islogin]
       session.delete(:islogin)
       if provider == 'facebook'
-        fb = Koala::Facebook::API.new(token)
-        me = fb.get_object("me")
-        user = User.where('fbtoken.uid' => me['id'], 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
+        token = @oauth.get_access_token(params[:code])
+        fb    = Koala::Facebook::API.new(token)
+        me    = fb.get_object("me")
+        user  = User.where('fbtoken.uid' => me['id'], 'fbtoken.expires_at' => {'$gt' => DateTime.now.to_i}).first
       else
         user = User.where('twtoken.token' => omniauth_token).first
       end
