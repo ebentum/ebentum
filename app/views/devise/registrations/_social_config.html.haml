@@ -4,37 +4,40 @@
 - tw_access_token_id  = user.twtoken._id if user.twtoken
 - tw_autopublish      = user.twtoken.autopublish if user.twtoken
 = hidden_field_tag 'user_id', user._id
-#facebook{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if fb_access_token_id
-    %input{:checked => "checked", :type => "checkbox", :data => {:token => fb_access_token_id}}
-  - else
-    %input{:type => "checkbox"}
-%b
-  = t('.log_with', :provider => 'Facebook')
-%br
-%br
-#facebook_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if fb_autopublish == true
-    %input{:checked => "checked", :disabled => !fb_access_token_id, :type => "checkbox", :data => {:provider => 'facebook', :token => fb_access_token_id}}
-  - else
-    %input{:disabled => !fb_access_token_id, :type => "checkbox", :data => {:provider => 'facebook', :token => fb_access_token_id}}
-%b
-  = t('.publish_activity', :provider => 'Facebook')
-%br
-%br
-#twitter{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if tw_access_token_id
-    %input{:checked => "checked", :type => "checkbox", :data => {:token => tw_access_token_id}}
-  - else
-    %input{:type => "checkbox"}
-%b
-  = t('.log_with', :provider => 'Twitter')
-%br
-%br
-#twitter_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
-  - if tw_autopublish == true
-    %input{:checked => "checked", :disabled => !tw_access_token_id, :type => "checkbox", :data => {:provider => 'twitter', :token => tw_access_token_id}}
-  - else
-    %input{:disabled => !tw_access_token_id, :type => "checkbox", :data => {:provider => 'twitter', :token => tw_access_token_id}}
-%b
-  = t('.publish_activity', :provider => 'Twitter')
+
+.control-group
+  %label.control-label
+    = t('.log_with', :provider => 'Facebook')
+  .controls
+    #facebook{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if fb_access_token_id
+        %input{:checked => "checked", :type => "checkbox", :data => {:token => fb_access_token_id}}
+      - else
+        %input{:type => "checkbox"}
+.control-group
+  %label.control-label
+    = t('.publish_activity', :provider => 'Facebook')
+  .controls
+    #facebook_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if fb_autopublish == true
+        %input{:checked => "checked", :disabled => !fb_access_token_id, :type => "checkbox", :data => {:provider => 'facebook', :token => fb_access_token_id}}
+      - else
+        %input{:disabled => !fb_access_token_id, :type => "checkbox", :data => {:provider => 'facebook', :token => fb_access_token_id}}
+.control-group
+  %label.control-label
+    = t('.log_with', :provider => 'Twitter')
+  .controls
+    #twitter{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if tw_access_token_id
+        %input{:checked => "checked", :type => "checkbox", :data => {:token => tw_access_token_id}}
+      - else
+        %input{:type => "checkbox"}
+.control-group
+  %label.control-label
+    = t('.publish_activity', :provider => 'Twitter')
+  .controls
+    #twitter_post{:class => 'switch', :data => {:off => '', :on => 'primary', 'on-label' => "<i class='icon-ok icon-white'></i>", 'off-label' => "<i class='icon-remove'></i>"}}
+      - if tw_autopublish == true
+        %input{:checked => "checked", :disabled => !tw_access_token_id, :type => "checkbox", :data => {:provider => 'twitter', :token => tw_access_token_id}}
+      - else
+        %input{:disabled => !tw_access_token_id, :type => "checkbox", :data => {:provider => 'twitter', :token => tw_access_token_id}}
