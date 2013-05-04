@@ -7,29 +7,23 @@
     %p
       = t('.confirm_text')
     %form{:id => 'import_social'}
-      .block
-        %select{:id => 'select_import_social'}
-          %option{:value => 'ALL'}/
-          Todo
-          %option{:value => 'NOTALL'}/
-          Mejor déjame elegir
       #import_social_checkboxes
         .pull-left
           %label.checkbox
-            %input{:type => "checkbox", :disabled => '', :checked => '', :id => 'import_complete_name'}/
+            %input{:type => "checkbox", :checked => true, :id => 'import_complete_name'}/
             Complete Name
           %label.checkbox
-            %input{:type => "checkbox", :disabled => '', :checked => '', :id => 'import_location'}/
+            %input{:type => "checkbox", :checked => true, :id => 'import_location'}/
             Location
           %label.checkbox
-            %input{:type => "checkbox", :disabled => '', :checked => '', :id => 'import_web'}/
+            %input{:type => "checkbox", :checked => true, :id => 'import_web'}/
             Web
         .pull-right
           %label.checkbox
-            %input{:type => "checkbox", :disabled => '', :checked => '', :id => 'import_bio'}/
+            %input{:type => "checkbox", :checked => true, :id => 'import_bio'}/
             Bio
           %label.checkbox
-            %input{:type => "checkbox", :disabled => '', :checked => '', :id => 'import_image'}/
+            %input{:type => "checkbox", :checked => true, :id => 'import_image'}/
             Image
   .modal-footer
     %a.btn{:href => "#", "data-dismiss" => "modal"}
