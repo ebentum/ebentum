@@ -54,3 +54,6 @@ gem "kaminari", "~> 0.14.1"
 
 # gestiónde variables de entorno
 gem "figaro", "~> 0.6.3"
+
+# URL expander
+gem "url_expander", "~> 0.1.5"

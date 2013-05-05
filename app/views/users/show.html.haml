@@ -61,7 +61,7 @@
                       %b
                         = t('.web')
                     %dd
-                      = @user.web.blank? ? raw('&nbsp;') : @user.web
+                      = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
                     %dt
                       %b
                         = t('.bio')
