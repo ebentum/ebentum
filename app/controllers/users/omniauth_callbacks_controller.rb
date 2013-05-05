@@ -85,6 +85,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       token                = Twtoken.new  
       token.token          = omniauth_token
       token.secret         = omniauth_secret
+      token.uid            = omniauth_uid
       current_user.twtoken = token
     end
     current_user.save
