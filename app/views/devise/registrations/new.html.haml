@@ -9,8 +9,8 @@
         = omniauth_provider_info 
         .row-fluid
           %div{:class => 'span4'}
-            .thumbnail{:class => 'omniauth_thumbnail centered'}
-              = image_tag(omniauth_image, :class => 'block')
+            .thumbnail{:class => 'centered'}
+              = image_tag(omniauth_image, :class => 'omniauth_img')
               = f.hidden_field :image_url, :value => omniauth_image
             %br
           %div{:class => 'span8'}
