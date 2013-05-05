@@ -38,7 +38,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter_login
     session[:islogin] = true
     if params[:state]
-      redirect_to '/users/auth/twitter?state='+params[:state]  
+      redirect_to '/users/auth/twitter?use_authorize=true&state='+params[:state]  
     else
       redirect_to '/users/auth/twitter'
     end
