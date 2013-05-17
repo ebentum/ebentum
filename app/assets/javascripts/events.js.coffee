@@ -11,13 +11,35 @@ $('#events_new').click ->
         language: I18n.locale
         startDate: Date()
 
-
       $('#event_start_time').timepicker
         timeFormat: "H:i"
         scrollDefaultNow: true
-      $('#event_photo').change ->
-        $('#imagePreview').empty()
-        Paloma.ImageProcessing.loadImageFile("event_photo","imagePreview")
+
+      $("#image-preview-link").click ->
+        $("#picture_photo").click()
+
+      $('#create_event_btn').click ->
+        if !$(this).hasClass("disabled")
+          $("#new_event").submit()
+
+      $("#new_picture").fileupload
+        dataType: "json"
+        start: (e, data) ->
+          $("#image-upload-progress").removeClass("hidden")
+          $("#create_event_btn").addClass("disabled")
+        progressall: (e, data) ->
+          progress = parseInt(data.loaded / data.total * 100, 10)
+          $("#image-upload-progress .bar").css "width", progress + "%"
+        done: (e, data) ->
+          $('#image-preview').attr("src", data.result.avatar_url)
+          $('#main_picture_id').val(data.result._id)
+          $("#image-upload-progress .bar").css "width", 0
+          $("#image-upload-progress").addClass("hidden")
+          $("#create_event_btn").removeClass("disabled")
+        fail: (e, data) ->
+          $("#image-upload-progress .bar").css "width", 0
+          $("#image-upload-progress").addClass("hidden")
+          $("#create_event_btn").removeClass("disabled")
 
       $("#events_new_modal").on "shown", ->
         map_options =
@@ -73,7 +95,6 @@ $('#events_new').click ->
 
         $.validator.addMethod "dateRange", (->
           today = new moment()
-          # event_date = new Date($("#event_start_date").val())
           event_date = new moment($("#event_start_date").val(),$("#event_start_date").data('date-format').toUpperCase())
           return true  if event_date >= today
           false
@@ -92,13 +113,9 @@ $('#events_new').click ->
               time: true
             "place_autocomplete":
               valid_place: true
-
           onkeyup: false
           onclick: false
           onfocusout: false
-
-        $('#create_event_btn').click ->
-          $("#new_event").submit()
 
 $(document).on "click", "#confirm_appoint_btn", (event) ->
   button = $(this)

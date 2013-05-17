@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :search_events, :only => [:index]
 
   def search_events
@@ -66,6 +66,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @picture = Picture.new
 
     respond_to do |format|
       format.html { render :layout => 'modal_window' }
@@ -76,7 +77,15 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.creator = current_user
-    @event.main_picture = params[:event][:main_picture]
+
+    picture = Picture.find(params[:event][:main_picture_id])
+    if picture
+      @event.main_picture = picture
+    else
+      picture = Picture.new
+      @event.main_picture = picture
+    end
+    picture.save
 
     respond_to do |format|
       if @event.save

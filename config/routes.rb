@@ -18,6 +18,7 @@ Ebentum::Application.routes.draw do
   match '/social/get_social_data'     => 'social#get_social_data'
   resources :social
   resources :comments
+  resources :pictures
 
   resources :users do
     member do

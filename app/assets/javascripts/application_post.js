@@ -23,6 +23,9 @@
 //= require jquery.timepicker
 //= require jquery.validate
 //= require jquery.validate.es
+//= require jquery.ui.widget
+//= require jquery.fileupload
+
 //= require bootstrapSwitch
 //= require moment
 //= require moment-es
