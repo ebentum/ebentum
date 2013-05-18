@@ -9,7 +9,6 @@ Ebentum::Application.routes.draw do
 
   resources :activities
 
-  match 'events/popular'              => 'events#popular'
   match 'events/add_user/:eventid'    => 'events#add_user'
   match 'events/remove_user/:eventid' => 'events#remove_user'
   resources :events

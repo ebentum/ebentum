@@ -27,15 +27,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def popular
-    @events = Event.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @events }
-    end
-  end
-
   def show
 
     # tiene token de acceso validos?
