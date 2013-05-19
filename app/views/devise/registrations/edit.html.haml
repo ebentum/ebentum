@@ -3,7 +3,7 @@
     = devise_error_messages!
 
     .row-fluid.visible-phone
-      .span12.well.Panel
+      .span12.paper.paper-curve-horiz
         #user_action_button
           %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
             = t(:save)
@@ -13,10 +13,7 @@
     .row-fluid
       .span4
         .row-fluid
-          .span12.well.Panel
-            %h4
-              = t('.avatar_title')
-            %hr
+          .span12.paper.paper-curl-right
             .row-fluid
               .span12
                 #userImage.thumbnail
@@ -41,14 +38,14 @@
                       = f.hidden_field :image_delete, :value => "0"
 
         .row-fluid
-          .span12.well.Panel
+          .span12.paper.paper-rotated-left
             %h4
               = t('.social_title')
             %hr
             = render 'social_config'
       .span8
         .row-fluid.hidden-phone
-          .span12.well.Panel
+          .span12.paper.paper-curve-horiz
             #user_action_button.pull-left
               %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
                 = t(:save)
@@ -65,10 +62,7 @@
                   Importar de twitter
 
         .row-fluid
-          .span12.well.Panel
-            %h4
-              = t('.basicinfo_title')
-            %hr
+          .span12.paper.paper-curl-left
             .btn-group.btn-group-vertical.visible-phone
               - if @user.fbtoken
                 %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
@@ -78,7 +72,8 @@
                 %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
                   %i.icon-twitter
                   Importar de twitter
-            %hr.visible-phone
+            - if @user.fbtoken or @user.twtoken
+              %hr.visible-phone
             .control-group
               %label.control-label
                 = t(".complete_name")

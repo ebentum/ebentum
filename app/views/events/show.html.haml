@@ -1,43 +1,58 @@
 .span12
   .row-fluid
-    .span1
     .span4
-      .thumbnail
-        = image_tag(@event.main_picture.photo.url(:medium), :class => 'block')
-    .span1
-    .span5
-      .hero-unit
-        = hidden_field_tag 'event_id', @event.id
-        %h1
-          = @event.name
-        %p
-          = @event.description
-        %p
-          %i.icon-calendar
-          = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
-        %p
-          %i.icon-map-marker
-          = @event.place
-        #map.block
-        %br
-        %p
-          %i.icon-user
-          = t('.organized_by')
-          - user = User.find(@event.creator)
-          %a{:href => user_path(user)}
-            = user.complete_name
-        %p#appointed
-          %i.icon-thumbs-up
-          = t('.joined')
-          %span.badge.badge-info
-            = @event_users
-          / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
-        .pull-right
-          = render 'share_event'
-        .pull-left
-          = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
-          = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
-    .span1
+      .paper.paper-curl-right
+         = image_tag(@event.main_picture.photo.url(:medium), :class => 'block')
+
+    .span8
+      .row-fluid
+        .span12.paper.paper-curve-below
+          .row-fluid
+            .span3
+              = hidden_field_tag 'event_id', @event.id
+              = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
+              = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
+            .span3
+              %p#appointed
+                %i.icon-thumbs-up
+                = t('.joined')
+                %span.badge.badge-info
+                  = @event_users
+                / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
+            = render 'share_event'
+          .row-fluid
+            .span12
+              %h3
+                = @event.name
+          %hr
+          .row-fluid
+            .span6
+              .row-fluid
+                .span12
+                  %i.icon-user
+                  - user = User.find(@event.creator)
+                  = t('.organized_by')
+                  %a{:href => user_path(user)}
+                    = user.complete_name
+              .row-fluid
+                .span12
+                  %i.icon-calendar
+                  = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
+              .row-fluid
+                .span12
+                  %i.icon-map-marker
+                  = @event.place
+              %hr
+              .row-fluid
+                .span12
+                  = @event.description
+
+            .span6
+              #map.block
+
+      .row-fluid
+        = render 'comments'
+
 = render 'confirm_appoint'
 = render 'confirm_desappoint'
-= render 'comments'
+
