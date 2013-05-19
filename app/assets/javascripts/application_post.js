@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require oridomi
 //= require jquery.masonry
 //= require masonry
 //= require jquery.autosize

@@ -1,14 +1,16 @@
 @import "events";
 @import "users";
+@import "paper";
+@import "flip";
 
-html {
-  background: #F7F5F5 url(lines.jpg) repeat;
-}
+// html {
+//   background: #F7F5F5; url(fondo2.jpg) repeat;
+// }
 
-body {
-  padding-bottom: 40px;
-  background: #F7F5F5 url(lines.jpg) repeat;
-}
+// body {
+//   padding-bottom: 40px;
+//   background: #F7F5F5 url(fondo2.jpg) repeat;
+// }
 
 // .box {
 // 	width: 300px;
@@ -142,7 +144,6 @@ label.error {
 .control-label{
   font-weight: bold;
 }
-
 
 .navbar .brand{
   color: #dd5c14;
