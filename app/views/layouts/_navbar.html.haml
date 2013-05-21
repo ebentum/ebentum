@@ -9,9 +9,11 @@
       .nav-collapse
         %ul.nav
           %li{ :class => (action_name == "index") ? "active" : nil }
-            %a{:href => root_url} Actividad
+            %a{:href => root_url} 
+              = t(:activity)
           %li
-            %a{:href => "#"} Última hora
+            %a{:href => "#"} 
+              = t(:explore)
         %form.navbar-search.pull-left{:action => ""}
           %input.search-query.span2{:placeholder => "Buscar", :type => "text"}
         - if user_signed_in?
