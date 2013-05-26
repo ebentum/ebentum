@@ -3,6 +3,7 @@ class Event
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   include Paperclip::Glue
+  include Geocoder::Model::Mongoid
 
   field :name, type: String
   field :description, type: String
@@ -10,12 +11,19 @@ class Event
   field :active, type: Boolean
   field :start_date, type: Date
   field :start_time, type: Time
+  field :coordinates, type: Array
   field :lat, type: BigDecimal
   field :lng, type: BigDecimal
   field :appointments_count, type: Integer
 
+  reverse_geocoded_by :coordinates
+
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
   attr_readonly :appointments_count
+
+  # Filtrado por defecto de pestaña 'Explorar'
+  # Eventos de ahora a una semana
+  scope :explore_default, where(:start_date.gte => Date.today, :start_date.lte => 7.days.from_now)
 
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 

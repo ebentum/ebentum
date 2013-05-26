@@ -21,6 +21,9 @@ class EventsController < ApplicationController
   end
 
   def index
+    # request.location
+    @events = Event.near([43.28441, -2.172193], 500, :units => :km)
+    #@events = Event.explore_default
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
@@ -67,6 +70,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    # Meter 'lat' y 'lng' en array 'coordinates'
+    @event.coordinates = [params[:event][:lng].to_f, params[:event][:lat].to_f] # to_f para pasarlos a float
     @event.creator = current_user
 
     picture = Picture.find(params[:event][:main_picture_id])
