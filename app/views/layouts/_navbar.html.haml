@@ -11,8 +11,8 @@
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url} 
               = t(:activity)
-          %li{ :class => (controller_name == "events" and action_name == "index") ? "active" : nil }
-            %a{:href => "/events"} 
+          %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+            %a{:href => "/events/search"} 
               = t(:explore)
         %form.navbar-search.pull-left{:action => ""}
           %input.search-query.span2{:placeholder => "Buscar", :type => "text"}

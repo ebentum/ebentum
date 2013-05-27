@@ -21,10 +21,6 @@ class Event
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
   attr_readonly :appointments_count
 
-  # Filtrado por defecto de pestaña 'Explorar'
-  # Eventos de ahora a una semana
-  scope :explore_default, where(:start_date.gte => Date.today, :start_date.lte => 7.days.from_now)
-
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 
   belongs_to :creator, class_name: "User", inverse_of: :created
