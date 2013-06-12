@@ -3,6 +3,7 @@ class Event
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   include Paperclip::Glue
+  include Geocoder::Model::Mongoid
 
   field :name, type: String
   field :description, type: String
@@ -10,9 +11,12 @@ class Event
   field :active, type: Boolean
   field :start_date, type: Date
   field :start_time, type: Time
+  field :coordinates, type: Array
   field :lat, type: BigDecimal
   field :lng, type: BigDecimal
   field :appointments_count, type: Integer
+
+  reverse_geocoded_by :coordinates
 
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
   attr_readonly :appointments_count
@@ -49,6 +53,11 @@ class Event
     activity.receivers.push(self.creator)
 
     activity.save
+  end
+
+  def setCoordinates
+    self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
   end
 
 end

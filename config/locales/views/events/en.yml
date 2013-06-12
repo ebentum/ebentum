@@ -22,3 +22,17 @@ en:
       confirm_text: "Confirm that you join the event"
     share:
       share_activity: "Share in %{provider}"
+    search:
+      close_to_me: "Close to me"
+      farther: "Farther!"
+      i_dont_care: "I don't care!"
+      now: "Now!"
+      right_here: "Right here!"
+      search: "Search"
+      this_week: "From now until 10 days"
+      this_month: "From now until 30 days"
+      tomorrow: "Tomorrow"
+      to_10_km: "To 10 km"
+      to_20_km: "To 20 km"
+      when: "When?"
+      where: "Where?"
