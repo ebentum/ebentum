@@ -55,4 +55,9 @@ class Event
     activity.save
   end
 
+  def setCoordinates
+    self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
+  end
+
 end

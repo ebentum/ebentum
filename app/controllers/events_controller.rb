@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :search_events, :only => [:index]
 
-  # ¿?
+  # JDA: ¿Esto se usa?
   def search_events
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -22,10 +22,16 @@ class EventsController < ApplicationController
   end
 
   def search
-    my_location = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
-    distance    = params[:distance] || 20 # A 20 km por defecto
-    add_days    = params[:add_days] || 7 # A una semana vista por defecto
-    @events     = Event.near(my_location, distance, :units => :km).where(:start_date.gte => Date.today, :start_date.lte => add_days.days.from_now)
+    my_location       = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
+    @distanceSelected = params[:distance] || 2 # A 2 km
+    @daysSelected     = params[:days]     || 1 # Hoy
+    @events           = Event
+    if @distanceSelected.to_i > 0
+      @events = @events.near(my_location, @distanceSelected, :units => :km)
+    end
+    if @daysSelected.to_i > 0
+      @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

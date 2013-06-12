@@ -1,2 +1,0 @@
-1- bundle install para instalar gema geocoder.
-2- rake db:mongoid:create_indexes para crear el indice geoespacial en la tabla 'events'.

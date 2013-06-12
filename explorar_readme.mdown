@@ -1,0 +1,4 @@
+1- 'bundle install' para instalar gema geocoder.
+2- Event.all.each {|e| e.setCoordinates} para crear el array de coordenadas que necesita Mongo para la busqueda geoespacial.
+3- 'rake db:mongoid:create_indexes' para crear el indice geoespacial en la tabla 'events'.
+4- En events#search poner my_location acorde a vuestras coordenadas.
