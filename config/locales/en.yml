@@ -35,7 +35,9 @@ en:
   new_password_confirmation: "Confirm new password"
   new_password_ok_title: Yeah!
   new_password_ok_text: "Follow the instructions that we have sent to %{email} to change your password"
+  new_sign_up: "New to ebentum? Sign up!"
   #O
+  or: "or"
   omniauth_sign_up_ok_text: "Now you can start using ebentum! Click the start button or wait and I'll take you"
   #P
   password: "Password"
@@ -47,12 +49,13 @@ en:
   #S
   sesion_started_as: "Session started as"
   sign_up: "Sign up"
-  sign_up_button: "Sign up and start now!"
+  sign_up_button: "Sign up"
   sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
   sign_up_ok_title: Yeah!
+  sign_up_with: "You can sign up with"
   sign_in: "Sign in"
-  sign_in_with: "You can sign in to ebentum with:"
-  sign_in_button: "Go!"
+  sign_in_with: "You can sign in with"
+  sign_in_button: "Log in"
   sign_in_error_text: The email or password you entered are incorrect
   sign_in_error_title: Ups...
   signing_in: "Signing in..."

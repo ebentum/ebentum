@@ -35,24 +35,27 @@ es:
   new_password_confirmation: "Confirmar nueva contraseña"
   new_password_ok_title: ¡Bien!
   new_password_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
+  new_sign_up: "¿Nuevo en ebentum? ¡Regístrate!"
   #O
+  or: "o"
   omniauth_sign_up_ok_text: "¡Ya puedes comenzar a utilizar ebentum! Pincha el botón de inicio o espera que te lleve yo mismo"
   #P
   password: "Contraseña"
   password_confirmation: "Confirmar contraseña"
   profile: "Perfil"
   #R
-  remember_me: "Recuerdame"
+  remember_me: "Recuérdame"
   resend_confirmation_instructions: "Reenvíame las instrucciones para la confirmación"
   #S
   sesion_started_as: "Sesión iniciada como"
   sign_up: "Regístrate"
-  sign_up_button: "¡Quiero empezar ya!"
+  sign_up_button: "Regístrame"
   sign_up_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"
   sign_up_ok_title: ¡Bien!
+  sign_up_with: "Puedes registrarte con"
   sign_in: "Entra"
-  sign_in_with: "Puedes acceder a ebentum con:"
-  sign_in_button: "¡Vamos!"
+  sign_in_with: "Puedes iniciar sesión con"
+  sign_in_button: "Iniciar sesión"
   sign_in_error_text: El email o la contraseña introducidos no son correctos
   sign_in_error_title: Ups...
   signing_in: "Entrando..."

@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :search_events, :only => [:index]
 
-  # JDA: ¿Esto se usa?
   def search_events
     if params[:user_id]
       @user = User.find(params[:user_id])

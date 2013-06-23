@@ -5,9 +5,21 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def auth_user
+    render 'welcome/index', :layout => 'no_navbar' unless user_signed_in?
+  end
+
   def layout_by_resource
     if devise_controller?
-      "devise"
+      if controller_name == 'registrations' && (action_name == 'new' || action_name == 'create')
+        "no_navbar"
+      elsif controller_name == 'sessions' && action_name == 'new'
+        "no_navbar"
+      else
+        "application"
+      end
+    elsif controller_name == 'welcome'
+      'no_navbar'
     else
       "application"
     end

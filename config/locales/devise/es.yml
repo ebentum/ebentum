@@ -17,7 +17,7 @@ es:
       unauthenticated: 'Debe identificarse o registrarse antes de continuar'
       unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
+      invalid: 'El email o la contraseña no son validos'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:save_token] # se van a poder ver perfiles de usuario sin estar dado de alta?
   before_filter :search_users, :only => [:index]
 
   def search_users

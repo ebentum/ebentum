@@ -10,6 +10,7 @@ $(document).on "click", "#sign_up_button", (event) ->
     beforeSend: ->
       # quitar las marcas de error
       $('div.control-group').removeClass('error')
+      $('#sign_up_error').fadeOut('slow')
       $('div.controls input').next().text('')
       # boton en estado loading
       $('#sign_up_button').button('loading')
@@ -42,12 +43,17 @@ $(document).on "click", "#sign_up_button", (event) ->
       # hacemos un timeout para que el efecto sea más suave
       setTimeout (->
         errorList = jQuery.parseJSON(xhr.responseText).errors
+        errorText = ''
         $.each errorList, (column, error) ->
-          $('#new_user #'+column).next().hide().text(error).fadeIn('slow')
+          # $('#new_user #'+column).next().hide().text(error).fadeIn('slow')
+          $('#sign_up_error').fadeIn('slow')
           $('#new_user #'+column).parent().parent().addClass('error')
+          errorText += error+'<br>'
         # activar el boton
+        if errorText
+          $('#sign_up_error_text').html(errorText) 
         $('#sign_up_button').button('reset')
-        ), 2000
+      ), 2000
 
 user_confirmation_required = (->
   omniauth_email        = $('#user_omniauth_email').val()
@@ -191,7 +197,7 @@ $(document).on "click", "#sign_in_button", (event) ->
           $('#sign_in #email, #sign_in #password').parent().parent().addClass('error')
           # activar el boton
           $('#sign_in_button').button('reset')
-        ), 2000
+      ), 2000
 
 $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
   provider = $('input', $(this)).data('provider')

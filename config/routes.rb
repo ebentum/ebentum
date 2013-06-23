@@ -9,6 +9,8 @@ Ebentum::Application.routes.draw do
 
   resources :activities
 
+  resources :welcome
+
   match 'events/add_user/:eventid'    => 'events#add_user'
   match 'events/remove_user/:eventid' => 'events#remove_user'
   match 'events/search'               => 'events#search'
