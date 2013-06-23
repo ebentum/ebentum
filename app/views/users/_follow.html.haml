@@ -1,2 +1,3 @@
-= form_for(@user, :url => { :action => "follow" },  remote: true) do |f|
-  = f.submit t('.follow'), class: "btn btn-primary"
+.action-content.action-safe.btn-round-bottom-right
+  = form_for(@user, :url => { :action => "follow" },  remote: true) do |f|
+    = f.submit t('.follow'), class: "btn btn-success"

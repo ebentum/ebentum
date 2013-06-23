@@ -1,4 +1,5 @@
 $('#events_new').click ->
+  console.log "events new.."
   $("#modal_windows #events_new_modal").remove()
   $.ajax
     url: "/events/new"
@@ -133,8 +134,11 @@ $(document).on "click", "#confirm_appoint_btn", (event) ->
         $('#appoint').button('reset')
         $('#appoint').addClass('hide')
         $('#desappoint').removeClass('hide')
+        $('#user-action').removeClass('option-active')
+        $('#user-action').addClass('option-danger')
         $('#confirm_desappoint_btn').data('appointmentid', data.id)
-        $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
+        # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
+        $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())+1)
         alert '¡Bien! ¡Te has unido al evento!'
       ), 2000
 
@@ -162,5 +166,8 @@ $(document).on "click", "#confirm_desappoint_btn", (event) ->
         $('#desappoint').button('reset')
         $('#desappoint').addClass('hide')
         $('#appoint').removeClass('hide')
-        $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
+        $('#user-action').removeClass('option-danger')
+        $('#user-action').addClass('option-active')
+        # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
+        $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
       ), 2000

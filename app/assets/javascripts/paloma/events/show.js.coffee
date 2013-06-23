@@ -11,8 +11,11 @@ Paloma.callbacks["events/show"] = (params) ->
 
   if params['joined']
     $('#desappoint').removeClass('hide')
+    $('#user-action').addClass('option-danger')
+
   else
     $('#appoint').removeClass('hide')
+    $('#user-action').addClass('option-active')
 
   # cargar comentarios
   comments.load_event_comments(params['event_id'])

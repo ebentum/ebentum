@@ -1,6 +1,7 @@
 
-.modal-body
-  = form_for @picture, :remote => true, :html => { :multipart => true } do |f|
+
+= form_for @picture, :remote => true, :html => { :multipart => true } do |f|
+  .card-content
     = f.file_field :photo, :class => "hidden"
     = link_to "/#", :id => 'image-preview-link', :class => 'thumbnail' do
       = image_tag '/photos/small/missing.png', :id => "image-preview"
@@ -8,30 +9,35 @@
     #image-upload-progress.progress.progress-striped.active.hidden
       .bar{:style => "width: 0%;"}
 
-  = form_for @event, :html => { :multipart => true } do |f|
-    %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}
+= form_for @event, :html => { :multipart => true  } do |f|
+  %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}
+  .card-content
     = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
     = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level"
+  .card-content
     .row-fluid
       .span6
-        .input-prepend
-          %span.add-on
-            %i.icon-calendar
-          = f.text_field :start_date, :placeholder => t(".date"), :data => {"date-format" => t("date.formats.bootstrap_datepicker")}
-
+        -# .input-prepend
+        -#   %span.add-on
+        -#     %i.icon-calendar
+        -# .control-group
+        -#   -#.fui-lock-16{:for => "event_start_date"}
+        -# %label.control-label
+        %i.icon-calendar
+        = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}
       .span6
-        .input-prepend
-          %span.add-on
-            %i.icon-time
-          = f.text_field :start_time, :placeholder => t(".time")
+        -# .input-prepend
+        -#   %span.add-on
+        -#     %i.icon-time
+        %i.icon-time
+        = f.text_field :start_time, :placeholder => t(".time")
 
-    .input-prepend
-      %span.add-on
-        %i.icon-map-marker
-      %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
-      = f.hidden_field :place
-      = f.hidden_field :lat
-      = f.hidden_field :lng
+  .card-content
+    %i.icon-map-marker
+    %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
+    = f.hidden_field :place
+    = f.hidden_field :lat
+    = f.hidden_field :lng
 
     #map_canvas
 

@@ -6,4 +6,4 @@ Paloma.callbacks["users/show"] = (params) ->
     Paloma.users.showTab(e.target.hash)
 
   # por defecto cargar la primera pestaña al entrar a la pagina
-  $('#userpagetabs li:eq(0) a').click()
+  $('#userpagetabs .footer-option:eq(0) a').click()

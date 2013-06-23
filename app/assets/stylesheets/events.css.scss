@@ -23,12 +23,20 @@
 }
 
 #map_canvas {
-  width:530px;
+  // width:530px;
   height:200px;
 }
 
 #map {
   height: 12em;
+}
+
+#event_description{
+ min-height: 50px;
+}
+
+#event-info-row{
+  padding: 0px;
 }
 
 .poster {

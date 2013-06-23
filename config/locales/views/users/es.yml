@@ -22,8 +22,8 @@ es:
       bio: "Biografía"
       web: "Web"
       your_events: "Tus eventos"
-      user_events: "Eventos creados"
-      joined_events: "Eventos apuntados"
+      user_events: "Eventos"
+      joined_events: "Apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
     follow:

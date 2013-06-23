@@ -1,80 +1,159 @@
 .span12
   .row-fluid
-    .span4.well.well-small.Panel
-      %ul.nav.nav-tabs.nav-stacked{:id => "userpagetabs"}
-        %li
-          %a{:href => "#userevents", "data-toggle" => "pill"}
-            .badge.badge-info
-              = @user.created_events.count
-            - if @user == current_user
-              = t('.your_events')
-            - else
-              = t('.user_events')
-        %li
-          %a{:href => "#userappointments", "data-toggle" => "pill"}
-            .badge.badge-info
-              = @user.events.count
-            = t('.joined_events')
-        %li
-          %a{:href => "#userfollowing", "data-toggle" => "pill"}
-            .badge.badge-info
-              = @user.followees_count
-            = t('.following')
-        %li
-          %a{:href => "#userfollowers", "data-toggle" => "pill"}
-            #followers_count_badge.badge.badge-info
-              = @user.followers_count
-            = t('.followers')
-    .span8
-      .row-fluid.ProfileInfo
-        .span12.well.Panel
-          .row-fluid
-            .span4
-              .thumbnail
-                = image_tag(@user.image_path(:medium), :class => 'block')
-            .span8
-              .row-fluid
-                #user_action_button.span12
-                  - if @user == current_user
-                    %a{:href => edit_user_registration_path(@user)}
-                      .btn.btn-primary
-                        = t(:edit)
-                  - else
-                    - if current_user.follower_of?(@user)
-                      = render 'unfollow'
-                    - else
-                      = render 'follow'
-              .row-fluid
-                .span12
-                  %h3
-                    = @user.complete_name
-                    - if @user.follower_of?(current_user)
-                      .label.label-info
-                        = t('.isfollower')
-                  %dl.dl-horizontal-left
-                    %dt
-                      %b
-                        = t(".location")
-                    %dd
+    -# .span4
+    -#   %ul.nav.nav-tabs.nav-stacked{:id => "userpagetabs"}
+    -#     %li
+    -#       %a{:href => "#userevents", "data-toggle" => "pill"}
+    -#         .badge.badge-info
+    -#           = @user.created_events.count
+    -#         - if @user == current_user
+    -#           = t('.your_events')
+    -#         - else
+    -#           = t('.user_events')
+    -#     %li
+    -#       %a{:href => "#userappointments", "data-toggle" => "pill"}
+    -#         .badge.badge-info
+    -#           = @user.events.count
+    -#         = t('.joined_events')
+    -#     %li
+    -#       %a{:href => "#userfollowing", "data-toggle" => "pill"}
+    -#         .badge.badge-info
+    -#           = @user.followees_count
+    -#         = t('.following')
+    -#     %li
+    -#       %a{:href => "#userfollowers", "data-toggle" => "pill"}
+    -#         #followers_count_badge.badge.badge-info
+    -#           = @user.followers_count
+    -#         = t('.followers')
+    .span12
+      .row-fluid
+        .span8.offset2
+          .card
+            .card-header
+              = @user.complete_name
+              - if @user.follower_of?(current_user)
+                .label.label-info
+                  = t('.isfollower')
+            .row-fluid
+              .span4
+                .thumbnail
+                  = image_tag(@user.image_path(:medium), :class => 'block')
+              .span8
+                .card-content
+                  .media
+                    .pull-left
+                      .media-object.fui-location-24.mll
+                    .media-body
                       = @user.location.blank? ? raw('&nbsp;') : @user.location
-                    %dt
-                      %b
-                        = t('.web')
-                    %dd
+                .card-content
+                  .media
+                    .pull-left
+                      .media-object.fui-menu-24.mll
+                    .media-body
                       = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
-                    %dt
-                      %b
-                        = t('.bio')
-                    %dd
+                .card-content
+                  .media
+                    .pull-left
+                      .media-object.fui-heart-24.mll
+                    .media-body
                       = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
-      .row-fluid
-        .tab-content
-          #error.alert.alert-error.hidden
-          .tab-pane{:id => "userevents", :data => {:url => created_events_user_path(@user.id) } }
-          .tab-pane{:id => "userappointments", :data => {:url => events_user_path(@user.id) } }
-          .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
-          .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
+                  -# %h3
+                  -#   = @user.complete_name
+                  -#   - if @user.follower_of?(current_user)
+                  -#     .label.label-info
+                  -#       = t('.isfollower')
+                  -# %dl.dl-horizontal-left
+                  -#   %dt
+                  -#     .text-right.mrl
+                  -#       %span.fui-location-24
+                  -#     -#= t(".location")
+                  -#   %dd.text-left
+                  -#     = @user.location.blank? ? raw('&nbsp;') : @user.location
+                  -#   %dt
+                  -#     .text-right.mrl
+                  -#       %span.fui-eye-24
+                  -#     -#= t('.web')
+                  -#   %dd.text-left
+                  -#     = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
+                  -#   %dt
+                  -#     .text-right.mrl
+                  -#       -# = t('.bio')
+                  -#       %span.fui-heart-24
+                  -#   %dd.text-left
+                  -#     = @user.bio.blank? ? raw('&nbsp;') : @user.bio
+
+            #userpagetabs.row-fluid.card-footer
+              .span2.footer-option
+                %a{:href => "#userevents", "data-toggle" => "pill"}
+                  .option-header
+                    = @user.created_events.count
+                  .option-content
+                    - if @user == current_user
+                      = t('.your_events')
+                    - else
+                      = t('.user_events')
+              .span2.footer-option.active
+                %a{:href => "#userappointments", "data-toggle" => "pill"}
+                  .option-header
+                    = @user.events.count
+                  .option-content
+                    = t('.joined_events')
+              .span2.footer-option
+                %a{:href => "#userfollowing", "data-toggle" => "pill"}
+                  .option-header
+                    = @user.followees_count
+                  .option-content
+                    = t('.following')
+              .span2.footer-option
+                %a{:href => "#userfollowers", "data-toggle" => "pill"}
+                  #followers_count_badge.option-header
+                    = @user.followers_count
+                  .option-content
+                    = t('.followers')
+              #user_action_button.span2.footer-option.option-active.pull-right.btn-round-bottom-right
+                - if @user == current_user
+                  %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
+                    = t(:edit)
+                - else
+                  - if current_user.follower_of?(@user)
+                    = render 'unfollow'
+                  - else
+                    = render 'follow'
+
+
+  .row-fluid
+    .tab-content
+      #error.alert.alert-error.hidden
+      .tab-pane{:id => "userevents", :data => {:url => created_events_user_path(@user.id) } }
+      .tab-pane{:id => "userappointments", :data => {:url => events_user_path(@user.id) } }
+      .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
+      .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
+
+    -#       .row
+    -#         .span6
+    -#           %span.fui-location-24
+    -#         .span6
+    -#           .text-left
+    -#             = @user.location.blank? ? raw('&nbsp;') : @user.location
+    -#       .row
+    -#         .span6
+    -#           %span.fui-eye-24
+    -#         .span6
+    -#           .text-left
+    -#             = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
+    -#       .row
+    -#         .span6
+    -#           %span.fui-heart-24
+    -#         .span6
+    -#           .text-left
+    -#             = @user.bio.blank? ? raw('&nbsp;') : @user.bio
+    -# .row-fluid
+    -#   .span12
+    -#     .modal-footer
+
+
+
 
 
 

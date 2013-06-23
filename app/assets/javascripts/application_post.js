@@ -31,6 +31,9 @@
 //= require moment
 //= require moment-es
 
+//= require custom_checkbox_and_radio.js
+//= require custom_radio.js
+
 //= require i18n
 //= require i18n/translations
 

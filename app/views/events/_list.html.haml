@@ -1,8 +1,8 @@
 .span12
   .masonry_layout.centered
     - for event in @events
-      - pwidth = event.photo_dimensions["poster"][0]
-      - pheight = event.photo_dimensions["poster"][1]
+      - pwidth = event.main_picture.photo.photo_dimensions["poster"][0]
+      - pheight = event.main_picture.photo.photo_dimensions["poster"][1]
       - if pwidth > 200
         - pheight = pheight * 1.0
         -# lo que sobresale con respecto al ancho de una columna
@@ -22,7 +22,8 @@
       .poster{ :style => "width: #{pwidth+40}px; height: #{pheight+40}px;"}
         .poster-front
           %div{:class => "paper #{poster_style}", :style => "width: #{pwidth}px; height: #{pheight}px;"}
-            = image_tag event.photo.url(:poster)
+            -# = image_tag event.photo.url(:poster)
+            = image_tag event.main_picture.photo.url(:poster)
         .poster-back
           -#{:class => "paper #{poster_style}"}
           -# background-color:rgba(102,102,102,0.8);

@@ -2,101 +2,116 @@
   = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
     = devise_error_messages!
 
-    .row-fluid.visible-phone
-      .span12.paper.paper-curve-horiz
-        #user_action_button
-          %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-            = t(:save)
-          %a.btn.pull-right{:href => user_path(@user)}
-            = t(:back)
-
     .row-fluid
       .span4
         .row-fluid
-          .span12.paper.paper-curl-right
-            .row-fluid
-              .span12
+          .span12
+            .card
+              .card-content
                 #userImage.thumbnail
                   = image_tag(@user.image_path(:medium), :class => 'block')
                 #socialUserImage.thumbnail.hidden
                   - social_image_url = @user.image_url rescue "/photos/medium/missing.png"
                   = image_tag(social_image_url , :class => 'block')
                   = hidden_field_tag 'user[image_url]', social_image_url, :id => 'image_url'
-            %hr
-            .row-fluid
-              .span12
-                %button.btn.btn-block.btn-success.fileinput-button
-                  %i.icon-plus.icon-white
+              - if @user.image?
+                %a#imageDeleteButton.btn.btn-square-block.btn-danger.btn-large.btn-square
+                  %i.icon-remove.icon-white
+                  %span
+                    = t('.delete_image')
+                    = f.hidden_field :image_delete, :value => "0"
+              %a.fileinput-button.btn.btn-primary.btn-square-block.btn-large.btn-square-top.man{:href => "#"}
+                %i.icon-plus.icon-white
                   %span
                     = t('.add_image')
                   = f.file_field :image
-                - if @user.image?
-                  %button#imageDeleteButton.btn.btn-block.btn-danger
-                    %i.icon-remove.icon-white
-                    %span
-                      = t('.delete_image')
-                      = f.hidden_field :image_delete, :value => "0"
+              -# .row-fluid
+              -#   .span12
+              -#     %button.btn.btn-block.btn-success.fileinput-button
+              -#       %i.icon-plus.icon-white
+              -#       %span
+              -#         = t('.add_image')
+              -#       = f.file_field :image
+              -#     - if @user.image?
+              -#       %button#imageDeleteButton.btn.btn-block.btn-danger
+              -#         %i.icon-remove.icon-white
+              -#         %span
+              -#           = t('.delete_image')
+              -#           = f.hidden_field :image_delete, :value => "0"
 
         .row-fluid
-          .span12.paper.paper-rotated-left
-            %h4
-              = t('.social_title')
-            %hr
-            = render 'social_config'
+          .span12
+            .card
+              .card-header
+                = t('.social_title')
+              = render 'social_config'
       .span8
-        .row-fluid.hidden-phone
-          .span12.paper.paper-curve-horiz
-            #user_action_button.pull-left
-              %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-                = t(:save)
-              %a{:href => user_path(@user), :class => "btn"}
-                = t(:back)
-            .pull-right
-              - if @user.fbtoken
-                %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                  %i.icon-facebook
-                  Importar de facebook
-              - if @user.twtoken
-                %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                  %i.icon-twitter
-                  Importar de twitter
-
+        -# .row-fluid.hidden-phone
+        -#   .span12
+        -#     .card
+        -#       #user_action_button
+        -#         %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
+        -#           = t(:save)
+        -#         %a{:href => user_path(@user), :class => "btn"}
+        -#           = t(:back)
+        -#       - if @user.fbtoken
+        -#         %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+        -#           %i.icon-facebook
+        -#           Importar de facebook
+        -#       - if @user.twtoken
+        -#         %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+        -#           %i.icon-twitter
+        -#           Importar de twitter
         .row-fluid
-          .span12.paper.paper-curl-left
-            .btn-group.btn-group-vertical.visible-phone
-              - if @user.fbtoken
-                %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                  %i.icon-facebook
-                  Importar de facebook
-              - if @user.twtoken
-                %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                  %i.icon-twitter
-                  Importar de twitter
-            - if @user.fbtoken or @user.twtoken
-              %hr.visible-phone
-            .control-group
-              %label.control-label
-                = t(".complete_name")
-              .controls
-                = f.text_field :complete_name, :class => "input-block-level"
-            %hr
-            .control-group
-              %label.control-label
-                = t(".location")
-              .controls
-                = f.text_field :location, :class => "input-block-level"
-            %hr
-            .control-group
-              %label.control-label
-                = t('.web')
-              .controls
-                = f.text_field :web, :class => "input-block-level"
-            %hr
-            .control-group
-              %label.control-label
-                = t('.bio')
-              .controls
-                = f.text_area :bio, :class => "input-block-level", :rows => "5"
+          .span12
+            .card
+              -# .card-header
+              -#   #user_action_button
+              -#     %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
+              -#       = t(:save)
+              -#     %a{:href => user_path(@user), :class => "btn"}
+              -#       = t(:back)
+              -#     - if @user.fbtoken
+              -#       %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+              -#         %i.icon-facebook
+              -#         Importar de facebook
+              -#     - if @user.twtoken
+              -#       %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+              -#         %i.icon-twitter
+              -#         Importar de twitter
+              .card-content
+                .control-group
+                  %label.control-label
+                    = t(".complete_name")
+                  .controls
+                    = f.text_field :complete_name, :class => "input-block-level"
+              .card-content
+                .control-group
+                  %label.control-label
+                    = t(".location")
+                  .controls
+                    = f.text_field :location, :class => "input-block-level"
+              .card-content
+                .control-group
+                  %label.control-label
+                    = t('.web')
+                  .controls
+                    = f.text_field :web, :class => "input-block-level"
+              .card-content
+                .control-group
+                  %label.control-label
+                    = t('.bio')
+                  .controls
+                    = f.text_area :bio, :class => "input-block-level", :rows => "5"
+              .row-fluid.card-footer
+                .span2.offset8.footer-option.option-active
+                  .option-action
+                    %button#user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
+                      = t(:save)
+                .span2.footer-option
+                  .option-action
+                    %a{:href => user_path(@user), :class => "btn btn-inverse"}
+                      = t(:back)
 
   = render 'confirm_image_delete'
   = render 'confirm_import_social'

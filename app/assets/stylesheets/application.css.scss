@@ -1,7 +1,6 @@
 // $btnPrimaryBackground: #f00;
 
 @import "bootstrap";
-body { padding-top: 50px; }
 @import "bootstrap-responsive";
 @import "compass";
 @import "bootstrap-modal";
@@ -11,5 +10,9 @@ body { padding-top: 50px; }
 @import "font-awesome";
 @import "bootstrapSwitch";
 
+@import "flat-ui/flat-ui";
+
 @import "custom";
-@import "comments"
+@import "comments";
+
+@import url(http://fonts.googleapis.com/css?family=Lato);

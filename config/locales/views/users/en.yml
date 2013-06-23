@@ -22,8 +22,8 @@ en:
       bio: "Bio"
       web: "Web"
       your_events: "Your Events"
-      user_events: "Created Events"
-      joined_events: "Joined Events"
+      user_events: "Events"
+      joined_events: "Joined"
       following: "Following"
       followers: "Followers"
     follow:
