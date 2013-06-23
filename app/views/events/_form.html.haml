@@ -13,8 +13,8 @@
   %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}
   .card-content
     = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
-    = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level"
-  .card-content
+    = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level", :rows => 4
+  .pam
     .row-fluid
       .span6
         -# .input-prepend
@@ -23,25 +23,29 @@
         -# .control-group
         -#   -#.fui-lock-16{:for => "event_start_date"}
         -# %label.control-label
-        %i.icon-calendar
+        %i.fui-calendar-24
         = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}
       .span6
         -# .input-prepend
         -#   %span.add-on
         -#     %i.icon-time
-        %i.icon-time
+        %i.fui-time-24
         = f.text_field :start_time, :placeholder => t(".time")
 
-  .card-content
-    %i.icon-map-marker
+
+    %i.fui-location-24
     %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
     = f.hidden_field :place
     = f.hidden_field :lat
     = f.hidden_field :lng
 
-    #map_canvas
+  #map_canvas
 
-.modal-footer
-  %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
-  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}
-    = t(".cancel")
+.row-fluid.card-footer
+  .span3.offset6.footer-option.option-active
+    .option-action
+      %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
+  .span3.footer-option
+    .option-action
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}
+        = t(".cancel")
