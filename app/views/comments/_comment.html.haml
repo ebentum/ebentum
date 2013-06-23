@@ -4,16 +4,15 @@
   %a.pull-left{:href => "#"}
     = image_tag(comment.creator.image_path(:thumb), :class => 'block media-object thumb_image')
   .media-body
-    %small
-      %a{:href => user_path(comment.creator)}
-        = comment.creator.complete_name
-    %span{:id => 'body'+commentid}
-      = comment.body
-    %br
-    %span{:id => 'edit'+commentid, :class => 'hide'}
-      %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment', :data => {:commentid => comment.id}}
+    .media-heading
+      %small
+        %a{:href => user_path(comment.creator)}
+          = comment.creator.complete_name
+      %span.mlm{:id => 'body'+commentid}
         = comment.body
-    %br
+      %span{:id => 'edit'+commentid, :class => 'hide'}
+        %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment', :data => {:commentid => comment.id}}
+          = comment.body
     %small{:id => 'comment_date_'+comment.id.to_s}
       = l(comment.updated_at, :format => :long)
     - if current_user && current_user.id == comment.creator.id

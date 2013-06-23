@@ -57,6 +57,20 @@ form{
   text-align: center;
   margin-bottom: 20px;
   box-shadow: 1px 1px 5px #888888;
+
+  .card-content+.card-content { border-top: 1px solid #ddd }
+
+  .media {
+    margin-top: 0px;
+    text-align: left;
+  }
+}
+
+.card-inverse {
+  background: $base;
+  color: $inverse;
+
+  .card-content+.card-content { border-top: 2px solid scale-color($base, $lightness: -15%) }
 }
 
 .card-square {
@@ -193,8 +207,6 @@ form{
   padding: 0px;
 }
 
-
-.card-content+.card-content { border-top: 1px solid #ddd }
 
 .card-content .control-group {
   margin-bottom: 0px;
