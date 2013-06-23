@@ -140,6 +140,7 @@ form{
     }
   }
 
+
   .footer-option.active{
     background: $firm;
 
@@ -151,6 +152,12 @@ form{
   .footer-action{
     display: table;
     background-color: $firm;
+  }
+}
+
+.event-footer{
+  .footer-option{
+    height: 20px;
   }
 }
 
@@ -169,7 +176,6 @@ form{
 // .action-optional{
 //   background-color: $base;
 // }
-
 
 
 .card-content{
@@ -212,6 +218,8 @@ form{
   margin-bottom: 0px;
   padding: 10px;
 }
+
+
 
 .btn-square-block {
   display: block;

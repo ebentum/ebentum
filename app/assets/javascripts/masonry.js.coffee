@@ -1,8 +1,7 @@
 # $container = $(".masonry_layout")
 # $container.imagesLoaded ->
 
-
-$('.poster-front').oriDomi({ hPanels: 10, vPanels: 10, touchEnabled: false, speed: 400 })
+# $('.poster-front').oriDomi({ hPanels: 10, vPanels: 10, touchEnabled: false, speed: 400 })
 
 $(document).on "click", ".poster-front.oridomi", (event) ->
   $item = $(this)
@@ -37,7 +36,7 @@ $(document).on "click", ".poster-front.oridomi", (event) ->
 #     $(this).data('isrevealed','true')
 
 $(".masonry_layout").masonry
-  itemSelector: ".poster"
+  itemSelector: ".card"
   columnWidth: ( containerWidth ) ->
     # if containerWidth > 1024
     #   containerWidth / 6
