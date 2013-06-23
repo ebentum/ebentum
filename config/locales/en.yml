@@ -6,6 +6,8 @@ en:
           attributes:
             email:
               not_found: "Email not found"
+  #A
+  activity: "Activity"
   #B
   back: "Back"
   #C
@@ -18,6 +20,7 @@ en:
   #E
   email: "Email"
   edit: "Edit"
+  explore: "Explore"
   #F
   forgot_your_password: "Forgot your password?"
   #H

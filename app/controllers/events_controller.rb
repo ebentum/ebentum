@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   before_filter :search_events, :only => [:index]
 
+  # JDA: ¿Esto se usa?
   def search_events
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -18,6 +19,23 @@ class EventsController < ApplicationController
       @events = Event.all
     end
 
+  end
+
+  def search
+    my_location       = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
+    @distanceSelected = params[:distance] || 2 # A 2 km
+    @daysSelected     = params[:days]     || 1 # Hoy
+    @events           = Event
+    if @distanceSelected.to_i > 0
+      @events = @events.near(my_location, @distanceSelected, :units => :km)
+    end
+    if @daysSelected.to_i > 0
+      @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @events }
+    end  
   end
 
   def index
@@ -67,6 +85,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    # Meter 'lat' y 'lng' en array 'coordinates'
+    @event.coordinates = [params[:event][:lng].to_f, params[:event][:lat].to_f] # to_f para pasarlos a float
     @event.creator = current_user
 
     picture = Picture.find(params[:event][:main_picture_id])
