@@ -281,9 +281,9 @@ form{
   width: 100%;
 }
 
-#omniauth_options{
-  max-width: 19.3em;
-}
+// #omniauth_options{
+//   max-width: 19.3em;
+// }
 
 #omniauth_form{
   max-width: 43em;
@@ -314,6 +314,10 @@ label.error {
   margin-top: 2px;
 }
 
+.btn-facebook {
+  color: #ffffff;
+  background-color: #006dcc;
+}
 
 // /* Large desktop */
 // @media (min-width: 1200px) { ... }
