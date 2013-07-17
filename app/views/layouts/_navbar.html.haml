@@ -50,8 +50,6 @@
           %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
             %a{:href => "/events/search"}
               = t(:explore)
-        %form.navbar-search.pull-left{:action => ""}
-          %input.search-query.span2{:placeholder => "Buscar", :type => "text"}
         - if user_signed_in?
           %ul.nav.pull-right
             %li

@@ -139,4 +139,19 @@ class UsersController < ApplicationController
     end
   end
 
+  # def update_main_picture
+  #   picture = Picture.find(params[:picture])
+  #   current_user.main_picture = picture
+    
+  #   respond_to do |format|
+  #     if picture.save
+  #       format.json  { render :json => picture,
+  #                     :status => :created, :location => picture }
+  #     else
+  #       format.json  { render :json => picture.errors,
+  #                     :status => :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
 end

@@ -8,7 +8,9 @@ class Picture
   field :photo_updated_at, type: DateTime
   field :photo_dimensions, type: Hash
 
-  has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>", :poster => Proc.new { |instance| instance.poster_resize } }, :default_url => "/photos/:style/missing.png"
+  has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>"
+  #  , :poster => Proc.new { |instance| instance.poster_resize }  #Esto hace que me falle al subir imagenes
+  }, :default_url => "/photos/:style/missing.png"
 
 
   belongs_to :pictureable, polymorphic: true
