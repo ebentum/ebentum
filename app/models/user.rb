@@ -29,8 +29,8 @@ class User
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email
   validates_presence_of :encrypted_password
+  validates_presence_of :complete_name
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -58,8 +58,6 @@ class User
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :image, :image_url, :image_delete
-
-  validates :complete_name, :presence => true
 
   # atributos que no son del modelo
   # email que viene de omniauth
