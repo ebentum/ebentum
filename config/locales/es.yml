@@ -20,6 +20,7 @@ es:
   #E
   email: "Email"
   edit: "Editar"
+  encrypted_password: Confirmar contraseña
   explore: "Explorar"
   #F
   forgot_your_password: "¿Has olvidado tu contraseña?"

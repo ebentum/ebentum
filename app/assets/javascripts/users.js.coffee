@@ -45,13 +45,13 @@ $(document).on "click", "#sign_up_button", (event) ->
         errorList = jQuery.parseJSON(xhr.responseText).errors
         errorText = ''
         $.each errorList, (column, error) ->
-          # $('#new_user #'+column).next().hide().text(error).fadeIn('slow')
           $('#sign_up_error').fadeIn('slow')
-          $('#new_user #'+column).parent().parent().addClass('error')
-          errorText += error+'<br>'
+          $('#new_user #'+column).parent().parent().parent().addClass('error')
+          campo = I18n.t(column)
+          errorText += campo+': '+error+'<br>'
         # activar el boton
         if errorText
-          $('#sign_up_error_text').html(errorText) 
+          $('#sign_up_error_text').html(errorText)
         $('#sign_up_button').button('reset')
       ), 2000
 
@@ -229,7 +229,7 @@ $(document).on 'click', '#confirm_import_social_btn', ->
       $('#user_web').val(data.web) if $('#import_web').is(':checked')
       $('#user_bio').val(data.bio) if $('#import_bio').is(':checked')
       $('#userImage img').attr('src', data.image) if $('#import_image').is(':checked')
-      $('#image_url').val(data.image) if $('#import_image').is(':checked')  
+      $('#image_url').val(data.image) if $('#import_image').is(':checked')
 
 $("#facebook").on "switch-change", (e, data) ->
   if data.value
