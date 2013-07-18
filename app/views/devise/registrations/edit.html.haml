@@ -5,6 +5,7 @@
     .row-fluid
       .span4
         .row-fluid
+
           .span12
             .card
               .card-content
@@ -22,6 +23,15 @@
                     = f.hidden_field :image_delete, :value => "0"
               %a.fileinput-button.btn.btn-primary.btn-square-block.btn-large.btn-square-top.man{:href => "#"}
                 %i.icon-plus.icon-white
+
+
+
+            %hr
+            .row-fluid
+              .span12
+                %button.btn.btn-block.btn-success.fileinput-button
+                  %i.icon-plus.icon-white
+
                   %span
                     = t('.add_image')
                   = f.file_field :image
