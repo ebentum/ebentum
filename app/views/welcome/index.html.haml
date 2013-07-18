@@ -31,6 +31,7 @@
   .row-fluid
     .span12.well.Panel
       = form_for(@user, :as => :user, :url => '/users', :html => {:method => :post}) do |f|
+        = f.hidden_field :user_confirmation_required, :value => 'true'
         = content_tag :legend, t(:new_sign_up)
         = f.text_field :complete_name, :placeholder => t(:complete_name), :class => 'input-xlarge'
         = f.email_field :email, :placeholder => t(:email), :class => 'input-xlarge'
