@@ -15,6 +15,14 @@ end
 
 module Ebentum
   class Application < Rails::Application
+
+
+    config.to_prepare do
+      Devise::SessionsController.skip_before_filter :auth_user
+      Devise::PasswordsController.skip_before_filter :auth_user
+      Devise::ConfirmationsController.skip_before_filter :auth_user
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

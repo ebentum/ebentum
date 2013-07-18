@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show]
+  skip_before_filter :auth_user, :only => [:show]
   before_filter :search_events, :only => [:index]
 
   def search_events

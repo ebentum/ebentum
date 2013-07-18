@@ -1,5 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  skip_before_filter :auth_user
   before_filter :store_omniauth_data, :except => [:facebook_login, :twitter_login]
   before_filter :koala_facebook_oauth, :only => [:facebook, :facebook_login]
 

@@ -1,12 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :auth_user
+
   layout :layout_by_resource
 
   protected
 
   def auth_user
-    render 'welcome/index', :layout => 'no_navbar' unless user_signed_in?
+    redirect_to '/welcome' unless user_signed_in?
   end
 
   def layout_by_resource
