@@ -1,12 +1,12 @@
 .control-group{:class => resource.errors.has_key?(:complete_name)? 'error' : ''}
   .controls
-    = form.text_field :complete_name, :value => omniauth_name, :id => 'complete_name', :placeholder => t(:complete_name), :class => 'input-xlarge'
+    = form.text_field :complete_name, :value => omniauth_name, :id => 'complete_name', :placeholder => t('.complete_name'), :class => 'input-xlarge'
 .control-group{:class => resource.errors.has_key?(:email)? 'error' : ''}
   .controls
-    = form.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+    = form.email_field :email, :value => omniauth_email, :id => 'email', :placeholder => t('.email'), :class => 'input-xlarge'
 .control-group{:class => resource.errors.has_key?(:password)? 'error' : ''}
   .controls
-    = form.password_field :password, :id => 'password', :placeholder => t(:password), :class => 'input-xlarge'
+    = form.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'input-xlarge'
 .control-group{:class => resource.errors.has_key?(:password_confirmation)? 'error' : ''}
   .controls
-    = form.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:password_confirmation), :class => 'input-xlarge'
+    = form.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.password_confirmation'), :class => 'input-xlarge'

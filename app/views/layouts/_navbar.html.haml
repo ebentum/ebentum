@@ -46,10 +46,10 @@
         %ul.nav
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
-              = t(:activity)
+              = t('.activity')
           %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
             %a{:href => "/events/search"}
-              = t(:explore)
+              = t('.explore')
         - if user_signed_in?
           %ul.nav.pull-right
             %li
@@ -64,21 +64,21 @@
                 %li
                   %a{:href => user_path(current_user), :tabindex => '-1'}
                     %i.icon-user
-                    = t(:profile)
+                    = t('.profile')
                 %li
                   %a{:href => edit_user_registration_path(current_user), :tabindex => '-1'}
                     %i.icon-cog
-                    = t(:configuration)
+                    = t('.configuration')
                 %li
                   %a{:href => destroy_user_session_path, :tabindex => '-1', :data => {:method => :delete}}
                     %i.icon-off
-                      = t(:logout)
+                      = t('.logout')
         - else
           %ul.nav.pull-right
             %li
-              = link_to t(:sign_up), new_user_registration_path
+              = link_to t('.sign_up'), new_user_registration_path
             %li
-              = link_to t(:sign_in), new_user_session_path
+              = link_to t('.sign_in'), new_user_session_path
 
 
 -# .navbar.navbar-fixed-top

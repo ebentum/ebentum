@@ -22,8 +22,8 @@ module OmniauthHelper
       info = content_tag :div, :class => 'alert alert-info' do
         name = content_tag :strong, omniauth_name
         content_tag :p do
-          image_tag(provider_logo, :size => "30x30") + ' ' + 
-          t(:sesion_started_as) + ' ' + 
+          image_tag(provider_logo, :size => "30x30") + ' ' +
+          t(:session_started_as) + ' ' +
           name
         end
       end
@@ -44,7 +44,7 @@ module OmniauthHelper
 
   def omniauth_email
     if is_omniauth_sign_up?
-      get_omniauth_data.info.email  
+      get_omniauth_data.info.email
     end
   end
 
@@ -61,7 +61,7 @@ module OmniauthHelper
   def omniauth_uid
     get_omniauth_data.uid
   end
-  
+
   def omniauth_token
     get_omniauth_data.credentials.token
   end
@@ -88,10 +88,10 @@ module OmniauthHelper
   end
 
   def is_omniauth_sign_up?
-    get_omniauth_data != nil  
+    get_omniauth_data != nil
   end
 
-  def get_omniauth_data  
+  def get_omniauth_data
     flash[:omniauth_data]
   end
 

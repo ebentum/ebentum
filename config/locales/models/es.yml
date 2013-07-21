@@ -1,1 +1,6 @@
 es:
+  attributes:
+    complete_name: Nombre completo
+    email: Email
+    encrypted_password: Confirmar contraseña
+    password: Contraseña

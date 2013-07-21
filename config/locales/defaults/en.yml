@@ -1,9 +1,4 @@
 en:
-  attributes:
-    complete_name: Complete name
-    email: Email
-    encrypted_password: Confirm password
-    password: Password
   date:
     abbr_day_names:
     - Sun

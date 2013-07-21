@@ -14,6 +14,7 @@ es:
       bio: "Biografía"
       web: "Web"
     show:
+      edit: "Editar"
       username: "Nombre de usuario"
       complete_name: "Nombre completo"
       isfollower: "Te sigue"
