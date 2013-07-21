@@ -2,19 +2,19 @@
 .span4
   = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:method => :post, :id => 'new_confirmation', :class => 'new_confirmation'}) do |f|
     %fieldset
-      = content_tag :legend, t(:resend_confirmation_instructions)
+      = content_tag :legend, t('.resend_confirmation_instructions')
       .control-group
         .controls
-          = f.email_field :email, :id => 'email', :placeholder => t(:email), :class => 'input-xlarge'
+          = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'input-xlarge'
           %span.help-inline
-      = f.button t(:help_me), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_confirmation_button', :data => {'loading-text' => t(:helping)}
+      = f.button t('.help_me'), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_confirmation_button', :data => {'loading-text' => t('.helping')}
       %br
       %br
       .alert.alert-success.hide{:id => 'new_confirmation_success'}
         / %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %h4
-          = t(:new_confirmation_ok_title)
+          = t('.new_confirmation_ok_title')
         %span{:id => 'new_confirmation_ok_text'}
-          = t(:new_confirmation_ok_text, :email => 'EMAIL')
+          = t('.new_confirmation_ok_text', :email => 'EMAIL')
   = render "devise/shared/links"
 .span4

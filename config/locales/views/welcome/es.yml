@@ -1,0 +1,15 @@
+es:
+  welcome:
+    index:
+      complete_name: "Nombre completo"
+      email: "Email"
+      forgot_your_password: "¿Has olvidado tu contraseña?"
+      new_sign_up: "¿Nuevo en ebentum? ¡Regístrate!"
+      or: "o"
+      password: "Contraseña"
+      password_confirmation: "Confirmar contraseña"
+      remember_me: "Recuérdame"
+      sign_up_button: "Regístrame"
+      sign_up_with: "Puedes registrarte con"
+      sign_in_with: "Puedes iniciar sesión con"
+      sign_in_button: "Iniciar sesión"

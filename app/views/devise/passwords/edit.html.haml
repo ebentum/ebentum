@@ -2,23 +2,23 @@
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => 'edit_password', :class => 'edit_password'}) do |f|
     = f.hidden_field :reset_password_token
     %fieldset
-      = content_tag :legend, t(:change_your_password)
+      = content_tag :legend, t('.change_your_password')
       .control-group
         .controls
-          = f.password_field :password, :id => 'password', :placeholder => t(:new_password), :class => 'input-xlarge'
+          = f.password_field :password, :id => 'password', :placeholder => t('.new_password'), :class => 'input-xlarge'
           %span.help-inline
       .control-group
         .controls
-          = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:new_password_confirmation), :class => 'input-xlarge'
+          = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.new_password_confirmation'), :class => 'input-xlarge'
           %span.help-inline
       %br
-      = f.button t(:confirm_new_password), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'edit_password_button', :data => {'loading-text' => t(:helping)}
+      = f.button t('.confirm_new_password'), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'edit_password_button', :data => {'loading-text' => t('.helping')}
       %br
       %br
       .alert.alert-success.hide{:id => 'edit_password_success'}
         / %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %h4
-          = t(:edit_password_ok_title)
+          = t('.edit_password_ok_title')
         %span{:id => 'edit_password_ok_text'}
-          = t(:edit_password_ok_text, :email => 'EMAIL')
+          = t('.edit_password_ok_text', :email => 'EMAIL')
   = render "devise/shared/links"

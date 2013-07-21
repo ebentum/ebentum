@@ -114,7 +114,7 @@
               #user_action_button.span2.footer-option.option-active.pull-right.btn-round-bottom-right
                 - if @user == current_user
                   %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
-                    = t(:edit)
+                    = t('.edit')
                 - else
                   - if current_user.follower_of?(@user)
                     = render 'unfollow'

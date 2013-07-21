@@ -1,0 +1,8 @@
+en:
+  devise:
+    shared:
+      links:
+        didnt_receive_confirmation_email: "Didn't receive confirmation instructions?"
+        forgot_your_password: "Forgot your password?"
+        sign_up: "Sign up"
+        sign_in: "Sign in"

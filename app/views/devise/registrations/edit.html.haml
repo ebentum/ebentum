@@ -116,12 +116,12 @@
               .row-fluid.card-footer
                 .span2.offset8.footer-option.option-active
                   .option-action
-                    %button#user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-                      = t(:save)
+                    %button#user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
+                      = t('.save')
                 .span2.footer-option
                   .option-action
                     %a{:href => user_path(@user), :class => "btn btn-inverse"}
-                      = t(:back)
+                      = t('.back')
 
   = render 'confirm_image_delete'
   = render 'confirm_import_social'

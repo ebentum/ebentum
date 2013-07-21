@@ -9,7 +9,7 @@ es:
     - vie
     - sáb
     abbr_month_names:
-    - 
+    -
     - ene
     - feb
     - mar
@@ -36,7 +36,7 @@ es:
       short: ! '%d de %b'
       bootstrap_datepicker: 'dd/mm/yyyy'
     month_names:
-    - 
+    -
     - enero
     - febrero
     - marzo
@@ -97,7 +97,7 @@ es:
       second: Segundos
       year: Año
   errors: &errors
-    format: ! '%{attribute} %{message}'
+    format: ! '%{attribute}: %{message}'
     messages:
       accepted: debe ser aceptado
       blank: no puede estar en blanco

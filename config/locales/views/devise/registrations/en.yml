@@ -1,0 +1,24 @@
+en:
+  devise:
+    registrations:
+      edit:
+        back: "Back"
+        save: "Save"
+        saving: "Guardando..."
+      new:
+        sign_up: "Sign up"
+        sign_in_error_title: Ups...
+      form_fields:
+        complete_name: "Complete name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm password"
+      sign_up_alerts:
+        omniauth_sign_up_ok_text: "Now you can start using ebentum! Click the start button or wait and I'll take you"
+        sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
+        sign_up_ok_title: Yeah!
+        sign_up_with: "You can sign up with"
+        start: "Start"
+      sign_up_button:
+        sign_up_button: "Sign up"
+        signing_up: "Signing up..."

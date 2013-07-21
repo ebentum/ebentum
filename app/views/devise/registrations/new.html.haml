@@ -4,14 +4,14 @@
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       .alert.alert-error.hide{:id => 'sign_up_error'}
         %h4
-          = t(:sign_in_error_title)
+          = t('.sign_in_error_title')
         %br
         %span{:id => 'sign_up_error_text'}
       = omniauth_form_data
       = f.hidden_field :user_confirmation_required, :value => 'true'
       %fieldset
-        = content_tag :legend, t(:sign_up)
-        = omniauth_provider_info 
+        = content_tag :legend, t('.sign_up')
+        = omniauth_provider_info
         .row-fluid
           %div{:class => 'span4'}
             .thumbnail{:class => 'centered'}
@@ -32,7 +32,7 @@
       - if resource.errors.full_messages.length > 0
         .alert.alert-error{:id => 'sign_up_error'}
           %h4
-            = t(:sign_in_error_title)
+            = t('.sign_in_error_title')
           %br
           %span{:id => 'sign_up_error_text'}
             - resource.errors.full_messages.each do |error|
@@ -41,20 +41,20 @@
       - else
         .alert.alert-error.hide{:id => 'sign_up_error'}
           %h4
-            = t(:sign_in_error_title)
+            = t('.sign_in_error_title')
           %br
           %span{:id => 'sign_up_error_text'}
       = omniauth_form_data
       = f.hidden_field :user_confirmation_required, :value => 'true'
       %fieldset
-        = content_tag :legend, t(:sign_up)
-        = omniauth_provider_info   
+        = content_tag :legend, t('.sign_up')
+        = omniauth_provider_info
         .row-fluid
           .span12{:id => 'omniauth_options'}
             .control-group
               .controls
-                %label 
-                  = t(:sign_up_with)
+                %label
+                  = t('.sign_up_with')
                 %br
                 %a.btn.btn-facebook.btn-large.pull-left{:href => "/users/auth/facebook"}
                   %i.icon-facebook

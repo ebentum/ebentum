@@ -1,0 +1,10 @@
+es:
+  layouts:
+    navbar:
+      activity: 'Actividad'
+      configuration: "Configuración"
+      explore: "Explorar"
+      logout: "Salir"
+      profile: "Perfil"
+      sign_up: "Regístrate"
+      sign_in: "Entra"

@@ -1,11 +1,11 @@
 .alert.alert-success.hide{:id => 'omniauth_sign_up_success'}
   %h4
-    = t(:sign_up_ok_title)
+    = t('.sign_up_ok_title')
   %span{:id => 'omniauth_sign_up_ok_text'}
-    = t(:omniauth_sign_up_ok_text)
-= link_to t(:start), root_path, :class => 'btn btn-large btn-primary hide', :id => 'start_button'
+    = t('.omniauth_sign_up_ok_text')
+= link_to t('.start'), root_path, :class => 'btn btn-large btn-primary hide', :id => 'start_button'
 .alert.alert-success.hide{:id => 'sign_up_success'}
   %h4
-    = t(:sign_up_ok_title)
+    = t('.sign_up_ok_title')
   %span{:id => 'sign_up_ok_text'}
-    = t(:sign_up_ok_text, :email => 'SIGN_UP_EMAIL')
+    = t('.sign_up_ok_text', :email => 'SIGN_UP_EMAIL')

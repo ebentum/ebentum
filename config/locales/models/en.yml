@@ -1,2 +1,6 @@
 en:
-  prueba: "preuuuba"
+  attributes:
+    complete_name: Complete name
+    email: Email
+    encrypted_password: Confirm password
+    password: Password
