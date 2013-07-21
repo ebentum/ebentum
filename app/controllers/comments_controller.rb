@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  skip_before_filter :auth_user, :only => [:index]
+
   def index
     @event    = Event.find(params[:event_id])
     @page     = params[:page] || 1

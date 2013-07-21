@@ -69,11 +69,12 @@
                 -#     = @event_users
                 -#   / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
               = render 'share_event'
-              #user-action.span2.footer-option.pull-right.btn-round-bottom-right
-                .option-action
-                  = hidden_field_tag 'event_id', @event.id
-                  = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
-                  = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
+              - if user_signed_in?
+                #user-action.span2.footer-option.pull-right.btn-round-bottom-right
+                  .option-action
+                    = hidden_field_tag 'event_id', @event.id
+                    = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
+                    = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
 
 
       .row-fluid
