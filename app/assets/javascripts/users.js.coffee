@@ -47,7 +47,7 @@ $(document).on "click", "#sign_up_button", (event) ->
         $.each errorList, (column, error) ->
           $('#sign_up_error').fadeIn('slow')
           $('#new_user #'+column).parent().parent().parent().addClass('error')
-          campo = I18n.t(column)
+          campo = I18n.t('attributes.'+column)
           errorText += campo+': '+error+'<br>'
         # activar el boton
         if errorText
