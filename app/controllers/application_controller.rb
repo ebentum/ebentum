@@ -8,7 +8,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def auth_user
-    redirect_to '/welcome' unless user_signed_in?
+    if !user_signed_in? && !devise_registration_action
+      redirect_to '/welcome'
+    end
+  end
+
+  def devise_registration_action
+    devise_controller? && controller_name == 'registrations' && (action_name == 'new' || action_name == 'create')
   end
 
   def layout_by_resource
@@ -36,19 +42,19 @@ class ApplicationController < ActionController::Base
   end
 
   def omniauth_email
-    flash[:omniauth_data].info.email  
+    flash[:omniauth_data].info.email
   end
 
   def omniauth_token
-    flash[:omniauth_data].credentials.token  
+    flash[:omniauth_data].credentials.token
   end
 
   def omniauth_token_expires_at
-    flash[:omniauth_data].credentials.expires_at  
+    flash[:omniauth_data].credentials.expires_at
   end
 
   def omniauth_secret
-    flash[:omniauth_data].credentials.secret  
+    flash[:omniauth_data].credentials.secret
   end
 
 end
