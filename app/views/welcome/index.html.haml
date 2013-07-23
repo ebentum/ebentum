@@ -1,53 +1,79 @@
 .span7
 .span4
   .row-fluid
-    .span12.well.Panel
-      = form_for(@user, :as => :user, :url => '/users/sign_in', :html => {:method => :post}) do |f|
-        = f.email_field :email, :placeholder => t('.email'), :class => 'input-xlarge'
-        .row-fluid
-          .span6
-            = f.password_field :password, :placeholder => t('.password'), :class => 'input-medium'
-          .span6
-            = f.button t('.sign_in_button'), :type => 'submit', :class => 'btn btn-primary'
-        .row-fluid
-          .span4
-            = f.label :remember_me, :class => 'checkbox' do
-              = f.check_box :remember_me
-              = t('.remember_me')
-          .span8
-            %small
-              = link_to t('.forgot_your_password'), new_password_path(:user)
-        .row-fluid
-          .span12
-            %small
-              = t('.sign_in_with')
-              %a{:href => '/users/facebook_login'}
-                %i.icon-facebook
-                Facebook
-              = t('.or')
-              %a{:href => '/users/twitter_login'}
-                %i.icon-twitter
-                Twitter
+    .span12
+      .card
+        = form_for(@user, :as => :user, :url => '/users/sign_in', :html => {:method => :post}) do |f|
+          .card-content
+            .row-fluid
+              .span12
+                = f.email_field :email, :placeholder => t('.email'), :class => 'input-block-level'
+            .row-fluid
+              .span12
+                = f.password_field :password, :placeholder => t('.password'), :class => 'input-block-level'
+            .row-fluid
+              .span6
+                .pull-left
+                  = f.label :remember_me, :class => 'checkbox' do
+                    = f.check_box :remember_me
+                    = t('.remember_me')
+              .span6
+                .pull-right
+                  %small
+                    = link_to t('.forgot_your_password'), new_password_path(:user)
+            .row-fluid
+              .span12
+                .pull-left
+                  %small
+                    = t('.sign_in_with')
+                    %a{:href => '/users/facebook_login'}
+                      %i.icon-facebook
+                      Facebook
+                    = t('.or')
+                    %a{:href => '/users/twitter_login'}
+                      %i.icon-twitter
+                      Twitter
+          .row-fluid.card-footer
+            .span5.offset7.footer-option.option-active.pull-right.btn-round-bottom-right
+              .option-action.btn-round-bottom-right
+                %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+                  = t('.sign_in_button')
+
   .row-fluid
-    .span12.well.Panel
-      = form_for(@user, :as => :user, :url => '/users', :html => {:method => :post}) do |f|
-        = f.hidden_field :user_confirmation_required, :value => 'true'
-        = content_tag :legend, t('.new_sign_up')
-        = f.text_field :complete_name, :placeholder => t('.complete_name'), :class => 'input-xlarge'
-        = f.email_field :email, :placeholder => t('.email'), :class => 'input-xlarge'
-        = f.password_field :password, :placeholder => t('.password'), :class => 'input-xlarge'
-        = f.password_field :password_confirmation, :placeholder => t('.password_confirmation'), :class => 'input-xlarge'
-        .row-fluid
-          = f.button t('.sign_up_button'), :type => 'submit', :class => 'btn btn-primary pull-left'
-        %br
-        .row-fluid
-          %small
-            = t('.sign_up_with')
-            %a{:href => '/users/auth/facebook'}
-              %i.icon-facebook
-              Facebook
-            = t('.or')
-            %a{:href => '/users/auth/twitter'}
-              %i.icon-twitter
-              Twitter
+    .span12
+      .card
+        = form_for(@user, :as => :user, :url => '/users', :html => {:method => :post}) do |f|
+          .card-header
+            = t('.new_sign_up')
+          .card-content
+            = f.hidden_field :user_confirmation_required, :value => 'true'
+            .row-fluid
+              .span12
+                = f.text_field :complete_name, :placeholder => t('.complete_name'), :class => 'input-block-level'
+            .row-fluid
+              .span12
+                = f.email_field :email, :placeholder => t('.email'), :class => 'input-block-level'
+            .row-fluid
+              .span12
+                = f.password_field :password, :placeholder => t('.password'), :class => 'input-block-level'
+            .row-fluid
+              .span12
+                = f.password_field :password_confirmation, :placeholder => t('.password_confirmation'), :class => 'input-block-level'
+            .row-fluid
+              .span12
+                .pull-left
+                  %small
+                    = t('.sign_up_with')
+                    %a{:href => '/users/auth/facebook'}
+                      %i.icon-facebook
+                      Facebook
+                    = t('.or')
+                    %a{:href => '/users/auth/twitter'}
+                      %i.icon-twitter
+                      Twitter
+          .row-fluid.card-footer
+            .span5.offset7.footer-option.option-active.pull-right.btn-round-bottom-right
+              .option-action
+                %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+                  = t('.sign_up_button')
 .span1
