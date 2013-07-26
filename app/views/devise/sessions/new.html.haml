@@ -53,6 +53,8 @@
                 = t('.remember_me')
       .row-fluid.card-footer
         .span5.footer-option.option-active.pull-right.btn-round-bottom-right
-          = f.button t('.sign_in_button'), :type => 'submit', :class => 'btn btn-primary option-action btn-round-bottom-right'
+          .option-action.btn-round-bottom-right
+            %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+              = t('.sign_in_button')
   = render "devise/shared/links"
 .span4
