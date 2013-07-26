@@ -28,43 +28,47 @@
 - else
   .span4
   .span4
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-      - if resource.errors.full_messages.length > 0
-        .alert.alert-error{:id => 'sign_up_error'}
-          %h4
-            = t('.sign_in_error_title')
-          %br
-          %span{:id => 'sign_up_error_text'}
-            - resource.errors.full_messages.each do |error|
-              = error
-              %br
-      - else
-        .alert.alert-error.hide{:id => 'sign_up_error'}
-          %h4
-            = t('.sign_in_error_title')
-          %br
-          %span{:id => 'sign_up_error_text'}
-      = omniauth_form_data
-      = f.hidden_field :user_confirmation_required, :value => 'true'
-      %fieldset
-        = content_tag :legend, t('.sign_up')
-        = omniauth_provider_info
-        .row-fluid
-          .span12{:id => 'omniauth_options'}
-            .control-group
-              .controls
-                %label
-                  = t('.sign_up_with')
-                %br
-                %a.btn.btn-facebook.btn-large.pull-left{:href => "/users/auth/facebook"}
-                  %i.icon-facebook
-                  facebook
-                %a.btn.btn-info.btn-large.pull-right{:href => "/users/auth/twitter"}
-                  %i.icon-twitter
-                  twitter
+    - if resource.errors.full_messages.length > 0
+      .alert.alert-error{:id => 'sign_up_error'}
+        %h4
+          = t('.sign_in_error_title')
         %br
-        = render 'form_fields', :form => f
-        = render 'sign_up_alerts'
-        = render 'sign_up_button', :form => f
+        %span{:id => 'sign_up_error_text'}
+          - resource.errors.full_messages.each do |error|
+            = error
+            %br
+    - else
+      .alert.alert-error.hide{:id => 'sign_up_error'}
+        %h4
+          = t('.sign_in_error_title')
+        %br
+        %span{:id => 'sign_up_error_text'}
+    .card
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        = omniauth_form_data
+        = f.hidden_field :user_confirmation_required, :value => 'true'
+        .card-header
+          = t('.sign_up')
+        .card-content
+          = omniauth_provider_info
+          .row-fluid
+            .span12{:id => 'omniauth_options'}
+              %label
+                = t('.sign_up_with')
+              .row-fluid
+                .span6
+                  %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/facebook_login'}
+                    %i.icon-facebook
+                    facebook
+                .span6
+                  %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/twitter_login'}
+                    %i.icon-twitter
+                    twitter
+        .card-content
+          = render 'form_fields', :form => f
+        .row-fluid.card-footer
+          .span5.footer-option.option-active.pull-right.btn-round-bottom-right
+            = render 'sign_up_button', :form => f
+    = render 'sign_up_alerts'
     = render "devise/shared/links"
   .span4
