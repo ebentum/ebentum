@@ -26,9 +26,9 @@ gem "i18n-js", "~> 2.1.2"
 gem 'devise', '~> 2.1.2'
 
 # omniauth
-gem 'omniauth', '~> 1.1.3'
+gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.4.1'
-gem 'omniauth-twitter', '~> 0.0.14'
+gem 'omniauth-twitter', '~> 1.0.0'
 
 # fabebook api
 gem 'koala', "~> 1.6.0"

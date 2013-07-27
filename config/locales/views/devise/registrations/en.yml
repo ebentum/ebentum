@@ -7,7 +7,10 @@ en:
         saving: "Guardando..."
       new:
         sign_up: "Sign up"
+        sign_up_with: "You can sign up with"
         sign_in_error_title: Ups...
+        sign_up_button: "Sign up"
+        signing_up: "Signing up..."
       form_fields:
         complete_name: "Complete name"
         email: "Email"
@@ -19,6 +22,3 @@ en:
         sign_up_ok_title: Yeah!
         sign_up_with: "You can sign up with"
         start: "Start"
-      sign_up_button:
-        sign_up_button: "Sign up"
-        signing_up: "Signing up..."
