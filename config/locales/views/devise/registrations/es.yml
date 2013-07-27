@@ -1,10 +1,22 @@
 es:
   devise:
     registrations:
+      confirm_import_social:
+        bio: "Bio"
+        complete_name: "Nombre completo"
+        confirm: "Confirmar"
+        close: "Cerrar"
+        image: "Imagen"
+        import: "Importar"
+        import_text: "¿Que información quieres importar?"
+        location: "Localización"
+        web: "Web"
       edit:
         back: "Volver"
         save: "Guardar"
-        saving: "Saving..."
+        saving: "Guardando..."
+        import_from_facebook: "Importar de Facebook"
+        import_from_twitter: "Importar de Twitter"
       new:
         sign_up: "Regístrate"
         sign_up_with: "Puedes registrarte con"

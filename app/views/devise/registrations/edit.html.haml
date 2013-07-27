@@ -1,7 +1,6 @@
 .span12
   = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
     = devise_error_messages!
-
     .row-fluid
       .span4
         .row-fluid
@@ -75,20 +74,15 @@
         .row-fluid
           .span12
             .card
-              -# .card-header
-              -#   #user_action_button
-              -#     %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-              -#       = t(:save)
-              -#     %a{:href => user_path(@user), :class => "btn"}
-              -#       = t(:back)
-              -#     - if @user.fbtoken
-              -#       %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-              -#         %i.icon-facebook
-              -#         Importar de facebook
-              -#     - if @user.twtoken
-              -#       %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-              -#         %i.icon-twitter
-              -#         Importar de twitter
+              .card-header
+                - if @user.fbtoken
+                  %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                    %i.icon-facebook
+                    = t('.import_from_facebook')
+                - if @user.twtoken
+                  %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                    %i.icon-twitter
+                    = t('.import_from_twitter')
               .card-content
                 .control-group
                   %label.control-label
