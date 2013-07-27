@@ -25,10 +25,14 @@
         .row-fluid.card-footer
           .span5.footer-option.option-active.pull-right.btn-round-bottom-right
             .option-action.btn-round-bottom-right
-              %button{:type => "button", :class => "btn btn-large btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
+              %button{:type => "button", :class => "btn btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
                 = t('.sign_up_button')
-    = render 'sign_up_alerts'
-    = render "devise/shared/links"
+    .row-fluid
+      .span12
+        = render 'sign_up_alerts'
+    .row-fluid
+      .span12
+        = render "devise/shared/links"
   .span1
 - else
   .span4
@@ -74,9 +78,12 @@
         .row-fluid.card-footer
           .span5.footer-option.option-active.pull-right.btn-round-bottom-right
             .option-action.btn-round-bottom-right
-              %button{:type => "button", :class => "btn btn-large btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
+              %button{:type => "button", :class => "btn btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
                 = t('.sign_up_button')
-            / = render 'sign_up_button', :form => f
-    = render 'sign_up_alerts'
-    = render "devise/shared/links"
+    .row-fluid
+      .span12
+        = render 'sign_up_alerts'
+    .row-fluid
+      .span12
+        = render "devise/shared/links"
   .span4
