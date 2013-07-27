@@ -145,6 +145,36 @@ class EventsController < ApplicationController
     event_id = params[:eventid]
     event    = Event.find(event_id)
     event.users.push(current_user)
+
+
+
+
+    activity = Activity.new
+    activity.verb = "join"
+
+    activity.actor = Actor.new
+    activity.actor.url = user_path(current_user)
+    activity.actor.objectType = "user"
+    activity.actor.displayName = current_user.complete_name
+    activity.actor.photoUrl = current_user.image.url(:thumb)
+
+    activity.subject = Subject.new
+    activity.subject.objectType = "event"
+    activity.subject.url = event_path(event)
+    activity.subject.displayName = event.name
+    activity.subject.photoUrl = event.main_picture.photo.url(:small)
+    activity.subject.address = event.place
+    activity.subject.startDate = event.start_date
+    activity.subject.startTime = event.start_time
+
+    activity.receivers = event.creator.all_followers
+    activity.receivers.push(event.creator)
+
+    activity.save
+
+
+
+
     render :json => event.save
   end
 

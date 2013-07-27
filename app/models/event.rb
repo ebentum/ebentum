@@ -30,6 +30,11 @@ class Event
   has_and_belongs_to_many :users, inverse_of: :events
   has_many :comments, inverse_of: :event
 
+  def setCoordinates
+    self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
+  end
+
   after_create do |event|
     activity = Activity.new
     activity.verb = "create"
@@ -53,11 +58,6 @@ class Event
     activity.receivers.push(self.creator)
 
     activity.save
-  end
-
-  def setCoordinates
-    self.coordinates = [self.lng.to_f, self.lat.to_f]
-    self.save
   end
 
 end
