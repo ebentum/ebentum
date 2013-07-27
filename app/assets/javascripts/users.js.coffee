@@ -16,18 +16,12 @@ $(document).on "click", "#sign_up_button", (event) ->
       $('#sign_up_button').button('loading')
     success: (data, status, xhr) ->
       if $('#user_user_confirmation_required').val() == 'false'
-        # mostrar el mensaje
-        $('#omniauth_sign_up_success').fadeIn('slow')
-        # mostrar el boton
-        $('#start_button').fadeIn('slow')
-        # ocultar el boton
-        $('#sign_up_button').hide()
         # guardar token de acceso
         tokens.save_access_token(data._id)
         setTimeout (->
           # redirigir al inicio
           window.location = '/events/'
-        ), 8000
+        ), 2000
       else
         # ponemos el email en el mensaje y lo enseñamos
         txt = $('#sign_up_ok_text').text()
