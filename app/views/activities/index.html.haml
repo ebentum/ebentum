@@ -1,10 +1,5 @@
 .span12
   .masonry_layout.centered
-    .card
-      %p
-        = "."
-      %fb:login-button{"max-rows" => "1", "show-faces" => "true", :width => "200"}
-
     - for activity in @activities
       .card
         = image_tag activity.subject.photoUrl
