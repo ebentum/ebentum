@@ -5,6 +5,8 @@
         = image_tag activity.subject.photoUrl
         %h4
           = activity.subject.displayName
+        %h4
+          = activity.actor.displayName + " " + activity.verb
         .row-fluid.card-footer.event-footer
           .span6.footer-option
             .option-action
