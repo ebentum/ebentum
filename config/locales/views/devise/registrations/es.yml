@@ -15,6 +15,7 @@ es:
         back: "Volver"
         save: "Guardar"
         saving: "Guardando..."
+        social_title: "Redes Sociales"
         import_from_facebook: "Importar de Facebook"
         import_from_twitter: "Importar de Twitter"
       new:
@@ -34,3 +35,6 @@ es:
         sign_up_ok_title: ¡Bien!
         sign_up_with: "Puedes registrarte con"
         start: "Inicio"
+      social_config:
+        log_with: "Iniciar sesión"
+        publish_activity: "Publicar actividad"

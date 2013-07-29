@@ -15,6 +15,7 @@ en:
         back: "Back"
         save: "Save"
         saving: "Saving..."
+        social_title: "Social Networks"
         import_from_facebook: "Import from Facebook"
         import_from_twitter: "Import from Twitter"
       new:
@@ -34,3 +35,6 @@ en:
         sign_up_ok_title: Yeah!
         sign_up_with: "You can sign up with"
         start: "Start"
+      social_config:
+        log_with: "Log with"
+        publish_activity: "Publish activity"

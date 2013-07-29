@@ -226,10 +226,9 @@ $(document).on 'click', '#confirm_import_social_btn', ->
       $('#image_url').val(data.image) if $('#import_image').is(':checked')
 
 $("#facebook").on "switch-change", (e, data) ->
-  if data.value
+  if !$(this).hasClass('toggle-off')
     window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()
   else
-    alert 'Aviso tipo Pinterest'
     # borrar app del perfil
     FB.getLoginStatus (response) ->
       if response.status == 'connected'
@@ -248,12 +247,14 @@ $("#facebook").on "switch-change", (e, data) ->
         # quitar boton de importar desde FB
         $('a.btn-facebook').fadeOut 'slow', ->
           $('a.btn-facebook').remove()
+    # ocultamos la opción de publicar
+    $('#publish_facebook').fadeOut('slow')
 
 $("#twitter").on "switch-change", (e, data) ->
-  if data.value
+  if !$(this).hasClass('toggle-off')
     window.location = '/users/twitter_login?state=/users/edit.'+$('#user_id').val()
   else
-    alert 'Aviso tipo Pinterest'
+    # borrar token
     $.ajax
       url: "/tokens/"+$('input', $(this)).data('token')
       type: 'DELETE'
@@ -266,3 +267,5 @@ $("#twitter").on "switch-change", (e, data) ->
         # quitar boton de importar desde TW
         $('a.btn-twitter').fadeOut 'slow', ->
           $('a.btn-twitter').remove()
+    # ocultamos la opción de publicar
+    $('#publish_twitter').fadeOut('slow')
