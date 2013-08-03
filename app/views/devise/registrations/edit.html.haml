@@ -55,34 +55,9 @@
                 = t('.social_title')
               = render 'social_config'
       .span8
-        -# .row-fluid.hidden-phone
-        -#   .span12
-        -#     .card
-        -#       #user_action_button
-        -#         %button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t(:saving)}}
-        -#           = t(:save)
-        -#         %a{:href => user_path(@user), :class => "btn"}
-        -#           = t(:back)
-        -#       - if @user.fbtoken
-        -#         %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-        -#           %i.icon-facebook
-        -#           Importar de facebook
-        -#       - if @user.twtoken
-        -#         %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-        -#           %i.icon-twitter
-        -#           Importar de twitter
         .row-fluid
           .span12
             .card
-              .card-header
-                - if @user.fbtoken
-                  %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                    %i.icon-facebook
-                    = t('.import_from_facebook')
-                - if @user.twtoken
-                  %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                    %i.icon-twitter
-                    = t('.import_from_twitter')
               .card-content
                 .control-group
                   %label.control-label
@@ -108,7 +83,24 @@
                   .controls
                     = f.text_area :bio, :class => "input-block-level", :rows => "5"
               .row-fluid.card-footer
-                .span2.offset8.footer-option.option-active
+                - if @user.fbtoken
+                  #option-facebook.span3.offset1.footer-option.option-facebook
+                    .option-action
+                      %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                        %i.icon-facebook
+                        = t('.import_from_facebook')
+                - else
+                  #option-facebook.span3
+                - if @user.twtoken
+                  #option-twitter.span3.footer-option.option-info
+                    .option-action
+                      %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                        %i.icon-twitter
+                        = t('.import_from_twitter')
+                - else
+                  #option-twitter.span3
+                .span1
+                .span2.footer-option.option-active
                   .option-action
                     %button#user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
                       = t('.save')
