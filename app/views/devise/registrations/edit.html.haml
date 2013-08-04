@@ -54,6 +54,12 @@
               .card-header
                 = t('.social_title')
               = render 'social_config'
+        %hr
+        .row-fluid
+          .span12
+            %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
+              %span
+                = t('.delete_account')
       .span8
         .row-fluid
           .span12
@@ -111,3 +117,4 @@
 
   = render 'confirm_image_delete'
   = render 'confirm_import_social'
+  = render 'confirm_delete_account'

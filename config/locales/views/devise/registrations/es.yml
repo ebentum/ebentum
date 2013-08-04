@@ -1,6 +1,11 @@
 es:
   devise:
     registrations:
+      confirm_delete_account:
+        attention: ¡Atención!
+        confirm_delete_account_text: Si elimina la cuenta, perderá su usuario en ebentum y todos sus datos relacionados. ¿Desea continuar?
+        #no: !No!
+        yes_delete_account: Si, quiero eliminar mi cuenta
       confirm_import_social:
         bio: "Bio"
         complete_name: "Nombre completo"
@@ -13,6 +18,8 @@ es:
         web: "Web"
       edit:
         back: "Volver"
+        delete_account: "Eliminar cuenta"
+        deleting_account: "Eliminando cuenta..."
         save: "Guardar"
         saving: "Guardando..."
         social_title: "Redes Sociales"
