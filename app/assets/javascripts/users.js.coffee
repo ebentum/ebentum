@@ -49,6 +49,20 @@ $(document).on "click", "#sign_up_button", (event) ->
         $('#sign_up_button').button('reset')
       ), 2000
 
+$(document).on "click", "#confirm_delete_account_btn", (event) ->
+  event.preventDefault()
+  $.ajax
+    url: "/users"
+    type: 'DELETE'
+    dataType: 'json'
+    beforeSend: ->
+      $('#confirm_delete_account').modal('hide')
+      $('#delete_account_btn').button('loading')
+    success: (data, status, xhr) ->
+      setTimeout (->
+        window.location = '/'
+      ), 2000
+
 user_confirmation_required = (->
   omniauth_email        = $('#user_omniauth_email').val()
   user_email            = $('#email').val()
