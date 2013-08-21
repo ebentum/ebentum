@@ -5,3 +5,4 @@
 //= require ./image_processing/_callbacks.js
 
 //= require ./devise/_callbacks.js
+//= require ./activities/_callbacks.js

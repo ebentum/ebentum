@@ -146,9 +146,7 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     event.users.push(current_user)
 
-
-
-
+    # Crear la actividad de apuntarse
     activity = Activity.new
     activity.verb = "join"
 
@@ -171,9 +169,7 @@ class EventsController < ApplicationController
     activity.receivers.push(event.creator)
 
     activity.save
-
-
-
+    # Fin de crear la actividad de apuntarse
 
     render :json => event.save
   end
