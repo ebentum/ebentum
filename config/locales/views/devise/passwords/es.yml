@@ -3,14 +3,17 @@ es:
     passwords:
       edit:
         change_your_password: "Cambia tu contraseña"
+        changing_password: "Cambiando contraseña..."
+        edit_password_ok_title: ¡Bien!
+        edit_password_ok_text: "Ya puedes acceder a ebentum con tu nueva contraseña"
         confirm_new_password: "Confirmar nueva contraseña"
         helping: "Ayudando..."
         new_password: "Nueva contraseña"
         new_password_confirmation: "Confirmar nueva contraseña"
-        new_password_ok_title: ¡Bien!
-        new_password_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"
       new:
         email: "Email"
         forgot_your_password: "¿Has olvidado tu contraseña?"
         help_me: "¡Ayudame!"
         helping: "Ayudando..."
+        new_password_ok_title: ¡Bien!
+        new_password_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para cambiar la contraseña"

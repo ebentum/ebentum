@@ -124,13 +124,10 @@ $(document).on "click", "#edit_password_button", (event) ->
       # asegurarnos que el aviso está oculto
       $('#edit_password_success').fadeOut('slow')
     success: (data, status, xhr) ->
-      # ponemos el email en el mensaje y lo enseñamos
-      txt = $('#edit_password_ok_text').text()
-      txt = txt.replace('EMAIL', $('#email').val())
-      $('#edit_password_ok_text').text(txt)
-      $('#edit_password_success').fadeIn('slow')
-      # activar el boton
-      $('#edit_password_button').button('reset')
+      setTimeout (->
+        # redirigir al inicio
+        window.location = '/'
+      ), 2000
     error: (xhr, status, error) ->
       # ponemos los errores
       # hacemos un timeout para que el efecto sea más suave

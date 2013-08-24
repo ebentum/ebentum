@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
         "no_navbar"
       elsif controller_name == 'sessions' && action_name == 'new'
         "no_navbar"
+      elsif controller_name == 'passwords'
+        "no_navbar"
       else
         "application"
       end
