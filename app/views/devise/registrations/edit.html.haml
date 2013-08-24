@@ -57,6 +57,10 @@
         %hr
         .row-fluid
           .span12
+            = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
+        %br
+        .row-fluid
+          .span12
             %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
               %span
                 = t('.delete_account')
@@ -64,6 +68,8 @@
         .row-fluid
           .span12
             .card
+              .card-header
+                = t('.perfil')
               .card-content
                 .control-group
                   %label.control-label
@@ -114,7 +120,6 @@
                   .option-action
                     %a{:href => user_path(@user), :class => "btn btn-inverse"}
                       = t('.back')
-
   = render 'confirm_image_delete'
   = render 'confirm_import_social'
   = render 'confirm_delete_account'

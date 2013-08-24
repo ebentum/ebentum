@@ -2,9 +2,11 @@ Ebentum::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
-    match '/users/facebook_login' => 'users/omniauth_callbacks#facebook_login'
-    match '/users/twitter_login'  => 'users/omniauth_callbacks#twitter_login'
-    match '/auth_login/callback'  => 'users/omniauth_callbacks#facebook'
+    match '/users/facebook_login'  => 'users/omniauth_callbacks#facebook_login'
+    match '/users/twitter_login'   => 'users/omniauth_callbacks#twitter_login'
+    match '/auth_login/callback'   => 'users/omniauth_callbacks#facebook'
+    match '/users/edit_password'   => 'users#edit_password'
+    match '/users/update_password' => 'users#update_password'
   end
 
   resources :activities
@@ -29,7 +31,7 @@ Ebentum::Application.routes.draw do
     end
   end
 
-  
+
 
 
   # The priority is based upon order of creation:

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
       else
         "application"
       end
-    elsif controller_name == 'welcome'
+    elsif controller_name == 'welcome' || (controller_name == 'users' && action_name == 'edit_password')
       'no_navbar'
     else
       "application"
