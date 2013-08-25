@@ -3,24 +3,24 @@
 
 # $('.poster-front').oriDomi({ hPanels: 10, vPanels: 10, touchEnabled: false, speed: 400 })
 
-$(document).on "click", ".poster-front.oridomi", (event) ->
-  $item = $(this)
+# $(document).on "click", ".poster-front.oridomi", (event) ->
+#   $item = $(this)
 
-  isRevealed = $(this).data('isrevealed')
+#   isRevealed = $(this).data('isrevealed')
 
-  if isRevealed == 'true'
-    $item.oriDomi().reset()
-    $item.data('isrevealed','false')
+#   if isRevealed == 'true'
+#     $item.oriDomi().reset()
+#     $item.data('isrevealed','false')
 
-  else
-    # console.log $item.width
-    # console.log $item.height
-    if $item.width() > $item.height()
-      $item.oriDomi('curl', -90, 'right')
-    else
-      $item.oriDomi('curl', -90, 'bottom')
+#   else
+#     # console.log $item.width
+#     # console.log $item.height
+#     if $item.width() > $item.height()
+#       $item.oriDomi('curl', -90, 'right')
+#     else
+#       $item.oriDomi('curl', -90, 'bottom')
 
-    $item.data('isrevealed','true')
+#     $item.data('isrevealed','true')
 
 
 # $('.poster').each ->
@@ -37,15 +37,18 @@ $(document).on "click", ".poster-front.oridomi", (event) ->
 
 $(".masonry_layout").masonry
   itemSelector: ".card"
-  columnWidth: ( containerWidth ) ->
+  columnWidth: 230
+  gutter: 5
+  isFitWidth: true
+  isFitWidth: true
+
+  # columnWidth: ( containerWidth ) ->
     # if containerWidth > 1024
     #   containerWidth / 6
     # else
     #   containerWidth / 3
 
-    250
 
-  isFitWidth: true
 
   # containerWidth = $(".masonry_layout").css("width")
 
