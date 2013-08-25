@@ -31,3 +31,12 @@ en:
       follow: "Follow"
     unfollow:
       unfollow: "Stop following"
+    edit_password:
+      change_password: "Change password"
+      change_password_error_title: "Error changing password"
+      change_password_error_text: "Make sure to provide your old password and the new one matches with the confirmation"
+      current_password: "Contraseña actual"
+      new_password: "New password"
+      password_confirmation: "Password confirmation"
+      save: "Save"
+      back: "Back"

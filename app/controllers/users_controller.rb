@@ -139,10 +139,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_password
+    @user  = User.find(current_user.id)
+  end
+
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update_with_password(params[:user])
+      # Sign in the user by passing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path
+    else
+      @error = true
+      render 'edit_password', :layout => 'no_navbar'
+    end
+  end
+
   # def update_main_picture
   #   picture = Picture.find(params[:picture])
   #   current_user.main_picture = picture
-    
+
   #   respond_to do |format|
   #     if picture.save
   #       format.json  { render :json => picture,

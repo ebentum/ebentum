@@ -23,10 +23,14 @@ class ApplicationController < ActionController::Base
         "no_navbar"
       elsif controller_name == 'sessions' && action_name == 'new'
         "no_navbar"
+      elsif controller_name == 'passwords'
+        "no_navbar"
+      elsif controller_name == 'confirmations'
+        "no_navbar"
       else
         "application"
       end
-    elsif controller_name == 'welcome'
+    elsif controller_name == 'welcome' || (controller_name == 'users' && action_name == 'edit_password')
       'no_navbar'
     else
       "application"
