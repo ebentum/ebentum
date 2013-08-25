@@ -31,10 +31,11 @@ class EventsController < ApplicationController
     if @daysSelected.to_i > 0
       @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
     end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
-    end  
+    end
   end
 
   def index
@@ -51,7 +52,7 @@ class EventsController < ApplicationController
       @fb_access_token = current_user.fbtoken || nil
       @tw_access_token = current_user.twtoken || nil
     end
-    
+
     @event = Event.find(params[:id])
     if user_signed_in?
       @joined = @event.users.find(current_user) != nil

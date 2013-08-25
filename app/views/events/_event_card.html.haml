@@ -1,0 +1,19 @@
+- width = event.main_picture.photo_dimensions["card"][0]
+- height = event.main_picture.photo_dimensions["card"][1]
+- image_url = event.main_picture.photo.url(:card)
+.card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px;"}
+  %a{:href => event_path(event)}
+    .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
+  .card-footer.card-footer-masonry
+    .media
+      .pull-right
+        .calendar-icon
+          .calendar-month
+            = event.start_date.strftime("%b")
+          .calendar-day
+            = event.start_date.strftime("%d")
+      .media-body.pam
+        = event.name
+        .sub-paragraph
+          = event.place
+

@@ -14,11 +14,10 @@
         = select_tag 'days', options_for_select(daysOptions, @daysSelected)
     .control-group
       .controls
-        %button.btn.btn-primary{:type => "submit"} 
+        %button.btn.btn-primary{:type => "submit"}
           = t('.search')
 .span12
   .masonry_layout.centered
     - if @events
       - for event in @events
-        = debug event.name.to_yaml
-      / = render 'list'
+        = render partial: 'event_card', locals: {event: event}

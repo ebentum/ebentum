@@ -49,7 +49,9 @@ class Event
     activity.subject.objectType = "event"
     activity.subject.url = Rails.application.routes.url_helpers.event_path(self)
     activity.subject.displayName = self.name
-    activity.subject.photoUrl = self.main_picture.photo.url(:small)
+    activity.subject.photoUrl = self.main_picture.photo.url(:card)
+    activity.subject.photoWidth = self.main_picture.photo_dimensions["card"][0]
+    activity.subject.photoHeight = self.main_picture.photo_dimensions["card"][1]
     activity.subject.address = self.place
     activity.subject.startDate = self.start_date
     activity.subject.startTime = self.start_time

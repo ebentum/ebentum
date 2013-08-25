@@ -1,2 +1,6 @@
-- for event in @events
+- if @page == 1
+  .span12
+    #events_list.masonry_layout.centered
+      = render 'list'
+- else
   = render 'list'
