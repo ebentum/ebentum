@@ -1,0 +1,56 @@
+- width = activity.subject.photoWidth
+- height = activity.subject.photoHeight
+- image_url = activity.subject.photoUrl
+.card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px;"}
+  %a{:href => activity.subject.url}
+    .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
+  .card-footer.card-footer-masonry.pts.pbs.plm.prm
+    .media
+      .pull-left
+        %a{:href => activity.actor.url}
+          = image_tag(activity.actor.photoUrl , :class => 'block media-object thumb_image')
+      .media.body
+        %div
+          = activity.actor.displayName
+        .sub-paragraph
+          = activity.verb + " " + activity.subject.displayName
+        .sub-paragraph
+          .format-timeago.hidden
+            = activity.created_at
+
+  -#
+  -# %div
+  -#   = activity.subject.displayName
+  -#   = activity.actor.displayName + " " + activity.verb
+  -# .row-fluid.card-footer.event-footer
+  -#   .span6.footer-option
+  -#     .option-action
+  -#       %i.fui-new-24
+  -#   .span6.footer-option
+  -#     %a{:href => activity.subject.url, :class => "option-action"}
+  -#       %i.fui-eye-24
+
+    -# .botones
+    -#   %p
+    -#     %a.btn{:href => "#"}
+    -#       %i.icon-thumbs-up.icon-white
+    -#       ¡Unirme!
+    -#   %p
+    -#     %a{:href => activity.subject.url, :class => "btn"}
+    -#       %i.icon-info-sign
+
+    -#       Más información
+
+    -# .caption
+    -#   %h5
+    -#     = activity.subject.displayName
+    -#   %p
+    -#     %a{:href => activity.actor.url}
+    -#       %i.icon-user
+    -#       = activity.actor.displayName
+    -#   %p
+    -#     %i.icon-calendar
+    -#     = l(activity.subject.startDate, :format => :long)+', '+l(activity.subject.startTime, :format => :short)
+    -#   %p
+    -#     %i.icon-map-marker
+    -#     = activity.subject.address

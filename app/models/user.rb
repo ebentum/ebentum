@@ -73,7 +73,7 @@ class User
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  has_and_belongs_to_many :activities, inverse_of: :receivers
+  has_and_belongs_to_many :activities, inverse_of: :receivers,  order: 'created_at DESC'
 
   has_mongoid_attached_file :image, :styles => {:thumb => "100x100",  :small => "300x300>", :medium => "600x600>" }
 
