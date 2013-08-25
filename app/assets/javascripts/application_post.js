@@ -30,6 +30,7 @@
 //= require bootstrapSwitch
 //= require moment
 //= require moment-es
+//= require datetimes
 
 //= require custom_checkbox_and_radio.js
 //= require custom_radio.js
