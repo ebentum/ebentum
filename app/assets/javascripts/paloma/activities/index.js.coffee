@@ -8,5 +8,7 @@ Paloma.callbacks["activities/index"] = (params) ->
         data:
           page: page
       ).done (html) ->
-        $('#activity_list').append(html)
+        content = $(html)
+        Paloma.DateTimes.format(content)
+        $('#activity_list').append(content).masonry( 'appended', content )
         page = page + 1
