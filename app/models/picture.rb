@@ -8,10 +8,8 @@ class Picture
   field :photo_updated_at, type: DateTime
   field :photo_dimensions, type: Hash
 
-  has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>"
-  #  , :poster => Proc.new { |instance| instance.poster_resize }  #Esto hace que me falle al subir imagenes
-  }, :default_url => "/photos/:style/missing.png"
-
+  has_mongoid_attached_file  :photo, :styles => { :small => "300x300>", :medium => "600x600>",
+    :card => Proc.new { |instance| instance.card_resize } }, :default_url => "/photos/:style/missing.png"
 
   belongs_to :pictureable, polymorphic: true
 
@@ -37,13 +35,14 @@ class Picture
       # -#   - pheight = pwidth / pratio
 
 
-  def poster_resize
-    geo = Paperclip::Geometry.from_file(Paperclip.io_adapters.for(photo))
+  def card_resize
+    # geo = Paperclip::Geometry.from_file(Paperclip.io_adapters.for(photo))
+    geo = Paperclip::Geometry.from_file(photo.queued_for_write[:original])
 
     ratio = geo.width / (geo.height * 1.0)
 
-    min_width  = 200
-    min_height = 200
+    min_width  = 230
+    min_height = 230
 
     if ratio > 1
       # Horizontal Image
