@@ -38,7 +38,7 @@
 $(".masonry_layout").masonry
   itemSelector: ".card"
   columnWidth: 230
-  gutter: 5
+  gutter: 10
   isFitWidth: true
   isFitWidth: true
 

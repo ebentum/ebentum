@@ -2,7 +2,7 @@ Paloma.callbacks["activities/index"] = (params) ->
   page = 2
 
   $(document).scroll ->
-    if $(window).height() + $(window).scrollTop() >= $(document).height()
+    if $(window).height() + $(window).scrollTop() >= $(document).height() * 0.75
       $.ajax(
         url: "/activities"
         data:
