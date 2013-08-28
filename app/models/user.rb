@@ -90,6 +90,14 @@ class User
     end
   end
 
+  # renovación de token de acceso a Facebook
+  def update_fbtoken(token, expires_at)
+    self.fbtoken.token      = token
+    self.fbtoken.expires_at = expires_at
+    self.fbtoken.updated_at = DateTime.now
+    self.update
+  end
+
   # tratamiento de eliminacion de imagen de usuario y volver a la por defecto
   def image_delete
     @image_delete ||= "0"
