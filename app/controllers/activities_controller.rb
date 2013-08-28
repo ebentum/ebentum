@@ -9,7 +9,11 @@ class ActivitiesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => nil if request.xhr? }
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
       format.json { render json: @activities }
     end
   end

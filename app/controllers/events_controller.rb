@@ -32,15 +32,19 @@ class EventsController < ApplicationController
       @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
     end
 
+    @events = @events.order_by("start_date asc")
+
     respond_to do |format|
-      format.html # index.html.erb
+      # format.html # index.html.erb
+      format.html { render :layout => 'fullwidth' }
       format.json { render json: @events }
     end
   end
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      # format.html # index.html.erb
+      format.html { render :layout => 'fullwidth' }
       format.json { render json: @events }
     end
   end
