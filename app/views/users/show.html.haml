@@ -1,30 +1,5 @@
 .span12
   .row-fluid
-    -# .span4
-    -#   %ul.nav.nav-tabs.nav-stacked{:id => "userpagetabs"}
-    -#     %li
-    -#       %a{:href => "#userevents", "data-toggle" => "pill"}
-    -#         .badge.badge-info
-    -#           = @user.created_events.count
-    -#         - if @user == current_user
-    -#           = t('.your_events')
-    -#         - else
-    -#           = t('.user_events')
-    -#     %li
-    -#       %a{:href => "#userappointments", "data-toggle" => "pill"}
-    -#         .badge.badge-info
-    -#           = @user.events.count
-    -#         = t('.joined_events')
-    -#     %li
-    -#       %a{:href => "#userfollowing", "data-toggle" => "pill"}
-    -#         .badge.badge-info
-    -#           = @user.followees_count
-    -#         = t('.following')
-    -#     %li
-    -#       %a{:href => "#userfollowers", "data-toggle" => "pill"}
-    -#         #followers_count_badge.badge.badge-info
-    -#           = @user.followers_count
-    -#         = t('.followers')
     .span12
       .row-fluid
         .span8.offset2
@@ -57,31 +32,6 @@
                       .media-object.fui-heart-24.mll
                     .media-body
                       = @user.bio.blank? ? raw('&nbsp;') : @user.bio
-
-                  -# %h3
-                  -#   = @user.complete_name
-                  -#   - if @user.follower_of?(current_user)
-                  -#     .label.label-info
-                  -#       = t('.isfollower')
-                  -# %dl.dl-horizontal-left
-                  -#   %dt
-                  -#     .text-right.mrl
-                  -#       %span.fui-location-24
-                  -#     -#= t(".location")
-                  -#   %dd.text-left
-                  -#     = @user.location.blank? ? raw('&nbsp;') : @user.location
-                  -#   %dt
-                  -#     .text-right.mrl
-                  -#       %span.fui-eye-24
-                  -#     -#= t('.web')
-                  -#   %dd.text-left
-                  -#     = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
-                  -#   %dt
-                  -#     .text-right.mrl
-                  -#       -# = t('.bio')
-                  -#       %span.fui-heart-24
-                  -#   %dd.text-left
-                  -#     = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
             #userpagetabs.row-fluid.card-footer
               .span2.footer-option
