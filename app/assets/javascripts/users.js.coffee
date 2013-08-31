@@ -23,15 +23,12 @@ $(document).on "click", "#sign_up_button", (event) ->
           window.location = '/events/'
         ), 2000
       else
-        # ponemos el email en el mensaje y lo enseñamos
-        txt = $('#sign_up_ok_text').text()
-        txt = txt.replace('SIGN_UP_EMAIL', $('#email').val())
-        $('#sign_up_ok_text').text(txt)
-        $('#sign_up_success').fadeIn('slow')
-        # ocultar el boton
-        $('#sign_up_button').hide()
         # guardar token de acceso
         tokens.save_access_token(data._id)
+        setTimeout (->
+          window.location = '/welcome/sign_up_ok?email='+$('#email').val()
+        ), 2000
+
     error: (xhr, status, error) ->
       # ponemos los errores
       # hacemos un timeout para que el efecto sea más suave
@@ -48,6 +45,23 @@ $(document).on "click", "#sign_up_button", (event) ->
           $('#sign_up_error_text').html(errorText)
         $('#sign_up_button').button('reset')
       ), 2000
+
+$(document).on "click", "#welcome_sign_up_button", (event) ->
+  event.preventDefault()
+  $.ajax
+    url: "/users"
+    type: 'POST'
+    data: $('#welcome_sign_up_form').serialize()
+    dataType: 'json'
+    beforeSend: ->
+      $('#welcome_sign_up_button').button('loading')
+    success: (data, status, xhr) ->
+      setTimeout (->
+        window.location = '/welcome/sign_up_ok?email='+$('#welcome_sign_up_form #user_email').val()
+      ), 2000
+    error: (xhr, status, error) ->
+      $("#welcome_sign_up_form").submit()
+
 
 $(document).on "click", "#confirm_delete_account_btn", (event) ->
   event.preventDefault()

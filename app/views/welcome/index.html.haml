@@ -52,7 +52,7 @@
   .row-fluid
     .span12
       .card
-        = form_for(@user, :as => :user, :url => '/users', :html => {:method => :post}) do |f|
+        = form_for(@user, :as => :user, :url => '/users', :html => {:method => :post, :id => "welcome_sign_up_form"}) do |f|
           .card-header
             = t('.new_sign_up')
           .card-content
@@ -84,6 +84,6 @@
           .row-fluid.card-footer
             .span5.offset7.footer-option.option-active.pull-right.btn-round-bottom-right
               .option-action
-                %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+                %button#welcome_sign_up_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.signing_up')}}
                   = t('.sign_up_button')
 .span1

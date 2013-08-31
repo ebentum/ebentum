@@ -10,6 +10,10 @@ es:
       password_confirmation: "Confirmar contraseña"
       remember_me: "Recuérdame"
       sign_up_button: "Regístrame"
+      signing_up: "Registrando..."
       sign_up_with: "Puedes registrarte con"
       sign_in_with: "Puedes iniciar sesión con"
       sign_in_button: "Iniciar sesión"
+    sign_up_alert:
+      sign_up_ok_title: ¡Bien!
+      sign_up_ok_text: "Sigue las instrucciones que te hemos enviado a %{email} para activar tu cuenta"

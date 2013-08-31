@@ -11,6 +11,7 @@ Ebentum::Application.routes.draw do
 
   resources :activities
 
+  match '/welcome/sign_up_ok' => 'welcome#sign_up_ok'
   resources :welcome
 
   match 'events/add_user/:eventid'    => 'events#add_user'
