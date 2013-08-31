@@ -6,13 +6,15 @@ module ActivitiesHelper
     activity.verb = verb
 
     activity.actor = Actor.new
+    activity.actor._id = actor._id
     activity.actor.url = Rails.application.routes.url_helpers.user_path(actor)
-    activity.actor.objectType = actorType
+    activity.actor.objectType = "user"
     activity.actor.displayName = actor.complete_name
     activity.actor.photoUrl = actor.image.url(:thumb)
 
     activity.subject = Subject.new
-    activity.subject.objectType = subjectType
+    activity.subject._id = subject._id
+    activity.subject.objectType = "event"
     activity.subject.url = Rails.application.routes.url_helpers.event_path(subject)
     activity.subject.displayName = subject.name
     activity.subject.photoUrl = subject.main_picture.photo.url(:card)

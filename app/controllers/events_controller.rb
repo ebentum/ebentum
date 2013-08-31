@@ -161,6 +161,10 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     user     = current_user
     event.users.delete(user)
+
+    activity = Activity.where("verb" => "join", "actor._id" => user._id, "subject._id" => event._id)
+    activity.delete_all
+
     render :json => event.save
   end
 
