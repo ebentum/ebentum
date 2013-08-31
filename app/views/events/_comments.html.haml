@@ -1,6 +1,6 @@
 .card.card-inverse
   .card-header
+  = render 'comments/new_comment'
   #comments{:data => {:comments_page => 1}}
     %ul.media-list{:id => 'event_comments'}
-  = render 'comments/new_comment'
   = render 'comments/confirm_delete'

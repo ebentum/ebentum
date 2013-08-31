@@ -5,12 +5,18 @@ class CommentsController < ApplicationController
   def index
     @event    = Event.find(params[:event_id])
     @page     = params[:page] || 1
-    @comments = @event.comments.page(@page)
-    
+
+    @comments = @event.comments.order_by("updated_at desc").page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
     respond_to do |format|
       format.html { render :layout => false }
       format.json { render json: @comments }
     end
+
   end
 
   def show
@@ -42,12 +48,12 @@ class CommentsController < ApplicationController
           render :json => comment
         else
           render :json => false
-        end  
+        end
       else
         render :json => false
       end
     else
-      render :json => comment  
+      render :json => comment
     end
   end
 

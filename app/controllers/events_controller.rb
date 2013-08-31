@@ -21,6 +21,9 @@ class EventsController < ApplicationController
   end
 
   def search
+
+    @page = params[:page] || 1
+
     my_location       = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
     @distanceSelected = params[:distance] || 2 # A 2 km
     @daysSelected     = params[:days]     || 1 # Hoy
@@ -33,18 +36,38 @@ class EventsController < ApplicationController
     end
 
     @events = @events.order_by("start_date asc")
+    @events = @events.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
 
     respond_to do |format|
-      # format.html # index.html.erb
-      format.html { render :layout => 'fullwidth' }
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
       format.json { render json: @events }
     end
   end
 
   def index
+    @page = params[:page] || 1
+
+    @events = @events.order_by("start_date asc")
+    @events = @events.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
     respond_to do |format|
-      # format.html # index.html.erb
-      format.html { render :layout => 'fullwidth' }
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
       format.json { render json: @events }
     end
   end
