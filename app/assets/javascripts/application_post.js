@@ -13,9 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require oridomi
 //= require jquery.masonry
-//= require masonry
 //= require jquery.autosize
 //= require bootstrap-modalmanager
 //= require bootstrap-modal
@@ -27,10 +25,12 @@
 //= require jquery.ui.widget
 //= require jquery.fileupload
 
+//= require jquery.caret
+
 //= require bootstrapSwitch
 //= require moment
 //= require moment-es
-//= require datetimes
+
 
 //= require custom_checkbox_and_radio.js
 //= require custom_radio.js
@@ -38,12 +38,12 @@
 //= require i18n
 //= require i18n/translations
 
-//= require events
+//= require paloma
+//= require initialize
+
 //= require users
-//= require tokens
-//= require comments
-//= require scroll
 //= require_self
 
-//= require paloma
-//= require jquery.caret
+
+
+

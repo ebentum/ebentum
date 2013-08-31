@@ -17,7 +17,7 @@ $(document).on "click", "#sign_up_button", (event) ->
     success: (data, status, xhr) ->
       if $('#user_user_confirmation_required').val() == 'false'
         # guardar token de acceso
-        tokens.save_access_token(data._id)
+        Paloma.Tokens.save_access_token(data._id)
         setTimeout (->
           # redirigir al inicio
           window.location = '/events/'

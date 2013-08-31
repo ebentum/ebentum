@@ -1,6 +1,6 @@
-window.tokens = tokens =
+Paloma.Tokens =
 
-  save_access_token: (user_id) -> 
+  save_access_token: (user_id) ->
     _provider = $('#user_provider').val()
     if _provider == 'facebook'
       _data = token: {token: $('#token').val(), expires_at: $('#expires_at').val(), uid: $('#user_uid').val()}, user_id: user_id, provider: _provider

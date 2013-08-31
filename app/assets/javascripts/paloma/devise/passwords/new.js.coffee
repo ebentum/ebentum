@@ -1,0 +1,1 @@
+Paloma.callbacks["devise/passwords/new"] = (params) ->
