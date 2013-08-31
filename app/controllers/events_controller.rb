@@ -21,7 +21,8 @@ class EventsController < ApplicationController
   end
 
   def search
-    my_location       = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
+    #my_location       = [request.location.latitude, request.location.longitude]
+    my_location       = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
     @distanceSelected = params[:distance] || 2 # A 2 km
     @daysSelected     = params[:days]     || 1 # Hoy
     @events           = Event

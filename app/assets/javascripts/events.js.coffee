@@ -171,3 +171,6 @@ $(document).on "click", "#confirm_desappoint_btn", (event) ->
         # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
         $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
       ), 2000
+
+$(document).on "change", "#event_search_form select", ->
+  $('#event_search_form').submit()

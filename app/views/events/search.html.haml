@@ -1,24 +1,6 @@
--# .span12.well.Panel
--#   %form.form-horizontal
--#     .control-group
--#       %label.control-label{:for => "inputDistance"}
--#         = t('.where')
--#       .controls
--#         - distanceOptions  = [t('.right_here'), 1], [t('.close_to_me'), 2], [t('.to_10_km'), 10], [t('.to_20_km'), 20], [t('.farther'), 50], [t('.i_dont_care'), 0]
--#         = select_tag 'distance', options_for_select(distanceOptions, @distanceSelected)
--#     .control-group
--#       %label.control-label{:for => "inputAddDays"}
--#         = t('.when')
--#       .controls
--#         - daysOptions  = [t('.now'), 1], [t('.tomorrow'), 2], [t('.this_week'), 7], [t('.this_month'), 30], [t('.i_dont_care'), 0]
--#         = select_tag 'days', options_for_select(daysOptions, @daysSelected)
--#     .control-group
--#       .controls
--#         %button.btn.btn-primary{:type => "submit"}
--#           = t('.search')
 .container
   .span12
-    %form.form-horizontal
+    %form.form-horizontal#event_search_form
       .row-fluid
         .span12
           .row-fluid
@@ -41,10 +23,10 @@
                           = select_tag 'days', options_for_select(daysOptions, @daysSelected)
 
                 .row-fluid.card-footer
-                  .span2.footer-option.option-active.pull-right.btn-round-bottom-right
-                    .option-action
-                      %button.btn.btn-primary{:type => "submit"}
-                        = t('.search')
+                  / .span2.footer-option.option-active.pull-right.btn-round-bottom-right
+                  /   .option-action
+                  /     %button.btn.btn-primary{:type => "submit"}
+                  /       = t('.search')
 
 .span12
   .masonry_layout.centered
