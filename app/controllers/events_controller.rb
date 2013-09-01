@@ -24,7 +24,9 @@ class EventsController < ApplicationController
 
     @page = params[:page] || 1
 
-    my_location       = [43.28441, -2.172193] # Zarautz. Esto hay que obtenerlo de request.location
+    #my_location       = [request.location.latitude, request.location.longitude]
+    my_location       = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
+
     @distanceSelected = params[:distance] || 2 # A 2 km
     @daysSelected     = params[:days]     || 1 # Hoy
     @events           = Event
@@ -174,30 +176,7 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     event.users.push(current_user)
 
-    # Crear la actividad de apuntarse
-    activity = Activity.new
-    activity.verb = "join"
-
-    activity.actor = Actor.new
-    activity.actor.url = user_path(current_user)
-    activity.actor.objectType = "user"
-    activity.actor.displayName = current_user.complete_name
-    activity.actor.photoUrl = current_user.image.url(:thumb)
-
-    activity.subject = Subject.new
-    activity.subject.objectType = "event"
-    activity.subject.url = event_path(event)
-    activity.subject.displayName = event.name
-    activity.subject.photoUrl = event.main_picture.photo.url(:small)
-    activity.subject.address = event.place
-    activity.subject.startDate = event.start_date
-    activity.subject.startTime = event.start_time
-
-    activity.receivers = event.creator.all_followers
-    activity.receivers.push(event.creator)
-
-    activity.save
-    # Fin de crear la actividad de apuntarse
+    ActivitiesController.helpers.create_user_event_activity("join", current_user, event)
 
     render :json => event.save
   end
@@ -207,6 +186,10 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     user     = current_user
     event.users.delete(user)
+
+    activity = Activity.where("verb" => "join", "actor._id" => user._id, "subject._id" => event._id)
+    activity.delete_all
+
     render :json => event.save
   end
 

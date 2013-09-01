@@ -1,3 +1,3 @@
 Paloma.callbacks["activities/index"] = (params) ->
 
-  Paloma.Masonry.loadLayout("activities","#activity_list")
+  Paloma.Masonry.initPage("activities","#activity_list")

@@ -36,30 +36,7 @@ class Event
   end
 
   after_create do |event|
-    activity = Activity.new
-    activity.verb = "create"
-
-    activity.actor = Actor.new
-    activity.actor.url = Rails.application.routes.url_helpers.user_path(self.creator)
-    activity.actor.objectType = "user"
-    activity.actor.displayName = self.creator.complete_name
-    activity.actor.photoUrl = self.creator.image.url(:thumb)
-
-    activity.subject = Subject.new
-    activity.subject.objectType = "event"
-    activity.subject.url = Rails.application.routes.url_helpers.event_path(self)
-    activity.subject.displayName = self.name
-    activity.subject.photoUrl = self.main_picture.photo.url(:card)
-    activity.subject.photoWidth = self.main_picture.photo_dimensions["card"][0]
-    activity.subject.photoHeight = self.main_picture.photo_dimensions["card"][1]
-    activity.subject.address = self.place
-    activity.subject.startDate = self.start_date
-    activity.subject.startTime = self.start_time
-
-    activity.receivers = self.creator.all_followers
-    activity.receivers.push(self.creator)
-
-    activity.save
+    ActivitiesController.helpers.create_user_event_activity("create", self.creator, self)
   end
 
 end

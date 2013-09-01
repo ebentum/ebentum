@@ -4,13 +4,14 @@ Paloma.Masonry =
   loadingPage: false
   lastPage: false
 
-  loadLayout: (url, container)->
+  loadLayout: ->
     $(".masonry_layout").masonry
       itemSelector: ".card"
       columnWidth: 230
       gutter: 10
       isFitWidth: true
 
+  initPage: (url, container)->
     $(document).scroll ->
       if $(window).height() + $(window).scrollTop() >= $(document).height() * 0.75
         if Paloma.Masonry.loadingPage is false and Paloma.Masonry.lastPage is false
@@ -29,4 +30,5 @@ Paloma.Masonry =
             else
               Paloma.Masonry.lastPage = true
             Paloma.Masonry.loadingPage = false
+
 

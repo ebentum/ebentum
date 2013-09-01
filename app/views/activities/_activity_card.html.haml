@@ -1,15 +1,6 @@
-- width = activity.subject.photoWidth || 230
-- height = activity.subject.photoHeight || 230
-- if width > 230
-  -# redondear el ancho a la columna
-  - newWidth = (width / 230.0).round(0)
-  -# Maximo tres columnas
-  - if newWidth > 3
-    - newWidth = 3
-  - ratio = width / height
-  - width = (newWidth * 230 ) + ((newWidth-1) * 10)
-  - height = width / ratio
-
+- cardSize = PicturesController.helpers.adjustCardSize(activity.subject.photoWidth, activity.subject.photoHeight)
+- width = cardSize[:width]
+- height = cardSize[:height]
 - image_url = activity.subject.photoUrl
 .card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px;"}
   %a{:href => activity.subject.url}
