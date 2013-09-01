@@ -41,7 +41,6 @@
 //= require paloma
 //= require initialize
 
-//= require users
 //= require_self
 
 

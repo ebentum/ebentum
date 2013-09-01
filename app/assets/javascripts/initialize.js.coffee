@@ -1,9 +1,11 @@
+
+Paloma.Masonry.loadLayout()
+Paloma.DateTimes.format()
+
 # Document ready
 $(
   () ->
-    Paloma.Masonry.loadLayout()
     Paloma.Events.initNewEventOption()
-    Paloma.DateTimes.format()
 )
 
 
