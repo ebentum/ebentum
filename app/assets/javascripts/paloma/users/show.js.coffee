@@ -2,6 +2,8 @@ Paloma.callbacks["users/show"] = (params) ->
 
   loadingContent : null
 
+  Paloma.g.initActionButtons()
+
   $('a[data-toggle="pill"]').on "show", (e) ->
     Paloma.users.showTab(e.target.hash)
 
