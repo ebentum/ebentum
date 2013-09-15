@@ -19,7 +19,11 @@ en:
     confirm_appoint:
       close: "Close"
       confirm: "Confirm"
-      confirm_text: "Confirm that you join the event"
+      confirm_text: "Do you want join the event?"
+    confirm_desappoint:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_text: "Do you want unjoin the event?"
     share:
       share_activity: "Share in %{provider}"
     search:

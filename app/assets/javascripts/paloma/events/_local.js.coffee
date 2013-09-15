@@ -31,14 +31,13 @@ Paloma.Events =
             $('#confirm_desappoint_btn').data('appointmentid', data.id)
             # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
             $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())+1)
-            alert '¡Bien! ¡Te has unido al evento!'
           ), 2000
 
       $.ajax
         url: "/social/share_event_appoint"
         data:
-          fb_share: $('#facebook_share').bootstrapSwitch('status')
-          tw_share: $('#twitter_share').bootstrapSwitch('status')
+          fb_share: !$('#facebook_share').hasClass('toggle-off')
+          tw_share: !$('#twitter_share').hasClass('toggle-off')
           event_id: button.data('eventid')
         dataType: 'json'
 
