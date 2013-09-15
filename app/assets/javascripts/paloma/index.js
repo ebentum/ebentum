@@ -7,6 +7,5 @@
 //= require ./comments/_callbacks.js
 
 //= require ./masonry/_callbacks.js
-//= require ./image_processing/_callbacks.js
 //= require ./datetimes/_callbacks.js
 //= require ./tokens/_callbacks.js

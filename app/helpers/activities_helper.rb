@@ -7,10 +7,10 @@ module ActivitiesHelper
 
     activity.actor = Actor.new
     activity.actor._id = actor._id
-    activity.actor.url = Rails.application.routes.url_helpers.user_path(actor)
+    activity.actor.url = Rails.application.routes.url_helpers.user_path(actor) 
     activity.actor.objectType = "user"
     activity.actor.displayName = actor.complete_name
-    activity.actor.photoUrl = actor.image.url(:thumb)
+    activity.actor.photoUrl = actor.main_picture.photo.url(:thumb) rescue "/photos/thumb/missing.png"
 
     activity.subject = Subject.new
     activity.subject._id = subject._id

@@ -1,70 +1,52 @@
 .span12
-  = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
-    = devise_error_messages!
-    .row-fluid
-      .span4
-        .row-fluid
+  .row-fluid
+    .span4
 
-          .span12
-            .card
+
+
+
+
+      .row-fluid
+        .span12
+          .card
+            = form_for user_picture(@user), :remote => true, :html => { :multipart => true } do |f|
               .card-content
-                #userImage.thumbnail
-                  = image_tag(@user.image_path(:medium), :class => 'block')
-                #socialUserImage.thumbnail.hidden
-                  - social_image_url = @user.image_url rescue "/photos/medium/missing.png"
-                  = image_tag(social_image_url , :class => 'block')
-                  = hidden_field_tag 'user[image_url]', social_image_url, :id => 'image_url'
-              - if @user.image?
-                %a#imageDeleteButton.btn.btn-square-block.btn-danger.btn-large.btn-square
-                  %i.icon-remove.icon-white
-                  %span
-                    = t('.delete_image')
-                    = f.hidden_field :image_delete, :value => "0"
-              %a.fileinput-button.btn.btn-primary.btn-square-block.btn-large.btn-square-top.man{:href => "#"}
-                %i.icon-plus.icon-white
+                = f.file_field :photo, :class => "hidden"
+                = link_to "/#", :id => 'image-preview-link', :class => 'thumbnail' do
+                  = image_tag user_picture(@user).photo.url(:medium), :id => "image-preview"
+
+                #image-upload-progress.progress.progress-striped.active.hidden
+                  .bar{:style => "width: 0%;"}
+
+
+              %a#imageDeleteButton.btn.btn-square-block.btn-danger.btn-large.btn-square
+                %i.icon-remove.icon-white
+                %span
+                  = t('.delete_image')
 
 
 
-            %hr
-            .row-fluid
-              .span12
-                %button.btn.btn-block.btn-success.fileinput-button
-                  %i.icon-plus.icon-white
+      .row-fluid
+        .span12
+          .card
+            .card-header
+              = t('.social_title')
+            = render 'social_config'
+      %hr
+      .row-fluid
+        .span12
+          = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
+      %br
+      .row-fluid
+        .span12
+          %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
+            %span
+              = t('.delete_account')
 
-                  %span
-                    = t('.add_image')
-                  = f.file_field :image
-              -# .row-fluid
-              -#   .span12
-              -#     %button.btn.btn-block.btn-success.fileinput-button
-              -#       %i.icon-plus.icon-white
-              -#       %span
-              -#         = t('.add_image')
-              -#       = f.file_field :image
-              -#     - if @user.image?
-              -#       %button#imageDeleteButton.btn.btn-block.btn-danger
-              -#         %i.icon-remove.icon-white
-              -#         %span
-              -#           = t('.delete_image')
-              -#           = f.hidden_field :image_delete, :value => "0"
-
-        .row-fluid
-          .span12
-            .card
-              .card-header
-                = t('.social_title')
-              = render 'social_config'
-        %hr
-        .row-fluid
-          .span12
-            = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
-        %br
-        .row-fluid
-          .span12
-            %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
-              %span
-                = t('.delete_account')
-      .span8
+    .span8
+      = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
+        = devise_error_messages!
+        %input#main_picture_id{:name => "user[main_picture_id]", :type => "hidden"}
         .row-fluid
           .span12
             .card
