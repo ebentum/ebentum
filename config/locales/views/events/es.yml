@@ -19,7 +19,11 @@ es:
     confirm_appoint:
       close: "Cerrar"
       confirm: "Confirmar"
-      confirm_text: "Confirma que te apuntas al evento"
+      confirm_text: "¿Deseas apuntarte al evento?"
+    confirm_desappoint:
+      close: "Cerrar"
+      confirm: "Confirmar"
+      confirm_text: "¿Deseas desapuntarte del evento?"
     share:
       share_activity: "Compartir en %{provider}"
     search:

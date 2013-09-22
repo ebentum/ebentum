@@ -53,6 +53,15 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
+    picture = Picture.find(params[:user][:main_picture_id])
+    if picture
+      @user.main_picture = picture
+    else
+      picture = Picture.new
+      @user.main_picture = picture
+    end
+    picture.save
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html  { redirect_to(@user,
@@ -154,20 +163,5 @@ class UsersController < ApplicationController
       render 'edit_password', :layout => 'no_navbar'
     end
   end
-
-  # def update_main_picture
-  #   picture = Picture.find(params[:picture])
-  #   current_user.main_picture = picture
-
-  #   respond_to do |format|
-  #     if picture.save
-  #       format.json  { render :json => picture,
-  #                     :status => :created, :location => picture }
-  #     else
-  #       format.json  { render :json => picture.errors,
-  #                     :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
 end

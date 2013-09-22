@@ -2,7 +2,7 @@
   .row-fluid
     .span4
       .card-square
-        = image_tag(@event.main_picture.photo.url(:medium), :class => 'block')
+        = image_tag(@event.main_picture.photo.url(:medium), :class => 'block') rescue "/photos/medium/missing.png"
 
     .span8
       .row-fluid
@@ -73,7 +73,7 @@
                 #user-action.span2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
                     = hidden_field_tag 'event_id', @event.id
-                    = button_tag t('.appoint'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
+                    = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
                     = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
 
 
