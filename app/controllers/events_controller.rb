@@ -10,9 +10,9 @@ class EventsController < ApplicationController
 
     if @user
       if params[:appointments]
-        @events = @user.joined_events
-      else
         @events = @user.events
+      else
+        @events = @user.created_events
       end
     else
       @events = Event.all
@@ -192,5 +192,6 @@ class EventsController < ApplicationController
 
     render :json => event.save
   end
+
 
 end

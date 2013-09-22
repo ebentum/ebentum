@@ -1,5 +1,30 @@
 Paloma.users =
 
+  showInfo: (info)->
+    $(".tab-content #list_#{info}").removeClass('hidden')
+
+  showError: (error)->
+    $(".tab-content #list_error #error_description").html(error)
+    $(".tab-content #list_error").removeClass('hidden')
+
+  hideInfo: (info)->
+    $(".tab-content #list_#{info}").addClass('hidden')
+
+  showResults : ->
+    $(".tab-content #list_results").removeClass('hidden')
+
+  hideResults : ->
+    $(".tab-content #list_results").addClass('hidden')
+
+  resetInfoAlerts: ->
+    Paloma.users.hideInfo("error")
+    Paloma.users.hideInfo("loading")
+    Paloma.users.hideInfo("no_userevents")
+    Paloma.users.hideInfo("no_userappointments")
+    Paloma.users.hideInfo("no_userfollowing")
+    Paloma.users.hideInfo("no_userfollowers")
+
+
   showTab: (contentDiv)->
     contentUrl = $(contentDiv).data("url")
     contentParams = {no_layout: true}
@@ -13,22 +38,26 @@ Paloma.users =
         data: contentParams
         beforeSend: ->
           # TODO
-          $(contentDiv).parent('#error').toggleClass('hidden')
-          $(contentDiv).html("Loading...")
+          Paloma.users.resetInfoAlerts()
+          Paloma.users.hideResults()
+          Paloma.users.showInfo("loading")
         success: (data) ->
-          $(contentDiv).html(data).imagesLoaded ->
-            $(".masonry_layout").masonry
-              itemSelector: ".box"
-              isFitWidth: true
+          Paloma.users.hideInfo("loading")
+          if $(".card",data).length > 0
+            $(contentDiv).html(data)
+            Paloma.users.showResults()
+            Paloma.Masonry.loadLayout()
+            Paloma.Masonry.initPage(contentUrl,"#events_list")
+          else
+            Paloma.users.showInfo("no_#{contentDiv.substr(1)}")
           # e.target # activated tab
           # e.relatedTarget # previous tab
         error: (xhr, status, error) ->
-          # TODO
-          $(contentDiv).html(error)
-          $(contentDiv).parent('#error').html(error)
-          $(contentDiv).parent('#error').toggleClass('hidden')
+          Paloma.users.hideInfo("loading")
+          Paloma.users.showError(error)
         complete: ->
           loadingContent = null
+
 
   refreshCurrentTab: ->
     tabId = $('#userpagetabs li.active a').attr('href')

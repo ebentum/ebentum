@@ -27,7 +27,7 @@ Ebentum::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers, :created_events, :events
+      get :following, :followers
       put :follow, :unfollow
     end
   end

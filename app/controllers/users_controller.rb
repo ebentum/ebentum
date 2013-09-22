@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(id)
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'fullwidth'}
       format.json { render json: user }
     end
   end
@@ -120,32 +120,6 @@ class UsersController < ApplicationController
       format.js
     end
 
-  end
-
-  def created_events
-    @user = User.find(params[:id])
-    @events = @user.created_events
-    respond_to do |format|
-      if params[:no_layout]
-        format.html { render 'events/_list' , :layout => false}
-      else
-        format.html { render 'events/_list' }
-      end
-      format.json { render json: @events }
-    end
-  end
-
-  def events
-    @user = User.find(params[:id])
-    @events = @user.events
-    respond_to do |format|
-      if params[:no_layout]
-        format.html { render 'events/_list' , :layout => false}
-      else
-        format.html { render 'events/_list'}
-      end
-      format.json { render json: @events }
-    end
   end
 
   def edit_password
