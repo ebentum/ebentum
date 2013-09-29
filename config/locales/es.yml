@@ -1,5 +1,5 @@
 es:
   #S
   session_started_as: "Sesión iniciada como"
-  share_message: "Me acabo de apuntar al evento '%{event_name}' en www.ebentum.com. ¡Echale un vistazo! %{event_url}"
+  share_message: "Me acabo de apuntar al evento '%{event_name}' en www.ebentum.com. ¡Echale un vistazo!"
 

@@ -7,19 +7,19 @@ class SocialController < ActionController::Base
   def share_event_appoint
     # generar el contenido a compartir
     event     = Event.find(params[:event_id])
-    event_url = 'www.ebentum.com/events/'+event.id.to_s
-    message   = t(:share_message, :event_name => event.name, :event_url => event_url)
+    event_url = 'http://www.ebentum.com/events/'+event.id.to_s
+    message   = t(:share_message, :event_name => event.name)
 
     if params[:fb_share] == 'true'
       if current_user.fbtoken
-        fb = Koala::Facebook::API.new(current_user.fbtoken.token)
+        fb = load_graph_api
         begin
-          fb.put_wall_post(message)
+          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short), :description => event.description, :picture => event.main_picture.photo.url(:small)})
         rescue Koala::Facebook::AuthenticationError
           renew_fbtoken
           # cargamos el graph API y publicamos
-          fb = Koala::Facebook::API.new(current_user.fbtoken.token)
-          fb.put_wall_post(message)
+          fb = load_graph_api
+          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long)+', '+l(event.start_time, :format => :short), :description => event.description, :picture => event.main_picture.photo.url(:small)})
         end
       end
     end
@@ -27,7 +27,7 @@ class SocialController < ActionController::Base
     if params[:tw_share] == 'true'
       if current_user.twtoken
         tw = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)
-        Thread.new{tw.update(message)}
+        Thread.new{tw.update(message+' '+event_url)}
       end
     end
 
@@ -43,13 +43,13 @@ class SocialController < ActionController::Base
   end
 
   def get_facebook_data
-    fb = Koala::Facebook::API.new(current_user.fbtoken.token)
+    fb = load_graph_api
     begin
       me = fb.get_object("me")
     rescue Koala::Facebook::AuthenticationError
       renew_fbtoken
       # cargamos el graph API y consultamos
-      fb = Koala::Facebook::API.new(current_user.fbtoken.token)
+      fb = load_graph_api
       me = fb.get_object("me")
     end
     picture = fb.get_picture(me['username'], :type => :large)
@@ -72,6 +72,10 @@ class SocialController < ActionController::Base
     expires_at      = DateTime.now.to_i + new_access_info["expires"].to_i
     # actualizamos el usuario
     current_user.update_fbtoken(token, expires_at)
+  end
+
+  def load_graph_api
+    Koala::Facebook::API.new(current_user.fbtoken.token)
   end
 
 end
