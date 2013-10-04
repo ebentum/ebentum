@@ -1,0 +1,10 @@
+en:
+  layouts:
+    navbar:
+      activity: "Activity"
+      configuration: "Configuration"
+      explore: "Explore"
+      logout: "Logout"
+      profile: "Profile"
+      sign_up: "Sign up"
+      sign_in: "Sign in"

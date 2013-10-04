@@ -1,0 +1,3 @@
+.action-content.action-dangerous.btn-round-bottom-right
+  = form_for(@user, :url => { :action => "unfollow" },  remote: true) do |f|
+    = f.submit t('.unfollow'), class: "btn btn-danger"

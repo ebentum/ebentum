@@ -1,24 +1,86 @@
 .span12
   .row-fluid
-    .span1
     .span4
-      .thumbnail
-        = image_tag(@event.photo.url(:medium), :class => 'block')
-    .span1
-    .span5
-      .hero-unit
-        %h1
-          = @event.name
-        %p
-          = @event.description
-        %p
-          = @event.start_date
-          = @event.start_time
-        %p
-          = @event.place
-        #map.block
-        %br
-        %p
-          = button_tag '¡Me apunto!', :type => 'button', :class => 'btn btn-large btn-primary hide', :id => 'appoint', :data => {'loading-text' => 'Apuntandome...', :eventid => @event.id}
-          = button_tag '¡Desapuntame!', :type => 'button', :class => 'btn btn-large btn-danger hide', :id => 'desappoint', :data => {'loading-text' => 'Desapuntandome...', :eventid => @event.id, :appointmentid => 0}
-    .span1
+      .card-square
+        = image_tag(@event.main_picture.photo.url(:medium), :class => 'block') rescue "/photos/medium/missing.png"
+
+    .span8
+      .row-fluid
+        .span12
+          .card
+            .card-header
+              = @event.name
+            .card-content
+              .row-fluid
+                .span12
+                  #event_description
+                    = @event.description
+
+            #event-info-row.card-content
+              .row-fluid
+                .span6.ptl
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-man-24.mll
+                      .media-body
+                        - user = User.find(@event.creator)
+                        = t('.organized_by')
+                        %a{:href => user_path(user)}
+                          = user.complete_name
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-calendar-24.mll
+                      .media-body
+                        = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-location-24.mll
+                      .media-body
+                        = @event.place
+                  -# .card-content
+                  -#   %span.fui-man-24
+                  -#   - user = User.find(@event.creator)
+                  -#   = t('.organized_by')
+                  -#   %a{:href => user_path(user)}
+                  -#     = user.complete_name
+                  -# .card-content
+                  -#   %span.fui-calendar-24
+                  -#   = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
+                  -# .card-content
+                  -#   %span.fui-location-24
+                  -#   = @event.place
+                .span6.man
+                  #map.block
+
+            .row-fluid.card-footer
+              .span2.offset2.footer-option
+                %a#appointed{:href => "#"}
+                  .option-header
+                    = @event_users
+                  .option-content
+                    = t('.joined')
+                -# %p#appointed
+                -#   %i.icon-thumbs-up
+                -#   = t('.joined')
+                -#   %span.badge.badge-info
+                -#     = @event_users
+                -#   / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
+              = render 'share_event'
+              - if user_signed_in?
+                #user-action.span2.footer-option.pull-right.btn-round-bottom-right
+                  .option-action
+                    = hidden_field_tag 'event_id', @event.id
+                    = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
+                    = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
+
+
+      .row-fluid
+        .span12
+          = render 'comments'
+
+= render 'confirm_appoint'
+= render 'confirm_desappoint'
+

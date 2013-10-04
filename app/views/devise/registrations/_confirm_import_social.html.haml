@@ -1,0 +1,32 @@
+.modal.hide.fade{:id  => 'confirm_import_social'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3
+      = t('.confirm')
+  .modal-body
+    %p
+      = t('.import_text')
+    %form{:id => 'import_social'}
+      #import_social_checkboxes
+        .pull-left
+          %label.checkbox
+            %input{:type => "checkbox", :checked => true, :id => 'import_complete_name'}/
+            = t('.complete_name')
+          %label.checkbox
+            %input{:type => "checkbox", :checked => true, :id => 'import_location'}/
+            = t('.location')
+          %label.checkbox
+            %input{:type => "checkbox", :checked => true, :id => 'import_web'}/
+            = t('.web')
+        .pull-right
+          %label.checkbox
+            %input{:type => "checkbox", :checked => true, :id => 'import_bio'}/
+            = t('.bio')
+          %label.checkbox
+            %input{:type => "checkbox", :checked => true, :id => 'import_image'}/
+            = t('.image')
+  .modal-footer
+    %a.btn{:href => "#", "data-dismiss" => "modal"}
+      = t('.close')
+    %a.btn.btn-primary{:href => "#", :id => 'confirm_import_social_btn', :data => {:provider => 'provider'}}
+      = t('.import')

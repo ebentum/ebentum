@@ -1,24 +1,29 @@
 %div{:class => 'span5 offset4'}
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => 'edit_password', :class => 'edit_password'}) do |f|
     = f.hidden_field :reset_password_token
-    %fieldset
-      = content_tag :legend, t(:change_your_password)
-      .control-group
-        .controls
-          = f.password_field :password, :id => 'password', :placeholder => t(:new_password), :class => 'input-xlarge'
-          %span.help-inline
-      .control-group
-        .controls
-          = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t(:new_password_confirmation), :class => 'input-xlarge'
-          %span.help-inline
-      %br
-      = f.button t(:confirm_new_password), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'edit_password_button', :data => {'loading-text' => t(:helping)}
-      %br
-      %br
-      .alert.alert-success.hide{:id => 'edit_password_success'}
-        / %button.close{"data-dismiss" => "alert", :type => "button"} ×
-        %h4
-          = t(:edit_password_ok_title)
-        %span{:id => 'edit_password_ok_text'}
-          = t(:edit_password_ok_text, :email => 'EMAIL')
+    .card
+      .card-header
+        = t('.change_your_password')
+      .card-content
+        .row-fluid
+          .span12
+            .control-group
+              .controls
+                = f.password_field :password, :id => 'password', :placeholder => t('.new_password'), :class => 'input-block-level'
+                %span.help-inline
+        .row-fluid
+          .span12
+            .control-group
+              .controls
+                = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.new_password_confirmation'), :class => 'input-block-level'
+                %span.help-inline
+      .row-fluid.card-footer
+        .span7.footer-option.option-active.pull-right.btn-round-bottom-right
+          .option-action.btn-round-bottom-right
+            = f.button t('.confirm_new_password'), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'edit_password_button', :data => {'loading-text' => t('.changing_password')}
+    .alert.alert-success.hide{:id => 'edit_password_success'}
+      %h4
+        = t('.edit_password_ok_title')
+      %span{:id => 'edit_password_ok_text'}
+        = t('.edit_password_ok_text')
   = render "devise/shared/links"

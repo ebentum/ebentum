@@ -1,6 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "active_resource/railtie"
+require "rails/test_unit/railtie"
+require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -11,12 +15,21 @@ end
 
 module Ebentum
   class Application < Rails::Application
+
+
+    config.to_prepare do
+      Devise::SessionsController.skip_before_filter :auth_user
+      Devise::PasswordsController.skip_before_filter :auth_user
+      Devise::ConfirmationsController.skip_before_filter :auth_user
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -52,7 +65,7 @@ module Ebentum
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
-    config.active_record.whitelist_attributes = true
+    #config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
     config.assets.enabled = true
@@ -61,5 +74,6 @@ module Ebentum
     config.assets.version = '1.0'
     
     config.assets.initialize_on_precompile = true
+
   end
 end

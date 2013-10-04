@@ -1,9 +1,5 @@
-#imagePreview {
-  width: 170px;
+#image-preview {
   height: 170px;
-  float: right;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
-  font-size: 160px;
 }
 
 .pac-container {
@@ -27,7 +23,7 @@
 }
 
 #map_canvas {
-  width:530px;
+  // width:530px;
   height:200px;
 }
 
@@ -35,3 +31,112 @@
   height: 12em;
 }
 
+#event_description{
+ min-height: 50px;
+}
+
+#event-info-row{
+  padding: 0px;
+}
+
+.calendar-icon{
+  background: #c0392b;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.calendar-month{
+  color: $inverse;
+  font-size: 11px;
+}
+
+.calendar-day{
+  background: $inverse;
+  color: $base;
+  margin: 1px 5px 0px 5px;
+  padding-top: 3px;
+  border-radius: 4px;
+  height: 20px;
+}
+
+
+// .poster {
+//   margin: 5px;
+//   margin-bottom: 10px;
+//   // max-width: 630px;
+//   // background-color: white;
+//   // padding: 0px;
+//   float: left;
+//   position: relative;
+//   perspective: 800px;
+// }
+
+// .poster .poster-front, .poster .poster-back {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   // -webkit-transform-style: preserve-3d;
+//   // -moz-transform-style: preserve-3d;
+//   // -ms-transform-style: preserve-3d;
+//   // -o-transform-style: preserve-3d;
+//   // transform-style: preserve-3d;
+//   // -webkit-backface-visibility: hidden;
+//   // -moz-backface-visibility: hidden;
+//   // -ms-backface-visibility: hidden;
+//   // -o-backface-visibility: hidden;
+//   // backface-visibility: hidden;
+//   // -webkit-transition: 0.75s;
+//   // -moz-transition: 0.75s;
+//   // -o-transition: 0.75s;
+//   // transition: 0.75s;
+// }
+// .poster .poster-front {
+//   z-index: 5;
+// }
+// .poster .poster-back {
+//   z-index: 0;
+//   background-color: rgba(84,84,84,0.5);
+//   width: 100%;
+//   height: 100%;
+//   // -webkit-transform: rotateY(-180deg);
+//   // -moz-transform: rotateY(-180deg);
+//   // -ms-transform: rotateY(-180deg);
+//   // -o-transform: rotateY(-180deg);
+//   // transform: rotateY(-180deg);
+// }
+
+
+// .poster:hover {
+//   .botones {
+//     display: block;
+//   }
+// }
+
+// .thumbnail {
+//   a {
+//     color: #8c7e7e;
+//     font-weight: bold;
+//   }
+// }
+
+// .extra-info {
+//   background-color: #f2f0f0;
+//   margin: 0 -13px -13px -13px;
+//   @include border-bottom-radius(4px);
+//   padding: 10px 15px;
+// }
+
+// .botones {
+//   position: absolute;
+//   top: 20px;
+//   display: none;
+// }
+
+// .thumbnail:hover {
+//   .botones {
+//     display: block;
+//   }
+// }

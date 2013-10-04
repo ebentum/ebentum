@@ -1,0 +1,13 @@
+.modal.hide.fade{:id  => 'confirm_image_delete'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3
+      = t('.delete_image')
+  .modal-body
+    %p
+      = t('.confirm_image_delete_text')
+  .modal-footer
+    %a.btn.btn-danger{:href => "#", :id => 'confirm_image_delete_btn'}
+      = t('.delete')
+    %a.btn{:href => "#", "data-dismiss" => "modal"}
+      = t('.cancel')

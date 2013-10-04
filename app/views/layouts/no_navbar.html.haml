@@ -1,0 +1,22 @@
+!!!
+%html{"xmlns:fb" => "http://ogp.me/ns/fb#"}
+  = render 'layouts/head'
+  %body
+    = render 'layouts/fb_js_sdk'
+    = render 'layouts/tw_js_sdk'
+    .container
+      - if flash[:notice]
+        .alert.alert-success
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %h4
+            = flash[:notice]
+          %span
+            = flash[:notice]
+      .row-fluid
+        = yield
+    #modal_windows
+    = javascript_include_tag "application_post"
+    :javascript
+      I18n.defaultLocale = "#{I18n.default_locale}";
+      I18n.locale = "#{I18n.locale}";
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=#{I18n.locale}"

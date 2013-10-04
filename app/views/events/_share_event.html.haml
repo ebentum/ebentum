@@ -1,0 +1,8 @@
+- url = 'http://www.ebentum.com/events/'+@event.id
+.span2.footer-option
+  .option-action
+    %fb:like{:layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
+
+.span2.footer-option
+  .option-action
+    %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => url, :via => 'dev_ebentum'}}

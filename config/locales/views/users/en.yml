@@ -1,7 +1,10 @@
-es:
+en:
   users:
     edit:
       editing_user: "Editing user"
+    social_config:
+      log_with: "Log with %{provider}"
+      publish_activity: "Publish activity in %{provider}"
     form:
       add_image: "Add image"
       username: "User name"
@@ -11,16 +14,29 @@ es:
       bio: "Bio"
       web: "Web"
     show:
+      edit: "Edit"
       username: "User name"
       complete_name: "Complete name"
+      isfollower: "Follows you"
       gender: "Gender"
       location: "Location"
       bio: "Bio"
       web: "Web"
       your_events: "Your Events"
-      appointed_events: "Appointed Events"
+      user_events: "Events"
+      joined_events: "Joined"
       following: "Following"
-      followers: "Follower"
+      followers: "Followers"
+    follow:
       follow: "Follow"
-      isfollower: "Is following you"
+    unfollow:
       unfollow: "Stop following"
+    edit_password:
+      change_password: "Change password"
+      change_password_error_title: "Error changing password"
+      change_password_error_text: "Make sure to provide your old password and the new one matches with the confirmation"
+      current_password: "Contraseña actual"
+      new_password: "New password"
+      password_confirmation: "Password confirmation"
+      save: "Save"
+      back: "Back"

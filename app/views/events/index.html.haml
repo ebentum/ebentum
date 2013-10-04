@@ -1,22 +1,6 @@
-.span12
-  #myContent.centered
-    - for event in @events
-      .box
-        .thumbnail
-          = image_tag event.photo.url(:small)
-          .caption
-            %h5
-              = event.name
-            %p
-              %i.icon-calendar
-              = l(event.start_date)
-            %p
-              %i.icon-map-marker
-              = event.place
-            %p
-              %a.btn.btn-primary{:href => "#"}
-                %i.icon-thumbs-up.icon-white
-                ¡Me apunto!
-              = link_to event, :class => "btn" do
-                %i.icon-info-sign
-                Más información
+- if @page == 1
+  .span12
+    #events_list.masonry_layout.centered
+      = render 'list'
+- else
+  = render 'list'

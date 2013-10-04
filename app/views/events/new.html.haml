@@ -1,6 +1,5 @@
 - content_for(:modal_header) do
   %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-  %h3#myModalLabel
-    = t(".create_event")
+  = t(".create_event")
 
 = render 'form'

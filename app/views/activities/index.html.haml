@@ -1,0 +1,6 @@
+- if @page == 1
+  .span12
+    #activity_list.masonry_layout.centered
+      = render 'list'
+- else
+  = render 'list'

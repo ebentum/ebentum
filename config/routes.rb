@@ -1,11 +1,39 @@
 Ebentum::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+    match '/users/facebook_login'  => 'users/omniauth_callbacks#facebook_login'
+    match '/users/twitter_login'   => 'users/omniauth_callbacks#twitter_login'
+    match '/auth_login/callback'   => 'users/omniauth_callbacks#facebook'
+    match '/users/edit_password'   => 'users#edit_password'
+    match '/users/update_password' => 'users#update_password'
+  end
 
+  resources :activities
+
+  match '/welcome/sign_up_ok' => 'welcome#sign_up_ok'
+  resources :welcome
+
+  match 'events/add_user/:eventid'    => 'events#add_user'
+  match 'events/remove_user/:eventid' => 'events#remove_user'
+  match 'events/search'               => 'events#search'
   resources :events
-  resources :home
-  resources :appointments
-  resources :users
+  resources :tokens
+  match '/social/share_event_appoint' => 'social#share_event_appoint'
+  match '/social/get_social_data'     => 'social#get_social_data'
+  resources :social
+  resources :comments
+  resources :pictures
+
+  resources :users do
+    member do
+      get :following, :followers
+      put :follow, :unfollow
+    end
+  end
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,7 +84,7 @@ Ebentum::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'events#index'
+  root :to => 'activities#index'
 
   # See how all your routes lay out with "rake routes"
 

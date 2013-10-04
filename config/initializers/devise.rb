@@ -13,7 +13,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require 'devise/orm/mongoid'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -206,21 +206,22 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  if Rails.env.production?
-    config.omniauth :facebook, "388540841232423",        "a8a98489090c81fed852a47238dd879c", :image_size => :large
-    config.omniauth :twitter,  "YykJawWYSzVeC8xahlnA3Q", "niARFX8VbSyxfFFY5tocZAS3vxc65Waz1KkUVoxHAo"
-  else
-    config.omniauth :facebook, "469588653104372",        "b9a94623ec3554e0b081f1cf91b7002f", :image_size => :large
-    config.omniauth :twitter,  "K8uuMWym0VKXWKcz7XJ0zQ", "NBjr9zz979n38fJgzaZF1v3ZTTIBEyExQmCmeIhavLM"
-  end
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], :image_size => :large, :scope => 'email, publish_actions, user_location, user_website, user_about_me'
+  config.omniauth :twitter,  ENV["TWITTER_APP_ID"],  ENV["TWITTER_APP_SECRET"]
+ 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
   # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
+  #   
   # end
+
+  config.warden do |manager|
+    manager.failure_app = CustomFailure
+    # manager.intercept_401 = false
+    # manager.default_strategies(:scope => :user).unshift :some_external_strategy
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
@@ -235,4 +236,5 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
 end

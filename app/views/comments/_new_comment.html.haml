@@ -1,0 +1,13 @@
+- if current_user
+  %ul.media-list{:id => 'new_comment'}
+    %li.media.card-content
+      %a.pull-left{:href => "#"}
+        = image_tag(current_user.main_picture.photo.url(:thumb), :class => 'block media-object thumb_image')  rescue image_tag("/photos/thumb/missing.png", :class => 'block media-object thumb_image')
+      .media-body
+        .media-heading
+          %small
+            %a{:href => user_path(current_user)}
+              = current_user.complete_name
+
+        %span
+          %textarea{:rows => "1", :id => 'new_comment_textarea', :placeholder => t('.write_comment'), :data => {:eventid => @event.id}}

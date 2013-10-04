@@ -1,0 +1,19 @@
+- cardSize = PicturesController.helpers.adjustCardSize(activity.subject.photoWidth, activity.subject.photoHeight)
+- width = cardSize[:width]
+- height = cardSize[:height]
+- image_url = activity.subject.photoUrl
+.card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px;"}
+  %a{:href => activity.subject.url}
+    .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
+  .card-footer.card-footer-masonry.pts.pbs.plm.prm
+    .media
+      .pull-left
+        %a{:href => activity.actor.url}
+          = image_tag(activity.actor.photoUrl , :class => 'block media-object thumb_image')
+      .media.body
+        %div
+          = activity.actor.displayName
+        .sub-paragraph
+          = activity.verb + " " + activity.subject.displayName
+        .sub-paragraph
+          .format-timeago{:data => {:datevalue => activity.created_at }}

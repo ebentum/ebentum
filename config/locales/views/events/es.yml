@@ -11,3 +11,32 @@ es:
       name: "Nombre"
       place: "Lugar"
       time: "Hora"
+    show:
+      join: "¡Me uno!"
+      joined: "Unidos"
+      event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
+      organized_by: "Organizado por"
+    confirm_appoint:
+      close: "Cerrar"
+      confirm: "Confirmar"
+      confirm_text: "¿Deseas apuntarte al evento?"
+    confirm_desappoint:
+      close: "Cerrar"
+      confirm: "Confirmar"
+      confirm_text: "¿Deseas desapuntarte del evento?"
+    share:
+      share_activity: "Compartir en %{provider}"
+    search:
+      close_to_me: "Cerca de donde estoy"
+      farther: "¡Más lejos!"
+      i_dont_care: "¡Me da igual!"
+      now: "¡Ahora!"
+      right_here: "¡Aquí mismo!"
+      search: "Buscar"
+      this_week: "De aquí a 10 días"
+      this_month: "De aquí a 30 días"
+      tomorrow: "Mañana"
+      to_10_km: "A unos 10 km"
+      to_20_km: "A unos 20 km"
+      when: "¿Cuando?"
+      where: "¿Dónde?"

@@ -1,22 +1,100 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => [:show, :index]
+  skip_before_filter :auth_user, :only => [:show]
+  before_filter :search_events, :only => [:index]
+
+  def search_events
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    end
+
+    if @user
+      if params[:appointments]
+        @events = @user.events
+      else
+        @events = @user.created_events
+      end
+    else
+      @events = Event.all
+    end
+
+  end
+
+  def search
+
+    @page = params[:page] || 1
+
+    #my_location       = [request.location.latitude, request.location.longitude]
+    my_location       = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
+
+    @distanceSelected = params[:distance] || 2 # A 2 km
+    @daysSelected     = params[:days]     || 1 # Hoy
+    @events           = Event
+    if @distanceSelected.to_i > 0
+      @events = @events.near(my_location, @distanceSelected, :units => :km)
+    end
+    if @daysSelected.to_i > 0
+      @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
+    end
+
+    @events = @events.order_by("start_date asc")
+    @events = @events.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
+      format.json { render json: @events }
+    end
+  end
 
   def index
-    @events = Event.all
-    
+    @page = params[:page] || 1
+
+    @events = @events.order_by("start_date asc")
+    @events = @events.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
     respond_to do |format|
-      format.html # index.html.erb
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
       format.json { render json: @events }
     end
   end
 
   def show
+
+    # tiene token de acceso validos?
+    if current_user
+      @fb_access_token = current_user.fbtoken || nil
+      @tw_access_token = current_user.twtoken || nil
+    end
+
     @event = Event.find(params[:id])
+    if user_signed_in?
+      @joined = @event.users.find(current_user) != nil
+      # en caso de => raise_not_found_error: true
+      # begin
+      #   @joined = @event.users.find(current_user) != nil
+      # rescue Mongoid::Errors::DocumentNotFound
+      #   @joined = false
+      # end
+    end
+    @event_users = @event.users.size
 
-    @user_appointment_id = Appointment.user_appointment_id(params[:id], current_user.id)
-
-    js_callback :params => {:lat => @event.lat, :lng => @event.lng, :user_appointment_id => @user_appointment_id}
+    js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +104,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @picture = Picture.new
 
     respond_to do |format|
       format.html { render :layout => 'modal_window' }
@@ -35,8 +114,18 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    # Meter 'lat' y 'lng' en array 'coordinates'
+    @event.coordinates = [params[:event][:lng].to_f, params[:event][:lat].to_f] # to_f para pasarlos a float
+    @event.creator = current_user
 
-    @event.user_id = current_user.id
+    picture = Picture.find(params[:event][:main_picture_id])
+    if picture
+      @event.main_picture = picture
+    else
+      picture = Picture.new
+      @event.main_picture = picture
+    end
+    picture.save
 
     respond_to do |format|
       if @event.save
@@ -81,5 +170,28 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_user
+    event_id = params[:eventid]
+    event    = Event.find(event_id)
+    event.users.push(current_user)
+
+    ActivitiesController.helpers.create_user_event_activity("join", current_user, event)
+
+    render :json => event.save
+  end
+
+  def remove_user
+    event_id = params[:eventid]
+    event    = Event.find(event_id)
+    user     = current_user
+    event.users.delete(user)
+
+    activity = Activity.where("verb" => "join", "actor._id" => user._id, "subject._id" => event._id)
+    activity.delete_all
+
+    render :json => event.save
+  end
+
 
 end

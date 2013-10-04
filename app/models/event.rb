@@ -1,35 +1,42 @@
-# == Schema Information
-#
-# Table name: events
-#
-#  id                 :integer          not null, primary key
-#  name               :string(255)
-#  description        :text
-#  place              :string(255)
-#  user_id            :integer
-#  active             :boolean
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  start_date         :date
-#  start_time         :time
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
-#  lat                :decimal(10, 6)
-#  lng                :decimal(10, 6)
-#
+class Event
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Paperclip
+  include Paperclip::Glue
+  include Geocoder::Model::Mongoid
 
-class Event < ActiveRecord::Base
-  attr_accessible :active, :description, :name, :place, :start_date, :start_time, :user_id, :photo, :lat, :lng
+  field :name, type: String
+  field :description, type: String
+  field :place, type: String
+  field :active, type: Boolean
+  field :start_date, type: Date
+  field :start_time, type: Time
+  field :coordinates, type: Array
+  field :lat, type: BigDecimal
+  field :lng, type: BigDecimal
+  field :appointments_count, type: Integer
 
-  validates :name, :place, :start_date, :start_time, :user_id, :lat, :lng, :presence => true
+  reverse_geocoded_by :coordinates
 
-  has_many :appointments
-  belongs_to :user 
-  has_many :users, :through => :appointments 
-  
+  attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
+  attr_readonly :appointments_count
 
-  has_attached_file :photo, :styles => { :small => "300x300>", :medium => "600x600>" }
+  validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
+
+  belongs_to :creator, class_name: "User", inverse_of: :created
+
+  has_one :main_picture, class_name: "Picture", as: :pictureable
+
+  has_and_belongs_to_many :users, inverse_of: :events
+  has_many :comments, inverse_of: :event
+
+  def setCoordinates
+    self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
+  end
+
+  after_create do |event|
+    ActivitiesController.helpers.create_user_event_activity("create", self.creator, self)
+  end
 
 end

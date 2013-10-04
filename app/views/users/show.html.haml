@@ -1,46 +1,131 @@
-.row-fluid
-  .span12.well
-    .span2
-      .thumbnail
-        = image_tag(@user.image.url(:small), :class => 'block')
-    .span8
-      .row-fluid
-        .span1
-          = render 'user_action_button'
-      .row-fluid
-        .span12
-          %h3
-            = @user.complete_name
-          %p
-            %b
-              = t(".location")
-            = @user.location
-          %p
-            %b
-              = t('.web')
-            = @user.web
-          %p
-            %b
-              = t('.bio')
-            = @user.bio
+.container
+  .span12
+    .row-fluid
+      .span12
+        .row-fluid
+          .span8.offset2
+            .card
+              .card-header
+                = @user.complete_name
+                - if @user.follower_of?(current_user)
+                  .label.label-info
+                    = t('.isfollower')
+              .row-fluid
+                .span4
+                  .thumbnail
+                    = @user.main_picture.blank? ? image_tag("/photos/medium/missing.png", :class => 'block') : image_tag(@user.main_picture.photo.url(:medium), :class => 'block')
+                .span8
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-location-24.mll
+                      .media-body
+                        = @user.location.blank? ? raw('&nbsp;') : @user.location
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-menu-24.mll
+                      .media-body
+                        = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, @user.web)
+                  .card-content
+                    .media
+                      .pull-left
+                        .media-object.fui-heart-24.mll
+                      .media-body
+                        = @user.bio.blank? ? raw('&nbsp;') : @user.bio
+
+              #userpagetabs.row-fluid.card-footer
+                .span2.footer-option
+                  %a{:href => "#userevents", "data-toggle" => "pill"}
+                    .option-header
+                      = @user.created_events.count
+                    .option-content
+                      - if @user == current_user
+                        = t('.your_events')
+                      - else
+                        = t('.user_events')
+                .span2.footer-option.active
+                  %a{:href => "#userappointments", "data-toggle" => "pill"}
+                    .option-header
+                      = @user.events.count
+                    .option-content
+                      = t('.joined_events')
+                .span2.footer-option
+                  %a{:href => "#userfollowing", "data-toggle" => "pill"}
+                    .option-header
+                      = @user.followees_count
+                    .option-content
+                      = t('.following')
+                .span2.footer-option
+                  %a{:href => "#userfollowers", "data-toggle" => "pill"}
+                    #followers_count_badge.option-header
+                      = @user.followers_count
+                    .option-content
+                      = t('.followers')
+                #user_action_button.span2.footer-option.option-active.pull-right.btn-round-bottom-right
+                  - if @user == current_user
+                    %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
+                      = t('.edit')
+                  - else
+                    - if current_user.follower_of?(@user)
+                      = render 'unfollow'
+                    - else
+                      = render 'follow'
 
 .row-fluid
-  .span6
-    .well
-      %h4
-        = t('.your_events')
-  .span6
-    .well
-      %h4
-        = t('.appointed_events')
-.row-fluid
-  .span6
-    .well
-      %h4
-        = t('.following')
-  .span6
-    .well
-      %h4
-        = t('.followers')
+  .tab-content
+    #list_results
+      .tab-pane{:id => "userevents", :data => {:url => events_path(:user_id => @user.id) } }
+      .tab-pane{:id => "userappointments", :data => {:url => events_path(:user_id => @user.id, :appointments => true) } }
+      .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
+      .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
+    .container
+      .span4.offset4
+        #list_error.alert.alert-error.hidden
+          %strong
+            Error!
+          #error_description
+        #list_loading.alert.alert-info.hidden
+          Cargando...
+        #list_no_userevents.hidden
+          .card
+            %a{:href => "/events/search"}
+              .card-image-placeholder{:style => "width: 230px; height: 230px;"}
+            .card-footer.card-footer-masonry.pts.pbs.plm.prm
+              %p
+                Aun no has creado ningun evento!
+              %a#events_new{:href => "#"}
+                %i.icon-plus
+                Crear
+        #list_no_userappointments.hidden
+          .card
+            %a{:href => "/events/search"}
+              .card-image-placeholder{:style => "width: 230px; height: 230px;"}
+            .card-footer.card-footer-masonry.pts.pbs.plm.prm
+              %p
+                Aun no te has unido a ningun evento!
+              %a.btn.btn-primary{:href => "/events/search"}
+                = t('.explore')
+
+        #list_no_userfollowing.hidden
+          .card
+            %a{:href => "/events/search"}
+              .card-image-placeholder{:style => "width: 230px; height: 230px;"}
+            .card-footer.card-footer-masonry.pts.pbs.plm.prm
+              %p
+                No sigues a nadie todavía!
+
+        #list_no_userfollowers.hidden
+          .card
+            %a{:href => "/events/search"}
+              .card-image-placeholder{:style => "width: 230px; height: 230px;"}
+            .card-footer.card-footer-masonry.pts.pbs.plm.prm
+              %p
+                No tienes seguidores todavia!
+
+
+
+
+
 
 

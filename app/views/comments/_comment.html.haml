@@ -1,0 +1,24 @@
+- commentid = 'comment'+comment.id.to_s
+
+%li.media.card-content{:id => commentid}
+  %a.pull-left{:href => "#"}
+    = image_tag(comment.creator.main_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
+  .media-body
+    .media-heading
+      %small
+        %a{:href => user_path(comment.creator)}
+          = comment.creator.complete_name
+      %span.mlm{:id => 'body'+commentid}
+        = comment.body
+      %span{:id => 'edit'+commentid, :class => 'hide'}
+        %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment', :data => {:commentid => comment.id}}
+          = comment.body
+    %small{:id => 'comment_date_'+comment.id.to_s}
+      .format-timeago.hidden
+      .format-timeago{:data => {:datevalue => comment.updated_at }}
+    - if current_user && current_user.id == comment.creator.id
+      %span{:id => 'editdelete'+commentid}
+        %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
+          %i.icon-pencil
+        %a{:href => '#confirm_delete', :id => 'delete_comment', :data => {:commentid => comment.id, :toggle => 'modal', :target => '#confirm_delete'}}
+          %i.icon-trash

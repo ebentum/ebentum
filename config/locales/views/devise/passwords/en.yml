@@ -1,0 +1,19 @@
+en:
+  devise:
+    passwords:
+      edit:
+        change_your_password: "Change your password"
+        changing_password: "Changing password..."
+        edit_password_ok_title: Yeah!
+        edit_password_ok_text: "You can access to ebentum with your new password"
+        confirm_new_password: "Confirm new password"
+        helping: "Helping..."
+        new_password: "New password"
+        new_password_confirmation: "Confirm new password"
+      new:
+        email: "Email"
+        forgot_your_password: "Forgot your password?"
+        help_me: "Help me!"
+        helping: "Helping..."
+        new_password_ok_title: Yeah!
+        new_password_ok_text: "Follow the instructions that we have sent to %{email} to change your password"

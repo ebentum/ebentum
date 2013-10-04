@@ -1,0 +1,8 @@
+es:
+  devise:
+    shared:
+      links:
+        didnt_receive_confirmation_email: "¿No has recibido las intrucciones para la confirmación?"
+        forgot_your_password: "¿Has olvidado tu contraseña?"
+        sign_up: "Regístrate"
+        sign_in: "Entra"

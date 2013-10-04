@@ -1,4 +1,9 @@
 Paloma.callbacks["events/show"] = (params) ->
+
+  # inicializar opciones de unirse
+  Paloma.Events.initAppointOptionsLayout(params['joined'])
+
+  # Inicializar mapa
   map_options =
     zoom: 13
     center: new google.maps.LatLng(params["lat"], params["lng"])
@@ -9,8 +14,7 @@ Paloma.callbacks["events/show"] = (params) ->
     position: new google.maps.LatLng(params["lat"], params["lng"])
   marker = new google.maps.Marker(marker_options)
 
-  if params['user_appointment_id'] > 0
-    $('#desappoint').removeClass('hide')
-    $('#desappoint').data('appointmentid', params['user_appointment_id'])
-  else
-    $('#appoint').removeClass('hide')
+  # cargar comentarios
+  Paloma.Comments.load_event_comments(params['event_id'])
+  Paloma.Comments.initLayout()
+

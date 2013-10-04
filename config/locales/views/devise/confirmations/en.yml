@@ -1,0 +1,11 @@
+en:
+  devise:
+    confirmations:
+      new:
+        email: "Email"
+        help_me: "Help me!"
+        helping: "Helping..."
+        new_confirmation_ok_title: "Yeah!"
+        resend_confirmation_instructions: "Resend confirmation instructions"
+        new_confirmation_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
+

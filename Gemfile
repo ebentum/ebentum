@@ -1,14 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.11'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-group :development do
-  gem 'sqlite3'
-  gem 'annotate', "~> 2.5.0"  # https://github.com/ctran/annotate_models
-end
+gem 'rails', '~> 3.2.12'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,43 +13,50 @@ gem 'sass-rails',   '~> 3.2.5'
 gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'compass-rails', '~> 1.0.3'
 
-group :production do
-  gem 'pg'
-end
-
 gem 'thin'
-gem 'haml', '~> 3.1.7'
+gem 'haml', '~> 4.0.0'
 gem 'jquery-rails', '~> 2.2.0'
-gem "paperclip", "~> 3.4.0"
 gem 'aws-sdk', "~> 1.8.0"
+gem "paperclip", "~> 3.4.0"
 gem "font-awesome-sass-rails", "~> 3.0.0.1"
 
 gem "i18n-js", "~> 2.1.2"
-
-#gem "jquery-fileupload-rails", "~> 0.4.0"
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
 
 # Devise authentication
 gem 'devise', '~> 2.1.2'
 
 # omniauth
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-twitter', '~> 1.0.0'
+
+# fabebook api
+gem 'koala', "~> 1.6.0"
+
+# twitter api
+gem "twitter", "~> 4.6.0"
 
 #gema paloma para organizar javascript
-gem 'paloma'
+gem "paloma", "~> 1.2.5"
+
+# conexión base de datos mongoDB
+gem "mongoid", "~> 3.1.2"
+
+# para seguir usuarios/grupos
+gem 'mongo_followable', "~> 0.3.2"
+
+# gestión de adjuntos
+gem "mongoid-paperclip", "~> 0.0.8", :require => "mongoid_paperclip"
+gem 'paperclip-dimension'
+
+# paginación
+gem "kaminari", "~> 0.14.1"
+
+# gestiónde variables de entorno
+gem "figaro", "~> 0.6.3"
+
+# URL expander
+gem "url_expander", "~> 0.1.5"
+
+# Geocoder
+gem "geocoder", "~> 1.1.8"

@@ -11,3 +11,32 @@ en:
       name: "Name"
       place: "Place"
       time: "Time"
+    show:
+      join: "Join me!"
+      joined: "Joined"
+      event_followings_followers_joined: "(%{following} following and %{followers} followers)"
+      organized_by: "Organized by"
+    confirm_appoint:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_text: "Do you want join the event?"
+    confirm_desappoint:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_text: "Do you want unjoin the event?"
+    share:
+      share_activity: "Share in %{provider}"
+    search:
+      close_to_me: "Close to me"
+      farther: "Farther!"
+      i_dont_care: "I don't care!"
+      now: "Now!"
+      right_here: "Right here!"
+      search: "Search"
+      this_week: "From now until 10 days"
+      this_month: "From now until 30 days"
+      tomorrow: "Tomorrow"
+      to_10_km: "To 10 km"
+      to_20_km: "To 20 km"
+      when: "When?"
+      where: "Where?"

@@ -1,0 +1,19 @@
+#userImage {
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+  font-size: 160px;
+}
+
+.dl-horizontal-left dt {
+  float: left;
+  width: 160px;
+  clear: left;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#import_social_checkboxes {
+  width: 70%;
+  height: 6.58em;
+}

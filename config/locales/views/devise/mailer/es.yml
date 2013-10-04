@@ -1,0 +1,15 @@
+es:
+  devise:
+    mailer:
+      confirmation_instructions:
+        confirm_my_account: "Confirmar mi cuenta"
+        confirm_text: "Puede confirmar su cuenta de correo electrónico a través del siguiente enlace:"
+        subject: 'Instrucciones para la confirmación'
+        welcome: "¡Bienvenido %{email}!"
+      reset_password_instructions:
+        hello: "¡Hola %{email}!"
+        reset_password_text: "Se ha pedido un cambio de contraseña. Puedes hacerlo a través del siguiente enlace:"
+        change_my_password: "Cambiar contraseña"
+        reset_password_not_request: "Si no lo has pedido, simplemente ignora este email."
+        password_wont_change_until_access_link: "La contraseña no se podrá cambiar hasta que accedas al enlace."
+        subject: "Instrucciones para cambiar la contraseña"

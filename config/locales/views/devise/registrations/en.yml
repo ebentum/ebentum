@@ -1,0 +1,50 @@
+en:
+  devise:
+    registrations:
+      confirm_delete_account:
+        attention: Attention!
+        confirm_delete_account_text: If you delete the account, you will lose your ebentum user and all related data. Do you want to continue?
+        #no: No!
+        yes_delete_account: Yes, I want to delete my account
+      confirm_import_social:
+        bio: "Bio"
+        complete_name: "Complete name"
+        confirm: "Confirm"
+        close: "Close"
+        image: "Image"
+        import: "Import"
+        import_text: "What info do you want to import?"
+        location: "Location"
+        web: "Website"
+      edit:
+        back: "Back"
+        delete_account: "Delete account"
+        deleting_account: "Deleting account..."
+        edit_password: "Edit password"
+        save: "Save"
+        saving: "Saving..."
+        social_title: "Social Networks"
+        import_from_facebook: "Import from Facebook"
+        import_from_twitter: "Import from Twitter"
+        password: "Password"
+        perfil: "Profile"
+      new:
+        sign_up: "Sign up"
+        sign_up_with: "You can sign up with"
+        sign_in_error_title: Ups...
+        sign_up_button: "Sign up"
+        signing_up: "Signing up..."
+      form_fields:
+        complete_name: "Complete name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm password"
+      sign_up_alerts:
+        omniauth_sign_up_ok_text: "Now you can start using ebentum! Click the start button or wait and I'll take you"
+        sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
+        sign_up_ok_title: Yeah!
+        sign_up_with: "You can sign up with"
+        start: "Start"
+      social_config:
+        log_with: "Log with"
+        publish_activity: "Publish activity"

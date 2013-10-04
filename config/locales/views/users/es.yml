@@ -2,6 +2,9 @@ es:
   users:
     edit:
       editing_user: "Editando usuario"
+    social_config:
+      log_with: "Inicia sesión con %{provider}"
+      publish_activity: "Publicar actividad en %{provider}"
     form:
       add_image: "Añadir imagen"
       username: "Nombre de usuario"
@@ -11,16 +14,29 @@ es:
       bio: "Biografía"
       web: "Web"
     show:
+      edit: "Editar"
       username: "Nombre de usuario"
       complete_name: "Nombre completo"
+      isfollower: "Te sigue"
       gender: "Género"
       location: "Ubicación habitual"
       bio: "Biografía"
       web: "Web"
       your_events: "Tus eventos"
-      appointed_events: "Eventos apuntados"
+      user_events: "Eventos"
+      joined_events: "Apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
+    follow:
       follow: "Seguir"
-      isfollower: "Te sigue"
+    unfollow:
       unfollow: "No seguir"
+    edit_password:
+      change_password: "Cambiar contraseña"
+      change_password_error_title: "Error al cambiar la contraseña"
+      change_password_error_text: "Asegurate de proporcionar tu antigua contraseña y que la nueva y la confirmación coincidan"
+      current_password: "Contraseña actual"
+      new_password: "Nueva contraseña"
+      password_confirmation: "Confirmar contraseña"
+      save: "Guardar"
+      back: "Volver"
