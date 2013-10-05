@@ -78,3 +78,10 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+production: 
+  sessions: 
+    default: 
+      uri: mongodb://ebentum:Paquete123!@ds047958.mongolab.com:47958/ebentum
+      options:
+        safe: true
+        skip_version_check: true
