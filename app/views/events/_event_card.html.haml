@@ -1,7 +1,8 @@
-- cardSize = PicturesController.helpers.adjustCardSize(event.main_picture.photo_dimensions["card"][0], event.main_picture.photo_dimensions["card"][1])
-- width = cardSize[:width]
-- height = cardSize[:height]
-- image_url = event.main_picture.photo.url(:card)
+- if !event.main_picture.nil?
+  - cardSize = PicturesController.helpers.adjustCardSize(event.main_picture.photo_dimensions["card"][0], event.main_picture.photo_dimensions["card"][1])
+  - width = cardSize[:width]
+  - height = cardSize[:height]
+  - image_url = event.main_picture.photo.url(:card)
 .card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px;"}
   %a{:href => event_path(event)}
     .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
