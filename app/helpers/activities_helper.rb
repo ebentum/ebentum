@@ -11,7 +11,7 @@ module ActivitiesHelper
     activity.actor.objectType = "user"
     activity.actor.displayName = actor.complete_name
 
-    if actor.main_picture.photo?
+    if actor.main_picture?
       activity.actor.photoUrl = actor.main_picture.photo.url(:thumb)
     else
       activity.actor.photoUrl = "/photos/thumb/missing.png"
@@ -22,7 +22,7 @@ module ActivitiesHelper
     activity.subject.objectType = "event"
     activity.subject.url = Rails.application.routes.url_helpers.event_path(subject)
     activity.subject.displayName = subject.name
-    if subject.main_picture.photo?
+    if subject.main_picture?
       activity.subject.photoUrl = subject.main_picture.photo.url(:card)
       activity.subject.photoWidth = subject.main_picture.photo_dimensions["card"][0]
       activity.subject.photoHeight = subject.main_picture.photo_dimensions["card"][1]
