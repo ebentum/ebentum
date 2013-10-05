@@ -1,4 +1,4 @@
 en:
   #S
   session_started_as: "Session started as"
-  share_message: "I just joined the event ${event_name} in www.ebentum.com. Take a look!"
+  share_message: "I just joined the event ${event_name} from @ebentumApp. Take a look!"

@@ -41,7 +41,8 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      .brand ebentum
+      %a{:href => root_url}
+        .brand ebentum
       #nav-collapse-01.nav-collapse.collapse
         %ul.nav
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }

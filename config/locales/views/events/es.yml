@@ -26,6 +26,8 @@ es:
       confirm_text: "¿Deseas desapuntarte del evento?"
     share:
       share_activity: "Compartir en %{provider}"
+    share_event:
+      twitter_share_text: "¡Mira este evento!"
     search:
       close_to_me: "Cerca de donde estoy"
       farther: "¡Más lejos!"

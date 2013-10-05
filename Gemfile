@@ -59,6 +59,9 @@ gem "figaro", "~> 0.6.3"
 
 # URL expander
 gem "url_expander", "~> 0.1.5"
+# URL shortener
+gem "googl", "~> 0.6.3"
+gem "httparty", "0.10.0"
 
 # Geocoder
 gem "geocoder", "~> 1.1.8"
