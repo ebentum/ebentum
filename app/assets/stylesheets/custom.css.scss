@@ -278,6 +278,12 @@ form{
   border-radius: 0 0 6px 0;
 }
 
+.btn-round-bottom-left {
+  -webkit-border-radius: 0 0 0 6px;
+  -moz-border-radius: 0 0 0 6px;
+  border-radius: 0 0 0 6px;
+}
+
 .btn-square {
   -webkit-border-radius: 0 0 0 0;
   -moz-border-radius: 0 0 0 0;

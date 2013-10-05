@@ -35,7 +35,7 @@
                         = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
               #userpagetabs.row-fluid.card-footer
-                .span2.footer-option
+                .span2.footer-option.btn-round-bottom-left
                   %a{:href => "#userevents", "data-toggle" => "pill"}
                     .option-header
                       = @user.created_events.count
@@ -44,7 +44,7 @@
                         = t('.your_events')
                       - else
                         = t('.user_events')
-                .span2.footer-option.active
+                .span2.footer-option
                   %a{:href => "#userappointments", "data-toggle" => "pill"}
                     .option-header
                       = @user.events.count
