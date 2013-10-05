@@ -26,6 +26,8 @@ en:
       confirm_text: "Do you want unjoin the event?"
     share:
       share_activity: "Share in %{provider}"
+    share_event:
+      twitter_share_text: "Take a look to this event!"
     search:
       close_to_me: "Close to me"
       farther: "Farther!"

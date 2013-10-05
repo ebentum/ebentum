@@ -26,8 +26,9 @@ class SocialController < ActionController::Base
 
     if params[:tw_share] == 'true'
       if current_user.twtoken
+        url = Googl.shorten(event_url)
         tw = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)
-        Thread.new{tw.update(message+' '+event_url)}
+        Thread.new{tw.update(message+' '+url.short_url)}
       end
     end
 
