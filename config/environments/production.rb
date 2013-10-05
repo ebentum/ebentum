@@ -82,9 +82,9 @@ Ebentum::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :bucket => 'ebentum_production',
+      :access_key_id => 'AKIAJ5UBKCEKEXMFVEJQ',
+      :secret_access_key => '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'
     }
   }
   
