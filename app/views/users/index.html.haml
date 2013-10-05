@@ -1,23 +1,6 @@
-.span12
-  .masonry_layout.centered
-    - for user in @users
-      .box
-        .thumbnail
-          .botones
-            %p
-              = link_to user_path(user), :class => "btn" do
-                %i.icon-info-sign
-                Más información
-          = image_tag user.image_path(:small)
-          .caption
-            %h5
-              = user.complete_name
-            %p
-              %i.icon-map-marker
-              = user.location
-            .extra-info
-              %i.icon-thumbs-up
-              = "#{user.created_events.count} Eventos"
-              %i.icon-thumbs-up
-              = "#{user.events.count} Apuntados"
-
+- if @page == 1
+  .span12
+    #users_list.masonry_layout.centered
+      = render 'list'
+- else
+  = render 'list'

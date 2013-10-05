@@ -10,11 +10,11 @@ Paloma.users =
   hideInfo: (info)->
     $(".tab-content #list_#{info}").addClass('hidden')
 
-  showResults : ->
-    $(".tab-content #list_results").removeClass('hidden')
+  showResults : (contentDiv) ->
+    $(".tab-content #list_results #{contentDiv}").removeClass('hidden')
 
   hideResults : ->
-    $(".tab-content #list_results").addClass('hidden')
+    $(".tab-content #list_results .tab-pane").addClass('hidden')
 
   resetInfoAlerts: ->
     Paloma.users.hideInfo("error")
@@ -43,12 +43,18 @@ Paloma.users =
           Paloma.users.showInfo("loading")
         success: (data) ->
           Paloma.users.hideInfo("loading")
+          console.log data
           if $(".card",data).length > 0
+            console.log "hay datoss...."
             $(contentDiv).html(data)
-            Paloma.users.showResults()
+            Paloma.users.showResults(contentDiv)
             Paloma.Masonry.loadLayout()
-            Paloma.Masonry.initPage(contentUrl,"#events_list")
+            if $("#events_list").length > 0
+              Paloma.Masonry.initPage(contentUrl,"#events_list")
+            else
+              Paloma.Masonry.initPage(contentUrl,"#users_list")
           else
+            console.log "NOOO hay datoss...."
             Paloma.users.showInfo("no_#{contentDiv.substr(1)}")
           # e.target # activated tab
           # e.relatedTarget # previous tab

@@ -25,6 +25,8 @@ class UsersController < ApplicationController
 
   def index
 
+    @page = params[:page] || 1
+
     respond_to do |format|
       format.html
       format.json { render json: users }
@@ -76,26 +78,43 @@ class UsersController < ApplicationController
   end
 
   def following
+
+    @page = params[:page] || 1
+
     @user = User.find(params[:id])
     @users = @user.all_followees
+
+
+    if request.xhr?
+      js_callback false
+    end
+
     respond_to do |format|
-      if params[:no_layout]
-        format.html { render 'index', :layout => false}
+      if request.xhr?
+        format.html { render 'index', :layout => nil}
       else
-        format.html { render 'index'}
+        format.html { render 'index', :layout => 'fullwidth' }
       end
       format.json { render json: @users }
     end
   end
 
   def followers
+
+    @page = params[:page] || 1
+
     @user = User.find(params[:id])
     @users = @user.all_followers
+
+    if request.xhr?
+      js_callback false
+    end
+
     respond_to do |format|
-      if params[:no_layout]
-        format.html { render 'index', :layout => false}
+      if request.xhr?
+        format.html { render 'index', :layout => nil}
       else
-        format.html { render 'index'}
+        format.html { render 'index', :layout => 'fullwidth' }
       end
       format.json { render json: @users }
     end
