@@ -9,7 +9,7 @@ class Picture
   field :photo_dimensions, type: Hash
 
   has_mongoid_attached_file  :photo, :styles => { :thumb => "100x100", :small => "300x300>", :medium => "600x600>",
-    :card => Proc.new { |instance| instance.card_resize } }, :default_url => "/photos/:style/missing.png"
+    :card => Proc.new { |instance| instance.card_resize } }, :default_url => "/photos/:style/missing.png", :url  => ":s3_eu_url"
 
   belongs_to :pictureable, polymorphic: true
 
