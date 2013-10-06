@@ -69,22 +69,21 @@ Ebentum::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options   = { :host => 'www.ebentum.com' }
   config.action_mailer.delivery_method       = :smtp
-  config.action_mailer.smtp_settings         = {
-                                                :address              => "smtp.mandrillapp.com",
-                                                :port                 => 587,
-                                                :domain               => 'ebentum.com',
-                                                :user_name            => 'andermujika@gmail.com',
-                                                :password             => 'V2GlrFXjNPErNGu84bRvLg',
-                                                :authentication       => 'plain',
-                                                :enable_starttls_auto => true  
+  config.action_mailer.smtp_settings         =  {
+                                                :port =>           '587',
+                                                :address =>        'smtp.mandrillapp.com',
+                                                :user_name =>      ENV['MANDRILL_USERNAME'],
+                                                :password =>       ENV['MANDRILL_APIKEY'],
+                                                :domain =>         'heroku.com',
+                                                :authentication => :plain
                                                 }
 
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'ebentum_production',
-      :access_key_id => 'AKIAJ5UBKCEKEXMFVEJQ',
-      :secret_access_key => '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'
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
   

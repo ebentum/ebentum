@@ -81,7 +81,7 @@ test:
 production: 
   sessions: 
     default: 
-      uri: mongodb://ebentum:Paquete123!@ds047958.mongolab.com:47958/ebentum
+      uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         safe: true
         skip_version_check: true
