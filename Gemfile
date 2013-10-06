@@ -65,3 +65,11 @@ gem "httparty", "0.10.0"
 
 # Geocoder
 gem "geocoder", "~> 1.1.8"
+
+group :development do
+  gem 'thin'
+end
+
+group :production do
+  gem 'unicorn'
+end
