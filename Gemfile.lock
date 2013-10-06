@@ -124,6 +124,7 @@ GEM
     multi_json (1.8.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.7.159)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
@@ -251,6 +252,7 @@ DEPENDENCIES
   mongo_followable (~> 0.3.2)
   mongoid (~> 3.1.2)
   mongoid-paperclip (~> 0.0.8)
+  newrelic_rpm
   omniauth (~> 1.1.4)
   omniauth-facebook (~> 1.4.1)
   omniauth-twitter (~> 1.0.0)
