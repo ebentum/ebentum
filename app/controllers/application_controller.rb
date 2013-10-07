@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_logged
+    if user_signed_in?
+      redirect_to '/'
+    end
+  end
+
   def devise_registration_action
     devise_controller? && controller_name == 'registrations' && (action_name == 'new' || action_name == 'create')
   end

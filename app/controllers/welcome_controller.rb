@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   skip_before_filter :auth_user
+  before_filter :user_logged, :only => [:index]
 
   def index
 
