@@ -24,8 +24,8 @@ class EventsController < ApplicationController
 
     @page = params[:page] || 1
 
-    #my_location       = [request.location.latitude, request.location.longitude]
-    my_location       = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
+    my_location = [request.location.latitude, request.location.longitude]
+    #my_location = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
 
     @distanceSelected = params[:distance] || 2 # A 2 km
     @daysSelected     = params[:days]     || 1 # Hoy
