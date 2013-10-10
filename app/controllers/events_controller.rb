@@ -121,11 +121,12 @@ class EventsController < ApplicationController
     picture = Picture.find(params[:event][:main_picture_id])
     if picture
       @event.main_picture = picture
-    else
-      picture = Picture.new
-      @event.main_picture = picture
+      picture.save
+    #else
+    #  picture = Picture.new
+    #  @event.main_picture = picture
     end
-    picture.save
+    
 
     respond_to do |format|
       if @event.save

@@ -11,11 +11,9 @@ module ActivitiesHelper
     activity.actor.objectType = "user"
     activity.actor.displayName = actor.complete_name
 
-    if actor.main_picture.nil?
-      Rails.logger.info "*****************************************1"
+    if !actor.main_picture.nil?
       activity.actor.photoUrl = actor.main_picture.photo.url(:thumb)
     else
-      Rails.logger.info "*****************************************2"
       activity.actor.photoUrl = "/photos/thumb/missing.png"
     end
 
@@ -24,11 +22,12 @@ module ActivitiesHelper
     activity.subject.objectType = "event"
     activity.subject.url = Rails.application.routes.url_helpers.event_path(subject)
     activity.subject.displayName = subject.name
-    if subject.main_picture.nil?
-      Rails.logger.info "*****************************************3"
+    if !subject.main_picture.nil?
       activity.subject.photoUrl = subject.main_picture.photo.url(:card)
       activity.subject.photoWidth = subject.main_picture.photo_dimensions["card"][0]
       activity.subject.photoHeight = subject.main_picture.photo_dimensions["card"][1]
+    else
+      activity.subject.photoUrl = "/photos/medium/missing.png"
     end
     activity.subject.address = subject.place
     activity.subject.startDate = subject.start_date
