@@ -6,6 +6,11 @@ en:
         confirm_delete_account_text: If you delete the account, you will lose your ebentum user and all related data. Do you want to continue?
         #no: No!
         yes_delete_account: Yes, I want to delete my account
+      confirm_image_delete:
+        cancel: "Cancel"
+        confirm: "Confirm"
+        confirm_image_delete_text: Do you want to delete the image?
+        delete: "Delete"
       confirm_import_social:
         bio: "Bio"
         complete_name: "Complete name"
@@ -20,6 +25,7 @@ en:
         back: "Back"
         delete_account: "Delete account"
         deleting_account: "Deleting account..."
+        delete_image: "Delete image"
         edit_password: "Edit password"
         save: "Save"
         saving: "Saving..."

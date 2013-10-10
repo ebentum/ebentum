@@ -2,4 +2,8 @@ es:
   comments:
     new_comment:
       write_comment: "Write a comment..."
+    confirm_delete:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_text: "Do you want to delete the comment?"
 
