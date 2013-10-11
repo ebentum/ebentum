@@ -9,7 +9,7 @@
       .row-fluid
         .span12
           .card
-            = form_for user_picture(@user), :remote => true, :html => { :multipart => true } do |f|
+            = form_for user_picture(@user), :remote => true, :html => { :multipart => true, :id => "edit_user_image" } do |f|
               .card-content
                 = f.file_field :photo, :class => "hidden"
                 = link_to "/#", :id => 'image-preview-link', :class => 'thumbnail' do

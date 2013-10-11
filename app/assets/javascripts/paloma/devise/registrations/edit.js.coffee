@@ -20,7 +20,7 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
     e.preventDefault()
     $("#picture_photo").click()
 
-    $("#new_picture").fileupload
+    $("#edit_user_image").fileupload
       dataType: "json"
       start: (e, data) ->
         $("#image-upload-progress").removeClass("hidden")
