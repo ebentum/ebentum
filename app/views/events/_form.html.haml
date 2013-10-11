@@ -3,7 +3,7 @@
 = form_for @picture, :remote => true, :html => { :multipart => true } do |f|
   .card-content
     = f.file_field :photo, :class => "hidden"
-    = link_to "/#", :id => 'image-preview-link', :class => 'thumbnail' do
+    = link_to "#", :id => 'image-preview-link', :class => 'thumbnail' do
       = image_tag '/photos/small/missing.png', :id => "image-preview"
 
     #image-upload-progress.progress.progress-striped.active.hidden

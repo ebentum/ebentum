@@ -12,12 +12,14 @@ Paloma.callbacks["events/new"] = (params) ->
       timeFormat: "H:i"
       scrollDefaultNow: true
 
-    $("#image-preview-link").click ->
+    $("#image-preview-link").click (e) ->
+      e.preventDefault()
       $("#picture_photo").click()
 
     $('#create_event_btn').click ->
       if !$(this).hasClass("disabled")
         $("#new_event").submit()
+
 
     $("#new_picture").fileupload
       dataType: "json"
