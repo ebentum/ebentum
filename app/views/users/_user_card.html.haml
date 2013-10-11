@@ -1,4 +1,4 @@
-- if user.main_picture
+- if !user.main_picture.nil? and !user.main_picture.photo_dimensions.nil?
   - cardSize = PicturesController.helpers.adjustCardSize(user.main_picture.photo_dimensions["card"][0], user.main_picture.photo_dimensions["card"][1])
   - width = cardSize[:width]
   - height = cardSize[:height]

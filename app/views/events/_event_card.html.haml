@@ -3,6 +3,10 @@
   - width = cardSize[:width]
   - height = cardSize[:height]
   - image_url = event.main_picture.photo.url(:card)
+- else
+  - width = 200
+  - height = 200
+  - image_url = '/photos/card/missing.png'
 .card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px;"}
   %a{:href => event_path(event)}
     .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
