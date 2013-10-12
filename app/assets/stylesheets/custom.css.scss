@@ -372,6 +372,10 @@ label.error {
   .fb-like {
     overflow: hidden;
   }
+
+  .sign-in-card {
+    margin-top: 35%;
+  }
 }
 
 // /* Landscape phone to portrait tablet */
@@ -392,6 +396,12 @@ label.error {
   /* http://stackoverflow.com/questions/3247855/facebook-like-button-how-to-disable-comment-pop-up */
   .fb-like {
     overflow: hidden;
+  }
+
+  .btn-facebook {
+    color: #ffffff;
+    background-color: #006dcc;
+    margin-bottom: 10px;
   }
 }
 

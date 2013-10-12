@@ -1,0 +1,7 @@
+- if flash[:alert]
+  .alert.alert-error.card-content{:id => 'sign_in_error'}
+    %h4
+      = t('.sign_in_error_title')
+    %br
+    %span{:id => 'sign_in_error_text'}
+      = flash[:alert]

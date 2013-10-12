@@ -1,12 +1,12 @@
 en:
   devise:
     sessions:
-      new:
+      sign-in-error:
+        sign_in_error_title: "Ups..."
+      sign-in-form:
+        sign_in: "Sign in!"
+        sign_in_with: "Sign in with"
         email: "Email"
         password: "Password"
         remember_me: "Remember me"
-        sign_in: "Sign in"
-        sign_in_with: "You can sign in with"
         sign_in_button: "Log in"
-        sign_in_error_title: Ups...
-        signing_in: "Signing in..."
