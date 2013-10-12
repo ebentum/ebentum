@@ -67,16 +67,16 @@ class User
   attr_accessor   :user_confirmation_required
   attr_accessible :user_confirmation_required
 
-  has_many :created_events, class_name: "Event", inverse_of: :creator
+  has_many :created_events, class_name: "Event", inverse_of: :creator, dependent: :destroy
 
   has_and_belongs_to_many :events, inverse_of: :users
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  has_and_belongs_to_many :activities, inverse_of: :receivers,  order: 'created_at DESC'
+  has_and_belongs_to_many :activities, inverse_of: :receivers,  order: 'created_at DESC', dependent: :destroy
 
   #has_mongoid_attached_file :image, :styles => {:thumb => "100x100",  :small => "300x300>", :medium => "600x600>" }
-  has_one :main_picture, class_name: "Picture", as: :pictureable
+  has_one :main_picture, class_name: "Picture", as: :pictureable, dependent: :destroy
 
   # renovación de token de acceso a Facebook
   def update_fbtoken(token, expires_at)

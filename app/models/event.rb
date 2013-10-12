@@ -25,10 +25,10 @@ class Event
 
   belongs_to :creator, class_name: "User", inverse_of: :created
 
-  has_one :main_picture, class_name: "Picture", as: :pictureable
+  has_one :main_picture, class_name: "Picture", as: :pictureable, dependent: :destroy
 
   has_and_belongs_to_many :users, inverse_of: :events
-  has_many :comments, inverse_of: :event
+  has_many :comments, inverse_of: :event, dependent: :destroy
 
   def setCoordinates
     self.coordinates = [self.lng.to_f, self.lat.to_f]
