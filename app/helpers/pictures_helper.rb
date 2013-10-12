@@ -21,4 +21,22 @@ module PicturesHelper
     {:width => width, :height => height}
   end
 
+  def getPictureData(pictureData, style, type)
+
+    if pictureData
+      image_url = pictureData.photo.url(style)
+      picSize = adjustCardSize(pictureData.photo_dimensions[style][0], pictureData.photo_dimensions[style][1])
+      width = picSize[:width]
+      height = picSize[:height]
+
+    else
+      image_url = "/photos/#{style}/missing_#{type}.png"
+      height = 230
+      width = 230
+    end
+
+    [image_url, width, height]
+  end
+
+
 end
