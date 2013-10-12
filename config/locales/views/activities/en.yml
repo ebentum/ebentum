@@ -1,0 +1,5 @@
+en:
+  activities:
+    activity_card:
+      join: "joined %{display_name}"
+      create: "created %{display_name}"

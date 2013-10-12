@@ -15,6 +15,6 @@
         %div
           = activity.actor.displayName
         .sub-paragraph
-          = activity.verb + " " + activity.subject.displayName
+          = t('.' + activity.verb, :display_name => activity.subject.displayName)
         .sub-paragraph
           .format-timeago{:data => {:datevalue => activity.created_at }}

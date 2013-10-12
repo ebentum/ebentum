@@ -94,50 +94,43 @@
             .card-footer.card-footer-masonry.pts.pbs.plm.prm
               %p
                 - if @user == current_user
-                  Aun no has creado ningun evento!
+                  = t('.current_user_no_events')
                   %a#events_new{:href => "#"}
                     %i.icon-plus
-                    Crear
+                    = t('create')
                 - else
-                  No ha creado eventos aun.
+                  = t('.user_no_events')
         #list_no_userappointments.hidden
           .card
             %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 230px; height: 200px;"}
+              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
             .card-footer.card-footer-masonry.pts.pbs.plm.prm
               %p
                 - if @user == current_user
-                  Aun no te has unido a ningun evento!
+                  = t('.current_user_no_appoints')
                   %a.btn.btn-primary{:href => "/events/search"}
-                    = t('.explore')
+                    = t('explore')
                 - else
-                  Aun no se ha unido a ningun evento.
+                  = t('.user_no_appoints')
 
         #list_no_userfollowing.hidden
           .card
             %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 230px; height: 200px;"}
+              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
             .card-footer.card-footer-masonry.pts.pbs.plm.prm
               %p
                 - if @user == current_user
-                  No sigues a nadie todavía!
+                  = t('.current_user_no_followings')
                 - else
-                  No sigue a nadie todavía.
+                  = t('.user_no_followings')
 
         #list_no_userfollowers.hidden
           .card
             %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 230px; height: 200px;"}
+              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
             .card-footer.card-footer-masonry.pts.pbs.plm.prm
               %p
                 - if @user == current_user
-                  No tienes seguidores todavia!
+                  = t('.current_user_no_followers')
                 - else
-                  No tiene seguidores todavía.
-
-
-
-
-
-
-
+                  = t('.user_no_followers')
