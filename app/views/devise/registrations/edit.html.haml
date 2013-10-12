@@ -32,16 +32,20 @@
             .card-header
               = t('.social_title')
             = render 'social_config'
-      %hr
-      .row-fluid
-        .span12
-          = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
-      %br
-      .row-fluid
-        .span12
-          %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
-            %span
-              = t('.delete_account')
+            .card-content
+              .control-group
+                .icon-ebentum
+                  ebentum
+              %br
+              .row-fluid
+                .span12
+                  = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
+              %br
+              .row-fluid
+                .span12
+                  %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
+                    %span
+                      = t('.delete_account')
 
     .span8
       = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
@@ -55,13 +59,13 @@
               .card-content
                 .control-group
                   %label.control-label
-                    = t(".complete_name")
+                    = t('.complete_name')
                   .controls
                     = f.text_field :complete_name, :class => "input-block-level"
               .card-content
                 .control-group
                   %label.control-label
-                    = t(".location")
+                    = t('.location')
                   .controls
                     = f.text_field :location, :class => "input-block-level"
               .card-content

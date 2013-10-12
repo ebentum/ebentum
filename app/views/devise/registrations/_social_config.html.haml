@@ -9,66 +9,73 @@
   .control-group
     .icon-facebook
       Facebook
-  .control-group
-    %label.control-label
-      = t('.log_with', :provider => 'Facebook')
-    .controls
-      - klass = 'toggle toggle-icon toggle-off'
-      - if fb_access_token_id
-        - klass = 'toggle toggle-icon'
-      #facebook{:class => klass}
-        %label.toggle-radio.fui-checkmark-16{:for => "facebook_enabled"}
-        %input#facebook_enabled{:name => "facebook_enabled", :type => "radio", :value => "option5"}/
-        %label.toggle-radio.fui-cross-16{:for => "facebook_disabled"}
-        %input#facebook_disabled{:checked => "checked",:name => "facebook_disabled", :type => "radio", :value => "option6"}/
 
-  - klass = 'control-group'
-  - if !fb_access_token_id
-    - klass = 'control-group hide'
-  %div{:id => 'publish_facebook', :class => klass}
-    %label.control-label
-      = t('.publish_activity', :provider => 'Facebook')
-    .controls
-      - klass = 'toggle toggle-icon toggle-off'
-      - if fb_autopublish
-        - klass = 'toggle toggle-icon'
-      #facebook_post{:class => klass}
-        %label.toggle-radio.fui-checkmark-16{:for => "facebook_post_disabled"}
-        %input#facebook_post_enabled{:name => "facebook_post_enabled", :type => "radio", :value => "option5", :data => {:provider => 'facebook', :token => fb_access_token_id}}/
-        %label.toggle-radio.fui-cross-16{:for => "facebook_post_enabled"}
-        %input#facebook_post_disabled{:checked => "checked",:name => "facebook_post_disabled", :type => "radio", :value => "option6", :data => {:provider => 'facebook', :token => fb_access_token_id}}/
+  .row-fluid
+    .span6
+      .control-group
+        %label.control-label
+          = t('.log_with', :provider => 'Facebook')
+        .controls
+          - klass = 'toggle toggle-icon toggle-off'
+          - if fb_access_token_id
+            - klass = 'toggle toggle-icon'
+          #facebook{:class => klass}
+            %label.toggle-radio.fui-checkmark-16{:for => "facebook_enabled"}
+            %input#facebook_enabled{:name => "facebook_enabled", :type => "radio", :value => "option5"}/
+            %label.toggle-radio.fui-cross-16{:for => "facebook_disabled"}
+            %input#facebook_disabled{:checked => "checked",:name => "facebook_disabled", :type => "radio", :value => "option6"}/
+
+    .span6
+      - klass = 'control-group'
+      - if !fb_access_token_id
+        - klass = 'control-group hide'
+      %div{:id => 'publish_facebook', :class => klass}
+        %label.control-label
+          = t('.publish_activity', :provider => 'Facebook')
+        .controls
+          - klass = 'toggle toggle-icon toggle-off'
+          - if fb_autopublish
+            - klass = 'toggle toggle-icon'
+          #facebook_post{:class => klass}
+            %label.toggle-radio.fui-checkmark-16{:for => "facebook_post_disabled"}
+            %input#facebook_post_enabled{:name => "facebook_post_enabled", :type => "radio", :value => "option5", :data => {:provider => 'facebook', :token => fb_access_token_id}}/
+            %label.toggle-radio.fui-cross-16{:for => "facebook_post_enabled"}
+            %input#facebook_post_disabled{:checked => "checked",:name => "facebook_post_disabled", :type => "radio", :value => "option6", :data => {:provider => 'facebook', :token => fb_access_token_id}}/
 
 .card-content
   .control-group
     .icon-twitter
       Twitter
 
-  .control-group
-    %label.control-label
-      = t('.log_with', :provider => 'Twitter')
-    .controls
-      - klass = 'toggle toggle-icon toggle-off'
-      - if tw_access_token_id
-        - klass = 'toggle toggle-icon'
-      #twitter{:class => klass}
-        %label.toggle-radio.fui-checkmark-16{:for => "twitter_disabled"}
-        %input#twitter_enabled{:name => "twitter_enabled", :type => "radio", :value => "option5"}/
-        %label.toggle-radio.fui-cross-16{:for => "twitter_enabled"}
-        %input#twitter_disabled{:checked => "checked",:name => "twitter_disabled", :type => "radio", :value => "option6"}/
+  .row-fluid
+    .span6
 
+      .control-group
+        %label.control-label
+          = t('.log_with', :provider => 'Twitter')
+        .controls
+          - klass = 'toggle toggle-icon toggle-off'
+          - if tw_access_token_id
+            - klass = 'toggle toggle-icon'
+          #twitter{:class => klass}
+            %label.toggle-radio.fui-checkmark-16{:for => "twitter_disabled"}
+            %input#twitter_enabled{:name => "twitter_enabled", :type => "radio", :value => "option5"}/
+            %label.toggle-radio.fui-cross-16{:for => "twitter_enabled"}
+            %input#twitter_disabled{:checked => "checked",:name => "twitter_disabled", :type => "radio", :value => "option6"}/
 
-  - klass = 'control-group'
-  - if !tw_access_token_id
-    - klass = 'control-group hide'
-  %div{:id => 'publish_twitter', :class => klass}
-    %label.control-label
-      = t('.publish_activity', :provider => 'Twitter')
-    .controls
-      - klass = 'toggle toggle-icon toggle-off'
-      - if tw_autopublish
-        - klass = 'toggle toggle-icon'
-      #twitter_post{:class => klass}
-        %label.toggle-radio.fui-checkmark-16{:for => "twitter_post_disabled"}
-        %input#twitter_post_enabled{:name => "twitter_post_enabled", :type => "radio", :value => "option5", :data => {:provider => 'twitter', :token => tw_access_token_id}}/
-        %label.toggle-radio.fui-cross-16{:for => "twitter_post_enabled"}
-        %input#twitter_post_disabled{:checked => "checked",:name => "twitter_post_disabled", :type => "radio", :value => "option6", :data => {:provider => 'twitter', :token => tw_access_token_id}}/
+    .span6
+      - klass = 'control-group'
+      - if !tw_access_token_id
+        - klass = 'control-group hide'
+      %div{:id => 'publish_twitter', :class => klass}
+        %label.control-label
+          = t('.publish_activity', :provider => 'Twitter')
+        .controls
+          - klass = 'toggle toggle-icon toggle-off'
+          - if tw_autopublish
+            - klass = 'toggle toggle-icon'
+          #twitter_post{:class => klass}
+            %label.toggle-radio.fui-checkmark-16{:for => "twitter_post_disabled"}
+            %input#twitter_post_enabled{:name => "twitter_post_enabled", :type => "radio", :value => "option5", :data => {:provider => 'twitter', :token => tw_access_token_id}}/
+            %label.toggle-radio.fui-cross-16{:for => "twitter_post_enabled"}
+            %input#twitter_post_disabled{:checked => "checked",:name => "twitter_post_disabled", :type => "radio", :value => "option6", :data => {:provider => 'twitter', :token => tw_access_token_id}}/
