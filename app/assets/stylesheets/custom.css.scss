@@ -162,7 +162,7 @@ form{
   border-top: 1px solid #ddd;
 
   .thumb_image{
-    width: 50px;
+    // width: 50px;
     height: 50px;
   }
 }
@@ -201,11 +201,6 @@ form{
 
 
 
-// .action-optional{
-//   background-color: $base;
-// }
-
-
 .card-content{
   padding: 10px;
 
@@ -214,27 +209,6 @@ form{
     position: relative;
   }
 
-  // .card-field{
-  //   border-color: transparent;
-  //   font-size: 17px;
-  //   padding-bottom: 11px;
-  //   padding-top: 11px;
-  //   text-indent: 3px;
-  //   width: 299px;
-  //   &:focus{
-  //     & + .login-field-icon{
-  //       color: $firm;
-  //     }
-  //   }
-  // }
-
-  // .card-field-icon{
-  //   color: scale-color($gray, $lightness: 40%);
-  //   font-size: 16px;
-  //   position: absolute;
-  //   right: 13px;
-  //   top: 14px;
-  // }
 }
 
 .form-horizontal .card-content{
@@ -246,7 +220,6 @@ form{
   margin-bottom: 0px;
   padding: 10px;
 }
-
 
 
 .btn-square-block {
@@ -298,15 +271,6 @@ form{
 }
 
 
-// .box {
-// 	width: 300px;
-// 	display: inline-block;
-// 	vertical-align: top;
-// 	margin-bottom: 15px;
-// 	background-color: white;
-// 	margin: 5px;
-// }
-
 .hidden {
   display: none;
 }
@@ -352,147 +316,3 @@ label.error {
   color: #ffffff;
   background-color: #006dcc;
 }
-
-// /* Large desktop */
-// @media (min-width: 1200px) { ... }
-
-/* Portrait tablet to landscape and desktop */
-// @media (min-width: 768px) and (max-width: 979px) {
-//   #devise-container {
-//     margin-top: 11%;
-//   }
-// }
-
-// /* Landscape phone to portrait tablet */
-// @media (max-width: 767px) { ... }
-
-// /* Landscape phones and down */
-// @media (max-width: 480px) { ... }
-
-
-// .btn-facebook {
-//   color: #ffffff;
-//   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-//   background-color: #006dcc;
-//   *background-color: #0044cc;
-//   background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-//   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-//   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-//   background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-//   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-//   background-repeat: repeat-x;
-//   border-color: #0044cc #0044cc #002a80;
-//   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-//   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-//   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-// }
-
-// .btn-facebook:hover,
-// .btn-facebook:focus,
-// .btn-facebook:active,
-// .btn-facebook.active,
-// .btn-facebook.disabled,
-// .btn-facebook[disabled] {
-//   color: #ffffff;
-//   background-color: #0044cc;
-//   *background-color: #003bb3;
-// }
-
-// .btn-primary {
-//   color: #ffffff;
-//   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-//   background-color: #dd5c14;
-//   *background-color: #dd7a14;
-//   background-image: -moz-linear-gradient(top, #dd4814, #dd7a14);
-//   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4814), to(#dd7a14));
-//   background-image: -webkit-linear-gradient(top, #dd4814, #dd7a14);
-//   background-image: -o-linear-gradient(top, #dd4814, #dd7a14);
-//   background-image: linear-gradient(to bottom, #dd4814, #dd7a14);
-//   background-repeat: repeat-x;
-//   border-color: #dd7a14 #dd7a14 #97530e;
-//   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-//   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4814', endColorstr='#ffdd7a14', GradientType=0);
-//   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-// }
-
-// .btn-primary:hover,
-// .btn-primary:focus,
-// .btn-primary:active,
-// .btn-primary.active,
-// .btn-primary.disabled,
-// .btn-primary[disabled] {
-//   color: #ffffff;
-//   background-color: #dd7a14;
-//   *background-color: #c66d12;
-// }
-
-// .btn-primary:active,
-// .btn-primary.active {
-//   background-color: #ae6010 \9;
-// }
-
-// .control-label{
-//   font-weight: bold;
-// }
-
-// .navbar .brand{
-//   color: #dd5c14;
-// }
-
-// .navbar .nav > li > a {
-//   color: #16537a;
-// }
-
-// .badge-info {
-//   color: #ffffff;
-//   background-color: #dd7a14;
-// }
-
-// .Panel {
-//   color: #534f4f;
-//   h3 {
-//     font-size: 30px;
-//   }
-// }
-
-// .Panel {
-//   float: left;
-//   background: #fff;
-//   color: #534f4f;
-//   h3 {
-//     font-size: 30px;
-//   }
-//   margin-top: 20px;
-//   margin-bottom: 20px;
-//   -webkit-border-radius: 4px;
-//   -moz-border-radius: 4px;
-//   padding: 19px;
-//   border-radius: 4px;
-//   box-shadow: 0 1px 3px rgba(34,25,25,0.5);
-//   -moz-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
-//   -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.5);
-//   // box-sizing: border-box;
-//   // -moz-box-sizing: border-box;
-//   // -webkit-box-sizing: border-box;
-// }
-
-// .ProfileInfo {
-//   // height: 165px;
-//   // width: 698px;
-//   //position: relative;
-//   color: #534f4f;
-//   padding: 19px;
-//   //white-space: nowrap;
-//   //overflow: hidden;
-//   h3 {
-//     font-size: 30px;
-//   }
-// }
-
-// .ProfileTabs {
-//   margin-bottom: 0px;
-//   padding-left: 0px;
-//   padding-right: 0px;
-//   border: 0px;
-//   text-align: center;
-// }

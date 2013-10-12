@@ -27,6 +27,14 @@ en:
       joined_events: "Joined"
       following: "Following"
       followers: "Followers"
+      current_user_no_events: "You have not created any event!"
+      user_no_events: "No events created yet."
+      current_user_no_appoints: "You have not joined any event!"
+      user_no_appoints: "Has not been joined to any event."
+      current_user_no_followings: "Not following anybody yet!"
+      user_no_followings: "Is not following anyone yet."
+      current_user_no_followers: "You don't have any followers yet!"
+      user_no_followers: "has no followers yet."
     follow:
       follow: "Follow"
     unfollow:
@@ -35,7 +43,7 @@ en:
       change_password: "Change password"
       change_password_error_title: "Error changing password"
       change_password_error_text: "Make sure to provide your old password and the new one matches with the confirmation"
-      current_password: "Contraseña actual"
+      current_password: "Current password"
       new_password: "New password"
       password_confirmation: "Password confirmation"
       save: "Save"

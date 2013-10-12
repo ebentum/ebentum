@@ -1,0 +1,44 @@
+.card.sign-in-card
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :id => 'sign_in', :class => 'sign_in'}) do |f|
+    .card-header
+      = t('.sign_in')
+    .card-content
+      .row-fluid
+        .span12{:id => 'omniauth_options'}
+          %label
+            = t('.sign_in_with')
+          .row-fluid
+            .span6
+              %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/facebook_login'}
+                %i.icon-facebook
+                facebook
+            .span6
+              %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/twitter_login'}
+                %i.icon-twitter
+                twitter
+      - klass = ''
+      - if flash[:alert]
+        - klass = 'error'
+    .card-content
+      .row-fluid
+        .span12
+          .control-group{:class => klass}
+            .controls
+              = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'input-block-level'
+      .row-fluid
+        .span12
+          .control-group{:class => klass}
+            .controls
+              = f.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'input-block-level'
+      .row-fluid
+        .span12
+          .pull-left
+            = f.label :remember_me, :class => 'checkbox' do
+              = f.check_box :remember_me, "data-toggle" => "checkbox", :value => ""
+              = t('.remember_me')
+    .row-fluid.card-footer
+      .span5.footer-option.option-active.pull-right.btn-round-bottom-right
+        .option-action.btn-round-bottom-right
+          %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+            = t('.sign_in_button')
+%br

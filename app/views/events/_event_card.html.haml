@@ -1,13 +1,9 @@
-- if !event.main_picture.nil? and !event.main_picture.photo_dimensions.nil?
-  - cardSize = PicturesController.helpers.adjustCardSize(event.main_picture.photo_dimensions["card"][0], event.main_picture.photo_dimensions["card"][1])
-  - width = cardSize[:width]
-  - height = cardSize[:height]
-  - image_url = event.main_picture.photo.url(:card)
-- else
-  - width = 200
-  - height = 200
-  - image_url = '/photos/card/missing.png'
-.card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px;"}
+- pictureInfo = PicturesController.helpers.getPictureData(event.main_picture, 'card', 'event')
+- image_url = pictureInfo[0]
+- width = pictureInfo[1]
+- height = pictureInfo[2]
+
+.card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"}
   %a{:href => event_path(event)}
     .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
   .card-footer.card-footer-masonry

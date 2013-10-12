@@ -27,6 +27,14 @@ es:
       joined_events: "Apuntados"
       following: "Siguiendo"
       followers: "Seguidores"
+      current_user_no_events: "Aún no has creado ningun evento!"
+      user_no_events: "No ha creado eventos aún."
+      current_user_no_appoints: "Aún no te has unido a ningun evento!"
+      user_no_appoints: "Aún no se ha unido a ningun evento."
+      current_user_no_followings: "No sigues a nadie todavía!"
+      user_no_followings: "No sigue a nadie todavía."
+      current_user_no_followers: "No tienes seguidores todavia!"
+      user_no_followers: "No tiene seguidores todavía."
     follow:
       follow: "Seguir"
     unfollow:

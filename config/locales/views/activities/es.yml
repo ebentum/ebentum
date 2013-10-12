@@ -1,0 +1,5 @@
+es:
+  activities:
+    activity_card:
+      join: "se ha unido a %{display_name}"
+      create: "ha creado %{display_name}"

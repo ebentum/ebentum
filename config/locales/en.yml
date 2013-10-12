@@ -1,4 +1,8 @@
 en:
+  #C
+  create: "Create"
+  #E
+  explore: "Explore"
   #S
   session_started_as: "Session started as"
   share_message: "I just joined the event ${event_name} from @ebentumApp. Take a look!"

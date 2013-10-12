@@ -1,12 +1,12 @@
 es:
   devise:
     sessions:
-      new:
+      sign-in-error:
+        sign_in_error_title: "Ups..."
+      sign-in-form:
+        sign_in: "¡Entra!"
+        sign_in_with: "Inicia sesión con"
         email: "Email"
         password: "Contraseña"
         remember_me: "Recuérdame"
-        sign_in: "Entra"
-        sign_in_with: "Puedes iniciar sesión con"
         sign_in_button: "Iniciar sesión"
-        sign_in_error_title: Ups...
-        signing_in: "Entrando..."

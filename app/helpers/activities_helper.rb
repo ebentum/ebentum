@@ -7,14 +7,14 @@ module ActivitiesHelper
 
     activity.actor = Actor.new
     activity.actor._id = actor._id
-    activity.actor.url = Rails.application.routes.url_helpers.user_path(actor) 
+    activity.actor.url = Rails.application.routes.url_helpers.user_path(actor)
     activity.actor.objectType = "user"
     activity.actor.displayName = actor.complete_name
 
     if !actor.main_picture.nil?
       activity.actor.photoUrl = actor.main_picture.photo.url(:thumb)
     else
-      activity.actor.photoUrl = "/photos/thumb/missing.png"
+      activity.actor.photoUrl = "/photos/thumb/missing_user.png"
     end
 
     activity.subject = Subject.new
@@ -27,7 +27,7 @@ module ActivitiesHelper
       activity.subject.photoWidth = subject.main_picture.photo_dimensions["card"][0]
       activity.subject.photoHeight = subject.main_picture.photo_dimensions["card"][1]
     else
-      activity.subject.photoUrl = "/photos/medium/missing.png"
+      activity.subject.photoUrl = "/photos/card/missing_event.png"
     end
     activity.subject.address = subject.place
     activity.subject.startDate = subject.start_date

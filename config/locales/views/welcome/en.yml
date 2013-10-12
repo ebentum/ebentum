@@ -1,19 +1,27 @@
 es:
   welcome:
-    index:
-      complete_name: "Complete name"
+    remember_me:
+      remember_me: "Remember me"
+    sign_in_with:
+      sign_in_with: "Sign in with"
+      or: "or"
+    sign_in_form:
       email: "Email"
       forgot_your_password: "Forgot your password?"
-      new_sign_up: "New to ebentum? Sign up!"
-      or: "or"
+      password: "Password"
+      sign_in_button: "Log in"
+      sign_in_welcome: "Log in!"
+    sign_up_form:
+      complete_name: "Complete name"
+      email: "Email"
       password: "Password"
       password_confirmation: "Confirm password"
-      remember_me: "Remember me"
+      new_sign_up: "New to ebentum? Sign up!"
       sign_up_button: "Sign up"
       signing_up: "Signing up..."
-      sign_up_with: "You can sign up with"
-      sign_in_with: "You can sign in with"
-      sign_in_button: "Log in"
+    sign_up_with:
+      sign_up_with: "Sign up with"
+      or: "o"
     sign_up_ok:
       sign_up_ok_title: Yeah!
       sign_up_ok_text: "Follow the instructions that we have sent to %{email} to activate your account"
