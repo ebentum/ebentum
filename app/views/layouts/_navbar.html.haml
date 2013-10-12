@@ -5,8 +5,12 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
+      .navbar-logo.pull-left
+        %a{:href => root_url}
+          = image_tag('/logo/ebentum_38.png')
       %a{:href => root_url}
-        .brand ebentum
+        .brand
+          ebentum
       #nav-collapse-01.nav-collapse.collapse
         %ul.nav
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
