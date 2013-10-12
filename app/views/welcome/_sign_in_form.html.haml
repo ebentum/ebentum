@@ -1,0 +1,39 @@
+= form_for(@user, :as => :user, :url => '/users/sign_in', :html => {:method => :post}) do |f|
+  .card-header
+    = t('.sign_in_welcome')
+  .card-content
+    .row-fluid
+      .span12
+        = f.email_field :email, :placeholder => t('.email'), :class => 'input-block-level'
+    .row-fluid
+      .span12
+        = f.password_field :password, :placeholder => t('.password'), :class => 'input-block-level'
+    .row-fluid.hidden-phone.hidden-tablet
+      .span12
+        .pull-left
+          = render 'remember_me', f: f
+    .row-fluid.hidden-phone.hidden-tablet
+      .span12
+        .pull-left
+          %small
+            = link_to t('.forgot_your_password'), new_password_path(:user)
+    .row-fluid.visible-phone.visible-tablet
+      .span12
+        .pull-left
+          = render 'remember_me', f: f
+    .row-fluid.visible-phone.visible-tablet
+      .span12
+        = link_to t('.forgot_your_password'), new_password_path(:user)
+    .row-fluid.visible-phone.visible-tablet
+      .span12
+        = render 'sign_in_with'
+    .row-fluid.hidden-phone.hidden-tablet
+      .span12
+        .pull-left
+          %small
+            = render 'sign_in_with'
+  .row-fluid.card-footer
+    .span5.offset7.footer-option.option-active.pull-right.btn-round-bottom-right
+      .option-action.btn-round-bottom-right
+        %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
+          = t('.sign_in_button')
