@@ -1,60 +1,10 @@
-.span4
-.span4
-  - if flash[:alert]
-    .alert.alert-error.card-content{:id => 'sign_in_error'}
-      %h4
-        = t('.sign_in_error_title')
-      %br
-      %span{:id => 'sign_in_error_text'}
-        = flash[:alert]
-  - else
-    .alert.alert-error.hide.card-content{:id => 'sign_in_error'}
-      %h4
-        = t('.sign_in_error_title')
-      %br
-      %span{:id => 'sign_in_error_text'}
-  .card
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :id => 'sign_in', :class => 'sign_in'}) do |f|
-      .card-header
-        = t('.sign_in')
-      .card-content
-        .row-fluid
-          .span12{:id => 'omniauth_options'}
-            %label
-              = t('.sign_in_with')
-            .row-fluid
-              .span6
-                %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/facebook_login'}
-                  %i.icon-facebook
-                  facebook
-              .span6
-                %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/twitter_login'}
-                  %i.icon-twitter
-                  twitter
-      - klass = ''
-      - if flash[:alert]
-        - klass = 'error'
-      .card-content
-        .row-fluid
-          .span12
-            .control-group{:class => klass}
-              .controls
-                = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'input-block-level'
-        .row-fluid
-          .span12
-            .control-group{:class => klass}
-              .controls
-                = f.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'input-block-level'
-        .row-fluid
-          .span12
-            .pull-left
-              = f.label :remember_me, :class => 'checkbox' do
-                = f.check_box :remember_me, "data-toggle" => "checkbox", :value => ""
-                = t('.remember_me')
-      .row-fluid.card-footer
-        .span5.footer-option.option-active.pull-right.btn-round-bottom-right
-          .option-action.btn-round-bottom-right
-            %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
-              = t('.sign_in_button')
+.span3.visible-desktop
+.span6.visible-desktop
+  = render 'sign-in-error'
+  = render 'sign-in-form'
   = render "devise/shared/links"
-.span4
+.span3.visible-desktop
+.visible-phone.visible-tablet
+  = render 'sign-in-error'
+  = render 'sign-in-form'
+  = render "devise/shared/links"

@@ -1,0 +1,30 @@
+= form_for(@user, :as => :user, :url => '/users', :html => {:method => :post, :id => "welcome_sign_up_form"}) do |f|
+  .card-header
+    = t('.new_sign_up')
+  .card-content
+    = f.hidden_field :user_confirmation_required, :value => 'true'
+    .row-fluid
+      .span12
+        = f.text_field :complete_name, :placeholder => t('.complete_name'), :class => 'input-block-level'
+    .row-fluid
+      .span12
+        = f.email_field :email, :placeholder => t('.email'), :class => 'input-block-level'
+    .row-fluid
+      .span12
+        = f.password_field :password, :placeholder => t('.password'), :class => 'input-block-level'
+    .row-fluid
+      .span12
+        = f.password_field :password_confirmation, :placeholder => t('.password_confirmation'), :class => 'input-block-level'
+    .row-fluid.visible-phone.visible-tablet
+      .span12
+        = render 'sign_up_with'
+    .row-fluid.hidden-phone.hidden-tablet
+      .span12
+        .pull-left
+          %small
+            = render 'sign_up_with'
+  .row-fluid.card-footer
+    .span5.offset7.footer-option.option-active.pull-right.btn-round-bottom-right
+      .option-action
+        %button#welcome_sign_up_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.signing_up')}}
+          = t('.sign_up_button')
