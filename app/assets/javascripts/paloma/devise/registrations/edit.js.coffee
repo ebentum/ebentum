@@ -26,9 +26,10 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
         $("#image-upload-progress").removeClass("hidden")
         $("#user_action_button").addClass("disabled")
       progressall: (e, data) ->
-        progress = parseInt(data.loaded / data.total * 100, 10)
+        progress = parseInt(data.loaded / data.total * 100, 10)-10
         $("#image-upload-progress .bar").css "width", progress + "%"
       done: (e, data) ->
+        $("#image-upload-progress .bar").css "width", 100 + "%"
         $('#image-preview').attr("src", data.result.avatar_url)
         $('#main_picture_id').val(data.result._id)
         $("#image-upload-progress .bar").css "width", 0

@@ -23,11 +23,9 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
-        format.html  { redirect_to(@picture,
-                      :notice => 'Picture was successfully updated.') }
-        format.json  { head :no_content }
+        format.json  { render :json => @picture.to_json(:methods => [:avatar_url]),
+                      :status => :created, :location => @picture }
       else
-        format.html  { render :action => "edit" }
         format.json  { render :json => @picture.errors,
                       :status => :unprocessable_entity }
       end
