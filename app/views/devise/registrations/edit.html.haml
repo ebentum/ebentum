@@ -1,11 +1,6 @@
 .span12
   .row-fluid
     .span4
-
-
-
-
-
       .row-fluid
         .span12
           .card
@@ -17,15 +12,10 @@
 
                 #image-upload-progress.progress.progress-striped.active.hidden
                   .bar{:style => "width: 0%;"}
-
-
               %a#imageDeleteButton.btn.btn-square-block.btn-danger.btn-large.btn-square
                 %i.icon-remove.icon-white
                 %span
                   = t('.delete_image')
-
-
-
       .row-fluid
         .span12
           .card
@@ -46,7 +36,6 @@
                   %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
                     %span
                       = t('.delete_account')
-
     .span8
       = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
         = devise_error_messages!

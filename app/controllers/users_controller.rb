@@ -46,8 +46,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
-
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
@@ -56,13 +54,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     picture = Picture.find(params[:user][:main_picture_id])
-    if picture
-      @user.main_picture = picture
-    else
-      picture = Picture.new
+    if !picture.nil? and @user.main_picture.nil?
       @user.main_picture = picture
     end
-    picture.save
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

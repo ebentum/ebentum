@@ -14,8 +14,6 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
           window.location = '/'
         ), 2000
 
-
-
   $("#image-preview-link").click (e) ->
     e.preventDefault()
     $("#picture_photo").click()
@@ -51,11 +49,6 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
     $('#userImage').hide()
     $('#socialUserImage').removeClass('hidden')
     $('#imageDeleteButton').addClass('hidden')
-
-
-
-
-
 
   $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
     provider = $('input', $(this)).data('provider')
