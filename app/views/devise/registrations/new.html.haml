@@ -1,86 +1,22 @@
 - if is_omniauth_sign_up?
-  .span3
-  .span8{:id => 'omniauth_form'}
-    .alert.alert-error.hide{:id => 'sign_up_error'}
-      %h4
-        = t('.sign_in_error_title')
-      %br
-      %span{:id => 'sign_up_error_text'}
-    .card
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        = omniauth_form_data
-        = f.hidden_field :user_confirmation_required, :value => 'true'
-        .card-header
-          = t('.sign_up')
-        .card-content
-          = omniauth_provider_info
-          .row-fluid
-            %div{:class => 'span4'}
-              .thumbnail{:class => 'centered'}
-                = image_tag(omniauth_image, :class => 'omniauth_img')
-                = f.hidden_field :image_url, :value => omniauth_image
-              %br
-            %div{:class => 'span8'}
-              = render 'form_fields', :form => f
-        .row-fluid.card-footer
-          .span5.footer-option.option-active.pull-right.btn-round-bottom-right
-            .option-action.btn-round-bottom-right
-              %button{:type => "button", :class => "btn btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
-                = t('.sign_up_button')
-    .row-fluid
-      .span12
-        / = render 'sign_up_alerts'
-    .row-fluid
-      .span12
-        = render "devise/shared/links"
-  .span1
+  .span3.visible-desktop
+  .span6.visible-desktop{:id => 'omniauth_form'}
+    = render 'sign-up-error'
+    = render 'sign-up-form'
+    = render "devise/shared/links"
+  .span3.visible-desktop
+  .visible-phone.visible-tablet
+    = render 'sign-up-error'
+    = render 'sign-up-form'
+    = render "devise/shared/links"
 - else
-  .span4
-  .span4
-    - if resource.errors.full_messages.length > 0
-      .alert.alert-error{:id => 'sign_up_error'}
-        %h4
-          = t('.sign_in_error_title')
-        %br
-        %span{:id => 'sign_up_error_text'}
-          - resource.errors.full_messages.each do |error|
-            = error
-            %br
-    - else
-      .alert.alert-error.hide{:id => 'sign_up_error'}
-        %h4
-          = t('.sign_in_error_title')
-        %br
-        %span{:id => 'sign_up_error_text'}
-    .card
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-        = omniauth_form_data
-        = f.hidden_field :user_confirmation_required, :value => 'true'
-        .card-header
-          = t('.sign_up')
-        .card-content
-          = omniauth_provider_info
-          .row-fluid
-            .span12{:id => 'omniauth_options'}
-              %label
-                = t('.sign_up_with')
-              .row-fluid
-                .span6
-                  %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/auth/facebook'}
-                    %i.icon-facebook
-                    facebook
-                .span6
-                  %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/auth/twitter'}
-                    %i.icon-twitter
-                    twitter
-        .card-content
-          = render 'form_fields', :form => f
-        .row-fluid.card-footer
-          .span5.footer-option.option-active.pull-right.btn-round-bottom-right
-            .option-action.btn-round-bottom-right
-              %button{:type => "button", :class => "btn btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
-                = t('.sign_up_button')
-    .row-fluid
-      .span12
-        = render "devise/shared/links"
-  .span4
+  .span3.visible-desktop
+  .span6.visible-desktop
+    = render 'sign-up-error'
+    = render 'sign-up-form'
+    = render "devise/shared/links"
+  .span3.visible-desktop
+  .visible-phone.visible-tablet
+    = render 'sign-up-error'
+    = render 'sign-up-form'
+    = render "devise/shared/links"

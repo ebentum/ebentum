@@ -5,6 +5,7 @@
 //= require ./devise/_callbacks.js
 //= require ./activities/_callbacks.js
 //= require ./comments/_callbacks.js
+//= require ./welcome/_callbacks.js
 
 //= require ./masonry/_callbacks.js
 //= require ./datetimes/_callbacks.js

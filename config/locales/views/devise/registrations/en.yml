@@ -40,10 +40,9 @@ en:
         location: "Location"
         bio: "Bio"
         web: "Web"
-      new:
+      sign-up-form:
         sign_up: "Sign up"
         sign_up_with: "You can sign up with"
-        sign_in_error_title: Ups...
         sign_up_button: "Sign up"
         signing_up: "Signing up..."
       form_fields:
@@ -60,3 +59,5 @@ en:
       social_config:
         log_with: "Log with"
         publish_activity: "Publish activity"
+      sign-up-error:
+        sign_in_error_title: Ups...

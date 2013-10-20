@@ -1,0 +1,15 @@
+- if resource.errors.full_messages.length > 0
+  .alert.alert-error{:id => 'sign_up_error'}
+    %h4
+      = t('.sign_in_error_title')
+    %br
+    %span{:id => 'sign_up_error_text'}
+      - resource.errors.full_messages.each do |error|
+        = error
+        %br
+- else
+  .alert.alert-error.hide{:id => 'sign_up_error'}
+    %h4
+      = t('.sign_in_error_title')
+    %br
+    %span{:id => 'sign_up_error_text'}

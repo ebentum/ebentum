@@ -1,4 +1,4 @@
-.card.sign-in-card
+.card
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :id => 'sign_in', :class => 'sign_in'}) do |f|
     .card-header
       = t('.sign_in')

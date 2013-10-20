@@ -43,6 +43,8 @@
 
 //= require_self
 
+//= require allways
+
 
 
 

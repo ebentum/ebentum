@@ -40,10 +40,9 @@ es:
         location: "Ubicación habitual"
         bio: "Biografía"
         web: "Web"
-      new:
+      sign-up-form:
         sign_up: "Regístrate"
         sign_up_with: "Puedes registrarte con"
-        sign_in_error_title: Ups...
         sign_up_button: "Regístrame"
         signing_up: "Registrando..."
       form_fields:
@@ -60,3 +59,6 @@ es:
       social_config:
         log_with: "Iniciar sesión"
         publish_activity: "Publicar actividad"
+      sign-up-error:
+        sign_in_error_title: Ups...
+

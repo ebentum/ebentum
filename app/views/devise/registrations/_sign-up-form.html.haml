@@ -1,0 +1,41 @@
+.card
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = omniauth_form_data
+    = f.hidden_field :user_confirmation_required, :value => 'true'
+    .card-header
+      = t('.sign_up')
+    .card-content
+      = omniauth_provider_info
+      - if is_omniauth_sign_up?
+        .row-fluid
+          .span4
+            .thumbnail{:class => 'centered'}
+              = image_tag(omniauth_image, :class => 'omniauth_img')
+              = f.hidden_field :image_url, :value => omniauth_image
+            %br
+          .span8
+            = render 'form_fields', :form => f
+      - else
+        .row-fluid
+          .span12{:id => 'omniauth_options'}
+            %label
+              = t('.sign_up_with')
+            .row-fluid
+              .span6
+                %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/auth/facebook'}
+                  %i.icon-facebook
+                  facebook
+              .span6
+                %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/auth/twitter'}
+                  %i.icon-twitter
+                  twitter
+        .row-fluid
+          .span12
+            .card-content
+              = render 'form_fields', :form => f
+    .row-fluid.card-footer
+      .span5.footer-option.option-active.pull-right.btn-round-bottom-right
+        .option-action.btn-round-bottom-right
+          %button{:type => "button", :class => "btn btn-primary", :id => 'sign_up_button', :data => {'loading-text' => t('.signing_up')}}
+            = t('.sign_up_button')
+%br
