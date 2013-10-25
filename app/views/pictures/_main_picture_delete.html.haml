@@ -1,4 +1,4 @@
-.modal.hide.fade{:id  => 'confirm_image_delete'}
+.modal.hide.fade{:id  => 'main_picture_delete'}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3
@@ -7,7 +7,7 @@
     %p
       = t('.confirm_image_delete_text')
   .modal-footer
-    %a.btn.btn-danger{:href => "#", :id => 'confirm_image_delete_btn'}
+    %a.btn.btn-danger{:href => "#", :id => 'main_picture_delete_button'}
       = t('.delete')
     %a.btn{:href => "#", "data-dismiss" => "modal"}
       = t('.cancel')

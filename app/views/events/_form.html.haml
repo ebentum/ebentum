@@ -1,13 +1,4 @@
-
-
-= form_for @picture, :remote => true, :html => { :multipart => true } do |f|
-  .card-content
-    = f.file_field :photo, :class => "hidden"
-    = link_to "#", :id => 'image-preview-link', :class => 'thumbnail' do
-      = image_tag '/photos/small/missing.png', :id => "image-preview"
-
-    #image-upload-progress.progress.progress-striped.active.hidden
-      .bar{:style => "width: 0%;"}
+= render 'pictures/main_picture_form', main_picture: @picture
 
 = form_for @event, :html => { :multipart => true  } do |f|
   %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}

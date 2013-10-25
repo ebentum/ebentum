@@ -4,18 +4,7 @@
       .row-fluid
         .span12
           .card
-            = form_for user_picture(@user), :remote => true, :html => { :multipart => true, :id => "edit_user_image" } do |f|
-              .card-content
-                = f.file_field :photo, :class => "hidden"
-                = link_to "/#", :id => 'image-preview-link', :class => 'thumbnail' do
-                  = image_tag user_picture(@user).photo.url(:medium), :id => "image-preview"
-
-                #image-upload-progress.progress.progress-striped.active.hidden
-                  .bar{:style => "width: 0%;"}
-              %a#imageDeleteButton.btn.btn-square-block.btn-danger.btn-large.btn-square
-                %i.icon-remove.icon-white
-                %span
-                  = t('.delete_image')
+            = render 'pictures/main_picture_form', main_picture: user_picture(@user)
       .row-fluid
         .span12
           .card
@@ -95,6 +84,5 @@
                   .option-action
                     %a{:href => user_path(@user), :class => "btn btn-inverse"}
                       = t('.back')
-  = render 'confirm_image_delete'
   = render 'confirm_import_social'
   = render 'confirm_delete_account'

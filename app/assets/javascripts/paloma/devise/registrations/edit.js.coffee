@@ -1,5 +1,7 @@
 Paloma.callbacks["devise/registrations/edit"] = (params) ->
 
+  Paloma.Pictures.mainImageForm('user_action_button')
+
   $(document).on "click", "#confirm_delete_account_btn", (event) ->
     event.preventDefault()
     $.ajax
@@ -13,42 +15,6 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
         setTimeout (->
           window.location = '/'
         ), 2000
-
-  $("#image-preview-link").click (e) ->
-    e.preventDefault()
-    $("#picture_photo").click()
-
-    $("#edit_user_image").fileupload
-      dataType: "json"
-      start: (e, data) ->
-        $("#image-upload-progress").removeClass("hidden")
-        $("#user_action_button").addClass("disabled")
-      progressall: (e, data) ->
-        progress = parseInt(data.loaded / data.total * 100, 10)-10
-        $("#image-upload-progress .bar").css "width", progress + "%"
-      done: (e, data) ->
-        $("#image-upload-progress .bar").css "width", 100 + "%"
-        $('#image-preview').attr("src", data.result.avatar_url)
-        $('#main_picture_id').val(data.result._id)
-        $("#image-upload-progress .bar").css "width", 0
-        $("#image-upload-progress").addClass("hidden")
-        $("#user_action_button").removeClass("disabled")
-      fail: (e, data) ->
-        $("#image-upload-progress .bar").css "width", 0
-        $("#image-upload-progress").addClass("hidden")
-        $("#user_action_button").removeClass("disabled")
-
-
-  $('#imageDeleteButton').on "click", (e) ->
-    event.preventDefault()
-    $('#confirm_image_delete').modal()
-
-  $(document).on "click", "#confirm_image_delete_btn", (event) ->
-    $('#confirm_image_delete').modal('hide')
-    $("#user_image_delete").val("1")
-    $('#userImage').hide()
-    $('#socialUserImage').removeClass('hidden')
-    $('#imageDeleteButton').addClass('hidden')
 
   $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
     provider = $('input', $(this)).data('provider')

@@ -12,33 +12,35 @@ Paloma.callbacks["events/new"] = (params) ->
       timeFormat: "H:i"
       scrollDefaultNow: true
 
-    $("#image-preview-link").click (e) ->
-      e.preventDefault()
-      $("#picture_photo").click()
+    # $("#image-preview-link").click (e) ->
+    #   e.preventDefault()
+    #   $("#picture_photo").click()
 
     $('#create_event_btn').click ->
       if !$(this).hasClass("disabled")
         $("#new_event").submit()
 
 
-    $("#new_picture").fileupload
-      dataType: "json"
-      start: (e, data) ->
-        $("#image-upload-progress").removeClass("hidden")
-        $("#create_event_btn").addClass("disabled")
-      progressall: (e, data) ->
-        progress = parseInt(data.loaded / data.total * 100, 10)
-        $("#image-upload-progress .bar").css "width", progress + "%"
-      done: (e, data) ->
-        $('#image-preview').attr("src", data.result.avatar_url)
-        $('#main_picture_id').val(data.result._id)
-        $("#image-upload-progress .bar").css "width", 0
-        $("#image-upload-progress").addClass("hidden")
-        $("#create_event_btn").removeClass("disabled")
-      fail: (e, data) ->
-        $("#image-upload-progress .bar").css "width", 0
-        $("#image-upload-progress").addClass("hidden")
-        $("#create_event_btn").removeClass("disabled")
+    Paloma.Pictures.mainImageForm('create_event_btn')
+
+    # $("#new_picture").fileupload
+    #   dataType: "json"
+    #   start: (e, data) ->
+    #     $("#image-upload-progress").removeClass("hidden")
+    #     $("#create_event_btn").addClass("disabled")
+    #   progressall: (e, data) ->
+    #     progress = parseInt(data.loaded / data.total * 100, 10)
+    #     $("#image-upload-progress .bar").css "width", progress + "%"
+    #   done: (e, data) ->
+    #     $('#image-preview').attr("src", data.result.avatar_url)
+    #     $('#main_picture_id').val(data.result._id)
+    #     $("#image-upload-progress .bar").css "width", 0
+    #     $("#image-upload-progress").addClass("hidden")
+    #     $("#create_event_btn").removeClass("disabled")
+    #   fail: (e, data) ->
+    #     $("#image-upload-progress .bar").css "width", 0
+    #     $("#image-upload-progress").addClass("hidden")
+    #     $("#create_event_btn").removeClass("disabled")
 
     map_options =
       zoom: 13

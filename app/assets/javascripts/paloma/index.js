@@ -6,6 +6,7 @@
 //= require ./activities/_callbacks.js
 //= require ./comments/_callbacks.js
 //= require ./welcome/_callbacks.js
+//= require ./pictures/_callbacks.js
 
 //= require ./masonry/_callbacks.js
 //= require ./datetimes/_callbacks.js
