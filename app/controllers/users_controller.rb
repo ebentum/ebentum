@@ -54,7 +54,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     picture = Picture.find(params[:user][:main_picture_id])
-    if !picture.nil? and @user.main_picture.nil?
+    if picture.nil?
+      @user.main_picture = nil
+    else
       @user.main_picture = picture
     end
 

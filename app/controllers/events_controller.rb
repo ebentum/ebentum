@@ -104,7 +104,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @picture = Picture.new
+    @picture = EventPicture.new
 
     respond_to do |format|
       format.html { render :layout => 'modal_window' }
@@ -118,7 +118,7 @@ class EventsController < ApplicationController
     @event.coordinates = [params[:event][:lng].to_f, params[:event][:lat].to_f] # to_f para pasarlos a float
     @event.creator = current_user
 
-    picture = Picture.find(params[:event][:main_picture_id])
+    picture = EventPicture.find(params[:event][:main_picture_id])
     if picture
       @event.main_picture = picture
       picture.save

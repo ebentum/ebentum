@@ -1,15 +1,15 @@
 = form_for main_picture, :remote => true, :html => { :multipart => true, :id => "main_picture_form" } do |f|
   .card-content
     = f.file_field :photo, :class => "hidden", :id => "main_picture_field"
-    = link_to "/#", :id => 'main_picture_link', :class => 'thumbnail' do
+    = link_to "#", :id => 'main_picture_link', :class => 'thumbnail' do
       = image_tag main_picture.photo.url(:medium), :id => "main_picture_preview"
 
     #main_picture_upload_progress.progress.progress-striped.active.hidden
       .bar{:style => "width: 0%;"}
 
-/  %a#main_picture_delete_button.btn.btn-square-block.btn-danger.btn-large.btn-square
-/    %i.icon-remove.icon-white
-/    %span
-/      = t('.delete_image')
+  %a#main_picture_delete_button.btn.btn-square-block.btn-danger.btn-large.btn-square
+    %i.icon-remove.icon-white
+    %span
+      = t('.delete_image')
 
-/ = render 'pictures/main_picture_delete'
+= render 'pictures/main_picture_delete'

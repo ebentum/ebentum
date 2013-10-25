@@ -1,4 +1,5 @@
-= render 'pictures/main_picture_form', main_picture: @picture
+#event_main_picture_form
+  = render 'pictures/main_picture_form', main_picture: @picture
 
 = form_for @event, :html => { :multipart => true  } do |f|
   %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}

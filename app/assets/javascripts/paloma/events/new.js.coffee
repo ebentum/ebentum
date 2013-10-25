@@ -20,27 +20,7 @@ Paloma.callbacks["events/new"] = (params) ->
       if !$(this).hasClass("disabled")
         $("#new_event").submit()
 
-
-    Paloma.Pictures.mainImageForm('create_event_btn')
-
-    # $("#new_picture").fileupload
-    #   dataType: "json"
-    #   start: (e, data) ->
-    #     $("#image-upload-progress").removeClass("hidden")
-    #     $("#create_event_btn").addClass("disabled")
-    #   progressall: (e, data) ->
-    #     progress = parseInt(data.loaded / data.total * 100, 10)
-    #     $("#image-upload-progress .bar").css "width", progress + "%"
-    #   done: (e, data) ->
-    #     $('#image-preview').attr("src", data.result.avatar_url)
-    #     $('#main_picture_id').val(data.result._id)
-    #     $("#image-upload-progress .bar").css "width", 0
-    #     $("#image-upload-progress").addClass("hidden")
-    #     $("#create_event_btn").removeClass("disabled")
-    #   fail: (e, data) ->
-    #     $("#image-upload-progress .bar").css "width", 0
-    #     $("#image-upload-progress").addClass("hidden")
-    #     $("#create_event_btn").removeClass("disabled")
+    Paloma.Pictures.mainImageForm('event_main_picture_form', 'create_event_btn', "/photos/medium/missing_event.png")
 
     map_options =
       zoom: 13

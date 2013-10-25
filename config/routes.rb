@@ -24,6 +24,8 @@ Ebentum::Application.routes.draw do
   resources :social
   resources :comments
   resources :pictures
+  resources :user_pictures
+  resources :event_pictures
 
   resources :users do
     member do

@@ -2,7 +2,7 @@
   .row-fluid
     .span4
       .card-square
-        = image_tag(@event.main_picture.photo.url(:medium), :class => 'block') rescue image_tag("/photos/medium/missing.png", :class => 'block')
+        = image_tag(event_picture(@event).photo.url(:medium), :class => 'block')
 
     .span8
       .row-fluid

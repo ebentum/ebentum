@@ -4,7 +4,7 @@ module UsersHelper
     if user.main_picture?
       user.main_picture
     else
-      Picture.new
+      UserPicture.new
     end
   end
 

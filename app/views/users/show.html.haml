@@ -13,7 +13,7 @@
               .row-fluid
                 .span4
                   .thumbnail
-                    = @user.main_picture.blank? ? image_tag("/photos/medium/missing.png", :class => 'block') : image_tag(@user.main_picture.photo.url(:medium), :class => 'block')
+                    = image_tag(user_picture(@user).photo.url(:medium), :class => 'block')
                 .span8
                   .card-content
                     .media
