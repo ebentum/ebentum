@@ -22,16 +22,14 @@ Paloma.Events =
           # boton en estado loading
           $('#appoint').button('loading')
         success: (data, status, xhr) ->
-          setTimeout (->
-            $('#appoint').button('reset')
-            $('#appoint').addClass('hide')
-            $('#desappoint').removeClass('hide')
-            $('#user-action').removeClass('option-active')
-            $('#user-action').addClass('option-danger')
-            $('#confirm_desappoint_btn').data('appointmentid', data.id)
-            # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
-            $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())+1)
-          ), 2000
+          $('#appoint').button('reset')
+          $('#appoint').addClass('hide')
+          $('#desappoint').removeClass('hide')
+          $('#user-action').removeClass('option-active')
+          $('#user-action').addClass('option-danger')
+          $('#confirm_desappoint_btn').data('appointmentid', data.id)
+          # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
+          $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())+1)
 
       $.ajax
         url: "/social/share_event_appoint"
@@ -53,15 +51,13 @@ Paloma.Events =
           # boton en estado loading
           $('#desappoint').button('loading')
         complete: (data, status, xhr) ->
-          setTimeout (->
-            $('#desappoint').button('reset')
-            $('#desappoint').addClass('hide')
-            $('#appoint').removeClass('hide')
-            $('#user-action').removeClass('option-danger')
-            $('#user-action').addClass('option-active')
-            # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
-            $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
-          ), 2000
+          $('#desappoint').button('reset')
+          $('#desappoint').addClass('hide')
+          $('#appoint').removeClass('hide')
+          $('#user-action').removeClass('option-danger')
+          $('#user-action').addClass('option-active')
+          # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
+          $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
 
   initNewEventOption : ->
     $('#events_new').click ->

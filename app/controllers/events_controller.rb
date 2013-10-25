@@ -177,7 +177,7 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     event.users.push(current_user)
 
-    ActivitiesController.helpers.create_user_event_activity("join", current_user, event)
+    Activity.new.fill_data("join", current_user, event).save
 
     render :json => event.save
   end
@@ -193,6 +193,5 @@ class EventsController < ApplicationController
 
     render :json => event.save
   end
-
 
 end

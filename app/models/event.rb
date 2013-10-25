@@ -44,7 +44,7 @@ class Event
   end
 
   after_create do |event|
-    ActivitiesController.helpers.create_user_event_activity("create", self.creator, self)
+    Activity.new.fill_data("create", self.creator, self).save
   end
 
 end
