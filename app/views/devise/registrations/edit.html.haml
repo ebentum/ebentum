@@ -5,7 +5,7 @@
         .span12
           .card
             #user_main_picture_form
-              = render 'pictures/main_picture_form', main_picture: user_picture(@user)
+              = render 'pictures/main_picture_form', main_picture: @user.get_picture
       .row-fluid
         .span12
           .card

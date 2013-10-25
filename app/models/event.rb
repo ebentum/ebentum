@@ -35,6 +35,14 @@ class Event
     self.save
   end
 
+  def get_picture
+    if self.main_picture?
+      self.main_picture
+    else
+      EventPicture.new
+    end
+  end
+
   after_create do |event|
     ActivitiesController.helpers.create_user_event_activity("create", self.creator, self)
   end

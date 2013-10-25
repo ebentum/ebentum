@@ -2,7 +2,7 @@
   %ul.media-list{:id => 'new_comment'}
     %li.media.card-content
       %a.pull-left{:href => "#"}
-        = image_tag(user_picture(current_user).photo.url(:thumb), :class => 'block media-object thumb_image')
+        = image_tag(current_user.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
       .media-body
         .media-heading
           %small

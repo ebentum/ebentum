@@ -90,4 +90,12 @@ class User
     self.user_confirmation_required == 'true'
   end
 
+  def get_picture
+    if self.main_picture?
+      self.main_picture
+    else
+      UserPicture.new
+    end
+  end
+
 end
