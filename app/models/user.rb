@@ -75,7 +75,6 @@ class User
 
   has_and_belongs_to_many :activities, inverse_of: :receivers,  order: 'created_at DESC', dependent: :destroy
 
-  #has_mongoid_attached_file :image, :styles => {:thumb => "100x100",  :small => "300x300>", :medium => "600x600>" }
   has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
 
   # renovación de token de acceso a Facebook

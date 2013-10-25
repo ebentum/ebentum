@@ -16,6 +16,7 @@ class Picture
     photo.url(:small)
   end
 
+
       # - pwidth = event.photo_dimensions["poster"][0]
       # - pheight = event.photo_dimensions["poster"][1] * 1.0
       # - if pwidth > 200
