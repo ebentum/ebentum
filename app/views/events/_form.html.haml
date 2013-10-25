@@ -2,7 +2,7 @@
   = render 'pictures/main_picture_form', main_picture: @picture
 
 = form_for @event, :html => { :multipart => true  } do |f|
-  %input#main_picture_id{:name => "event[main_picture_id]", :type => "hidden"}
+  %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden"}
   .card-content
     = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
     = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level", :rows => 4

@@ -1,6 +1,6 @@
 Paloma.callbacks["devise/registrations/edit"] = (params) ->
 
-  Paloma.Pictures.mainImageForm('user_main_picture_form', 'user_action_button', "/photos/medium/missing_event.png")
+  Paloma.Pictures.mainImageForm('user_main_picture_form', 'user_main_picture_input', 'user_action_button', "/photos/medium/missing_event.png")
 
   $(document).on "click", "#confirm_delete_account_btn", (event) ->
     event.preventDefault()

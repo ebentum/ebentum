@@ -20,7 +20,7 @@ Paloma.callbacks["events/new"] = (params) ->
       if !$(this).hasClass("disabled")
         $("#new_event").submit()
 
-    Paloma.Pictures.mainImageForm('event_main_picture_form', 'create_event_btn', "/photos/medium/missing_event.png")
+    Paloma.Pictures.mainImageForm('event_main_picture_form', 'event_main_picture_input', 'create_event_btn', "/photos/medium/missing_event.png")
 
     map_options =
       zoom: 13
