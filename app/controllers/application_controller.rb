@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :auth_user
+  before_filter :auth_user, :get_locale
 
   layout :layout_by_resource
 
   protected
+
+  def get_locale
+    @locale = extract_locale_from_accept_language_header
+  end
 
   def auth_user
     if !user_signed_in? && !devise_registration_action
@@ -65,6 +69,12 @@ class ApplicationController < ActionController::Base
 
   def omniauth_secret
     flash[:omniauth_data].credentials.secret
+  end
+
+  private
+
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
   end
 
 end
