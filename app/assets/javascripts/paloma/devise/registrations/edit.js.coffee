@@ -12,9 +12,7 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
         $('#confirm_delete_account').modal('hide')
         $('#delete_account_btn').button('loading')
       success: (data, status, xhr) ->
-        setTimeout (->
-          window.location = '/'
-        ), 2000
+        window.location = '/'
 
   $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
     provider = $('input', $(this)).data('provider')

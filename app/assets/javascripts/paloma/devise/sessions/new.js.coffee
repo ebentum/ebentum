@@ -20,14 +20,12 @@ Paloma.callbacks["devise/sessions/new"] = (params) ->
         window.location = '/events/'
       error: (xhr, status, error) ->
         # ponemos el error
-        # hacemos un timeout para que el efecto sea más suave
-        setTimeout (->
-          if xhr.status is 401
-            error = jQuery.parseJSON(xhr.responseText).error
-            $('#sign_in_error_text').text(error)
-            $('#sign_in_error').fadeIn('slow')
-            $('#sign_in #email, #sign_in #password').parent().parent().addClass('error')
-            # activar el boton
-            $('#sign_in_button').button('reset')
-        ), 2000
+        if xhr.status is 401
+          error = jQuery.parseJSON(xhr.responseText).error
+          $('#sign_in_error_text').text(error)
+          $('#sign_in_error').fadeIn('slow')
+          $('#sign_in #email, #sign_in #password').parent().parent().addClass('error')
+          # activar el boton
+          $('#sign_in_button').button('reset')
+
 

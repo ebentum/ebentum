@@ -32,30 +32,24 @@ Paloma.devise.registrations =
         if $('#user_user_confirmation_required').val() == 'false'
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
-          setTimeout (->
-            # redirigir al inicio
-            window.location = '/events/'
-          ), 2000
+          # redirigir al inicio
+          window.location = '/events/'
+
         else
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
-          setTimeout (->
-            window.location = '/welcome/sign_up_ok?email='+$('#email').val()
-          ), 2000
+          window.location = '/welcome/sign_up_ok?email='+$('#email').val()
 
       error: (xhr, status, error) ->
         # ponemos los errores
-        # hacemos un timeout para que el efecto sea más suave
-        setTimeout (->
-          errorList = jQuery.parseJSON(xhr.responseText).errors
-          errorText = ''
-          $.each errorList, (column, error) ->
-            $(sign_up_error).fadeIn('slow')
-            $('#new_user #'+column).parent().parent().addClass('error')
-            campo = I18n.t('attributes.'+column)
-            errorText += campo+': '+error+'<br>'
-          # activar el boton
-          if errorText
-            $('#sign_up_error_text', sign_up_error).html(errorText)
-          $(sign_up_button).button('reset')
-        ), 2000
+        errorList = jQuery.parseJSON(xhr.responseText).errors
+        errorText = ''
+        $.each errorList, (column, error) ->
+          $(sign_up_error).fadeIn('slow')
+          $('#new_user #'+column).parent().parent().addClass('error')
+          campo = I18n.t('attributes.'+column)
+          errorText += campo+': '+error+'<br>'
+        # activar el boton
+        if errorText
+          $('#sign_up_error_text', sign_up_error).html(errorText)
+        $(sign_up_button).button('reset')
