@@ -119,6 +119,9 @@ class UsersController < ApplicationController
   def follow
     @user = User.find(params[:id])
     current_user.follow(@user)
+    @user = User.find(params[:id])
+
+    Activity.new.fill_data("follow", current_user, @user, "subject").save
 
     respond_to do |format|
       format.html { redirect_to @user }

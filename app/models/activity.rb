@@ -10,14 +10,18 @@ class Activity
   has_and_belongs_to_many :receivers, class_name: "User", inverse_of: :activities
 
 
-  def fill_data(verb, actor, subject)
+  def fill_data(verb, actor, subject, receivers = "followers")
     self.verb = verb
 
     self.add_object("actor", actor)
     self.add_object("subject", subject)
 
-    self.receivers = actor.all_followers
-    self.receivers.push(actor)
+    if receivers == "followers"
+      self.receivers = actor.all_followers
+      self.receivers.push(actor)
+    elsif receivers == "subject"
+      self.receivers.push(subject)
+    end 
 
     self
   end
