@@ -5,13 +5,6 @@
     = render 'layouts/fb_js_sdk'
     = render 'layouts/tw_js_sdk'
     = render 'layouts/navbar'
-    - if flash[:notice]
-      .alert.alert-success
-        %button.close{"data-dismiss" => "alert", :type => "button"} ×
-        %h4
-          = flash[:notice]
-        %span
-          = flash[:notice]
     .row-fluid
       = yield
     #modal_windows
