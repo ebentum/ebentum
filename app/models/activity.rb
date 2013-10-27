@@ -56,6 +56,18 @@ class Activity
       self_object.url = Rails.application.routes.url_helpers.user_path(object)
       self_object.displayName = object.complete_name
     end
+
+    self
+  end
+
+  def self.update_related_activities(object)
+    Activity.where("actor._id" => object._id).entries.each do |activity|
+      activity.add_object("actor", object).save
+    end
+
+    Activity.where("subject._id" => object._id).entries.each do |activity|
+      activity.add_object("subject", object).save
+    end
   end
 
 end

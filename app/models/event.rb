@@ -46,5 +46,8 @@ class Event
   after_create do |event|
     Activity.new.fill_data("create", self.creator, self).save
   end
+  after_update do |user|
+    Activity.update_related_activities(user)
+  end
 
 end
