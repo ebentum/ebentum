@@ -325,7 +325,7 @@ label.error {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
   .card {
-    background: $inverse;
+    /*background: $inverse;*/
     border-radius: 6px;
     padding: 0px;
     text-align: center;
@@ -347,7 +347,7 @@ label.error {
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .card {
-    background: $inverse;
+    /*background: $inverse;*/
     border-radius: 6px;
     padding: 0px;
     text-align: center;

@@ -2,7 +2,7 @@
 
 %li.media.card-content{:id => commentid}
   %a.pull-left{:href => "#"}
-    = image_tag(comment.creator.main_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
+    = image_tag(comment.creator.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
   .media-body
     .media-heading
       %small
@@ -15,7 +15,7 @@
           = comment.body
     %small{:id => 'comment_date_'+comment.id.to_s}
       .format-timeago.hidden
-      .format-timeago{:data => {:datevalue => comment.updated_at }}
+      .format-timeago.comment-timeago{:data => {:datevalue => comment.updated_at}}
     - if current_user && current_user.id == comment.creator.id
       %span{:id => 'editdelete'+commentid}
         %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
