@@ -1,6 +1,10 @@
 - if @page == 1
   .span12
     #activity_list.masonry_layout.centered
+      - if @activities.count == 0
+        .card-footer.card-footer-masonry.pts.pbs.plm.prm
+          %p
+            = t('.no_activities')
       = render 'list'
 - else
   = render 'list'

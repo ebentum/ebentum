@@ -3,3 +3,5 @@ en:
     activity_card:
       join: "joined %{display_name}"
       create: "created %{display_name}"
+    index:
+      no_activities: "You don't have any activity. Click Explore if you want to know new events."
