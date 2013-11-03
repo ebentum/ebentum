@@ -12,8 +12,11 @@ group :assets do
 end
 
 gem 'sass-rails',   '~> 3.2.5'
-gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'bootstrap-sass-rails'
 gem 'compass-rails', '~> 1.0.3'
+
+gem 'less-rails'
+gem "therubyracer", :require => 'v8'
 
 gem 'thin'
 gem 'haml', '~> 4.0.0'
