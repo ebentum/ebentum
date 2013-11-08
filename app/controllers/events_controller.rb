@@ -144,6 +144,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @picture = @event.get_picture
+
+    respond_to do |format|
+      format.html { render :layout => 'modal_window' }
+      format.json { render :json => @event }
+    end
   end
 
   def update

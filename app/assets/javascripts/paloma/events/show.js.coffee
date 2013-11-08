@@ -3,6 +3,8 @@ Paloma.callbacks["events/show"] = (params) ->
   # inicializar opciones de unirse
   Paloma.Events.initAppointOptionsLayout(params['joined'])
 
+  Paloma.Events.initEventFormOption("edit", params['event_id'])
+
   # Inicializar mapa
   map_options =
     zoom: 13
@@ -17,4 +19,3 @@ Paloma.callbacks["events/show"] = (params) ->
   # cargar comentarios
   Paloma.Comments.load_event_comments(params['event_id'])
   Paloma.Comments.initLayout()
-

@@ -16,6 +16,7 @@ es:
       joined: "Unidos"
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
+      edit: "Editar"
     confirm_appoint:
       close: "Cerrar"
       confirm: "Confirmar"

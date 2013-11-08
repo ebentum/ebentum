@@ -16,6 +16,7 @@ en:
       joined: "Joined"
       event_followings_followers_joined: "(%{following} following and %{followers} followers)"
       organized_by: "Organized by"
+      edit: "Edit"
     confirm_appoint:
       close: "Close"
       confirm: "Confirm"

@@ -56,7 +56,11 @@
                   #map.block
 
             .row-fluid.card-footer
-              .span2.offset2.footer-option
+              .span2.footer-option.option-active
+                .option-action
+                  = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
+
+              .span2.footer-option
                 %a#appointed{:href => "#"}
                   .option-header
                     = @event_users
@@ -69,6 +73,9 @@
                 -#     = @event_users
                 -#   / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
               = render 'share_event'
+
+
+
               - if user_signed_in?
                 #user-action.span2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
