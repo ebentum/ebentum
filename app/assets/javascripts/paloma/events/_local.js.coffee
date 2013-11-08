@@ -66,15 +66,17 @@ Paloma.Events =
       url = "/events/"+id+"/edit"
 
     $('#events_'+action).click ->
-      $("#modal_windows #events_"+action+"_modal").remove()
+      $("#modal_window").remove()
       $.ajax
         url: url
         success: (data) ->
           $("#modal_windows").append data
-          $('#events_'+action+'_modal').modal()
+          $('#modal_window').modal()
 
   initEventForm : (action) ->
-    $("#events_"+action+"_modal").on "shown", ->
+    $("#modal_window").on "hidden", ->
+      $("#modal_window").remove()
+    $("#modal_window").on "shown", ->
 
       $('#event_description').autosize({append: "\n"})
       $('#event_start_date').datepicker
@@ -101,18 +103,25 @@ Paloma.Events =
         mapTypeId: google.maps.MapTypeId.ROADMAP
 
       map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
+      marker = new google.maps.Marker(map: map)
 
       if navigator.geolocation
         browserSupportFlag = true
-        navigator.geolocation.getCurrentPosition ((position) ->
-          initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+
+        if $('#event_lat').val() != ""
+          initialLocation = new google.maps.LatLng($('#event_lat').val(), $('#event_lng').val())
           map.setCenter initialLocation
-        )
+          marker.setPosition initialLocation
+        else
+          navigator.geolocation.getCurrentPosition ((position) ->
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+            map.setCenter initialLocation
+          )
 
       input = document.getElementById("place_autocomplete")
       autocomplete = new google.maps.places.SearchBox(input)
       autocomplete.bindTo "bounds", map
-      marker = new google.maps.Marker(map: map)
+      
 
       google.maps.event.addListener autocomplete, "places_changed", ->
         place = autocomplete.getPlaces()

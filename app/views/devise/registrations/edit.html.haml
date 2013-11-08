@@ -29,7 +29,7 @@
     .span8
       = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
         = devise_error_messages!
-        %input#user_main_picture_input{:name => "user[main_picture_id]", :type => "hidden"}
+        %input#user_main_picture_input{:name => "user[main_picture_id]", :type => "hidden", :value => "#"}
         .row-fluid
           .span12
             .card

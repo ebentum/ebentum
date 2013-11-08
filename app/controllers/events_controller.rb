@@ -155,6 +155,15 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    picture = Picture.find(params[:event][:main_picture_id])
+    if params[:event][:main_picture_id] != '#'
+      if picture.nil?
+        @event.main_picture = nil
+      else
+        @event.main_picture = picture
+      end
+    end
+
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html  { redirect_to(@event,

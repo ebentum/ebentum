@@ -2,7 +2,7 @@
   = render 'pictures/main_picture_form', main_picture: @picture
 
 = form_for @event, :html => { :multipart => true  } do |f|
-  %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden"}
+  %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden", :value => "#"}
   .card-content
     = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
     = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level", :rows => 4
@@ -26,7 +26,7 @@
 
 
     %i.fui-location-24
-    %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
+    %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete", :value => @event.place}
     = f.hidden_field :place
     = f.hidden_field :lat
     = f.hidden_field :lng
