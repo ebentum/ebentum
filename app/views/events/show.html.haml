@@ -56,9 +56,12 @@
                   #map.block
 
             .row-fluid.card-footer
-              .span2.footer-option.option-active
-                .option-action
-                  = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
+              -if @event.creator == current_user
+                .span2.footer-option.option-active
+                  .option-action
+                    = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
+              - else
+                .span2.footer-option
 
               .span2.footer-option
                 %a#appointed{:href => "#"}

@@ -79,18 +79,29 @@ Paloma.Events =
     $("#modal_window").on "shown", ->
 
       $('#event_description').autosize({append: "\n"})
+
+      if $('#event_start_date').val() != ""
+        startDate = new moment($("#event_start_date").val()).format($("#event_start_date").data('date-format').toUpperCase())
+        $("#event_start_date").val(startDate)
+      else
+        startDate = Date()
+
       $('#event_start_date').datepicker
         autoclose: true
         language: I18n.locale
-        startDate: Date()
+        startDate: startDate
 
-      $('#event_start_time').timepicker
-        timeFormat: "H:i"
-        scrollDefaultNow: true
+      if $('#event_start_time').val() != ""
+        startTime = $('#event_start_time').val()
+        $('#event_start_time').val(null)
 
-      # $("#image-preview-link").click (e) ->
-      #   e.preventDefault()
-      #   $("#picture_photo").click()
+      $('#event_start_time').timepicker(
+              timeFormat: "H:i"
+              scrollDefaultNow: true)
+
+      if startTime != ""
+        $('#event_start_time').timepicker('setTime', new Date(startTime));
+
 
       $('#create_event_btn').click ->
         if !$(this).hasClass("disabled")
