@@ -4,6 +4,12 @@ class Event
   include Mongoid::Paperclip
   include Paperclip::Glue
   include Geocoder::Model::Mongoid
+  include Mongoid::Slug
+
+  #slug :name
+  slug do |cur_object|
+    "#{cur_object.name}".parameterize
+  end
 
   field :name, type: String
   field :description, type: String
@@ -29,6 +35,7 @@ class Event
 
   has_and_belongs_to_many :users, inverse_of: :events
   has_many :comments, inverse_of: :event, dependent: :destroy
+
 
   def setCoordinates
     self.coordinates = [self.lng.to_f, self.lat.to_f]
