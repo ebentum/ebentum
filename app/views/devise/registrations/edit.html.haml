@@ -1,13 +1,13 @@
-.span12
-  .row-fluid
-    .span4
-      .row-fluid
-        .span12
+.col-xs-12
+  .row
+    .col-xs-4
+      .row
+        .col-xs-12
           .card
             #user_main_picture_form
               = render 'pictures/main_picture_form', main_picture: @user.get_picture
-      .row-fluid
-        .span12
+      .row
+        .col-xs-12
           .card
             .card-header
               = t('.social_title')
@@ -17,71 +17,71 @@
                 .icon-ebentum
                   ebentum
               %br
-              .row-fluid
-                .span12
+              .row
+                .col-xs-12
                   = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
               %br
-              .row-fluid
-                .span12
+              .row
+                .col-xs-12
                   %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
                     %span
                       = t('.delete_account')
-    .span8
+    .col-xs-8
       = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
         = devise_error_messages!
         %input#user_main_picture_input{:name => "user[main_picture_id]", :type => "hidden"}
-        .row-fluid
-          .span12
+        .row
+          .col-xs-12
             .card
               .card-header
                 = t('.perfil')
               .card-content
-                .control-group
-                  %label.control-label
+                .form-group.mbs.mts
+                  %label.control-label.col-sm-4
                     = t('.complete_name')
-                  .controls
-                    = f.text_field :complete_name, :class => "input-block-level"
+                  .col-sm-8.prl.pll
+                    = f.text_field :complete_name, :class => "form-control input-sm"
               .card-content
-                .control-group
-                  %label.control-label
+                .form-group.mbs.mts
+                  %label.control-label.col-sm-4
                     = t('.location')
-                  .controls
-                    = f.text_field :location, :class => "input-block-level"
+                  .col-sm-8.prl.pll
+                    = f.text_field :location, :class => "form-control input-sm"
               .card-content
-                .control-group
-                  %label.control-label
+                .form-group.mbs.mts
+                  %label.control-label.col-sm-4
                     = t('.web')
-                  .controls
-                    = f.text_field :web, :class => "input-block-level"
+                  .col-sm-8.prl.pll
+                    = f.text_field :web, :class => "form-control input-sm"
               .card-content
-                .control-group
-                  %label.control-label
+                .form-group.mbs.mts
+                  %label.control-label.col-sm-4
                     = t('.bio')
-                  .controls
-                    = f.text_area :bio, :class => "input-block-level", :rows => "5"
-              .row-fluid.card-footer
+                  .col-sm-8.prl.pll
+                    = f.text_area :bio, :class => "form-control input-sm", :rows => "5"
+              .row.card-footer
                 - if @user.fbtoken
-                  #option-facebook.span3.offset1.footer-option.option-facebook
+                  #option-facebook.col-xs-3.col-sm-offset-1.footer-option.option-facebook
                     .option-action
                       %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
                         %i.icon-facebook
                         = t('.import_from_facebook')
                 - else
-                  #option-facebook.span3
+                  #option-facebook.col-xs-3
                 - if @user.twtoken
-                  #option-twitter.span3.footer-option.option-info
+                  #option-twitter.col-xs-3.footer-option.option-info
                     .option-action
                       %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
                         %i.icon-twitter
                         = t('.import_from_twitter')
                 - else
-                  #option-twitter.span3
-                .span1
-                .span2.footer-option.option-active
+                  #option-twitter.col-xs-3
+                .col-xs-1
+                .col-xs-2.footer-option.option-active
                   .option-action
                     %button#user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
                       = t('.save')
-                .span2.footer-option
+                .col-xs-2.footer-option
                   .option-action
                     %a{:href => user_path(@user), :class => "btn btn-inverse"}
                       = t('.back')

@@ -10,11 +10,14 @@
     .icon-facebook
       Facebook
 
-  .row-fluid
-    .span6
+  .row
+    .col-xs-6
       .control-group
         %label.control-label
           = t('.log_with', :provider => 'Facebook')
+        .switch
+          %input{:type => "checkbox", :checked => true, "data-toggle" => "switch"}
+
         .controls
           - klass = 'toggle toggle-icon toggle-off'
           - if fb_access_token_id
@@ -25,7 +28,9 @@
             %label.toggle-radio.fui-cross-16{:for => "facebook_disabled"}
             %input#facebook_disabled{:checked => "checked",:name => "facebook_disabled", :type => "radio", :value => "option6"}/
 
-    .span6
+
+
+    .col-xs-6
       - klass = 'control-group'
       - if !fb_access_token_id
         - klass = 'control-group hide'
@@ -47,8 +52,8 @@
     .icon-twitter
       Twitter
 
-  .row-fluid
-    .span6
+  .row
+    .col-xs-6
 
       .control-group
         %label.control-label
@@ -63,7 +68,7 @@
             %label.toggle-radio.fui-cross-16{:for => "twitter_enabled"}
             %input#twitter_disabled{:checked => "checked",:name => "twitter_disabled", :type => "radio", :value => "option6"}/
 
-    .span6
+    .col-xs-6
       - klass = 'control-group'
       - if !tw_access_token_id
         - klass = 'control-group hide'

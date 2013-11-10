@@ -1,14 +1,14 @@
 - if @page == 1
   .container
-    .span12
+    .col-xs-12
       %form.form-horizontal#event_search_form
-        .row-fluid
-          .span12
-            .row-fluid
-              .span8.offset2
+        .row
+          .col-xs-12
+            .row
+              .col-xs-8.col-sm-offset-2
                 .card
-                  .row-fluid
-                    .span6.offset2
+                  .row
+                    .col-xs-6.col-sm-offset-2
                       .card-content
                         .control-group
                           %label.control-label{:for => "inputDistance"}
@@ -23,13 +23,13 @@
                             - daysOptions  = [t('.now'), 1], [t('.tomorrow'), 2], [t('.this_week'), 7], [t('.this_month'), 30], [t('.i_dont_care'), 0]
                             = select_tag 'days', options_for_select(daysOptions, @daysSelected)
 
-                  .row-fluid.card-footer
-                    / .span2.footer-option.option-active.pull-right.btn-round-bottom-right
+                  .row.card-footer
+                    / .col-xs-2.footer-option.option-active.pull-right.btn-round-bottom-right
                     /   .option-action
                     /     %button.btn.btn-primary{:type => "submit"}
                     /       = t('.search')
 
-  .span12
+  .col-xs-12
     #events_list.masonry_layout.centered
       = render 'list'
 - else

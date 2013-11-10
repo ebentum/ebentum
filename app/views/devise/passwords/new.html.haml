@@ -1,18 +1,18 @@
-.span4
-.span4
+.col-xs-4
+.col-xs-4
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => 'new_password', :class => 'new_password'}) do |f|
     .card
       .card-header
         = t('.forgot_your_password')
       .card-content
-        .row-fluid
-          .span12
+        .row
+          .col-xs-12
             .control-group
               .controls
-                = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'input-block-level'
+                = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'form-control'
                 %span.help-inline
-      .row-fluid.card-footer
-        .span5.footer-option.option-active.pull-right.btn-round-bottom-right
+      .row.card-footer
+        .col-xs-5.footer-option.option-active.pull-right.btn-round-bottom-right
           .option-action.btn-round-bottom-right
             = f.button t('.help_me'), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'new_password_button', :data => {'loading-text' => t('.helping')}
     .alert.alert-success.hide{:id => 'new_password_success'}
@@ -21,4 +21,4 @@
       %span{:id => 'new_password_ok_text'}
         = t('.new_password_ok_text', :email => 'EMAIL')
   = render "devise/shared/links"
-.span4
+.col-xs-4

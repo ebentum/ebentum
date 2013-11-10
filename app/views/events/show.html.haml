@@ -1,24 +1,24 @@
-.span12
-  .row-fluid
-    .span4
+.col-xs-12
+  .row
+    .col-xs-4
       .card-square
         = image_tag(@event.get_picture.photo.url(:medium), :class => 'block')
 
-    .span8
-      .row-fluid
-        .span12
+    .col-xs-8
+      .row
+        .col-xs-12
           .card
             .card-header
               = @event.name
             .card-content
-              .row-fluid
-                .span12
+              .row
+                .col-xs-12
                   #event_description
                     = @event.description
 
             #event-info-row.card-content
-              .row-fluid
-                .span6.ptl
+              .row
+                .col-xs-6.ptl
                   .card-content
                     .media
                       .pull-left
@@ -52,11 +52,11 @@
                   -# .card-content
                   -#   %span.fui-location-24
                   -#   = @event.place
-                .span6.man
+                .col-xs-6.man
                   #map.block
 
-            .row-fluid.card-footer
-              .span2.offset2.footer-option
+            .row.card-footer
+              .col-xs-2.col-sm-offset-2.footer-option
                 %a#appointed{:href => "#"}
                   .option-header
                     = @event_users
@@ -70,15 +70,15 @@
                 -#   / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
               = render 'share_event'
               - if user_signed_in?
-                #user-action.span2.footer-option.pull-right.btn-round-bottom-right
+                #user-action.col-xs-2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
                     = hidden_field_tag 'event_id', @event.id
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
                     = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
 
 
-      .row-fluid
-        .span12
+      .row
+        .col-xs-12
           = render 'comments'
 
 = render 'confirm_appoint'

@@ -4,11 +4,11 @@
 = form_for @event, :html => { :multipart => true  } do |f|
   %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden"}
   .card-content
-    = f.text_field :name, :placeholder => t(".name"), :class => "input-block-level"
-    = f.text_area :description, :placeholder => t(".description_optional"), :class => "input-block-level", :rows => 4
+    = f.text_field :name, :placeholder => t(".name"), :class => "form-control"
+    = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control", :rows => 4
   .pam
-    .row-fluid
-      .span6
+    .row
+      .col-xs-6
         -# .input-prepend
         -#   %span.add-on
         -#     %i.icon-calendar
@@ -17,7 +17,7 @@
         -# %label.control-label
         %i.fui-calendar-24
         = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}
-      .span6
+      .col-xs-6
         -# .input-prepend
         -#   %span.add-on
         -#     %i.icon-time
@@ -33,11 +33,11 @@
 
   #map_canvas
 
-.row-fluid.card-footer
-  .span3.offset6.footer-option.option-active
+.row.card-footer
+  .col-xs-3.col-sm-offset-6.footer-option.option-active
     .option-action
       %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
-  .span3.footer-option
+  .col-xs-3.footer-option
     .option-action
       %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}
         = t(".cancel")
