@@ -41,18 +41,6 @@
                         .media-object.fui-location-24.mll
                       .media-body
                         = @event.place
-                  -# .card-content
-                  -#   %span.fui-man-24
-                  -#   - user = User.find(@event.creator)
-                  -#   = t('.organized_by')
-                  -#   %a{:href => user_path(user)}
-                  -#     = user.complete_name
-                  -# .card-content
-                  -#   %span.fui-calendar-24
-                  -#   = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
-                  -# .card-content
-                  -#   %span.fui-location-24
-                  -#   = @event.place
                 .span6.man
                   #map.block
 
@@ -70,24 +58,13 @@
                     = @event_users
                   .option-content
                     = t('.joined')
-                -# %p#appointed
-                -#   %i.icon-thumbs-up
-                -#   = t('.joined')
-                -#   %span.badge.badge-info
-                -#     = @event_users
-                -#   / = t('.event_followings_followers_joined', :following => @appointed, :followers => @appointed)
-              = render 'share_event'
-
-
-
               - if user_signed_in?
                 #user-action.span2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
                     = hidden_field_tag 'event_id', @event.id
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
                     = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
-
-
+      = render 'share_event'
       .row-fluid
         .span12
           = render 'comments'
