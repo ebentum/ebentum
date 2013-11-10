@@ -6,4 +6,7 @@ es:
   #S
   session_started_as: "Sesión iniciada como"
   share_message: "Me acabo de apuntar al evento '%{event_name}' en @ebentumApp ¡Echale un vistazo!"
-
+  #M
+  meta_description: "Ven a este evento de ebentum al cual ya van a asistir %{joined} personas"
+  meta_description_default: "ebentum es tu portal de para organizar todo tipo de eventos"
+  meta_keywords_default: "ebentum, eventos, fiestas, conciertos, reuniones, celebraciones, cumpleaños, bodas, comuniones, bautizos, pintxo pote, aniversarios"

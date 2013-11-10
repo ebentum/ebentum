@@ -1,5 +1,7 @@
 es:
   events:
+    comments:
+      comments_for: "Comentarios de %{name}"
     new:
       create_event: "Crear evento"
     form:

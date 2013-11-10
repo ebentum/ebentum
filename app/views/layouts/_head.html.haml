@@ -1,9 +1,14 @@
 %head
   %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
   %meta{:content => "noindex, nofollow, noarchive", :name => "robots"}
+  - meta_description = meta_description(@meta_description)
+  - meta_keywords = meta_keywords(@meta_keywords)
+  %meta{:content => meta_description, :name => "description"}
+  %meta{:content => meta_keywords, :name => "keywords"}
   = render 'layouts/open_graph_metas'
   = csrf_meta_tags
-  %title ebentum
+  %title
+    = head_title(@head_title)
   = stylesheet_link_tag    "application", :media => "all"
   = javascript_include_tag "application"
   = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
