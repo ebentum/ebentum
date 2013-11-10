@@ -1,27 +1,15 @@
-// html {
-//   background: #F7F5F5; //url(fondo2.jpg) repeat;
-// }
+//
+// Fichero donde sobrescribir las clases de Bootstrap, Flat-UI, etc para
+// personalizar el aspecto
+//
 
+@import "navbar";
 
 body {
-  // font-family: 'Lato', sans-serif;
   padding-top: 65px;
   padding-bottom: 50px;
   background: $background;
-  // background: #F7F5F5; // url(fondo2.jpg) repeat;
 }
-// footer {
-//   padding-bottom: 40px;
-// }
-
-// $btnPrimaryBackground: #f00;
-
-// Descomentar si queremos que en movil no haya espacio en los laterales
-// tambien hace que en todos los tamaños gane un poco de ancho
-// .container{
-//   padding: 0px
-// }
-
 
 .footer-banner{
   padding: 0px;
@@ -41,16 +29,6 @@ form{
   margin: 0 0 0 0;
 }
 
-.navbar-fixed-top{
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1),0 1px 0 0 rgba(0, 0, 0, 0.1);
-
-}
-
-
-.navbar-logo{
-  padding-top: 5px;
-  padding-right: 5px;
-}
 
 .modal-header {
   padding: 10px;
@@ -72,6 +50,8 @@ form{
   text-align: center;
   margin-bottom: 20px;
   box-shadow: 1px 1px 5px #888888;
+  line-height: 1.21;
+  font-size: 14px;
 
   .card-content+.card-content { border-top: 1px solid #ddd }
 
@@ -222,7 +202,10 @@ form{
   background-color: #006dcc;
 }
 
-
+.card-icon{
+  font-size: 18px;
+  text-align: center;
+}
 
 .card-content{
   padding: 10px;
@@ -391,9 +374,9 @@ label.error {
     margin-bottom: 10px;
   }
 
-  body {
-    padding-top: 10px;
-  }
+  // body {
+  //   padding-top: 10px;
+  // }
 
 }
 

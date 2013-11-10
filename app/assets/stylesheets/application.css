@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require sass_imports
+ *= require less_imports
  *= require ebentum
- *= require flat-ui
  */
