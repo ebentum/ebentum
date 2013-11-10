@@ -14,9 +14,11 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
       success: (data, status, xhr) ->
         window.location = '/'
 
-  $(document).on 'switch-change', '#facebook_post, #twitter_post', ->
-    provider = $('input', $(this)).data('provider')
-    token_id = $('input', $(this)).data('token')
+  $(document).on 'change', '#facebook_post, #twitter_post', ->
+    provider = $(this).data('provider')
+    token_id = $(this).data('token')
+    console.log provider
+    console.log token_id
     $.ajax
       url: "/tokens/"+token_id
       type: 'PUT'
@@ -46,9 +48,9 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
         $('#userImage img').attr('src', data.image) if $('#import_image').is(':checked')
         $('#image_url').val(data.image) if $('#import_image').is(':checked')
 
-
-  $("#facebook").on "switch-change", (e, data) ->
-    if !$(this).hasClass('toggle-off')
+  $("#facebook").on "change", (e, data) ->
+    switchContainer = $(this).parent()
+    if switchContainer.hasClass 'switch-on'
       window.location = '/users/facebook_login?state=/users/edit.'+$('#user_id').val()
     else
       # borrar app del perfil
@@ -75,8 +77,9 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
       # ocultamos la opción de publicar
       $('#publish_facebook').fadeOut('slow')
 
-  $("#twitter").on "switch-change", (e, data) ->
-    if !$(this).hasClass('toggle-off')
+  $("#twitter").on "change", (e, data) ->
+    switchContainer = $(this).parent()
+    if switchContainer.hasClass 'switch-on'
       window.location = '/users/twitter_login?state=/users/edit.'+$('#user_id').val()
     else
       # borrar token
