@@ -5,16 +5,16 @@
     = f.hidden_field :user_confirmation_required, :value => 'true'
     .row.mbm
       .col-xs-12
-        = f.text_field :complete_name, :placeholder => t('.complete_name'), :class => 'form-control'
+        = f.text_field :complete_name, :placeholder => t('.complete_name'), :class => 'form-control input-sm'
     .row.mbm
       .col-xs-12
-        = f.email_field :email, :placeholder => t('.email'), :class => 'form-control'
+        = f.email_field :email, :placeholder => t('.email'), :class => 'form-control input-sm'
     .row.mbm
       .col-xs-12
-        = f.password_field :password, :placeholder => t('.password'), :class => 'form-control'
+        = f.password_field :password, :placeholder => t('.password'), :class => 'form-control input-sm'
     .row.mbm
       .col-xs-12
-        = f.password_field :password_confirmation, :placeholder => t('.password_confirmation'), :class => 'form-control'
+        = f.password_field :password_confirmation, :placeholder => t('.password_confirmation'), :class => 'form-control input-sm'
     .row.visible-xs.visible-sm.mbm
       .col-xs-12
         = render 'sign_up_with'
