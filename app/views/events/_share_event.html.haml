@@ -1,9 +1,9 @@
 - url = 'http://www.ebentum.com/events/'+@event.id
 - short_url = Googl.shorten(url).short_url
 .col-xs-2.footer-option
-  .option-action
+  .option-action{:style => "max-width: 100px;"}
     %fb:like{:layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
 
 .col-xs-2.footer-option
-  .option-action
+  .option-action{:style => "max-width: 100px;"}
     %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}

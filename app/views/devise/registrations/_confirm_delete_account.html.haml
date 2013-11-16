@@ -1,13 +1,15 @@
-.modal.hide.fade{:id  => 'confirm_delete_account'}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3
-      = t('.attention')
-  .modal-body
-    %p
-      = t('.confirm_delete_account_text')
-  .modal-footer
-    %a.btn{:href => "#", "data-dismiss" => "modal"}
-      = t('.no')
-    %a.btn.btn-primary{:href => "#", :id => 'confirm_delete_account_btn'}
-      = t('.yes_delete_account')
+.modal.fade{:id  => 'confirm_delete_account'}
+  .modal-dialog.card
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3
+          = t('.attention')
+      .modal-body
+        %p
+          = t('.confirm_delete_account_text')
+      .card-footer
+        %a.btn{:href => "#", "data-dismiss" => "modal"}
+          = t('.no')
+        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", :id => 'confirm_delete_account_btn'}
+          = t('.yes_delete_account')

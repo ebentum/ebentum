@@ -1,13 +1,15 @@
-.modal.hide.fade{:id  => 'confirm_delete'}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3
-      = t('.confirm')
-  .modal-body
-    %p
-      = t('.confirm_text')
-  .modal-footer
-    %a.btn{:href => "#", "data-dismiss" => "modal"}
-      = t('.close')
-    %a.btn.btn-primary{:href => "#", :id => 'confirm_delete_btn', :data => {:commentid => '0'}}
-      = t('.confirm')
+.modal.fade{:id  => 'confirm_delete'}
+  .modal-dialog.card
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h3
+          = t('.confirm')
+      .modal-body
+        %p
+          = t('.confirm_text')
+      .card-footer
+        %a.btn{:href => "#", "data-dismiss" => "modal"}
+          = t('.close')
+        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", :id => 'confirm_delete_btn', :data => {:commentid => '0'}}
+          = t('.confirm')
