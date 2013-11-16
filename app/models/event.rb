@@ -20,12 +20,12 @@ class Event
   field :coordinates, type: Array
   field :lat, type: BigDecimal
   field :lng, type: BigDecimal
-  field :appointments_count, type: Integer
+  field :appointments_count, type: Integer, default: 0
 
   reverse_geocoded_by :coordinates
 
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
-  attr_readonly :appointments_count
+  # attr_readonly :appointments_count
 
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 
@@ -39,6 +39,11 @@ class Event
 
   def setCoordinates
     self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
+  end
+
+  def calculate_appointments
+    self.appointments_count = self.users.size
     self.save
   end
 

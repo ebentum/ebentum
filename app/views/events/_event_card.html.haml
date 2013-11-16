@@ -2,6 +2,7 @@
 - image_url = pictureInfo[0]
 - width = pictureInfo[1]
 - height = pictureInfo[2]
+- creator = User.find(event.creator)
 .card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"}
   %a{:href => event_path(event)}
     .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
@@ -17,4 +18,9 @@
         = event.name
         .sub-paragraph
           = event.place
+      .media-body.plm.ptm.pbm.prn
+        .sub-paragraph
+          = t('.created_by')
+        %a{:href => user_path(creator)}
+          = creator.complete_name
 
