@@ -142,67 +142,67 @@
                   = t('.followers')
 
 
-/ .row
-/   .tab-content
-/     #list_results
-/       .tab-pane{:id => "userevents", :data => {:url => events_path(:user_id => @user.id) } }
-/       .tab-pane{:id => "userappointments", :data => {:url => events_path(:user_id => @user.id, :appointments => true) } }
-/       .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
-/       .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
+.row
+  .tab-content
+    #list_results
+      .tab-pane{:id => "userevents", :data => {:url => events_path(:user_id => @user.id) } }
+      .tab-pane{:id => "userappointments", :data => {:url => events_path(:user_id => @user.id, :appointments => true) } }
+      .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
+      .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
 
-/     .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-/       #list_error.alert.alert-error.hidden
-/         %strong
-/           Error!
-/         #error_description
-/       #list_loading.alert.alert-info.hidden
-/         Cargando...
-/       #list_no_userevents.hidden
-/         .card
-/           %a{:href => "/events/search"}
-/             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-/           .card-footer.card-footer-masonry.pts.pbs.plm.prm
-/             %p
-/               - if @user == current_user
-/                 = t('.current_user_no_events')
-/                 %a#events_new{:href => "#"}
-/                   %i.icon-plus
-/                   = t('create')
-/               - else
-/                 = t('.user_no_events')
-/       #list_no_userappointments.hidden
-/         .card
-/           %a{:href => "/events/search"}
-/             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-/           .card-footer.card-footer-masonry.pts.pbs.plm.prm
-/             %p
-/               - if @user == current_user
-/                 = t('.current_user_no_appoints')
-/                 %a.btn.btn-primary{:href => "/events/search"}
-/                   = t('explore')
-/               - else
-/                 = t('.user_no_appoints')
+    .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+      #list_error.alert.alert-error.hidden
+        %strong
+          Error!
+        #error_description
+      #list_loading.alert.alert-info.hidden
+        Cargando...
+      #list_no_userevents.hidden
+        .card
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_events')
+                %a#events_new{:href => "#"}
+                  %i.icon-plus
+                  = t('create')
+              - else
+                = t('.user_no_events')
+      #list_no_userappointments.hidden
+        .card
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_appoints')
+                %a.btn.btn-primary{:href => "/events/search"}
+                  = t('explore')
+              - else
+                = t('.user_no_appoints')
 
-/       #list_no_userfollowing.hidden
-/         .card
-/           %a{:href => "/events/search"}
-/             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-/           .card-footer.card-footer-masonry.pts.pbs.plm.prm
-/             %p
-/               - if @user == current_user
-/                 = t('.current_user_no_followings')
-/               - else
-/                 = t('.user_no_followings')
+      #list_no_userfollowing.hidden
+        .card
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_followings')
+              - else
+                = t('.user_no_followings')
 
-/       #list_no_userfollowers.hidden
-/         .card
-/           %a{:href => "/events/search"}
-/             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-/           .card-footer.card-footer-masonry.pts.pbs.plm.prm
-/             %p
-/               - if @user == current_user
-/                 = t('.current_user_no_followers')
-/               - else
-/                 = t('.user_no_followers')
+      #list_no_userfollowers.hidden
+        .card
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_followers')
+              - else
+                = t('.user_no_followers')
 
 
