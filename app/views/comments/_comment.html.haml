@@ -11,7 +11,7 @@
       %span.mlm{:id => 'body'+commentid}
         = comment.body
       %span{:id => 'edit'+commentid, :class => 'hide'}
-        %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment', :data => {:commentid => comment.id}}
+        %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment form-control input-sm', :data => {:commentid => comment.id}}
           = comment.body
     %small{:id => 'comment_date_'+comment.id.to_s}
       .format-timeago.hidden
