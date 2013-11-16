@@ -3,3 +3,13 @@
   = t(".create_event")
 
 = render 'form'
+
+- content_for(:modal_footer) do
+  .row.card-footer
+    .col-xs-3.col-sm-offset-6.footer-option.option-active
+      .option-action
+        %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
+    .col-xs-3.footer-option
+      .option-action
+        %button.btn.btn-inverse{"aria-hidden" => "true", "data-dismiss" => "modal"}
+          = t(".cancel")

@@ -2,10 +2,10 @@ en:
   events:
     new:
       create_event: "Create event"
-    form:
-      add_image: "Add image"
       cancel: "Cancel"
       create: "Create"
+    form:
+      add_image: "Add image"
       date: "Date"
       description_optional: "Description (optional)"
       name: "Name"

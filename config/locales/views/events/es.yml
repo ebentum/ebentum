@@ -2,10 +2,10 @@ es:
   events:
     new:
       create_event: "Crear evento"
-    form:
-      add_image: "Añadir imagen"
       cancel: "Cancelar"
       create: "Crear"
+    form:
+      add_image: "Añadir imagen"
       date: "Fecha"
       description_optional: "Descripción (opcional)"
       name: "Nombre"

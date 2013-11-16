@@ -1,43 +1,37 @@
 #event_main_picture_form
   = render 'pictures/main_picture_form', main_picture: @picture
 
-= form_for @event, :html => { :multipart => true  } do |f|
+= form_for @event, :html => { :multipart => true, :class => 'form-horizontal'   } do |f|
   %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden"}
   .card-content
-    = f.text_field :name, :placeholder => t(".name"), :class => "form-control"
-    = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control", :rows => 4
-  .pam
-    .row
+    .pam
+      = f.text_field :name, :placeholder => t(".name"), :class => "form-control input-sm mbs"
+      = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control input-sm", :rows => 4
+  .card-content
+    .row.pam
       .col-xs-6
-        -# .input-prepend
-        -#   %span.add-on
-        -#     %i.icon-calendar
-        -# .control-group
-        -#   -#.fui-lock-16{:for => "event_start_date"}
-        -# %label.control-label
-        %i.fui-calendar-24
-        = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}
+        .form-group.mbn
+          %label.control-label.col-sm-2
+            %i.icon-calendar
+          .col-sm-10
+            = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
       .col-xs-6
-        -# .input-prepend
-        -#   %span.add-on
-        -#     %i.icon-time
-        %i.fui-time-24
-        = f.text_field :start_time, :placeholder => t(".time")
+        .form-group.mbn
+          %label.control-label.col-sm-2
+            %i.icon-time
+          .col-sm-10
+            = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
 
-
-    %i.fui-location-24
-    %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete"}
+  .card-content
+    .row.pam
+      .col-sm-1
+        %label.control-label
+          %i.icon-map-marker
+      .col-sm-11
+        %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete", :class => "form-control input-sm"}
     = f.hidden_field :place
     = f.hidden_field :lat
     = f.hidden_field :lng
 
-  #map_canvas
+  #map_canvas.mts
 
-.row.card-footer
-  .col-xs-3.col-sm-offset-6.footer-option.option-active
-    .option-action
-      %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
-  .col-xs-3.footer-option
-    .option-action
-      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"}
-        = t(".cancel")
