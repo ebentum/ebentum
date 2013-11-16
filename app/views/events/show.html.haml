@@ -22,7 +22,7 @@
                   .card-content
                     .media
                       .pull-left
-                        .media-object.fui-man-24.mll
+                        .media-object.icon-user.mll
                       .media-body
                         - user = User.find(@event.creator)
                         = t('.organized_by')
@@ -31,13 +31,13 @@
                   .card-content
                     .media
                       .pull-left
-                        .media-object.fui-calendar-24.mll
+                        .media-object.icon-calendar.mll
                       .media-body
                         = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
                   .card-content
                     .media
                       .pull-left
-                        .media-object.fui-location-24.mll
+                        .media-object.icon-map-marker.mll
                       .media-body
                         = @event.place
                   -# .card-content
