@@ -6,8 +6,6 @@ es:
       created_by: "Creado por:"
     new:
       create_event: "Crear evento"
-      cancel: "Cancelar"
-      create: "Crear"
     form:
       add_image: "Añadir imagen"
       date: "Fecha"
@@ -15,6 +13,8 @@ es:
       name: "Nombre"
       place: "Lugar"
       time: "Hora"
+      cancel: "Cancelar"
+      create: "Crear"
     show:
       join: "¡Me uno!"
       joined: "Unidos"

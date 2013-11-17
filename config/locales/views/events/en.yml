@@ -6,8 +6,6 @@ en:
       created_by: "Created by:"
     new:
       create_event: "Create event"
-      cancel: "Cancel"
-      create: "Create"
     form:
       add_image: "Add image"
       date: "Date"
@@ -15,6 +13,8 @@ en:
       name: "Name"
       place: "Place"
       time: "Time"
+      cancel: "Cancel"
+      create: "Create"
     show:
       join: "Join me!"
       joined: "Joined"
