@@ -1,6 +1,8 @@
 .card.card-inverse
   .card-header
+    %h2
+      = t('.comments_for', :name => @event.name)
   = render 'comments/new_comment'
   #comments{:data => {:comments_page => 1}}
-    %ul.media-list{:id => 'event_comments'}
+    %ul.media-list.comment-list{:id => 'event_comments'}
   = render 'comments/confirm_delete'

@@ -1,9 +1,10 @@
 - url = 'http://www.ebentum.com/events/'+@event.id
 - short_url = Googl.shorten(url).short_url
-.span2.footer-option
-  .option-action
-    %fb:like{:layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
-
-.span2.footer-option
-  .option-action
-    %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}
+.row-fluid
+  .card
+    .card-content.hidden-phone.hidden-tablet
+      %fb:like{:layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
+      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}
+    .card-content.visible-phone.visible-tablet
+      %fb:like{:class => 'fb-like', :layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
+      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}

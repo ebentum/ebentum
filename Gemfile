@@ -76,3 +76,6 @@ end
 
 # Monitorizar la aplicación en heroku
 gem 'newrelic_rpm'
+
+# Urls para seo
+gem "mongoid_slug", "~> 3.2.0"

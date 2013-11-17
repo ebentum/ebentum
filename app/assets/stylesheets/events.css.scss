@@ -6,6 +6,10 @@
   z-index: 1200 !important;
 }
 
+.ui-timepicker-wrapper {
+  z-index: 1060;
+}
+
 #place_autocomplete {
   width: 92%;
 }

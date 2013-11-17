@@ -5,7 +5,7 @@ Paloma.DateTimes.format()
 # Document ready
 $(
   () ->
-    Paloma.Events.initNewEventOption()
+    Paloma.Events.initEventFormOption("new")
 )
 
 

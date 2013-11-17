@@ -99,7 +99,7 @@ Paloma.Comments =
                 dataType: 'html'
                 success: (data, status, xhr) ->
                   data = $(data)
-                  $('#event_comments').prepend(data)
+                  $('#event_comments').append(data)
                   $('#event_comments li:last').hide()
                   $('#event_comments li:last').fadeIn('fast')
                   $('#new_comment_textarea').val('')
@@ -118,9 +118,30 @@ Paloma.Comments =
               comment:
                 body: $('#editcomment'+commentid+' #edit_comment_textarea_'+commentid).val()
             success: (data, status, xhr) ->
-              $('#bodycomment' + data._id).text(data.body)
-              $('#comment_date_'+ data._id).text(data.updated_at_formated)
-              Paloma.Comments.comment_edit_mode_off(data._id)
+              # Guardamos el id del siguiente comentario para saber donde hacer el prepend
+              next_id = $('#comment' + data._id).next().attr('id')
+              # Guardamos el id del anterior comentario para saber donde hacer el append
+              prev_id = $('#comment' + data._id).prev().attr('id')
+              # eliminamos el comentario del DOM
+              $('#comment' + data._id).remove()
+              # cargamos el comentario
+              comment_id = data._id
+              $.ajax
+                url: "/comments/"+comment_id
+                type: 'GET'
+                dataType: 'html'
+                success: (data, status, xhr) ->
+                  data = $(data)
+                  if next_id
+                    data.insertBefore('#'+next_id)
+                  else
+                    data.insertAfter('#'+prev_id)
+                  #$('#event_comments').prepend(data)
+                  $('#'+data._id).hide()
+                  $('#'+data._id).fadeIn('fast')
+                  $('#new_comment_textarea').val('')
+                  $('#new_comment').fadeIn 'fast'
+                  Paloma.DateTimes.format($('#event_comments'))
 
       else if event.keyCode == 27 # ESC
         commentid = $(this).data('commentid')

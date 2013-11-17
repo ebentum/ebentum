@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @event    = Event.find(params[:event_id])
     @page     = params[:page] || 1
 
-    @comments = @event.comments.order_by("updated_at desc").page(@page)
+    @comments = @event.comments.order_by("created_at asc").page(@page)
 
     if request.xhr?
       js_callback false

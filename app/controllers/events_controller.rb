@@ -25,10 +25,10 @@ class EventsController < ApplicationController
     @page = params[:page] || 1
 
     my_location = [request.location.latitude, request.location.longitude]
-    #my_location = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
+    # my_location = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
 
-    @distanceSelected = params[:distance] || 2 # A 2 km
-    @daysSelected     = params[:days]     || 1 # Hoy
+    @distanceSelected = params[:distance] || 2 # Cerca
+    @daysSelected     = params[:days]     || 2 # Pronto
     @events           = Event
     if @distanceSelected.to_i > 0
       @events = @events.near(my_location, @distanceSelected, :units => :km)
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
       @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
     end
 
-    @events = @events.order_by("start_date asc")
+    @events = @events.order_by("appointments_count desc")
     @events = @events.page(@page)
 
     if request.xhr?
@@ -94,6 +94,11 @@ class EventsController < ApplicationController
     end
     @event_users = @event.users.size
 
+    # Temas de mejora de SEO
+    @head_title       = @event.name
+    @meta_description = @event.description+' '+t(:meta_description, :joined => @event_users)
+    @meta_keywords    = @event.description
+
     js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}
 
     respond_to do |format|
@@ -126,7 +131,7 @@ class EventsController < ApplicationController
     #  picture = Picture.new
     #  @event.main_picture = picture
     end
-    
+
 
     respond_to do |format|
       if @event.save
@@ -144,10 +149,25 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @picture = @event.get_picture
+
+    respond_to do |format|
+      format.html { render :layout => 'modal_window' }
+      format.json { render :json => @event }
+    end
   end
 
   def update
     @event = Event.find(params[:id])
+
+    picture = Picture.find(params[:event][:main_picture_id])
+    if params[:event][:main_picture_id] != '#'
+      if picture.nil?
+        @event.main_picture = nil
+      else
+        @event.main_picture = picture
+      end
+    end
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -176,6 +196,7 @@ class EventsController < ApplicationController
     event_id = params[:eventid]
     event    = Event.find(event_id)
     event.users.push(current_user)
+    event.appointments_count = event.appointments_count + 1
 
     Activity.new.fill_data("join", current_user, event).save
 
@@ -187,6 +208,7 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     user     = current_user
     event.users.delete(user)
+    event.appointments_count = event.appointments_count - 1
 
     activity = Activity.where("verb" => "join", "actor._id" => user._id, "subject._id" => event._id)
     activity.delete_all

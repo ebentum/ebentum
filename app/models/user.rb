@@ -98,4 +98,8 @@ class User
     end
   end
 
+  after_update do |user|
+    Activity.update_related_activities(user)
+  end
+
 end

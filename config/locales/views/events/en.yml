@@ -1,5 +1,9 @@
 en:
   events:
+    comments:
+      comments_for: "Comments for %{name}"
+    event_card:
+      created_by: "Created by:"
     new:
       create_event: "Create event"
     form:
@@ -16,6 +20,7 @@ en:
       joined: "Joined"
       event_followings_followers_joined: "(%{following} following and %{followers} followers)"
       organized_by: "Organized by"
+      edit: "Edit"
     confirm_appoint:
       close: "Close"
       confirm: "Confirm"
@@ -35,10 +40,12 @@ en:
       now: "Now!"
       right_here: "Right here!"
       search: "Search"
-      this_week: "From now until 10 days"
-      this_month: "From now until 30 days"
+      soon: "Soon"
+      one_week: "One week"
+      one_month: "One month"
       tomorrow: "Tomorrow"
       to_10_km: "To 10 km"
       to_20_km: "To 20 km"
+      to_50_km: "To 50 km"
       when: "When?"
       where: "Where?"
