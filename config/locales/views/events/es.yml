@@ -1,5 +1,9 @@
 es:
   events:
+    comments:
+      comments_for: "Comentarios de %{name}"
+    event_card:
+      created_by: "Creado por:"
     new:
       create_event: "Crear evento"
       cancel: "Cancelar"
@@ -16,6 +20,7 @@ es:
       joined: "Unidos"
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
+      edit: "Editar"
     confirm_appoint:
       close: "Cerrar"
       confirm: "Confirmar"
@@ -29,16 +34,18 @@ es:
     share_event:
       twitter_share_text: "¡Mira este evento!"
     search:
-      close_to_me: "Cerca de donde estoy"
+      close_to_me: "Cerca"
       farther: "¡Más lejos!"
       i_dont_care: "¡Me da igual!"
       now: "¡Ahora!"
       right_here: "¡Aquí mismo!"
       search: "Buscar"
-      this_week: "De aquí a 10 días"
-      this_month: "De aquí a 30 días"
+      soon: "Pronto"
+      one_week: "Una semana"
+      one_month: "Un mes"
       tomorrow: "Mañana"
-      to_10_km: "A unos 10 km"
-      to_20_km: "A unos 20 km"
+      to_10_km: "A 10 km"
+      to_20_km: "A 20 km"
+      to_50_km: "A 50 km"
       when: "¿Cuando?"
       where: "¿Dónde?"

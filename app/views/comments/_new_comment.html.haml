@@ -1,5 +1,5 @@
 - if current_user
-  %ul.media-list{:id => 'new_comment'}
+  %ul.media-list.comment-list{:id => 'new_comment'}
     %li.media.card-content
       %a.pull-left{:href => "#"}
         = image_tag(current_user.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')

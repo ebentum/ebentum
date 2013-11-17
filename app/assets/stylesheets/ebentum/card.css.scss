@@ -61,6 +61,12 @@
   border-radius: 6px 6px 0 0;
 }
 
+.card-header h1, h2{
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 24px;
+}
+
 .card-footer{
   // font-size: 20px;
   margin: 0;
@@ -154,7 +160,7 @@
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
   .card {
-    background: $inverse;
+    /*background: $inverse;*/
     border-radius: 6px;
     padding: 0px;
     text-align: center;
@@ -177,7 +183,7 @@
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .card {
-    background: $inverse;
+    /*background: $inverse;*/
     border-radius: 6px;
     padding: 0px;
     text-align: center;
@@ -201,14 +207,20 @@
   //   padding-top: 10px;
   // }
 
+  .event_search_form select {
+    margin-right: 0px !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .fb-login-button {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+
+  .fb-like-button {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
 }
 
-.fb-login-button {
-  margin-top: 5em;
-  margin-bottom: 5em;
-}
-
-.fb-like-button {
-  margin-top: 5em;
-  margin-bottom: 5em;
-}

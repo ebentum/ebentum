@@ -27,9 +27,9 @@ Paloma.Pictures =
 
     $('#'+objectId+' #main_picture_delete_button').on "click", (e) ->
       event.preventDefault()
-      $('#"+objectId+" #main_picture_delete').modal()
+      $('#'+objectId+' #main_picture_delete').modal()
 
-    $(document).on "click", "#"+objectId+" #main_picture_confirm_delete_button", (event) ->
+    $(document).on "click", "#main_picture_confirm_delete_button", (event) ->
       $('#'+inputImageId).val("")
-      $('#'+objectId+' #main_picture_delete').modal('hide')
+      $('#main_picture_delete').modal('hide')
       $('#'+objectId+' #main_picture_preview').attr("src", missingImage)

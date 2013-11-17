@@ -4,6 +4,12 @@ class Event
   include Mongoid::Paperclip
   include Paperclip::Glue
   include Geocoder::Model::Mongoid
+  include Mongoid::Slug
+
+  #slug :name
+  slug do |cur_object|
+    "#{cur_object.name}".parameterize
+  end
 
   field :name, type: String
   field :description, type: String
@@ -14,12 +20,12 @@ class Event
   field :coordinates, type: Array
   field :lat, type: BigDecimal
   field :lng, type: BigDecimal
-  field :appointments_count, type: Integer
+  field :appointments_count, type: Integer, default: 0
 
   reverse_geocoded_by :coordinates
 
   attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
-  attr_readonly :appointments_count
+  # attr_readonly :appointments_count
 
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 
@@ -30,8 +36,14 @@ class Event
   has_and_belongs_to_many :users, inverse_of: :events
   has_many :comments, inverse_of: :event, dependent: :destroy
 
+
   def setCoordinates
     self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
+  end
+
+  def calculate_appointments
+    self.appointments_count = self.users.size
     self.save
   end
 
@@ -45,6 +57,9 @@ class Event
 
   after_create do |event|
     Activity.new.fill_data("create", self.creator, self).save
+  end
+  after_update do |user|
+    Activity.update_related_activities(user)
   end
 
 end

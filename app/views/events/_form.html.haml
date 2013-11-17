@@ -2,7 +2,7 @@
   = render 'pictures/main_picture_form', main_picture: @picture
 
 = form_for @event, :html => { :multipart => true, :class => 'form-horizontal'   } do |f|
-  %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden"}
+  %input#event_main_picture_input{:name => "event[main_picture_id]", :type => "hidden", :value => "#"}
   .card-content
     .pam
       = f.text_field :name, :placeholder => t(".name"), :class => "form-control input-sm mbs"
@@ -28,7 +28,8 @@
         %label.control-label
           %i.icon-map-marker
       .col-sm-11
-        %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete", :class => "form-control input-sm"}
+        %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete", :class => "form-control input-sm", :value => @event.place}
+
     = f.hidden_field :place
     = f.hidden_field :lat
     = f.hidden_field :lng
