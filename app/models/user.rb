@@ -7,7 +7,7 @@ class User
   include Mongo::Followable::History
 
   devise :database_authenticatable,
-         #:token_authenticatable,
+         :token_authenticatable,
          :omniauthable,
          :confirmable,
          :recoverable,
@@ -28,6 +28,7 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
+  field :authentication_token, :type => String
 
   validates_presence_of :encrypted_password
   validates_presence_of :complete_name
