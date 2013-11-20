@@ -170,21 +170,22 @@
                   = t('create')
               - else
                 = t('.user_no_events')
-      #list_no_userappointments.hidden
-        .card
+      #list_no_userappointments.hidden.row
+        .card.col-xs-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
             %p
               - if @user == current_user
                 = t('.current_user_no_appoints')
+                %br
                 %a.btn.btn-primary{:href => "/events/search"}
                   = t('explore')
               - else
                 = t('.user_no_appoints')
 
-      #list_no_userfollowing.hidden
-        .card
+      #list_no_userfollowing.hidden.row
+        .card.col-xs-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
@@ -195,7 +196,7 @@
                 = t('.user_no_followings')
 
       #list_no_userfollowers.hidden
-        .card
+        .card.col-xs-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 200px; height: 200px;"}
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
