@@ -23,7 +23,7 @@ Paloma.devise.registrations =
       dataType: 'json'
       beforeSend: ->
         # quitar las marcas de error
-        $('div.form-group').removeClass('error')
+        $('div.control-group').removeClass('error')
         $(sign_up_error).fadeOut('slow')
         $('div.controls input').next().text('')
         # boton en estado loading

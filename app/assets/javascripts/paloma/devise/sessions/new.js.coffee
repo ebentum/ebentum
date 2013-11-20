@@ -11,7 +11,7 @@ Paloma.callbacks["devise/sessions/new"] = (params) ->
       dataType: 'json'
       beforeSend: ->
         # quitar las marcas de error
-        $('div.form-group').removeClass('error')
+        $('div.control-group').removeClass('error')
         $('#sign_in_error').fadeOut('slow')
         # boton en estado loading
         $('#sign_in_button').button('loading')

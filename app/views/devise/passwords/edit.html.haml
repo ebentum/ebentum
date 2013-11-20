@@ -7,13 +7,13 @@
       .card-content
         .row
           .col-xs-12
-            .form-group
+            .control-group
               .controls
                 = f.password_field :password, :id => 'password', :placeholder => t('.new_password'), :class => 'form-control'
                 %span.help-inline
         .row
           .col-xs-12
-            .form-group
+            .control-group
               .controls
                 = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.new_password_confirmation'), :class => 'form-control'
                 %span.help-inline

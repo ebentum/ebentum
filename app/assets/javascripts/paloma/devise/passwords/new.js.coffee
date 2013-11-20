@@ -9,7 +9,7 @@ Paloma.callbacks["devise/passwords/new"] = (params) ->
       dataType: 'json'
       beforeSend: ->
         # quitar las marcas de error
-        $('div.form-group').removeClass('error')
+        $('div.control-group').removeClass('error')
         $('div.controls input').next().text('')
         # boton en estado loading
         $('#new_password_button').button('loading')

@@ -22,12 +22,12 @@
     .card-content
       .row
         .col-xs-12
-          .form-group{:class => klass}
+          .control-group{:class => klass}
             .controls
               = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'form-control'
       .row
         .col-xs-12
-          .form-group{:class => klass}
+          .control-group{:class => klass}
             .controls
               = f.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'form-control'
       .row

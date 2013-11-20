@@ -6,13 +6,13 @@
 = hidden_field_tag 'user_id', user._id
 
 .card-content
-  .form-group
+  .control-group
     .icon-facebook
       Facebook
 
   .row
     .col-xs-6
-      .form-group
+      .control-group
         %label.control-label
           = t('.log_with', :provider => 'Facebook')
         .controls
@@ -38,13 +38,13 @@
             %input#facebook_post{:type => "checkbox", :checked => fbPubChecked, "data-toggle" => "switch", :data => {:provider => 'facebook', :token => fb_access_token_id}}
 
 .card-content
-  .form-group
+  .control-group
     .icon-twitter
       Twitter
 
   .row
     .col-xs-6
-      .form-group
+      .control-group
         %label.control-label
           = t('.log_with', :provider => 'Twitter')
         .controls
