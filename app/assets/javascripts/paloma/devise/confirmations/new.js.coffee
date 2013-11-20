@@ -9,7 +9,7 @@ Paloma.callbacks["devise/confirmations/new"] = (params) ->
       dataType: 'json'
       beforeSend: ->
         # quitar las marcas de error
-        $('div.control-group').removeClass('error')
+        $('div.form-group').removeClass('error')
         $('div.controls input').next().text('')
         # boton en estado loading
         $('#new_confirmation_button').button('loading')
