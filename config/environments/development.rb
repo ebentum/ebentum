@@ -49,9 +49,9 @@ Ebentum::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'ebentum_development',
-      :access_key_id => 'AKIAJ5UBKCEKEXMFVEJQ',
-      :secret_access_key => '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'
+      :bucket => 'ebentum.dev',
+      :access_key_id => 'AKIAIES4PSLU77UPL5JQ',
+      :secret_access_key => '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'
     }
   }
 
