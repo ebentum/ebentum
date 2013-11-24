@@ -19,27 +19,27 @@
 
             #event-info-row.card-content
               .row
-                .col-xs-6.ptl
+                .col-xs-6.pts.pll
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.icon-user.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-user
+                      .col-xs-10
                         - user = User.find(@event.creator)
                         = t('.organized_by')
                         %a{:href => user_path(user)}
                           = user.complete_name
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.icon-calendar.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-calendar
+                      .col-xs-10
                         = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.icon-map-marker.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-map-marker
+                      .col-xs-10
                         = @event.place
 
                 .col-xs-6.man
