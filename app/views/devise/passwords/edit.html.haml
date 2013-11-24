@@ -5,20 +5,20 @@
       .card-header
         = t('.change_your_password')
       .card-content
-        .row-fluid
-          .span12
-            .control-group
+        .row
+          .col-xs-12
+            .form-group
               .controls
-                = f.password_field :password, :id => 'password', :placeholder => t('.new_password'), :class => 'input-block-level'
+                = f.password_field :password, :id => 'password', :placeholder => t('.new_password'), :class => 'form-control'
                 %span.help-inline
-        .row-fluid
-          .span12
-            .control-group
+        .row
+          .col-xs-12
+            .form-group
               .controls
-                = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.new_password_confirmation'), :class => 'input-block-level'
+                = f.password_field :password_confirmation, :id => 'password_confirmation', :placeholder => t('.new_password_confirmation'), :class => 'form-control'
                 %span.help-inline
-      .row-fluid.card-footer
-        .span7.footer-option.option-active.pull-right.btn-round-bottom-right
+      .row.card-footer
+        .col-xs-7.footer-option.option-active.pull-right.btn-round-bottom-right
           .option-action.btn-round-bottom-right
             = f.button t('.confirm_new_password'), :type => 'button', :class => 'btn btn-large btn-primary', :id => 'edit_password_button', :data => {'loading-text' => t('.changing_password')}
     .alert.alert-success.hide{:id => 'edit_password_success'}

@@ -4,7 +4,7 @@ Paloma.callbacks["users/show"] = (params) ->
 
   Paloma.g.initActionButtons()
 
-  $('a[data-toggle="pill"]').on "show", (e) ->
+  $('a[data-toggle="pill"]').on "show.bs.tab", (e) ->
     $('#userpagetabs .footer-option').removeClass('active')
     $(this).parent().addClass('active')
     Paloma.users.showTab(e.target.hash)

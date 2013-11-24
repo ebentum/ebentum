@@ -1,72 +1,74 @@
-.span12
-  .row-fluid
-    .span4
+.col-xs-12
+  .row
+    .col-xs-4
       .card-square
         = image_tag(@event.get_picture.photo.url(:medium), :class => 'block')
 
-    .span8
-      .row-fluid
-        .span12
+    .col-xs-8
+      .row
+        .col-xs-12
           .card
             .card-header
               %h1
                 = @event.name
             .card-content
-              .row-fluid
-                .span12
+              .row
+                .col-xs-12
                   #event_description
                     = @event.description
 
             #event-info-row.card-content
-              .row-fluid
-                .span6.ptl
+              .row
+                .col-xs-6.pts.pll
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.fui-man-24.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-user
+                      .col-xs-10
                         - user = User.find(@event.creator)
                         = t('.organized_by')
                         %a{:href => user_path(user)}
                           = user.complete_name
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.fui-calendar-24.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-calendar
+                      .col-xs-10
                         = l(@event.start_date, :format => :long)+', '+l(@event.start_time, :format => :short)
                   .card-content
-                    .media
-                      .pull-left
-                        .media-object.fui-location-24.mll
-                      .media-body
+                    .row
+                      .col-xs-2
+                        .media-object.icon-map-marker
+                      .col-xs-10
                         = @event.place
-                .span6.man
+
+                .col-xs-6.man
                   #map.block
 
-            .row-fluid.card-footer
+            .row.card-footer
               -if @event.creator == current_user
-                .span2.footer-option.option-active
+                .col-xs-2.footer-option.option-active.btn-round-bottom-left
                   .option-action
                     = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
               - else
-                .span2.footer-option
+                .col-xs-2.footer-option
 
-              .span2.footer-option
+              .col-xs-2.footer-option
                 %a#appointed{:href => "#"}
                   .option-header
                     = @event_users
                   .option-content
                     = t('.joined')
+              = render 'share_event'
+
               - if user_signed_in?
-                #user-action.span2.footer-option.pull-right.btn-round-bottom-right
+                #user-action.col-xs-2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
                     = hidden_field_tag 'event_id', @event.id
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
                     = button_tag '¡Desapuntame!', :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => 'Desapuntandome...'}
-      = render 'share_event'
-      .row-fluid
-        .span12
+      .row
+        .col-xs-12
           = render 'comments'
 
 = render 'confirm_appoint'

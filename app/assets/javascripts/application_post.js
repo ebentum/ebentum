@@ -12,28 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require twitter/bootstrap
 //= require jquery.masonry
 //= require jquery.autosize
 //= require bootstrap-modalmanager
 //= require bootstrap-modal
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.es
+//= require bootstrap-select
+//= require bootstrap-switch
 //= require jquery.timepicker
 //= require jquery.validate
 //= require jquery.validate.es
 //= require jquery.ui.widget
 //= require jquery.fileupload
+//= require jquery-ui-1.10.3.custom.min
+//= require jquery.ui.touch-punch.min
+//= require flatui-checkbox
+//= require flatui-radio
+//= require jquery.tagsinput
+//= require jquery.placeholder
 
 //= require jquery.caret
 
-//= require bootstrapSwitch
 //= require moment
 //= require moment-es
-
-
-//= require custom_checkbox_and_radio.js
-//= require custom_radio.js
 
 //= require i18n
 //= require i18n/translations

@@ -8,13 +8,13 @@ es:
       create_event: "Crear evento"
     form:
       add_image: "Añadir imagen"
-      cancel: "Cancelar"
-      create: "Crear"
       date: "Fecha"
       description_optional: "Descripción (opcional)"
       name: "Nombre"
       place: "Lugar"
       time: "Hora"
+      cancel: "Cancelar"
+      create: "Crear"
     show:
       join: "¡Me uno!"
       joined: "Unidos"

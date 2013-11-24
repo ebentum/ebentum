@@ -1,50 +1,98 @@
-.navbar.navbar-inverse.navbar-fixed-top
-  .navbar-inner
-    .container
-      %a.btn.btn-navbar{"data-target" => "#nav-collapse-01", "data-toggle" => "collapse", :type => "button"}
+%nav.navbar.navbar-default.navbar-fixed-top{"role" => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"type" => "button", "data-target" => "#nav-collapse-01", "data-toggle" => "collapse"}
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      .navbar-logo.pull-left
-        %a{:href => root_url}
-          = image_tag('/logo/ebentum_38.png')
-      %a{:href => root_url}
-        .brand
-          ebentum
-      #nav-collapse-01.nav-collapse.collapse
-        %ul.nav
+      %a.navbar-brand.media{:href => root_url}
+        .pull-left.navbar-logo-text
+          e
+        .pull-left.navbar-logo
+          = image_tag('logo/ebentum_38.png', "class" => "media-object" )
+        .media-body
+          entum
+    #nav-collapse-01.collapse.navbar-collapse
+      .hidden-xs
+        %ul.nav.navbar-nav.navbar-left
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
               = t('.activity')
           %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
             %a{:href => "/events/search"}
               = t('.explore')
+
         - if user_signed_in?
-          %ul.nav.pull-right
+          %ul.nav.navbar-nav.navbar-right
             %li
               %a#events_new{:href => "#"}
                 %i.icon-plus
                 Crear
-            %li
-              %a
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
                 %i.icon-user
                 = current_user.complete_name
-              %ul
+              %ul.dropdown-menu
                 %li
-                  %a{:href => user_path(current_user), :tabindex => '-1'}
+                  %a{:href => user_path(current_user)}
                     %i.icon-user
                     = t('.profile')
                 %li
-                  %a{:href => edit_user_registration_path(current_user), :tabindex => '-1'}
+                  %a{:href => edit_user_registration_path(current_user)}
                     %i.icon-cog
                     = t('.configuration')
+                %li.divider
                 %li
-                  %a{:href => destroy_user_session_path, :tabindex => '-1', :data => {:method => :delete}}
+                  %a{:href => destroy_user_session_path, :data => {:method => :delete}}
                     %i.icon-off
                       = t('.logout')
         - else
-          %ul.nav.pull-right
+          %ul.nav.navbar-nav.navbar-right
             %li
               = link_to t('.sign_up'), new_user_registration_path
             %li
+              = link_to t('.sign_in'), new_user_session_path
+      .visible-xs
+        %ul.navbar-xs.list-group.mtm
+          %li.list-group-item{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
+            %a{:href => root_url}
+              .pull-left
+                %i.icon-bullhorn.media-object
+              .media-body
+                = t('.activity')
+          %li.list-group-item{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+            %a{:href => "/events/search"}
+              .pull-left
+                %i.icon-compass.media-object
+              .media-body
+                = t('.explore')
+
+        %ul.navbar-xs.list-group.mtm
+          - if user_signed_in?
+            %li.list-group-item
+              %a{:href => user_path(current_user)}
+                .media
+                  .pull-left
+                    %i.icon-user.media-object
+                  .media-body
+                    = t('.profile')
+            %li.list-group-item
+              %a{:href => edit_user_registration_path(current_user)}
+                .media
+                  .pull-left
+                    %i.icon-cog.media-object
+                  .media-body
+                    = t('.configuration')
+            / %li.divider
+            %li.list-group-item
+              %a{:href => destroy_user_session_path, :data => {:method => :delete}}
+                .media
+                  .pull-left
+                    %i.icon-off.media-object
+                  .media-body
+                    = t('.logout')
+          - else
+            %li.list-group-item
+              = link_to t('.sign_up'), new_user_registration_path
+            %li.list-group-item
               = link_to t('.sign_in'), new_user_session_path

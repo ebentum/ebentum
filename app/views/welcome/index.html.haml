@@ -1,32 +1,32 @@
-.span7.hidden-phone.hidden-tablet
+.col-xs-7.hidden-xs.hidden-sm
   .fb-login-button
     = render 'login-button'
   .fb-like-button
     = render 'like-button'
-.span4.offset1.hidden-phone.hidden-tablet
-  .row-fluid
-    .span12
+.col-xs-4.col-sm-offset-1.hidden-xs.hidden-sm
+  .row
+    .col-xs-12
       .card
         = render 'sign_in_form'
-  .row-fluid
-    .span12
+  .row
+    .col-xs-12
       .card
         = render 'sign_up_form'
-.visible-phone.visible-tablet
-  .row-fluid
-    .span12
+.visible-xs.visible-sm
+  .row
+    .col-xs-12
       .card
         = render 'sign_in_form'
-  .row-fluid
-    .span12
+  .row
+    .col-xs-12
       .card
         = render 'sign_up_form'
-.visible-phone.visible-tablet
-  .row-fluid
+.visible-xs.visible-sm
+  .row
     .card
       .card-content
         = render 'login-button-mobile'
-  .row-fluid
+  .row
     .card
       .card-content
         = render 'like-button-mobile'

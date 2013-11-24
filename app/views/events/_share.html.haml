@@ -1,22 +1,21 @@
 - if @fb_access_token
-  %p
-    - klass = 'toggle toggle-icon toggle-off'
-    - if @fb_access_token.autopublish
-      - klass = 'toggle toggle-icon'
-    #facebook_share{:class => klass}
-      %label.toggle-radio.fui-checkmark-16{:for => "facebook_share_enabled"}
-      %input#facebook_share_enabled{:name => "facebook_share_enabled", :type => "radio", :value => "option5"}/
-      %label.toggle-radio.fui-cross-16{:for => "facebook_share_disabled"}
-      %input#facebook_share_disabled{:checked => "checked",:name => "facebook_share_disabled", :type => "radio", :value => "option6"}/
-    = t('.share_activity', :provider => 'Facebook')
+  .row
+    %label.control-label.col-sm-4
+      = t('.share_activity', :provider => 'Facebook')
+    .controls.col-sm-8
+      .switch
+        - fbPubCheched = false
+        - if @fb_access_token.autopublish
+          - fbPubChecked = true
+        %input#facebook_share{:type => "checkbox", :checked => fbPubChecked, "data-toggle" => "switch"}
+
 - if @tw_access_token
-  %p
-    - klass = 'toggle toggle-icon toggle-off'
-    - if @tw_access_token.autopublish
-      - klass = 'toggle toggle-icon'
-    #twitter_share{:class => klass}
-      %label.toggle-radio.fui-checkmark-16{:for => "twitter_share_enabled"}
-      %input#twitter_share_enabled{:name => "twitter_share_enabled", :type => "radio", :value => "option5"}/
-      %label.toggle-radio.fui-cross-16{:for => "twitter_share_disabled"}
-      %input#twitter_share_disabled{:checked => "checked",:name => "twitter_share_disabled", :type => "radio", :value => "option6"}/
-    = t('.share_activity', :provider => 'Twitter')
+  .row
+    %label.control-label.col-sm-4
+      = t('.share_activity', :provider => 'Twitter')
+    .controls.col-sm-8
+      .switch
+        - twPubCheched = false
+        - if @tw_access_token.autopublish
+          - twPubCheched = true
+        %input#twitter_post{:type => "checkbox", :checked => twPubCheched, "data-toggle" => "switch"}

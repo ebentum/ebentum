@@ -3,16 +3,16 @@
     .card-header
       = t('.sign_in')
     .card-content
-      .row-fluid
-        .span12{:id => 'omniauth_options'}
+      .row
+        .col-xs-12{:id => 'omniauth_options'}
           %label
             = t('.sign_in_with')
-          .row-fluid
-            .span6
+          .row
+            .col-xs-6
               %a.btn.btn-facebook.btn-block.btn-large.pull-left{:href => '/users/facebook_login'}
                 %i.icon-facebook
                 facebook
-            .span6
+            .col-xs-6
               %a.btn.btn-info.btn-block.btn-large.pull-right{:href => '/users/twitter_login'}
                 %i.icon-twitter
                 twitter
@@ -20,24 +20,24 @@
       - if flash[:alert]
         - klass = 'error'
     .card-content
-      .row-fluid
-        .span12
-          .control-group{:class => klass}
+      .row
+        .col-xs-12
+          .form-group{:class => klass}
             .controls
-              = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'input-block-level'
-      .row-fluid
-        .span12
-          .control-group{:class => klass}
+              = f.email_field :email, :id => 'email', :placeholder => t('.email'), :class => 'form-control'
+      .row
+        .col-xs-12
+          .form-group{:class => klass}
             .controls
-              = f.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'input-block-level'
-      .row-fluid
-        .span12
+              = f.password_field :password, :id => 'password', :placeholder => t('.password'), :class => 'form-control'
+      .row
+        .col-xs-12
           .pull-left
             = f.label :remember_me, :class => 'checkbox' do
               = f.check_box :remember_me, "data-toggle" => "checkbox", :value => ""
               = t('.remember_me')
-    .row-fluid.card-footer
-      .span5.footer-option.option-active.pull-right.btn-round-bottom-right
+    .row.card-footer
+      .col-xs-5.footer-option.option-active.pull-right.btn-round-bottom-right
         .option-action.btn-round-bottom-right
           %button#user_action_button{:type => "submit", :class => "btn btn-primary"}
             = t('.sign_in_button')

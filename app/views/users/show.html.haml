@@ -1,136 +1,209 @@
 .container
-  .span12
-    .row-fluid
-      .span12
-        .row-fluid
-          .span8.offset2
-            .card
-              .card-header
-                = @user.complete_name
-                - if @user.follower_of?(current_user)
-                  .label.label-inverse
-                    = t('.isfollower')
-              .row-fluid
-                .span4
-                  .thumbnail
-                    = image_tag(@user.get_picture.photo.url(:medium), :class => 'block')
-                .span8
-                  .card-content
+  .row
+    .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+      .card
+        .card-header
+          = @user.complete_name
+          - if @user.follower_of?(current_user)
+            .label.label-inverse
+              = t('.isfollower')
+
+
+        .hidden-xs
+          .row
+            .col-sm-4.col-md-3
+              .thumbnail
+                = image_tag(@user.get_picture.photo.url(:medium), :class => 'block')
+            .col-sm-8.col-md-9
+              .card-content
+                .media
+                  .pull-left
+                    .media-object.icon-map-marker.card-icon.mls
+                  .media-body
+                    = @user.location.blank? ? raw('&nbsp;') : @user.location
+              .card-content
+                .media
+                  .pull-left
+                    .media-object.icon-star.card-icon
+                  .media-body
+                    = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, url_with_protocol(@user.web), :target => '_blank')
+              .card-content
+                .media
+                  .pull-left
+                    .media-object.icon-heart.card-icon
+                  .media-body
+                    = @user.bio.blank? ? raw('&nbsp;') : @user.bio
+
+          #userpagetabs.row.card-footer
+            .col-xs-6.col-sm-2.footer-option.btn-round-bottom-left.pan
+              %a{:href => "#userevents", "data-toggle" => "pill"}
+                .option-header
+                  = @user.created_events.count
+                .option-content
+                  - if @user == current_user
+                    = t('.your_events')
+                  - else
+                    = t('.user_events')
+            .col-xs-6.col-sm-2.footer-option.pan
+              %a{:href => "#userappointments", "data-toggle" => "pill"}
+                .option-header
+                  = @user.events.count
+                .option-content
+                  = t('.joined_events')
+            .col-xs-6.col-sm-2.footer-option.pan
+              %a{:href => "#userfollowing", "data-toggle" => "pill"}
+                .option-header
+                  = @user.followees_count
+                .option-content
+                  = t('.following')
+            .col-xs-6.col-sm-2.footer-option.pan
+              %a{:href => "#userfollowers", "data-toggle" => "pill"}
+                #followers_count_badge.option-header
+                  = @user.followers_count
+                .option-content
+                  = t('.followers')
+            #user_action_button.col-xs-12.col-sm-2.footer-option.option-active.pull-right.btn-round-bottom-right
+              - if @user == current_user
+                %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
+                  = t('.edit')
+              - else
+                - if current_user.follower_of?(@user)
+                  = render 'unfollow'
+                - else
+                  = render 'follow'
+
+        .visible-xs
+          .row
+            .col-xs-12
+              .row
+                .col-xs-3
+                  .plm.pts
+                    .thumbnail
+                      = image_tag(@user.get_picture.photo.url(:medium), :class => 'block')
+                .col-xs-9
+                  .card-content.pan
                     .media
                       .pull-left
-                        .media-object.fui-location-24.mll
+                        .media-object.icon-map-marker.card-icon.mls
                       .media-body
                         = @user.location.blank? ? raw('&nbsp;') : @user.location
-                  .card-content
+                  .card-content.pan
                     .media
                       .pull-left
-                        .media-object.fui-menu-24.mll
+                        .media-object.icon-star.card-icon
                       .media-body
                         = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, url_with_protocol(@user.web), :target => '_blank')
-                  .card-content
+              .row.content-separator
+              .row
+                .col-xs-12
+                  .card-content.pan
                     .media
                       .pull-left
-                        .media-object.fui-heart-24.mll
+                        .media-object.icon-heart.card-icon
                       .media-body
                         = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
-              #userpagetabs.row-fluid.card-footer
-                .span2.footer-option.btn-round-bottom-left
-                  %a{:href => "#userevents", "data-toggle" => "pill"}
-                    .option-header
-                      = @user.created_events.count
-                    .option-content
-                      - if @user == current_user
-                        = t('.your_events')
-                      - else
-                        = t('.user_events')
-                .span2.footer-option
-                  %a{:href => "#userappointments", "data-toggle" => "pill"}
-                    .option-header
-                      = @user.events.count
-                    .option-content
-                      = t('.joined_events')
-                .span2.footer-option
-                  %a{:href => "#userfollowing", "data-toggle" => "pill"}
-                    .option-header
-                      = @user.followees_count
-                    .option-content
-                      = t('.following')
-                .span2.footer-option
-                  %a{:href => "#userfollowers", "data-toggle" => "pill"}
-                    #followers_count_badge.option-header
-                      = @user.followers_count
-                    .option-content
-                      = t('.followers')
-                #user_action_button.span2.footer-option.option-active.pull-right.btn-round-bottom-right
+          #userpagetabs.row.card-footer
+            #user_action_button.col-xs-12.footer-option.option-active
+              - if @user == current_user
+                %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
+                  = t('.edit')
+              - else
+                - if current_user.follower_of?(@user)
+                  = render 'unfollow'
+                - else
+                  = render 'follow'
+            .col-xs-6.footer-option.pan
+              %a{:href => "#userevents", "data-toggle" => "pill"}
+                .option-header
+                  = @user.created_events.count
+                .option-content
                   - if @user == current_user
-                    %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
-                      = t('.edit')
+                    = t('.your_events')
                   - else
-                    - if current_user.follower_of?(@user)
-                      = render 'unfollow'
-                    - else
-                      = render 'follow'
+                    = t('.user_events')
+            .col-xs-6.footer-option.pan
+              %a{:href => "#userappointments", "data-toggle" => "pill"}
+                .option-header
+                  = @user.events.count
+                .option-content
+                  = t('.joined_events')
+            .col-xs-6.footer-option.btn-round-bottom-left.pan
+              %a{:href => "#userfollowing", "data-toggle" => "pill"}
+                .option-header
+                  = @user.followees_count
+                .option-content
+                  = t('.following')
+            .col-xs-6.footer-option.btn-round-bottom-right.pan
+              %a{:href => "#userfollowers", "data-toggle" => "pill"}
+                #followers_count_badge.option-header
+                  = @user.followers_count
+                .option-content
+                  = t('.followers')
 
-.row-fluid
+
+.row
   .tab-content
     #list_results
       .tab-pane{:id => "userevents", :data => {:url => events_path(:user_id => @user.id) } }
       .tab-pane{:id => "userappointments", :data => {:url => events_path(:user_id => @user.id, :appointments => true) } }
       .tab-pane{:id => "userfollowing", :data => {:url => following_user_path(@user.id) } }
       .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
-    .container
-      .span4.offset4
-        #list_error.alert.alert-error.hidden
-          %strong
-            Error!
-          #error_description
-        #list_loading.alert.alert-info.hidden
-          Cargando...
-        #list_no_userevents.hidden
-          .card
-            %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-            .card-footer.card-footer-masonry.pts.pbs.plm.prm
-              %p
-                - if @user == current_user
-                  = t('.current_user_no_events')
-                  %a#events_new{:href => "#"}
-                    %i.icon-plus
-                    = t('create')
-                - else
-                  = t('.user_no_events')
-        #list_no_userappointments.hidden
-          .card
-            %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-            .card-footer.card-footer-masonry.pts.pbs.plm.prm
-              %p
-                - if @user == current_user
-                  = t('.current_user_no_appoints')
-                  %a.btn.btn-primary{:href => "/events/search"}
-                    = t('explore')
-                - else
-                  = t('.user_no_appoints')
 
-        #list_no_userfollowing.hidden
-          .card
-            %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-            .card-footer.card-footer-masonry.pts.pbs.plm.prm
-              %p
-                - if @user == current_user
-                  = t('.current_user_no_followings')
-                - else
-                  = t('.user_no_followings')
+    .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+      #list_error.alert.alert-error.hidden
+        %strong
+          Error!
+        #error_description
+      #list_loading.alert.alert-info.hidden
+        Cargando...
+      #list_no_userevents.hidden
+        .card
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_events')
+                %a#events_new{:href => "#"}
+                  %i.icon-plus
+                  = t('create')
+              - else
+                = t('.user_no_events')
+      #list_no_userappointments.hidden.row
+        .card.col-xs-4.col-md-offset-4
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_appoints')
+                %br
+                %a.btn.btn-primary{:href => "/events/search"}
+                  = t('explore')
+              - else
+                = t('.user_no_appoints')
 
-        #list_no_userfollowers.hidden
-          .card
-            %a{:href => "/events/search"}
-              .card-image-placeholder{:style => "width: 200px; height: 200px;"}
-            .card-footer.card-footer-masonry.pts.pbs.plm.prm
-              %p
-                - if @user == current_user
-                  = t('.current_user_no_followers')
-                - else
-                  = t('.user_no_followers')
+      #list_no_userfollowing.hidden.row
+        .card.col-xs-4.col-md-offset-4
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_followings')
+              - else
+                = t('.user_no_followings')
+
+      #list_no_userfollowers.hidden
+        .card.col-xs-4.col-md-offset-4
+          %a{:href => "/events/search"}
+            .card-image-placeholder{:style => "width: 200px; height: 200px;"}
+          .card-footer.card-footer-masonry.pts.pbs.plm.prm
+            %p
+              - if @user == current_user
+                = t('.current_user_no_followers')
+              - else
+                = t('.user_no_followers')
+
+

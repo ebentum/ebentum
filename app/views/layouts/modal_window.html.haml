@@ -1,4 +1,6 @@
-.card.modal.hide.fade{:id => 'modal_window', "aria-hidden" => "true", :role => "dialog", :tabindex => "-1", "data-backdrop" => "static"}
-  .card-header
-    = yield :modal_header
-  = yield
+.modal.fade{:id => 'modal_window', "aria-hidden" => "true", :role => "dialog", :tabindex => "-1", "data-backdrop" => "static"}
+  .modal-dialog.card
+    .modal-content
+      .modal-header.card-header
+        = yield :modal_header
+      = yield

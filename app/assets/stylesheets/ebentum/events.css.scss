@@ -1,0 +1,64 @@
+
+// Popup de nuevo evento
+
+#new_event i{
+    font-size: 18px;
+}
+
+#main_picture_preview {
+  height: 170px;
+}
+
+.pac-container {
+  z-index: 1200 !important;
+}
+
+.ui-timepicker-wrapper {
+  z-index: 1060;
+}
+
+#new_event .thumbnail {
+  width: 170px;
+}
+
+#map_canvas {
+  // width:530px;
+  height:200px;
+}
+
+#map {
+  height: 12em;
+}
+
+#event_description{
+ min-height: 50px;
+}
+
+#event-info-row{
+  padding: 0px;
+}
+
+.calendar-icon{
+  background: #c0392b;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.calendar-month{
+  color: $inverse;
+  font-size: 11px;
+}
+
+.calendar-day{
+  background: $inverse;
+  color: $base;
+  margin: 1px 5px 0px 5px;
+  padding-top: 3px;
+  border-radius: 4px;
+  height: 20px;
+}
+
+

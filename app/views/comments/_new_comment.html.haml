@@ -10,4 +10,4 @@
               = current_user.complete_name
 
         %span
-          %textarea{:rows => "1", :id => 'new_comment_textarea', :placeholder => t('.write_comment'), :data => {:eventid => @event.id}}
+          %textarea{:rows => "1", :id => 'new_comment_textarea', :placeholder => t('.write_comment'), :data => {:eventid => @event.id}, :class => "form-control input-sm"}

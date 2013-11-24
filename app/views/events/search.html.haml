@@ -1,14 +1,17 @@
 - if @page == 1
   .container
-    .span12
+    .col-xs-12
       %form.form-inline.event_search_form#event_search_form
         .card
           .card-content
-            - distanceOptions  = [t('.close_to_me'), 2], [t('.to_20_km'), 20], [t('.to_50_km'), 50], [t('.i_dont_care'), 0]
-            = select_tag 'distance', options_for_select(distanceOptions, @distanceSelected)
-            - daysOptions  = [t('.soon'), 2], [t('.one_week'), 7], [t('.one_month'), 30], [t('.i_dont_care'), 0]
-            = select_tag 'days', options_for_select(daysOptions, @daysSelected)
-  .span12
+            .row
+              .col-xs-6
+                - distanceOptions  = [t('.close_to_me'), 2], [t('.to_20_km'), 20], [t('.to_50_km'), 50], [t('.i_dont_care'), 0]
+                = select_tag 'distance', options_for_select(distanceOptions, @distanceSelected), {:class => "form-control"}
+              .col-xs-6
+                - daysOptions  = [t('.soon'), 2], [t('.one_week'), 7], [t('.one_month'), 30], [t('.i_dont_care'), 0]
+                = select_tag 'days', options_for_select(daysOptions, @daysSelected), {:class => "form-control"}
+  .col-xs-12
     #events_list.masonry_layout.centered
       = render 'list'
 - else

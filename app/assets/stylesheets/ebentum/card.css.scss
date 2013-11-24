@@ -1,0 +1,234 @@
+// Formato tarjeta
+
+.card {
+  background: $inverse;
+  border-radius: 6px;
+  padding: 0px;
+  // position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 5px #888888;
+  line-height: 1.21;
+  font-size: 14px;
+
+  .card-content+.card-content { border-top: 1px solid #ddd }
+
+  .media {
+    margin-top: 0px;
+    text-align: left;
+  }
+}
+
+.card-content{
+  padding: 10px;
+
+  .form-group{
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+}
+
+.card-inverse {
+  background: $base;
+  color: $inverse;
+
+  .card-content+.card-content { border-top: 2px solid scale-color($base, $lightness: -15%) }
+}
+
+.card-square {
+  background: $inverse;
+  padding: 0px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+.content-separator {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header{
+  padding: 10px;
+  font-size: 20px;
+  margin: 0;
+  color: $inverse;
+  background: $firm;
+  -webkit-border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-header h1, h2{
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 24px;
+}
+
+.card-header h1, h2, h3{
+  margin: 0px
+}
+
+.card-footer{
+  // font-size: 20px;
+  margin: 0;
+  color: $inverse;
+  // background: #3c4144;
+  background: $base;
+  text-align: right;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+
+
+  .footer-option{
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
+    // margin-left: 0;
+    text-align: center;
+    // border-right: 1px solid $inverse;
+    height: 60px; //height: 100%;
+    display: table;
+
+    .option-header{
+      padding-top: 10px;
+      font-size: 20px;
+      display: block;
+      height: 35%;
+    }
+
+    .option-content{
+      display: block;
+      height: 65%;
+      color: $gray;
+    }
+
+    .option-action{
+      font-size: 16.5px;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+    }
+
+    a{
+      text-decoration: none;
+      color: $inverse;
+      // display: block;
+      // height: 100%;
+    }
+  }
+
+  .footer-option.active{
+    background: $firm;
+
+    .option-content{
+      color: $inverse;
+    }
+  }
+
+  .footer-action{
+    display: table;
+    background-color: $firm;
+  }
+}
+
+.card-footer-masonry{
+  color: rgb(113, 113, 113);
+  // padding: 5px 10px 5px 10px;
+  background: $inverse;
+  font-size: 13px;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+
+  .thumb_image{
+    // width: 50px;
+    height: 50px;
+  }
+}
+
+.card-icon{
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-horizontal .card-content{
+  padding: 0px;
+}
+
+.card-content .form-group {
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+  .card {
+    /*background: $inverse;*/
+    border-radius: 6px;
+    padding: 0px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px #888888;
+  }
+  /* hack para que no salga la caja de comentarios del like de fb */
+  /* http://stackoverflow.com/questions/3247855/facebook-like-button-how-to-disable-comment-pop-up */
+  .fb-like {
+    overflow: hidden;
+  }
+
+  .tablet-nonavbar {
+    margin-top: 7%;
+  }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .card {
+    /*background: $inverse;*/
+    border-radius: 6px;
+    padding: 0px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px #888888;
+  }
+  /* hack para que no salga la caja de comentarios del like de fb */
+  /* http://stackoverflow.com/questions/3247855/facebook-like-button-how-to-disable-comment-pop-up */
+  .fb-like {
+    overflow: hidden;
+  }
+
+  .btn-facebook {
+    color: #ffffff;
+    background-color: #006dcc;
+    margin-bottom: 10px;
+  }
+
+  // body {
+  //   padding-top: 10px;
+  // }
+
+  .event_search_form select {
+    margin-right: 0px !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+
+  .fb-login-button {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+
+  .fb-like-button {
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+}
+
+.event_search_form select {
+  margin-right: 20px;
+}
+

@@ -4,9 +4,11 @@
 - height = pictureInfo[2]
 - creator = User.find(event.creator)
 .card{:style => "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"}
-  %a{:href => event_path(event)}
-    .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
-  .card-footer.card-footer-masonry
+  .card-content{:style => "padding: 0;"}
+    %a{:href => event_path(event)}
+      .card-image-placeholder{:style => "width: #{width}px; height: #{height}px;"}
+
+  .card-content{:style => "background-color: #fff; padding: 0px;"}
     .media
       .pull-right
         .calendar-icon
@@ -18,9 +20,13 @@
         = event.name
         .sub-paragraph
           = event.place
-      .media-body.plm.ptm.pbm.prn
-        .sub-paragraph
+  .card-footer.card-footer-masonry
+    .media
+      .pull-left
+        .sub-paragraph.plm.ptm
           = t('.created_by')
+
+      .media-body.plm.ptm.pbm.prn
         %a{:href => user_path(creator)}
           = creator.complete_name
 

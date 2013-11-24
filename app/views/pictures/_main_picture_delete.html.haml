@@ -1,13 +1,14 @@
-.modal.hide.fade{:id  => 'main_picture_delete'}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3
-      = t('.confirm')
-  .modal-body
-    %p
-      = t('.confirm_image_delete_text')
-  .modal-footer
-    %a.btn.btn-danger{:href => "#", :id => 'main_picture_confirm_delete_button'}
-      = t('.delete')
-    %a.btn{:href => "#", "data-dismiss" => "modal"}
-      = t('.cancel')
+.modal.fade{:id  => 'main_picture_delete'}
+  .modal-dialog.card
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        = t('.confirm')
+      .modal-body
+        %p
+          = t('.confirm_image_delete_text')
+      .card-footer
+        %a.btn{:href => "#", "data-dismiss" => "modal"}
+          = t('.cancel')
+        %a.btn.btn-danger.btn-round-bottom-right{:href => "#", :id => 'main_picture_confirm_delete_button'}
+          = t('.delete')
