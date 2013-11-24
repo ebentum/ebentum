@@ -54,26 +54,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def index
-    @page = params[:page] || 1
-
-    @events = @events.order_by("start_date asc")
-    @events = @events.page(@page)
-
-    if request.xhr?
-      js_callback false
-    end
-
-    respond_to do |format|
-      if request.xhr?
-        format.html { render :layout => nil}
-      else
-        format.html { render :layout => 'fullwidth' }
-      end
-      format.json { render json: @events }
-    end
-  end
-
   def show
 
     # tiene token de acceso validos?
@@ -160,6 +140,10 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    if @event.creator != current_user
+      render :json => false
+    end
+
     picture = Picture.find(params[:event][:main_picture_id])
     if params[:event][:main_picture_id] != '#'
       if picture.nil?
@@ -184,6 +168,11 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+
+    if @event.creator != current_user
+      render :json => false
+    end
+
     @event.destroy
 
     respond_to do |format|

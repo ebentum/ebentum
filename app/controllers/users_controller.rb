@@ -1,39 +1,5 @@
 class UsersController < ApplicationController
 
-  before_filter :search_users, :only => [:index]
-
-  def search_users
-
-    # @users = User.all
-
-    if params[:follower_id]
-      current_user = User.find( params[:follower_id])
-      @users = current_user.followed_users
-
-    elsif params[:followed_id]
-
-      current_user = User.find( params[:followed_id])
-      @users = current_user.followers
-
-    else
-
-      @users = User.all
-
-    end
-
-  end
-
-  def index
-
-    @page = params[:page] || 1
-
-    respond_to do |format|
-      format.html
-      format.json { render json: users }
-    end
-  end
-
-
   def show
     id = params[:id]
 
