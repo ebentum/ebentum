@@ -142,26 +142,26 @@ class EventsController < ApplicationController
 
     if @event.creator != current_user
       render :json => false
-    end
-
-    picture = Picture.find(params[:event][:main_picture_id])
-    if params[:event][:main_picture_id] != '#'
-      if picture.nil?
-        @event.main_picture = nil
-      else
-        @event.main_picture = picture
+    else
+      picture = Picture.find(params[:event][:main_picture_id])
+      if params[:event][:main_picture_id] != '#'
+        if picture.nil?
+          @event.main_picture = nil
+        else
+          @event.main_picture = picture
+        end
       end
-    end
 
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html  { redirect_to(@event,
-                      :notice => 'Event was successfully updated.') }
-        format.json  { head :no_content }
-      else
-        format.html  { render :action => "edit" }
-        format.json  { render :json => @event.errors,
-                      :status => :unprocessable_entity }
+      respond_to do |format|
+        if @event.update_attributes(params[:event])
+          format.html  { redirect_to(@event,
+                        :notice => 'Event was successfully updated.') }
+          format.json  { head :no_content }
+        else
+          format.html  { render :action => "edit" }
+          format.json  { render :json => @event.errors,
+                        :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -171,13 +171,13 @@ class EventsController < ApplicationController
 
     if @event.creator != current_user
       render :json => false
-    end
+    else
+      @event.destroy
 
-    @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to events_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to events_url }
+        format.json { head :no_content }
+      end
     end
   end
 

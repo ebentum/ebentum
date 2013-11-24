@@ -29,7 +29,7 @@ class Event
 
   validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
 
-  belongs_to :creator, class_name: "User", inverse_of: :created
+  belongs_to :creator, class_name: "User", inverse_of: :created_events
 
   has_one :main_picture, class_name: "EventPicture", as: :pictureable, dependent: :destroy
 

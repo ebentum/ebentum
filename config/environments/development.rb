@@ -52,7 +52,8 @@ Ebentum::Application.configure do
       :bucket => 'ebentum.dev',
       :access_key_id => 'AKIAIES4PSLU77UPL5JQ',
       :secret_access_key => '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'
-    }
+    },
+    :s3_host_name => 's3-eu-west-1.amazonaws.com'
   }
 
   Paperclip.options[:command_path] = ENV['IMAGEMAGICK_PATH']

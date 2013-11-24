@@ -69,6 +69,8 @@ class User
 
   has_many :created_events, class_name: "Event", inverse_of: :creator, dependent: :destroy
 
+  has_many :created_pictures, class_name: "Picture", inverse_of: :creator, dependent: :destroy
+
   has_and_belongs_to_many :events, inverse_of: :users
   embeds_one :fbtoken
   embeds_one :twtoken

@@ -19,24 +19,28 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
 
-    picture = Picture.find(params[:user][:main_picture_id])
-    if params[:user][:main_picture_id] != '#'
-      if picture.nil?
-        @user.main_picture = nil
-      else
-        @user.main_picture = picture
+    if @user != current_user
+      render :json => false
+    else
+      picture = Picture.find(params[:user][:main_picture_id])
+      if params[:user][:main_picture_id] != '#'
+        if picture.nil?
+          @user.main_picture = nil
+        else
+          @user.main_picture = picture
+        end
       end
-    end
 
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html  { redirect_to(@user,
-                      :notice => 'User was successfully updated.') }
-        format.json  { head :no_content }
-      else
-        format.html  { render :action => "edit" }
-        format.json  { render :json => @user.errors,
-                      :status => :unprocessable_entity }
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html  { redirect_to(@user,
+                        :notice => 'User was successfully updated.') }
+          format.json  { head :no_content }
+        else
+          format.html  { render :action => "edit" }
+          format.json  { render :json => @user.errors,
+                        :status => :unprocessable_entity }
+        end
       end
     end
   end

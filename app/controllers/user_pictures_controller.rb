@@ -4,10 +4,11 @@ class UserPicturesController < PicturesController
   private
 
   def get_image
-    if params[:action] = 'create'
+    if action_name == 'create'
       @picture = UserPicture.new(params[:user_picture])
     else
       @picture = UserPicture.find(params[:id])
+      @new_picture_params = params[:user_picture]
     end
   end
 end

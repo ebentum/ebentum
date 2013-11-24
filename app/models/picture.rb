@@ -9,7 +9,7 @@ class Picture
   field :photo_dimensions, type: Hash
                             
   
-
+  belongs_to :creator, class_name: "User", inverse_of: :created_pictures
   belongs_to :pictureable, polymorphic: true
 
   def avatar_url

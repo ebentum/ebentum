@@ -4,10 +4,11 @@ class EventPicturesController < PicturesController
   private
 
   def get_image
-    if params[:action] = 'create'
+    if action_name == 'create'
       @picture = EventPicture.new(params[:event_picture])
     else
       @picture = EventPicture.find(params[:id])
+      @new_picture_params = params[:event_picture]
     end
   end
 end
