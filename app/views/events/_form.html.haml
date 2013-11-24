@@ -8,24 +8,22 @@
       = f.text_field :name, :placeholder => t(".name"), :class => "form-control input-sm mbs"
       = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control input-sm", :rows => 4
   .card-content
-    .row.pam
-      .col-xs-6
-        .form-group.mbn
-          %label.control-label.col-sm-2
-            %i.icon-calendar
-          .col-sm-10
-            = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
-      .col-xs-6
-        .form-group.mbn
-          %label.control-label.col-sm-2
-            %i.icon-time
-          .col-sm-10
-            = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
+    .row.plm.prm.ptm.pbm
+      .col-xs-1
+        %label.control-label.col-sm-2
+          %i.icon-calendar
+      .col-xs-5
+        = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
+      .col-xs-1
+        %label.control-label.col-sm-2
+          %i.icon-time
+      .col-xs-5
+        = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
 
   .card-content
-    .row.pam
+    .row.plm.prm.ptm.pbs
       .col-sm-1
-        %label.control-label
+        %label.control-label.col-sm-2
           %i.icon-map-marker
       .col-sm-11
         %input#place_autocomplete{:placeholder => t(".place"), :type => "text", :name => "place_autocomplete", :class => "form-control input-sm", :value => @event.place}
