@@ -23,9 +23,9 @@
             %input#facebook{:type => "checkbox", :checked => fbChecked, "data-toggle" => "switch"}
 
     .col-xs-6
-      - klass = 'control-group'
+      - klass = 'form-group'
       - if !fb_access_token_id
-        - klass = 'control-group hide'
+        - klass = 'form-group hide'
       %div{:id => 'publish_facebook', :class => klass}
         %label.control-label
           = t('.publish_activity', :provider => 'Facebook')
@@ -54,9 +54,9 @@
               - twChecked = true
             %input#twitter{:type => "checkbox", :checked => twChecked, "data-toggle" => "switch"}
     .col-xs-6
-      - klass = 'control-group'
+      - klass = 'form-group'
       - if !tw_access_token_id
-        - klass = 'control-group hide'
+        - klass = 'form-group hide'
       %div{:id => 'publish_twitter', :class => klass}
         %label.control-label
           = t('.publish_activity', :provider => 'Twitter')

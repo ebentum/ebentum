@@ -71,8 +71,8 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
           # quitar boton de importar desde FB
           $('a.btn-facebook').fadeOut 'slow', ->
             $('a.btn-facebook').remove()
-            $('#option-facebook').toggleClass('footer-option')
-            $('#option-facebook').toggleClass('option-facebook')
+            $('#option-facebook').removeClass('footer-option')
+            $('#option-facebook').removeClass('option-facebook')
 
       # ocultamos la opción de publicar
       $('#publish_facebook').fadeOut('slow')
@@ -95,8 +95,8 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
           # quitar boton de importar desde TW
           $('a.btn-twitter').fadeOut 'slow', ->
             $('a.btn-twitter').remove()
-            $('#option-twitter').toggleClass('footer-option')
-            $('#option-twitter').toggleClass('option-info')
+            $('#option-twitter').removeClass('footer-option')
+            $('#option-twitter').removeClass('option-info')
 
       # ocultamos la opción de publicar
       $('#publish_twitter').fadeOut('slow')
