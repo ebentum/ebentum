@@ -19,6 +19,6 @@
     - if current_user && current_user.id == comment.creator.id
       %span{:id => 'editdelete'+commentid}
         %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
-          %i.icon-pencil
+          %i.fa.fa-pencil
         %a{:href => '#confirm_delete', :id => 'delete_comment', :data => {:commentid => comment.id, :toggle => 'modal', :target => '#confirm_delete'}}
-          %i.icon-trash
+          %i.fa.fa-trash

@@ -65,7 +65,7 @@
                     #option-facebook.col-sm-3.footer-option.option-facebook
                       .option-action
                         %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                          %i.icon-facebook
+                          %i.fa.fa-facebook
                           = t('.import_from_facebook')
                   - else
                     #option-facebook.col-sm-3
@@ -73,7 +73,7 @@
                     #option-twitter.col-sm-3.footer-option.option-info
                       .option-action
                         %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                          %i.icon-twitter
+                          %i.fa.fa-twitter
                           = t('.import_from_twitter')
                   - else
                     #option-twitter.col-sm-3
@@ -93,14 +93,14 @@
                       #option-facebook.col-xs-12.footer-option.option-facebook
                         .option-action
                           %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                            %i.icon-facebook
+                            %i.fa.fa-facebook
                             = t('.import_from_facebook')
                   - if @user.twtoken
                     .row
                       #option-twitter.col-xs-12.footer-option.option-info
                         .option-action
                           %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                            %i.icon-twitter
+                            %i.fa.fa-twitter
                             = t('.import_from_twitter')
                   .row
                     .col-xs-12.footer-option.option-active

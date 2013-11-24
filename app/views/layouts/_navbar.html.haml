@@ -26,25 +26,25 @@
           %ul.nav.navbar-nav.navbar-right
             %li
               %a#events_new{:href => "#"}
-                %i.icon-plus
+                %i.fa.fa-plus
                 Crear
             %li.dropdown
               %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
-                %i.icon-user
+                %i.fa.fa-user
                 = current_user.complete_name
               %ul.dropdown-menu
                 %li
                   %a{:href => user_path(current_user)}
-                    %i.icon-user
+                    %i.fa.fa-user
                     = t('.profile')
                 %li
                   %a{:href => edit_user_registration_path(current_user)}
-                    %i.icon-cog
+                    %i.fa.fa-cog
                     = t('.configuration')
                 %li.divider
                 %li
                   %a{:href => destroy_user_session_path, :data => {:method => :delete}}
-                    %i.icon-off
+                    %i.fa.fa-off
                       = t('.logout')
         - else
           %ul.nav.navbar-nav.navbar-right
@@ -57,13 +57,13 @@
           %li.list-group-item{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
               .pull-left
-                %i.icon-bullhorn.media-object
+                %i.fa.fa-bullhorn.media-object
               .media-body
                 = t('.activity')
           %li.list-group-item{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
             %a{:href => "/events/search"}
               .pull-left
-                %i.icon-compass.media-object
+                %i.fa.fa-compass.media-object
               .media-body
                 = t('.explore')
 
@@ -73,14 +73,14 @@
               %a{:href => user_path(current_user)}
                 .media
                   .pull-left
-                    %i.icon-user.media-object
+                    %i.fa.fa-user.media-object
                   .media-body
                     = t('.profile')
             %li.list-group-item
               %a{:href => edit_user_registration_path(current_user)}
                 .media
                   .pull-left
-                    %i.icon-cog.media-object
+                    %i.fa.fa-cog.media-object
                   .media-body
                     = t('.configuration')
             / %li.divider
@@ -88,7 +88,7 @@
               %a{:href => destroy_user_session_path, :data => {:method => :delete}}
                 .media
                   .pull-left
-                    %i.icon-off.media-object
+                    %i.fa.fa-off.media-object
                   .media-body
                     = t('.logout')
           - else
