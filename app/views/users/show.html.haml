@@ -8,7 +8,7 @@
             .label.label-inverse
               = t('.isfollower')
 
-
+        / oculto para moviles.
         .hidden-xs
           .row
             .col-sm-4.col-md-3
@@ -18,19 +18,22 @@
               .card-content
                 .media
                   .pull-left
-                    .media-object.icon-map-marker.card-icon.mls
+                    .media-object
+                      %i.fa.fa-map-marker.card-icon.mls
                   .media-body
                     = @user.location.blank? ? raw('&nbsp;') : @user.location
               .card-content
                 .media
                   .pull-left
-                    .media-object.icon-star.card-icon
+                    .media-object
+                      %i.fa.fa-star.card-icon
                   .media-body
                     = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, url_with_protocol(@user.web), :target => '_blank')
               .card-content
                 .media
                   .pull-left
-                    .media-object.icon-heart.card-icon
+                    .media-object
+                      %i.fa.fa-heart.card-icon
                   .media-body
                     = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
@@ -72,6 +75,13 @@
                 - else
                   = render 'follow'
 
+
+        /
+        /
+        / version para moviles
+        /
+        /
+
         .visible-xs
           .row
             .col-xs-12
@@ -84,13 +94,15 @@
                   .card-content.pan
                     .media
                       .pull-left
-                        .media-object.icon-map-marker.card-icon.mls
+                        .media-object
+                          %i.fa.fa-map-marker.card-icon.mls
                       .media-body
                         = @user.location.blank? ? raw('&nbsp;') : @user.location
                   .card-content.pan
                     .media
                       .pull-left
-                        .media-object.icon-star.card-icon
+                        .media-object
+                          %i.fa.fa-star.card-icon
                       .media-body
                         = @user.web.blank? ? raw('&nbsp;') : link_to(@user.web, url_with_protocol(@user.web), :target => '_blank')
               .row.content-separator
@@ -99,7 +111,8 @@
                   .card-content.pan
                     .media
                       .pull-left
-                        .media-object.icon-heart.card-icon
+                        .media-object
+                          %i.fa.fa-heart.card-icon
                       .media-body
                         = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
@@ -141,6 +154,9 @@
                 .option-content
                   = t('.followers')
 
+        /
+        / fin version mvl
+        /
 
 .row
   .tab-content
