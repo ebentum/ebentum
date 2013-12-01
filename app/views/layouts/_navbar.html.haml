@@ -44,7 +44,7 @@
                 %li.divider
                 %li
                   %a{:href => destroy_user_session_path, :data => {:method => :delete}}
-                    %i.fa.fa-off
+                    %i.fa.fa-power-off
                       = t('.logout')
         - else
           %ul.nav.navbar-nav.navbar-right
@@ -88,7 +88,7 @@
               %a{:href => destroy_user_session_path, :data => {:method => :delete}}
                 .media
                   .pull-left
-                    %i.fa.fa-off.media-object
+                    %i.fa.fa-power-off.media-object
                   .media-body
                     = t('.logout')
           - else
