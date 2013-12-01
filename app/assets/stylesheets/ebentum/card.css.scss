@@ -1,11 +1,20 @@
 // Formato tarjeta
 
+.masonry_layout{
+  text-align: center;
+
+  .card{
+    display: inline-block;
+  }
+}
+
 .card {
   background: $inverse;
   border-radius: 6px;
   padding: 0px;
   // position: relative;
   text-align: center;
+  // margin-right: 15px;
   margin-bottom: 20px;
   box-shadow: 1px 1px 5px #888888;
   line-height: 1.21;
