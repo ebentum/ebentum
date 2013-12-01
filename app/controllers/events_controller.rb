@@ -54,6 +54,27 @@ class EventsController < ApplicationController
     end
   end
 
+  def index
+    @page = params[:page] || 1
+
+    @events = @events.order_by("start_date asc")
+    @events = @events.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
+      format.json { render json: @events }
+    end
+  end
+
+
   def show
 
     # tiene token de acceso validos?
@@ -86,6 +107,7 @@ class EventsController < ApplicationController
       format.json { render json: @event }
     end
   end
+
 
   def new
     @event = Event.new
