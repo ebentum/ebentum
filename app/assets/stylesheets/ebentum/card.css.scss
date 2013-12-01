@@ -172,15 +172,7 @@
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-  .card {
-    /*background: $inverse;*/
-    border-radius: 6px;
-    padding: 0px;
-    text-align: center;
-    margin-bottom: 0px;
-    margin-top: 20px;
-    box-shadow: 1px 1px 5px #888888;
-  }
+
   /* hack para que no salga la caja de comentarios del like de fb */
   /* http://stackoverflow.com/questions/3247855/facebook-like-button-how-to-disable-comment-pop-up */
   .fb-like {
@@ -195,15 +187,7 @@
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .card {
-    /*background: $inverse;*/
-    border-radius: 6px;
-    padding: 0px;
-    text-align: center;
-    margin-bottom: 0px;
-    margin-top: 20px;
-    box-shadow: 1px 1px 5px #888888;
-  }
+
   /* hack para que no salga la caja de comentarios del like de fb */
   /* http://stackoverflow.com/questions/3247855/facebook-like-button-how-to-disable-comment-pop-up */
   .fb-like {
