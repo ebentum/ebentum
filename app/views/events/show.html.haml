@@ -1,10 +1,10 @@
 .col-xs-12
   .row
-    .col-xs-4
+    .col-xs-12.col-md-4
       .card-square
         = image_tag(@event.get_picture.photo.url(:medium), :class => 'block')
 
-    .col-xs-8
+    .col-xs-12.col-md-8
       .row
         .col-xs-12
           .card
@@ -19,7 +19,7 @@
 
             #event-info-row.card-content
               .row
-                .col-xs-6.pts.pll
+                .col-xs-12.col-md-6.pts.pll
                   .card-content
                     .row
                       .col-xs-2
@@ -45,18 +45,18 @@
                       .col-xs-10
                         = @event.place
 
-                .col-xs-6.man
+                .col-xs-12.col-md-6.man
                   #map.block
 
             .row.card-footer
               -if @event.creator == current_user
-                .col-xs-2.footer-option.option-active.btn-round-bottom-left
+                .col-xs-12.col-md-2.footer-option.option-active.btn-round-bottom-left
                   .option-action
                     = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
               - else
-                .col-xs-2.footer-option
+                .col-xs-12.col-md-2.footer-option
 
-              .col-xs-2.footer-option
+              .col-xs-12.col-md-2.footer-option
                 %a#appointed{:href => "#"}
                   .option-header
                     = @event_users
@@ -65,7 +65,7 @@
               = render 'share_event'
 
               - if user_signed_in?
-                #user-action.col-xs-2.footer-option.pull-right.btn-round-bottom-right
+                #user-action.col-xs-12.col-md-2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
                     = hidden_field_tag 'event_id', @event.id
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-primary hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => 'Apuntandome...'}
