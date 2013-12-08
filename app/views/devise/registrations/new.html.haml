@@ -1,21 +1,21 @@
 - if is_omniauth_sign_up?
-  .col-xs-3.visible-desktop
-  .col-xs-6.visible-desktop{:id => 'omniauth_form'}
+  .col-xs-3.visible-md.visible-lg
+  .col-xs-6.visible-md.visible-lg{:id => 'omniauth_form'}
     = render 'sign-up-error'
     = render 'sign-up-form'
     = render "devise/shared/links"
-  .col-xs-3.visible-desktop
+  .col-xs-3.visible-md.visible-lg
   .visible-xs.visible-sm.tablet-nonavbar
     = render 'sign-up-error'
     = render 'sign-up-form'
     = render "devise/shared/links"
 - else
-  .col-xs-3.visible-desktop
-  .col-xs-6.visible-desktop
+  .col-xs-3.visible-md.visible-lg
+  .col-xs-6.visible-md.visible-lg
     = render 'sign-up-error'
     = render 'sign-up-form'
     = render "devise/shared/links"
-  .col-xs-3.visible-desktop
+  .col-xs-3.visible-md.visible-lg
   .visible-xs.visible-sm.tablet-nonavbar
     = render 'sign-up-error'
     = render 'sign-up-form'
