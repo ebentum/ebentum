@@ -9,7 +9,7 @@ Paloma.callbacks["devise/passwords/edit"] = (params) ->
       dataType: 'json'
       beforeSend: ->
         # quitar las marcas de error
-        $('div.form-group').removeClass('error')
+        $('div.form-group').removeClass('has-error')
         $('div.controls input').next().text('')
         # boton en estado loading
         $('#edit_password_button').button('loading')
@@ -23,6 +23,6 @@ Paloma.callbacks["devise/passwords/edit"] = (params) ->
         errorList = jQuery.parseJSON(xhr.responseText).errors
         $.each errorList, (column, error) ->
           $('#edit_password #'+column).next().hide().text(error).fadeIn('slow')
-          $('#edit_password #'+column).parent().parent().addClass('error')
+          $('#edit_password #'+column).parent().parent().addClass('has-error')
         # activar el boton
         $('#edit_password_button').button('reset')

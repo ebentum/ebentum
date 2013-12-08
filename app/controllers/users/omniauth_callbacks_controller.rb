@@ -69,10 +69,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         else
           fb   = Koala::Facebook::API.new(token)
           me   = fb.get_object("me")
-          user = User.where('fbtoken.uid' => me['id']).first
+          user = User.where('fbtoken.uid' => me['id']).first # TODO: ¿Si hay varios?
         end
       else
-        user = User.where('twtoken.token' => omniauth_token).first
+        user = User.where('twtoken.token' => omniauth_token).first # TODO: ¿Si hay varios?
       end
       if user
         sign_in(:user, user)

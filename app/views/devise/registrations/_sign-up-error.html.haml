@@ -1,5 +1,5 @@
 - if resource.errors.full_messages.length > 0
-  .alert.alert-error{:id => 'sign_up_error'}
+  .alert.alert-danger{:id => 'sign_up_error'}
     %h4
       = t('.sign_in_error_title')
     %br
@@ -8,7 +8,7 @@
         = error
         %br
 - else
-  .alert.alert-error.hide{:id => 'sign_up_error'}
+  .alert.alert-danger.hide{:id => 'sign_up_error'}
     %h4
       = t('.sign_in_error_title')
     %br
