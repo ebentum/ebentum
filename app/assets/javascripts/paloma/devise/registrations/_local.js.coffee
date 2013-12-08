@@ -24,7 +24,7 @@ Paloma.devise.registrations =
       beforeSend: ->
         # quitar las marcas de error
         $('div.form-group').removeClass('has-error')
-        $(sign_up_error).fadeOut('slow')
+        $(sign_up_error).addClass('hide')
         $('div.controls input').next().text('')
         # boton en estado loading
         $(sign_up_button).button('loading')
@@ -33,19 +33,19 @@ Paloma.devise.registrations =
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
           # redirigir al inicio
-          window.location = '/events/'
+          # window.location = '/events/'
 
         else
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
-          window.location = '/welcome/sign_up_ok?email='+$('#email').val()
+          # window.location = '/welcome/sign_up_ok?email='+$('#email').val()
 
       error: (xhr, status, error) ->
         # ponemos los errores
         errorList = jQuery.parseJSON(xhr.responseText).errors
         errorText = ''
         $.each errorList, (column, error) ->
-          $(sign_up_error).fadeIn('slow')
+          $(sign_up_error).removeClass('hide')
           $('#new_user #'+column).parent().parent().addClass('has-error')
           campo = I18n.t('attributes.'+column)
           errorText += campo+': '+error+'<br>'

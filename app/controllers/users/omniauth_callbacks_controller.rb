@@ -27,7 +27,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to params[:state]
+    if params[:state]
+      redirect_to params[:state]
+    else
+      redirect_to welcome_index_path
+    end
   end
 
   def facebook_login
