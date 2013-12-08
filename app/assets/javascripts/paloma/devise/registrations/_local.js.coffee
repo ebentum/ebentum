@@ -33,12 +33,12 @@ Paloma.devise.registrations =
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
           # redirigir al inicio
-          # window.location = '/events/'
+          window.location = '/events/'
 
         else
           # guardar token de acceso
           Paloma.Tokens.save_access_token(data._id)
-          # window.location = '/welcome/sign_up_ok?email='+$('#email').val()
+          window.location = '/welcome/sign_up_ok?email='+$('#email').val()
 
       error: (xhr, status, error) ->
         # ponemos los errores
