@@ -54,3 +54,9 @@
 .navbar .nav li.dropdown.open .dropdown-menu {
   visibility: visible !important;
 }
+
+@media (min-width: 768px){
+  .navbar > .container .navbar-brand {
+      margin-left: 0px
+  }
+}
