@@ -31,14 +31,14 @@ Paloma.devise.registrations =
       success: (data, status, xhr) ->
         if $('#user_user_confirmation_required').val() == 'false'
           # guardar token de acceso
-          Paloma.Tokens.save_access_token(data._id)
-          # redirigir al inicio
-          window.location = '/events/'
+          Paloma.Tokens.save_access_token data._id, (err) ->
+            # redirigir al inicio
+            window.location = '/events/'
 
         else
           # guardar token de acceso
-          Paloma.Tokens.save_access_token(data._id)
-          window.location = '/welcome/sign_up_ok?email='+$('#email').val()
+          Paloma.Tokens.save_access_token data._id, (err) ->
+            window.location = '/welcome/sign_up_ok?email='+$('#email').val()
 
       error: (xhr, status, error) ->
         # ponemos los errores
