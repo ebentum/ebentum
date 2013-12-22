@@ -1,5 +1,9 @@
 Paloma.callbacks["devise/registrations/edit"] = (params) ->
 
+  # control de cuenta ya vinculada
+  if window.location.search.indexOf('?already_linked=true') >= 0
+    $('#account-linked').modal('toggle')
+
   Paloma.Pictures.mainImageForm('user_main_picture_form', 'user_main_picture_input', 'user_action_button', "/photos/medium/missing_user.png")
 
   $(document).on "click", "#confirm_delete_account_btn", (event) ->

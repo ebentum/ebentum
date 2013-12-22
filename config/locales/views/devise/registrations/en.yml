@@ -1,6 +1,12 @@
 en:
   devise:
     registrations:
+      account-linked:
+        account_linked_text: This %{provider} account is already linked to ebentum
+        account_linked_title: Ups!
+      account-linked-modal:
+        account_linked_text: The account you're trying to link is already linked to another user of ebentum
+        account_linked_title: Ups!
       confirm_delete_account:
         attention: Attention!
         confirm_delete_account_text: If you delete the account, you will lose your ebentum user and all related data. Do you want to continue?

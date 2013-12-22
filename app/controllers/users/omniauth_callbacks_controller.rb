@@ -7,8 +7,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
     if params[:state] && current_user
-      save_token('facebook')
-      redirect_to params[:state]
+      if save_token('facebook')
+        redirect_to params[:state]
+      else
+        redirect_to params[:state]+'?already_linked=true'
+      end
     elsif session[:token_renew]
       session.delete(:token_renew)
       renew_fbtoken_and_login
@@ -19,8 +22,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def twitter
     if params[:state] && current_user
-      save_token('twitter')
-      redirect_to params[:state]
+      if save_token('twitter')
+        redirect_to params[:state]
+      else
+        redirect_to params[:state]+'?already_linked=true'
+      end
     else
       sign_in_or_register('twitter')
     end
@@ -73,10 +79,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         else
           fb   = Koala::Facebook::API.new(token)
           me   = fb.get_object("me")
-          user = User.where('fbtoken.uid' => me['id']).first # TODO: ¿Si hay varios?
+          user = User.where('fbtoken.uid' => me['id']).first
         end
       else
-        user = User.where('twtoken.token' => omniauth_token).first # TODO: ¿Si hay varios?
+        user = User.where('twtoken.token' => omniauth_token).first
       end
       if user
         sign_in(:user, user)
@@ -85,6 +91,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to new_user_registration_url
       end
     else
+      # si existe un usuario con ese uid en el token no le dejamos vincular esa cuenta de tw/fb de nuevo a ebentum
+      if provider == 'facebook'
+        user = User.where('fbtoken.uid' => omniauth_uid)
+      else
+        user = User.where('twtoken.uid' => omniauth_uid)
+      end
+      if user.size > 0
+        # eliminamos la información de omniauth
+        flash[:omniauth_data] = nil
+        # indicamos que esa cuenta ya está vinculada
+        flash[:account_linked] = provider
+      end
       redirect_to new_user_registration_url
     end
   end
@@ -106,20 +124,31 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def save_token(provider)
+    # comprobamos si ese esta cuenta ya está linkada
     if provider == 'facebook'
-      token                = Fbtoken.new
-      token.token          = omniauth_token
-      token.expires_at     = omniauth_token_expires_at
-      token.uid            = omniauth_uid
-      current_user.fbtoken = token
-    elsif provider == 'twitter'
-      token                = Twtoken.new
-      token.token          = omniauth_token
-      token.secret         = omniauth_secret
-      token.uid            = omniauth_uid
-      current_user.twtoken = token
+      user = User.where('fbtoken.uid' => omniauth_uid)
+    else
+      user = User.where('twtoken.uid' => omniauth_uid)
     end
-    current_user.save
+    if user.size == 0
+      if provider == 'facebook'
+        token                = Fbtoken.new
+        token.token          = omniauth_token
+        token.expires_at     = omniauth_token_expires_at
+        token.uid            = omniauth_uid
+        current_user.fbtoken = token
+      elsif provider == 'twitter'
+        token                = Twtoken.new
+        token.token          = omniauth_token
+        token.secret         = omniauth_secret
+        token.uid            = omniauth_uid
+        current_user.twtoken = token
+      end
+      current_user.save
+      return true
+    else # ya hay un usuario que tiene esa cuenta vinculada
+      return false
+    end
   end
 
   def koala_facebook_oauth

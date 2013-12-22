@@ -1,6 +1,12 @@
 es:
   devise:
     registrations:
+      account-linked:
+        account_linked_text: Esta cuenta de %{provider} ya está vinculada a ebentum
+        account_linked_title: ¡Ups!
+      account-linked-modal:
+        account_linked_text: La cuenta que intentas vincular ya está vinculada a otro usuario de ebentum
+        account_linked_title: ¡Ups!
       confirm_delete_account:
         attention: ¡Atención!
         confirm_delete_account_text: Si elimina la cuenta, perderá su usuario en ebentum y todos sus datos relacionados. ¿Desea continuar?

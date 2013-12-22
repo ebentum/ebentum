@@ -95,4 +95,8 @@ module OmniauthHelper
     flash[:omniauth_data]
   end
 
+  def is_account_linked?
+    flash[:account_linked] != nil
+  end
+
 end

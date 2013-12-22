@@ -1,0 +1,12 @@
+.modal.fade{:id => 'account-linked'}
+  .modal-dialog.card
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        = t('.account_linked_title')
+      .modal-body
+        %p
+          = t('.account_linked_text')
+      .card-footer
+        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", "data-dismiss" => "modal"}
+          Ok
