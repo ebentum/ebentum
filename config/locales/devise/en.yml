@@ -4,8 +4,8 @@ en:
   errors:
     messages:
       expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
+      not_found: "Not found"
+      already_confirmed: "Was already confirmed, please try signing in"
       not_locked: "was not locked"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
