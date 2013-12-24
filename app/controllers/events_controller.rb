@@ -14,8 +14,6 @@ class EventsController < ApplicationController
       else
         @events = @user.created_events
       end
-    else
-      @events = Event.all
     end
 
   end
