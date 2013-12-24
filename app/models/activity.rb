@@ -7,8 +7,9 @@ class Activity
   embeds_one :actor
   embeds_one :subject
   embeds_one :target
-  has_and_belongs_to_many :receivers, class_name: "User", inverse_of: :activities
+  has_and_belongs_to_many :receivers, class_name: "User", inverse_of: :activities, index: true
 
+  index({ created_at: -1 })
 
   def fill_data(verb, actor, subject, receivers = "followers")
     self.verb = verb
