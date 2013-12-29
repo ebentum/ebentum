@@ -13,7 +13,8 @@
         %label.control-label.col-sm-2
           %i.fa.fa-calendar
       .col-xs-5
-        = f.text_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
+        = f.hidden_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
+        #event_start_date_picker
       .col-xs-1
         %label.control-label.col-sm-2
           %i.fa.fa-clock-o
