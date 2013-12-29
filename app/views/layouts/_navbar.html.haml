@@ -66,6 +66,14 @@
                 %i.fa.fa-compass.media-object
               .media-body
                 = t('.explore')
+          - if user_signed_in?
+            %li.list-group-item
+              %a#events_new{:href => "#"}
+                .media
+                  .pull-left
+                    %i.fa.fa-plus.media-object
+                  .media-body
+                    = t('.create')
 
         %ul.navbar-xs.list-group.mtm
           - if user_signed_in?
