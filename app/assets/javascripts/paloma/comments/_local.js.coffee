@@ -74,7 +74,7 @@ Paloma.Comments =
       # id del comentario a editar
       id = $(this).data('commentid')
       # el comentario a editar, lo ponemos editable
-      $('#editcomment'+id).addClass('editing')
+      $('#editcomment'+id).addClass('editing').removeClass('hide')
       Paloma.Comments.comment_edit_mode_on(id)
       # poner el cursos al final del texto del textarea que queremos editar
       $('#edit_comment_textarea_'+id).caretToEnd()
@@ -99,9 +99,9 @@ Paloma.Comments =
                 dataType: 'html'
                 success: (data, status, xhr) ->
                   data = $(data)
-                  $('#event_comments').append(data)
-                  $('#event_comments li:last').hide()
-                  $('#event_comments li:last').fadeIn('fast')
+                  $('#event_comments').prepend(data)
+                  $('#event_comments li:first').hide()
+                  $('#event_comments li:first').fadeIn('fast')
                   $('#new_comment_textarea').val('')
                   Paloma.DateTimes.format($('#event_comments'))
 

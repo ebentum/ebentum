@@ -8,17 +8,20 @@
       %small
         %a{:href => user_path(comment.creator)}
           = comment.creator.complete_name
-      %span.mlm{:id => 'body'+commentid}
+
+      .pull-right
+        - if current_user && current_user.id == comment.creator.id
+          %span.mrm{:id => 'editdelete'+commentid}
+            %a.mrs{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
+              %i.fa.fa-pencil
+            %a{:href => '#confirm_delete', :id => 'delete_comment', :data => {:commentid => comment.id, :toggle => 'modal', :target => '#confirm_delete'}}
+              %i.fa.fa-trash-o
+        %small{:id => 'comment_date_'+comment.id.to_s}
+          .format-timeago.hidden
+          .format-timeago.comment-timeago{:data => {:datevalue => comment.updated_at}}
+
+    %span.mlm{:id => 'body'+commentid}
+      = comment.body
+    %span{:id => 'edit'+commentid, :class => 'hide'}
+      %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment form-control input-sm', :data => {:commentid => comment.id}}
         = comment.body
-      %span{:id => 'edit'+commentid, :class => 'hide'}
-        %textarea{:rows => "1", :id => 'edit_comment_textarea_'+comment.id.to_s, :class => 'textarea_edit_comment form-control input-sm', :data => {:commentid => comment.id}}
-          = comment.body
-    %small{:id => 'comment_date_'+comment.id.to_s}
-      .format-timeago.hidden
-      .format-timeago.comment-timeago{:data => {:datevalue => comment.updated_at}}
-    - if current_user && current_user.id == comment.creator.id
-      %span{:id => 'editdelete'+commentid}
-        %a{:href => '#', :id => 'edit_comment', :data => {:commentid => comment.id}}
-          %i.fa.fa-pencil
-        %a{:href => '#confirm_delete', :id => 'delete_comment', :data => {:commentid => comment.id, :toggle => 'modal', :target => '#confirm_delete'}}
-          %i.fa.fa-trash
