@@ -44,7 +44,7 @@
   height: 40px;
   margin: 5px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .calendar-month{
@@ -53,12 +53,14 @@
 }
 
 .calendar-day{
-  background: $inverse;
-  color: $base;
-  margin: 1px 5px 0px 5px;
-  padding-top: 3px;
-  border-radius: 4px;
-  height: 20px;
+  background: #ecebe8;
+  color: #7e7e7e;
+  font-weight: 800;
+  font-size: 16px;
+  margin: 1px 0px 0px 0px;
+  padding-top: 5px;
+  border-radius: 0 0 4px 4px;
+  height: 27px;
 }
 
 
