@@ -6,20 +6,26 @@
   .card-content
     .pam
       = f.text_field :name, :placeholder => t(".name"), :class => "form-control input-sm mbs"
-      = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control input-sm", :rows => 4
+
   .card-content
     .row.plm.prm.ptm.pbm
-      .col-xs-1
-        %label.control-label.col-sm-2
-          %i.fa.fa-calendar
-      .col-xs-5
-        = f.hidden_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
-        #event_start_date_picker
-      .col-xs-1
-        %label.control-label.col-sm-2
-          %i.fa.fa-clock-o
-      .col-xs-5
-        = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
+      .col-md-6
+        = f.text_area :description, :placeholder => t(".description_optional"), :class => "form-control input-sm", :rows => 13
+      .col-md-6
+        .row.mtm
+          .col-xs-2
+            %label.control-label.col-sm-2
+              %i.fa.fa-calendar
+          .col-xs-10
+            = f.hidden_field :start_date, :placeholder => t(".date"), :data => { "date-format" => t("date.formats.bootstrap_datepicker")}, :class => "form-control input-sm"
+            #event_start_date_picker
+
+        .row.mts
+          .col-xs-2
+            %label.control-label.col-sm-2
+              %i.fa.fa-clock-o
+          .col-xs-10
+            = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
 
   .card-content
     .row.plm.prm.ptm.pbs
