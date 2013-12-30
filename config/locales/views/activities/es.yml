@@ -3,5 +3,6 @@ es:
     activity_card:
       join: "se ha unido a %{display_name}"
       create: "ha creado %{display_name}"
+      follow: "ahora sigue a %{display_name}"
     index:
       no_activities: "No tienes ninguna actividad. Pulsa en Explorar si quieres conocer nuevos eventos."
