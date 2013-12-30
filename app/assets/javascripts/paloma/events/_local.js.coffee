@@ -80,6 +80,12 @@ Paloma.Events =
 
       $('#event_description').autosize({append: "\n"})
 
+
+
+
+
+
+
       $('#event_start_date_picker').datepicker
         autoclose: true
         language: I18n.locale
@@ -87,7 +93,13 @@ Paloma.Events =
       .on "changeDate", (e) ->
         $('#event_start_date').val(new moment(e.date).format(date_format))
 
-      date_format = $("#event_start_date").data('date-format').toUpperCase()
+
+      $('#event_start_time_picker').timepicker(
+              #timeFormat: "H:i"
+              'scrollDefaultNow': true )
+
+
+      date_format = $("#event_start_date").data('date-format')
 
       if $('#event_start_date').val() != ""
         selected_date = new moment($("#event_start_date").val())
@@ -98,16 +110,21 @@ Paloma.Events =
       $('#event_start_date').val(selected_date.format(date_format))
 
 
-      if $('#event_start_time').val() != ""
-        startTime = $('#event_start_time').val()
-        $('#event_start_time').val(null)
 
-      $('#event_start_time').timepicker(
-              timeFormat: "H:i"
-              scrollDefaultNow: true)
 
-      if startTime != ""
-        $('#event_start_time').timepicker('setTime', new Date(startTime))
+
+
+#      if $('#event_start_time_picker').val() != ""
+#        startTime = $('#event_start_time_picker').val()
+#        $('#event_start_time_picker').val(null)
+
+#      if startTime != ""
+#        $('#event_start_time_picker').timepicker('setTime', new Date(startTime))
+
+
+
+
+
 
 
       $('#create_event_btn').click ->
@@ -189,7 +206,7 @@ Paloma.Events =
             required: true
             date: true
             dateRange: "event_start_date"
-          "event[start_time]":
+          "event[start_time_picker]":
             required: true
             time: true
           "place_autocomplete":

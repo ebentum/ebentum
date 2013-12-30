@@ -34,7 +34,7 @@ es:
       default: ! '%d/%m/%Y'
       long: ! '%a, %d de %B de %Y'
       short: ! '%d de %b'
-      bootstrap_datepicker: 'dd/mm/yyyy'
+      bootstrap_datepicker: 'DD/MM/YYYY'
     month_names:
     -
     - enero
