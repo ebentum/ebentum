@@ -36,7 +36,6 @@
 //= require jquery.caret
 
 //= require moment
-//= require moment-es
 
 //= require i18n
 //= require i18n/translations

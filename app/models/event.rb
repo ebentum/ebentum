@@ -15,8 +15,7 @@ class Event
   field :description, type: String
   field :place, type: String
   field :active, type: Boolean
-  field :start_date, type: Date
-  field :start_time, type: Time
+  field :start_date, type: DateTime
   field :coordinates, type: Array
   field :lat, type: BigDecimal
   field :lng, type: BigDecimal
@@ -24,10 +23,10 @@ class Event
 
   reverse_geocoded_by :coordinates
 
-  attr_accessible :active, :description, :name, :place, :start_date, :start_time, :lat, :lng #:photo
+  attr_accessible :active, :description, :name, :place, :start_date, :lat, :lng #:photo
   # attr_readonly :appointments_count
 
-  validates :name, :place, :start_date, :start_time, :lat, :lng, presence: true
+  validates :name, :place, :start_date, :lat, :lng, presence: true
 
   belongs_to :creator, class_name: "User", inverse_of: :created_events
 

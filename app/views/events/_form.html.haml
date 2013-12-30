@@ -25,7 +25,7 @@
             %label.control-label.col-sm-2
               %i.fa.fa-clock-o
           .col-xs-10
-            = f.text_field :start_time, :placeholder => t(".time"), :class => "form-control input-sm"
+            %input#event_start_time_picker{:placeholder => t(".time"), :type => "text", :name => "start_time_picker", :class => "form-control input-sm"}
 
   .card-content
     .row.plm.prm.ptm.pbs

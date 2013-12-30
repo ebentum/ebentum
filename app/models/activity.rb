@@ -52,7 +52,6 @@ class Activity
       self_object.url = Rails.application.routes.url_helpers.event_path(object)
       self_object.address = object.place
       self_object.startDate = object.start_date
-      self_object.startTime = object.start_time
     elsif object_type == "user"
       self_object.url = Rails.application.routes.url_helpers.user_path(object)
       self_object.displayName = object.complete_name

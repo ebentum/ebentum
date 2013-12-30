@@ -80,52 +80,41 @@ Paloma.Events =
 
       $('#event_description').autosize({append: "\n"})
 
+      event_start_date_object = $("#event_start_date")
+      event_start_date_picker_object = $('#event_start_date_picker')
+      event_start_time_picker_object = $('#event_start_time_picker')
 
+      date_format = event_start_date_object.data('date-format')
+      time_format = 'HH:mm'
 
-
-
-
-
-      $('#event_start_date_picker').datepicker
+      event_start_date_picker_object.datepicker
         autoclose: true
         language: I18n.locale
         startDate: Date()
       .on "changeDate", (e) ->
-        $('#event_start_date').val(new moment(e.date).format(date_format))
+        event_start_date_object.val(new moment(e.date).format(date_format) + ' ' + event_start_time_picker_object.val() + ' ' + new moment().format('Z'))
+      .on "show", (e) ->
+        alert "show"
 
+      event_start_time_picker_object.timepicker
+        'scrollDefaultNow': true
+        'timeFormat': 'H:i'
 
-      $('#event_start_time_picker').timepicker(
-              #timeFormat: "H:i"
-              'scrollDefaultNow': true )
+      event_start_time_picker_object.on "changeTime", ->
+        event_start_date_object.val(new moment(event_start_date_picker_object.datepicker("getDate")).format(date_format) + ' ' + event_start_time_picker_object.val() + ' ' + new moment().format('Z'))
 
-
-      date_format = $("#event_start_date").data('date-format')
-
-      if $('#event_start_date').val() != ""
-        selected_date = new moment($("#event_start_date").val())
-        $('#event_start_date_picker').datepicker("update", selected_date.toDate())
+      if event_start_date_object.val() == ""
+        selected_date = new moment(new moment().format(date_format + ' Z'), date_format)
+        selected_time = new moment()
       else
-        selected_date = new moment()
-
-      $('#event_start_date').val(selected_date.format(date_format))
-
+        selected_date = new moment(new moment(event_start_date_object.val()).format(date_format + ' Z'), date_format)
+        selected_time = new moment(event_start_date_object.val())
 
 
+      event_start_date_picker_object.datepicker("update", selected_date.toDate())
+      event_start_time_picker_object.val(selected_time.format(time_format))
 
-
-
-#      if $('#event_start_time_picker').val() != ""
-#        startTime = $('#event_start_time_picker').val()
-#        $('#event_start_time_picker').val(null)
-
-#      if startTime != ""
-#        $('#event_start_time_picker').timepicker('setTime', new Date(startTime))
-
-
-
-
-
-
+      event_start_date_object.val(selected_date.format(date_format) + ' ' + selected_time.format(time_format) + ' ' + new moment().format('Z'))
 
       $('#create_event_btn').click ->
         if !$(this).hasClass("disabled")
@@ -202,13 +191,6 @@ Paloma.Events =
         rules:
           "event[name]":
             required: true
-          "event[start_date]":
-            required: true
-            date: true
-            dateRange: "event_start_date"
-          "event[start_time_picker]":
-            required: true
-            time: true
           "place_autocomplete":
             valid_place: true
         onkeyup: false
