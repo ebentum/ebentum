@@ -36,7 +36,8 @@
                         .media-object
                           %i.fa.fa-calendar
                       .col-xs-10
-                        = l(@event.start_date, :format => :long)
+                        = l(Time.parse(@event.start_date.to_s), :format => :long)
+
                   .card-content
                     .row
                       .col-xs-2
