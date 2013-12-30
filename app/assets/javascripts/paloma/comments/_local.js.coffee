@@ -134,9 +134,10 @@ Paloma.Comments =
                   data = $(data)
                   if next_id
                     data.insertBefore('#'+next_id)
-                  else
+                  else if prev_id
                     data.insertAfter('#'+prev_id)
-                  #$('#event_comments').prepend(data)
+                  else # es el único comentario que hay
+                    $('#comments ul').html(data)
                   $('#'+data._id).hide()
                   $('#'+data._id).fadeIn('fast')
                   $('#new_comment_textarea').val('')
