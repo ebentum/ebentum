@@ -34,8 +34,9 @@ Ebentum::Application.routes.draw do
     end
   end
 
-  resources :events, except: :show
+  resources :events, except: [:show, :update]
 
+  match '/:id' => 'events#update', :as => 'event', :via => :PUT
   match '/:id' => 'events#show', :as => 'event'
 
   # The priority is based upon order of creation:

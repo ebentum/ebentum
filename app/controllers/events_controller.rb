@@ -158,7 +158,11 @@ class EventsController < ApplicationController
   end
 
   def update
+    logger.info "----------------------------0"
+
     @event = Event.find(params[:id])
+
+    logger.info "----------------------------1"
 
     if @event.creator != current_user
       render :json => false
@@ -171,6 +175,8 @@ class EventsController < ApplicationController
           @event.main_picture = picture
         end
       end
+
+    logger.info "----------------------------2"
 
       respond_to do |format|
         if @event.update_attributes(params[:event])
