@@ -95,7 +95,7 @@ class EventsController < ApplicationController
 
     # Temas de mejora de SEO
     @head_title       = @event.name
-    @meta_description = @event.description+' '+t(:meta_description, :joined => @event_users)
+    @meta_description = @event.description+' '+t(:meta_description, :event_name => @event.name, :joined => @event_users)
     @meta_keywords    = @event.description
 
     js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}
