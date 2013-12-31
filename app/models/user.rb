@@ -91,7 +91,7 @@ class User
 
   # override de la función de devise para saber cuando debemos confirmar el email
   def confirmation_required?
-    if self.user_confirmation_required == nil
+    if self.confirmation_token != nil
       true
     else
       self.user_confirmation_required == 'true'
