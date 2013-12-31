@@ -15,7 +15,7 @@ es:
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'Debe identificarse o registrarse antes de continuar'
-      unconfirmed: 'You have to confirm your account before continuing.'
+      unconfirmed: 'Antes de nada, debes confirmar tu cuenta.'
       locked: 'Your account is locked.'
       invalid: 'El email o la contraseña no son validos'
       invalid_token: 'Invalid authentication token.'
