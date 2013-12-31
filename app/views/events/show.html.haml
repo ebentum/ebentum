@@ -3,6 +3,18 @@
     .col-xs-12.col-md-4
       .card-square
         = image_tag(@event.get_picture.photo.url(:medium), :class => 'block')
+      -if @event.creator == current_user
+        .card
+          .card-content
+            .row
+              .col-xs-12
+                = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary btn-block', :id => 'events_edit'
+            %br
+            .row
+              .col-xs-12
+                %button.btn.btn-block.btn-danger{:id => "delete_event_btn", "data-toggle" => "modal", :href => "#confirm_delete_event", "data-loading-text" => t('.deleting')}
+                  %span
+                    = t('.delete')
 
     .col-xs-12.col-md-8
       .row
@@ -50,12 +62,6 @@
                   #map.block
 
             .row.card-footer
-              -if @event.creator == current_user
-                .col-xs-12.col-md-2.footer-option.option-active.btn-round-bottom-left
-                  .option-action
-                    = button_tag t('.edit'), :type => 'button', :class => 'btn btn-primary', :id => 'events_edit'
-              - else
-                .col-xs-12.col-md-2.footer-option
 
               .col-xs-12.col-md-2.footer-option
                 %a#appointed{:href => "#"}
@@ -77,4 +83,5 @@
 
 = render 'confirm_appoint'
 = render 'confirm_desappoint'
+= render 'confirm_delete_event'
 
