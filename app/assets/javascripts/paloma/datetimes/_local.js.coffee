@@ -12,12 +12,10 @@ Paloma.DateTimes =
 
   formatTimeAgos: (selector) ->
     # Formatear timeagos
-    $('.format-timeago', selector).each(
-                               () ->
-                                    value = $(this).data('datevalue')
-                                    newValue = moment(value, "YYYY-MM-DD HH:mm:ss Z").fromNow();
-                                    $(this).text(newValue)
-                            )
+    $('.format-timeago', selector).each ->
+      value = $(this).data('datevalue')
+      newValue = moment(value, "YYYY-MM-DD HH:mm:ss Z").fromNow();
+      $(this).text(newValue)
 
 
   initTimeAgosUpdateInterval: ->
@@ -28,3 +26,9 @@ Paloma.DateTimes =
       console.log "update times"
 
     setInterval updateFn, 60000 # 60 secs
+
+  formatDateSpans: ->
+    $(".format-date").each ->
+      value = $(this).text()
+      newValue = moment(value, "YYYY-MM-DD HH:mm:ss")
+      $(this).text newValue.format("LLLL")

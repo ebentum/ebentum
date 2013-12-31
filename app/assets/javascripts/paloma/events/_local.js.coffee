@@ -92,7 +92,7 @@ Paloma.Events =
         language: I18n.locale
         startDate: Date()
       .on "changeDate", (e) ->
-        event_start_date_object.val(new moment(e.date).format(date_format) + ' ' + event_start_time_picker_object.val() + ' ' + new moment().format('Z'))
+        event_start_date_object.val(new moment(e.date).format(date_format) + ' ' + event_start_time_picker_object.val())
       .on "show", (e) ->
         alert "show"
 
@@ -101,20 +101,20 @@ Paloma.Events =
         'timeFormat': 'H:i'
 
       event_start_time_picker_object.on "changeTime", ->
-        event_start_date_object.val(new moment(event_start_date_picker_object.datepicker("getDate")).format(date_format) + ' ' + event_start_time_picker_object.val() + ' ' + new moment().format('Z'))
+        event_start_date_object.val(new moment(event_start_date_picker_object.datepicker("getDate")).format(date_format) + ' ' + event_start_time_picker_object.val())
 
       if event_start_date_object.val() == ""
-        selected_date = new moment(new moment().format(date_format + ' Z'), date_format)
+        selected_date = new moment(new moment().format(date_format), date_format)
         selected_time = new moment()
       else
-        selected_date = new moment(new moment(event_start_date_object.val()).format(date_format + ' Z'), date_format)
+        selected_date = new moment(new moment(event_start_date_object.val()).format(date_format), date_format)
         selected_time = new moment(event_start_date_object.val())
 
 
       event_start_date_picker_object.datepicker("update", selected_date.toDate())
-      event_start_time_picker_object.val(selected_time.format(time_format))
+      event_start_time_picker_object.val(selected_time.utc().format(time_format))
 
-      event_start_date_object.val(selected_date.format(date_format) + ' ' + selected_time.format(time_format) + ' ' + new moment().format('Z'))
+      event_start_date_object.val(selected_date.format(date_format) + ' ' + selected_time.format(time_format))
 
       $('#create_event_btn').click ->
         if !$(this).hasClass("disabled")
