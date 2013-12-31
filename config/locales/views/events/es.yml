@@ -18,6 +18,9 @@ es:
     show:
       join: "¡Me uno!"
       joined: "Unidos"
+      joining: "Apuntandome..."
+      leave: "¡Desapuntame!"
+      leaving: "Desapuntandome..."
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
       edit: "Editar"

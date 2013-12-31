@@ -8,7 +8,7 @@ Paloma.Events =
 
     else
       $('#appoint').removeClass('hide')
-      $('#user-action').addClass('option-active')
+      $('#user-action').addClass('option-success')
 
     $(document).on "click", "#confirm_appoint_btn", (event) ->
       button = $(this)
@@ -25,7 +25,7 @@ Paloma.Events =
           $('#appoint').button('reset')
           $('#appoint').addClass('hide')
           $('#desappoint').removeClass('hide')
-          $('#user-action').removeClass('option-active')
+          $('#user-action').removeClass('option-success')
           $('#user-action').addClass('option-danger')
           $('#confirm_desappoint_btn').data('appointmentid', data.id)
           # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
@@ -55,7 +55,7 @@ Paloma.Events =
           $('#desappoint').addClass('hide')
           $('#appoint').removeClass('hide')
           $('#user-action').removeClass('option-danger')
-          $('#user-action').addClass('option-active')
+          $('#user-action').addClass('option-success')
           # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
           $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
 
@@ -145,7 +145,7 @@ Paloma.Events =
       input = document.getElementById("place_autocomplete")
       autocomplete = new google.maps.places.SearchBox(input)
       autocomplete.bindTo "bounds", map
-      
+
 
       google.maps.event.addListener autocomplete, "places_changed", ->
         place = autocomplete.getPlaces()
