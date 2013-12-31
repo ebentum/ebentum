@@ -1,9 +1,11 @@
 en:
   #C
   create: "Create"
+  create_event: "Create event"
   #E
   error: "Error!"
   explore: "Explore"
+  explore_events: "Explore events"
   #L
   loading: "Loading..."
   #S

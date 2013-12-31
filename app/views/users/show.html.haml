@@ -164,23 +164,23 @@
       .tab-pane{:id => "userfollowers", :data => {:url => followers_user_path(@user.id)  } }
 
     .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-      #list_error.alert.alert-danger.hidden.col-xs-4.col-md-offset-4
+      #list_error.alert.alert-danger.hidden.card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
         %strong
           = t('error')
         #error_description
-      #list_loading.alert.alert-info.hidden.col-xs-4.col-md-offset-4
+      #list_loading.alert.alert-info.hidden.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
         = t('loading')
       #list_no_userevents.hidden
-        .card.col-xs-4.col-md-offset-4
+        .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               - if @user == current_user
-                %a#events_new{:href => "#"}
+                %a.events_new{:href => "#"}
                   .media
                     .media.body.center-text
                       %i.fa.fa-plus-square.card-icon-big
                     .media.body.center-text
-                      = t('create')
+                      = t('create_event')
               - else
                 %i.fa.fa-frown-o.card-icon-big
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
@@ -191,7 +191,7 @@
                 - else
                   = t('.user_no_events')
       #list_no_userappointments.hidden.row
-        .card.col-xs-4.col-md-offset-4
+        .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               - if @user == current_user
@@ -199,7 +199,7 @@
                   .media.body.center-text
                     %i.fa.fa-compass.card-icon-big
                   .media.body.center-text
-                    = t('explore')
+                    = t('explore_events')
               - else
                 %i.fa.fa-frown-o.card-icon-big
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
@@ -211,7 +211,7 @@
                   = t('.user_no_appoints')
 
       #list_no_userfollowing.hidden.row
-        .card.col-xs-4.col-md-offset-4
+        .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               %i.fa.fa-group.card-icon-big
@@ -224,7 +224,7 @@
                   = t('.user_no_followings')
 
       #list_no_userfollowers.hidden
-        .card.col-xs-4.col-md-offset-4
+        .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
           %a{:href => "/events/search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               %i.fa.fa-group.card-icon-big

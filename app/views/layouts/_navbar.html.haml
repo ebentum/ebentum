@@ -27,7 +27,7 @@
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a#events_new{:href => "#"}
+              %a.events_new{:href => "#"}
                 %i.fa.fa-plus-square
                 = t('.create')
             %li.dropdown
@@ -70,7 +70,7 @@
                 = t('.explore')
           - if user_signed_in?
             %li.list-group-item
-              %a#events_new{:href => "#"}
+              %a.events_new{:href => "#"}
                 .media
                   .pull-left
                     %i.fa.fa-plus-square.media-object

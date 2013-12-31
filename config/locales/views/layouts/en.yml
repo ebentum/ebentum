@@ -4,6 +4,7 @@ en:
       activity: "Activity"
       configuration: "Configuration"
       explore: "Explore"
+      create: "Create"
       logout: "Logout"
       profile: "Profile"
       sign_up: "Sign up"
