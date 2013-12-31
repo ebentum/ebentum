@@ -85,7 +85,7 @@
                   .pull-left
                     %i.fa.fa-user.media-object
                   .media-body
-                    = t('.profile')
+                    = current_user.complete_name
             %li.list-group-item
               %a{:href => edit_user_registration_path(current_user)}
                 .media
