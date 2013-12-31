@@ -79,6 +79,8 @@ class User
 
   has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
 
+  has_many :comments, inverse_of: :creator, dependent: :destroy
+
   # renovación de token de acceso a Facebook
   def update_fbtoken(token, expires_at)
     self.fbtoken.token      = token
@@ -106,6 +108,16 @@ class User
 
   after_update do |user|
     Activity.update_related_activities(user)
+  end
+
+  after_destroy do |user|
+    Activity.destroy_related_activities(user)
+
+    #TODO Estoy hay que mejorarlo con una relación
+    Comment.where("creator._id" => user._id).entries.each do |comment|
+      comment.destroy
+    end
+
   end
 
 end
