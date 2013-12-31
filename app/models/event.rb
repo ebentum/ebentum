@@ -6,7 +6,6 @@ class Event
   include Geocoder::Model::Mongoid
   include Mongoid::Slug
 
-  #slug :name
   slug do |cur_object|
     "#{cur_object.name}".parameterize
   end
@@ -57,8 +56,13 @@ class Event
   after_create do |event|
     Activity.new.fill_data("create", self.creator, self).save
   end
-  after_update do |user|
-    Activity.update_related_activities(user)
+
+  after_update do |event|
+    Activity.update_related_activities(event)
+  end
+  
+  after_destroy do |event|
+    Activity.destroy_related_activities(event)
   end
 
 end

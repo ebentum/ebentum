@@ -70,4 +70,14 @@ class Activity
     end
   end
 
+  def self.destroy_related_activities(object)
+    Activity.where("actor._id" => object._id).entries.each do |activity|
+      activity.destroy
+    end
+
+    Activity.where("subject._id" => object._id).entries.each do |activity|
+      activity.destroy
+    end
+  end
+
 end
