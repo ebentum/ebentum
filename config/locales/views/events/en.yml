@@ -15,6 +15,7 @@ en:
       time: "Time"
       cancel: "Cancel"
       create: "Create"
+      save: "Save changes"
     show:
       join: "Join me!"
       joined: "Joined"
@@ -24,6 +25,8 @@ en:
       event_followings_followers_joined: "(%{following} following and %{followers} followers)"
       organized_by: "Organized by"
       edit: "Edit"
+    edit:
+      edit_event: "Edit event"
     confirm_appoint:
       close: "Close"
       confirm: "Confirm"

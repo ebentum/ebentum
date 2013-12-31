@@ -15,6 +15,7 @@ es:
       time: "Hora"
       cancel: "Cancelar"
       create: "Crear"
+      save: "Guardar cambios"
     show:
       join: "¡Me uno!"
       joined: "Unidos"
@@ -24,6 +25,8 @@ es:
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
       edit: "Editar"
+    edit:
+      edit_event: "Editar evento"
     confirm_appoint:
       close: "Cerrar"
       confirm: "Confirmar"

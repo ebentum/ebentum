@@ -42,9 +42,9 @@
   #map_canvas.mts
 
   .row.card-footer
-    .col-xs-3.col-sm-offset-6.footer-option.option-active
+    .col-xs-3.col-sm-offset-5.footer-option.option-active
       .option-action
-        %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => t(".create")}
+        %input#create_event_btn.btn.btn-primary{:name => "btn_login", :type => "submit", :value => (action_name == "edit") ? t(".save") : t(".create") }
     .col-xs-3.footer-option
       .option-action
         %button.btn.btn-inverse{"aria-hidden" => "true", "data-dismiss" => "modal"}
