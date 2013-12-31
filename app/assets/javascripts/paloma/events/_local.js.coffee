@@ -65,11 +65,7 @@ Paloma.Events =
     else if action == "edit"
       url = "/events/"+id+"/edit"
 
-    console.log 'initEventFormOption'
-    console.log $('.events_'+action)
-
     $('.events_'+action).click ->
-      console.log 'clickkkk'
       $("#modal_window").remove()
       $.ajax
         url: url

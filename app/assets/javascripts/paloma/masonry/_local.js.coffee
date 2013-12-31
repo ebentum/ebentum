@@ -11,6 +11,10 @@ Paloma.Masonry =
       gutter: 10
       isFitWidth: true
 
+    console.log 'layouting finished'
+
+    $(".masonry_layout").removeClass 'invisible'
+
   initPage: (url, container)->
     $(document).scroll ->
       if $(window).height() + $(window).scrollTop() >= $(document).height() * 0.75
