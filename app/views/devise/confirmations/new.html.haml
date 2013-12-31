@@ -1,5 +1,4 @@
-.col-xs-4
-.col-xs-4
+.col-xs-10.col-md-4.col-xs-offset-1.col-md-offset-4
   = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => {:method => :post, :id => 'new_confirmation', :class => 'new_confirmation'}) do |f|
     %fieldset
     .card
@@ -22,4 +21,3 @@
       %span{:id => 'new_confirmation_ok_text'}
         = t('.new_confirmation_ok_text', :email => 'EMAIL')
   = render "devise/shared/links"
-.col-xs-4
