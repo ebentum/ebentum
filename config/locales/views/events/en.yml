@@ -20,11 +20,17 @@ en:
       joined: "Joined"
       event_followings_followers_joined: "(%{following} following and %{followers} followers)"
       organized_by: "Organized by"
+      delete: "Delete"
+      deleting: "Deleting..."
       edit: "Edit"
     confirm_appoint:
       close: "Close"
       confirm: "Confirm"
       confirm_text: "Do you want join the event?"
+    confirm_delete_event:
+      close: "Close"
+      confirm: "Confirm"
+      confirm_delete_event_text: "If you delete the event, you will also delete related data. Do you want to continue?"
     confirm_desappoint:
       close: "Close"
       confirm: "Confirm"

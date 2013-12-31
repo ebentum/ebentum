@@ -20,11 +20,17 @@ es:
       joined: "Unidos"
       event_followings_followers_joined: "(Sigo a %{following} y me siguen %{followers})"
       organized_by: "Organizado por"
+      delete: "Borrar"
+      deleting: "Borrando..."
       edit: "Editar"
     confirm_appoint:
       close: "Cerrar"
       confirm: "Confirmar"
       confirm_text: "¿Deseas apuntarte al evento?"
+    confirm_delete_event:
+      close: "Cerrar"
+      confirm: "Confirmar"
+      confirm_delete_event_text: "Si elimina el evento, perderá también la información asociada el. ¿Desea continuar?"
     confirm_desappoint:
       close: "Cerrar"
       confirm: "Confirmar"

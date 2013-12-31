@@ -19,3 +19,16 @@ Paloma.callbacks["events/show"] = (params) ->
   # cargar comentarios
   Paloma.Comments.load_event_comments(params['event_id'])
   Paloma.Comments.initLayout()
+
+  $(document).on "click", "#confirm_delete_event_btn", (event) ->
+    user_id = $(this).data('userid')
+    event.preventDefault()
+    $.ajax
+      url: "/events/"+$(this).data('eventid')
+      type: 'DELETE'
+      dataType: 'json'
+      beforeSend: ->
+        $('#confirm_delete_event').modal('hide')
+        $('#delete_event_btn').button('loading')
+      success: (data, status, xhr) ->
+        window.location = '/users/'+user_id

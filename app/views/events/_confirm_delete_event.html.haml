@@ -1,0 +1,14 @@
+.modal.fade{:id  => 'confirm_delete_event'}
+  .modal-dialog.card
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        = t('.confirm')
+      .modal-body
+        %p
+          = t('.confirm_delete_event_text')
+      .card-footer
+        %a.btn{:href => "#", "data-dismiss" => "modal"}
+          = t('.close')
+        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", :id => 'confirm_delete_event_btn', :data => {:eventid => @event.id, :userid => current_user.id}}
+          = t('.confirm')
