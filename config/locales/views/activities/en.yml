@@ -5,4 +5,5 @@ en:
       create: "created %{display_name}"
       follow: "now follows %{display_name}"
     index:
-      no_activities: "You don't have any activity. Click Explore if you want to know new events."
+      no_activities1: "You don't have any activity."
+      no_activities2: "Click Explore if you want to know new events."

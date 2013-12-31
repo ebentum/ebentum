@@ -5,4 +5,5 @@ es:
       create: "ha creado %{display_name}"
       follow: "ahora sigue a %{display_name}"
     index:
-      no_activities: "No tienes ninguna actividad. Pulsa en Explorar si quieres conocer nuevos eventos."
+      no_activities1: "No tienes ninguna actividad."
+      no_activities2: "Pulsa en Explorar si quieres conocer nuevos eventos."

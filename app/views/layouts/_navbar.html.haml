@@ -17,17 +17,19 @@
         %ul.nav.navbar-nav.navbar-left
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
+              %i.fa.fa-rss-square
               = t('.activity')
           %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
             %a{:href => "/events/search"}
+              %i.fa.fa-compass
               = t('.explore')
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li
               %a#events_new{:href => "#"}
-                %i.fa.fa-plus
-                Crear
+                %i.fa.fa-plus-square
+                = t('.create')
             %li.dropdown
               %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
                 %i.fa.fa-user
@@ -57,7 +59,7 @@
           %li.list-group-item{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
               .pull-left
-                %i.fa.fa-bullhorn.media-object
+                %i.fa.fa-rss-square.media-object
               .media-body
                 = t('.activity')
           %li.list-group-item{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
@@ -71,7 +73,7 @@
               %a#events_new{:href => "#"}
                 .media
                   .pull-left
-                    %i.fa.fa-plus.media-object
+                    %i.fa.fa-plus-square.media-object
                   .media-body
                     = t('.create')
 

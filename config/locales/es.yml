@@ -2,7 +2,10 @@ es:
   #C
   create: "Crear"
   #E
+  error: "Error!"
   explore: "Explorar"
+  #L
+  loading: "Cargando..."
   #S
   session_started_as: "Sesión iniciada como"
   share_message: "Me acabo de apuntar al evento '%{event_name}' en @ebentumApp ¡Echale un vistazo!"
