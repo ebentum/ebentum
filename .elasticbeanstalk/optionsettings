@@ -1,0 +1,39 @@
+[aws:elasticbeanstalk:application:environment]
+RACK_ENV = production
+RAILS_SKIP_ASSET_COMPILATION = false
+MONGOLAB_URI = mongodb://ebentum:qK3TyaaV3VeQfn@ds053828.mongolab.com:53828/ebentum
+S3_BUCKET_NAME = ebentum.s3
+PARAM1 = 
+PARAM2 = 
+NEW_RELIC_LICENSE_KEY = c319d488a2eac2cdeadeb1b4fa4bb8a9f1ab376b
+MANDRILL_APIKEY = F0vr29R2ZGo695tfBEex0A
+NEW_RELIC_APP_NAME = Ebentum
+RAILS_SKIP_MIGRATIONS = false
+BUNDLE_WITHOUT = test:development
+PARAM4 = 
+PARAM3 = 
+PARAM5 = 
+MANDRILL_USERNAME = dev@ebentum.com
+
+[aws:elasticbeanstalk:hostmanager]
+LogPublicationControl = true
+
+[aws:autoscaling:launchconfiguration]
+InstanceType = t1.micro
+EC2KeyName = 
+
+[aws:autoscaling:asg]
+MaxSize = 4
+MinSize = 1
+Custom Availability Zones = 
+
+[aws:elasticbeanstalk:monitoring]
+Automatically Terminate Unhealthy Instances = true
+
+[aws:elasticbeanstalk:sns:topics]
+Notification Endpoint = 
+Notification Protocol = email
+
+[aws:elasticbeanstalk:application]
+Application Healthcheck URL = 
+
