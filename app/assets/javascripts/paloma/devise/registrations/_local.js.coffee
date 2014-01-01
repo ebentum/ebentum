@@ -33,7 +33,7 @@ Paloma.devise.registrations =
           # guardar token de acceso
           Paloma.Tokens.save_access_token data._id, (err) ->
             # redirigir al inicio
-            window.location = '/events/'
+            window.location = '/'
 
         else
           # guardar token de acceso

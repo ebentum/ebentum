@@ -17,7 +17,7 @@ Paloma.callbacks["devise/sessions/new"] = (params) ->
         $('#sign_in_button').button('loading')
       success: (data, status, xhr) ->
         # redirigir al inicio
-        window.location = '/events/'
+        window.location = '/'
       error: (xhr, status, error) ->
         # ponemos el error
         if xhr.status is 401
