@@ -1,5 +1,4 @@
-.col-xs-4
-.col-xs-4
+.col-xs-10.col-md-4.col-xs-offset-1.col-md-offset-4
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => 'new_password', :class => 'new_password'}) do |f|
     .card
       .card-header
@@ -21,4 +20,3 @@
       %span{:id => 'new_password_ok_text'}
         = t('.new_password_ok_text', :email => 'EMAIL')
   = render "devise/shared/links"
-.col-xs-4
