@@ -49,8 +49,8 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
         $('#user_location').val(data.location) if $('#import_location').is(':checked')
         $('#user_web').val(data.web) if $('#import_web').is(':checked')
         $('#user_bio').val(data.bio) if $('#import_bio').is(':checked')
-        $('#userImage img').attr('src', data.image) if $('#import_image').is(':checked')
-        $('#image_url').val(data.image) if $('#import_image').is(':checked')
+        $('#main_picture_preview').attr('src', data.image) if $('#import_image').is(':checked')
+        # $('#image_url').val(data.image) if $('#import_image').is(':checked')
 
   $("#facebook").on "change", (e, data) ->
     switchContainer = $(this).parent()
