@@ -128,12 +128,28 @@ class UsersController < ApplicationController
     end
   end
 
+
   def update_position
     user = User.find(current_user.id)
     user.lat = params[:lat]
     user.lng = params[:lng]
     user.setCoordinates
     render json: user
+  end
+
+  def search
+    @q = params[:q]
+    @users = User.fulltext_search(@q)
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => nil}
+      else
+        format.html { render :layout => 'fullwidth' }
+      end
+      format.json { render json: @users }
+    end
+
   end
 
 end
