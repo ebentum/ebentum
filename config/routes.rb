@@ -37,6 +37,8 @@ Ebentum::Application.routes.draw do
     end
   end
 
+  match '/admin/update_fulltext_index'     => 'admin#update_fulltext_index'
+
   resources :events, except: [:show, :update]
 
   match '/:id' => 'events#update', :as => 'event', :via => :PUT
