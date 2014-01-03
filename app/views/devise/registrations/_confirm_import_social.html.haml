@@ -10,21 +10,21 @@
         %form{:id => 'import_social'}
           #import_social_checkboxes
             .pull-left
-              %label.checkbox
-                %input{:type => "checkbox", :checked => true, :id => 'import_complete_name'}/
+              = label_tag :import_complete_name, :class => 'checkbox' do
+                = check_box_tag :import_complete_name, 'true', true, :data => {:toggle => 'checkbox'}
                 = t('.complete_name')
-              %label.checkbox
-                %input{:type => "checkbox", :checked => true, :id => 'import_location'}/
+              = label_tag :import_location, :class => 'checkbox' do
+                = check_box_tag :import_location, 'true', true, :data => {:toggle => 'checkbox'}
                 = t('.location')
-              %label.checkbox
-                %input{:type => "checkbox", :checked => true, :id => 'import_web'}/
+              = label_tag :import_web, :class => 'checkbox' do
+                = check_box_tag :import_web, 'true', true, :data => {:toggle => 'checkbox'}
                 = t('.web')
             .pull-right
-              %label.checkbox
-                %input{:type => "checkbox", :checked => true, :id => 'import_bio'}/
+              = label_tag :import_bio, :class => 'checkbox' do
+                = check_box_tag :import_bio, 'true', true, :data => {:toggle => 'checkbox'}
                 = t('.bio')
-              %label.checkbox
-                %input{:type => "checkbox", :checked => true, :id => 'import_image'}/
+              = label_tag :import_image, :class => 'checkbox' do
+                = check_box_tag :import_image, 'true', true, :data => {:toggle => 'checkbox'}
                 = t('.image')
       .card-footer
         %a.btn{:href => "#", "data-dismiss" => "modal"}
