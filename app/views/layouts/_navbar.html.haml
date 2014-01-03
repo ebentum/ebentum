@@ -24,6 +24,11 @@
               %i.fa.fa-compass
               = t('.explore')
 
+          %li{ :class => (controller_name == "users" and action_name == "search") ? "active" : nil }
+            %a{:href => "/users/search"}
+              %i.fa.fa-users
+              = t('.people')
+
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li

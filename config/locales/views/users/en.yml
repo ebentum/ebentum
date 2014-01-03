@@ -13,6 +13,9 @@ en:
       location: "Location"
       bio: "Bio"
       web: "Web"
+    search:
+      search: "Search"
+      person_name: "Person name"
     show:
       edit: "Edit"
       username: "User name"

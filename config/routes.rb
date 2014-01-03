@@ -1,5 +1,6 @@
 Ebentum::Application.routes.draw do
 
+  match 'users/search'               => 'users#search'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
     match '/users/facebook_login'  => 'users/omniauth_callbacks#facebook_login'

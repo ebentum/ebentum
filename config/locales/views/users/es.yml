@@ -13,6 +13,9 @@ es:
       location: "Ubicación habitual"
       bio: "Biografía"
       web: "Web"
+    search:
+      search: "Buscar"
+      person_name: "Nombre de la persona"
     show:
       edit: "Editar"
       username: "Nombre de usuario"

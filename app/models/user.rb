@@ -5,6 +5,7 @@ class User
   include Mongo::Followable::Followed
   include Mongo::Followable::Follower
   include Mongo::Followable::History
+  include Mongoid::FullTextSearch
 
   devise :database_authenticatable,
          #:token_authenticatable,
@@ -83,6 +84,8 @@ class User
   has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
 
   has_many :comments, inverse_of: :creator, dependent: :destroy
+
+  fulltext_search_in :complete_name
 
   # renovación de token de acceso a Facebook
   def update_fbtoken(token, expires_at)

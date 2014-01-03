@@ -1,0 +1,14 @@
+.container
+  .col-xs-12
+    %form#user_search_form{role: "search"}
+      .card
+        .card-content
+          .row
+            .col-xs-12.col-md-10
+              = text_field_tag :q, @q, class: 'form-control', placeholder: t('.person_name')
+            .col-xs-12.col-md-2
+              = submit_tag t('.search'), class: 'btn'
+
+.col-xs-12
+  #events_list.masonry_layout.centered
+    = render 'list'
