@@ -2,3 +2,8 @@ es:
   pictures:
     main_picture_form:
       delete_image: Borrar imagen
+    main_picture_delete:
+      cancel: Cancelar
+      confirm: Confirmar
+      confirm_image_delete_text: ¿Deseas eliminar la imagen?
+      delete: Borrar
