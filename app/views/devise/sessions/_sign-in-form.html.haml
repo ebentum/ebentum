@@ -34,7 +34,7 @@
         .col-xs-12
           .pull-left
             = f.label :remember_me, :class => 'checkbox' do
-              = f.check_box :remember_me, "data-toggle" => "checkbox", :value => ""
+              = f.check_box :remember_me, {style: 'width: 0px;', "data-toggle" => "checkbox", :checked => true}, "1", "0"
               = t('.remember_me')
     .row.card-footer
       .col-xs-5.footer-option.option-active.pull-right.btn-round-bottom-right
