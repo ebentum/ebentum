@@ -7,6 +7,7 @@ Ebentum::Application.routes.draw do
     match '/auth_login/callback'   => 'users/omniauth_callbacks#facebook'
     match '/users/edit_password'   => 'users#edit_password'
     match '/users/update_password' => 'users#update_password'
+    match '/users/update_position' => 'users#update_position'
   end
 
   resources :activities
@@ -17,7 +18,8 @@ Ebentum::Application.routes.draw do
   match 'events/add_user/:eventid'    => 'events#add_user'
   match 'events/remove_user/:eventid' => 'events#remove_user'
   match 'events/search'               => 'events#search'
-  
+  match 'events/event_search'         => 'events#event_search'
+
   resources :tokens
   match '/social/share_event_appoint' => 'social#share_event_appoint'
   match '/social/get_social_data'     => 'social#get_social_data'

@@ -128,4 +128,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_position
+    user = User.find(current_user.id)
+    user.lat = params[:lat]
+    user.lng = params[:lng]
+    user.setCoordinates
+    render json: user
+  end
+
 end

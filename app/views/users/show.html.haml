@@ -172,7 +172,7 @@
         = t('loading')
       #list_no_userevents.hidden
         .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
-          %a{:href => "/events/search"}
+          %a{:href => "/events/event_search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               - if @user == current_user
                 %a.events_new{:href => "#"}
@@ -192,7 +192,7 @@
                   = t('.user_no_events')
       #list_no_userappointments.hidden.row
         .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
-          %a{:href => "/events/search"}
+          %a{:href => "/events/event_search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               - if @user == current_user
                 .media
@@ -212,7 +212,7 @@
 
       #list_no_userfollowing.hidden.row
         .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
-          %a{:href => "/events/search"}
+          %a{:href => "/events/event_search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               %i.fa.fa-group.card-icon-big
           .card-footer.card-footer-masonry.pts.pbs.plm.prm
@@ -225,7 +225,7 @@
 
       #list_no_userfollowers.hidden
         .card.col-xs-6.col-xs-offset-3.col-md-4.col-md-offset-4
-          %a{:href => "/events/search"}
+          %a{:href => "/events/event_search"}
             .card-image-placeholder{:style => "width: 100%; height: 220px;"}
               %i.fa.fa-group.card-icon-big
           .card-footer.card-footer-masonry.pts.pbs.plm.prm

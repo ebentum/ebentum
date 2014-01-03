@@ -20,7 +20,7 @@
               %i.fa.fa-rss-square
               = t('.activity')
           %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
-            %a{:href => "/events/search"}
+            %a{:href => "/events/event_search"}
               %i.fa.fa-compass
               = t('.explore')
 
@@ -63,7 +63,7 @@
               .media-body
                 = t('.activity')
           %li.list-group-item{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
-            %a{:href => "/events/search"}
+            %a{:href => "/events/event_search"}
               .pull-left
                 %i.fa.fa-compass.media-object
               .media-body

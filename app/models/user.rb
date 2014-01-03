@@ -24,6 +24,9 @@ class User
   field :web, type: String
   field :bio, type: String
   field :active, type: Boolean
+  field :coordinates, type: Array
+  field :lat, type: BigDecimal
+  field :lng, type: BigDecimal
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -57,7 +60,7 @@ class User
   field :uid,       :type => String
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid#, :image, :image_url, :image_delete
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :complete_name, :location, :bio, :web, :provider, :uid, :lat, :lng#, :image, :image_url, :image_delete
 
   # atributos que no son del modelo
   # email que viene de omniauth
@@ -118,6 +121,11 @@ class User
       comment.destroy
     end
 
+  end
+
+  def setCoordinates
+    self.coordinates = [self.lng.to_f, self.lat.to_f]
+    self.save
   end
 
 end

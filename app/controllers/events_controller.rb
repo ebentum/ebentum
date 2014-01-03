@@ -18,12 +18,17 @@ class EventsController < ApplicationController
 
   end
 
+  def event_search
+
+  end
+
   def search
 
     @page = params[:page] || 1
 
-    my_location = [request.location.latitude, request.location.longitude]
-    # my_location = [43.28441, -2.172193] # Zarautz. En desarrollo no tenemos ip valida.
+    user = current_user
+
+    my_location = [user.coordinates[1], user.coordinates[0]]
 
     @distanceSelected = params[:distance] || 2 # Cerca
     @daysSelected     = params[:days]     || 2 # Pronto
