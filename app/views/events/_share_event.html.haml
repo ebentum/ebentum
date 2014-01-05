@@ -1,9 +1,9 @@
-- url = 'http://www.ebentum.com/events/'+@event.id
+- url = 'http://www.ebentum.com'+event_path(@event)
 - short_url = Googl.shorten(url).short_url
 
 .col-xs-6.col-md-2.footer-option
   .option-action{:style => "max-width: 100px;"}
-    %fb:like{:layout => "button_count", :send => "false", :show_faces => "false", :width => "450", :data => {:href => url}}
+    .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450", "data-href" => url}
 
 .col-xs-6.col-md-2.footer-option
   .option-action{:style => "max-width: 100px;"}
