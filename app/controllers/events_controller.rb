@@ -106,10 +106,15 @@ class EventsController < ApplicationController
     js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}
 
     # open graph
-    @og_title = @event.name
-    @og_type  = 'website'
-    @og_url   = 'http://www.ebentum.com'+event_path(@event)
-    @og_image = @event.get_picture.photo.url(:medium)
+    @og_title       = @event.name
+    @og_type        = 'website'
+    if @event.description.strip == ""
+      @og_description = @event.name
+    else
+      @og_description = @event.description
+    end
+    @og_url         = 'http://www.ebentum.com'+event_path(@event)
+    @og_image       = @event.get_picture.photo.url(:medium)
 
     respond_to do |format|
       format.html # index.html.erb

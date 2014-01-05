@@ -8,6 +8,14 @@ module EventsHelper
     end
   end
 
+  def og_description(description)
+    if description
+      description
+    else
+      t(:meta_description_default)
+    end
+  end
+
   def og_type(type)
     if type
       type

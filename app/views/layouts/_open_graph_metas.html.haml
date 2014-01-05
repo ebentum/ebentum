@@ -1,8 +1,10 @@
-- og_title = og_title(@og_title)
-- og_type  = og_type(@og_type)
-- og_url   = og_url(@og_url)
-- og_image = og_image(@og_image)
+- og_title       = og_title(@og_title)
+- og_type        = og_type(@og_type)
+- og_description = og_description(@og_description)
+- og_url         = og_url(@og_url)
+- og_image       = og_image(@og_image)
 %meta{:content => og_title, :property => "og:title"}
+%meta{:content => og_description, :property => "og:description"}
 %meta{:content => og_type, :property => "og:type"}
 %meta{:content => og_url, :property => "og:url"}
 %meta{:content => og_image, :property => "og:image"}
