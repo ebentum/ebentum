@@ -70,11 +70,10 @@
                   .option-content
                     = t('.joined')
               = render 'share_event'
-
+              = hidden_field_tag 'event_id', @event.id
               - if user_signed_in?
                 #user-action.col-xs-12.col-md-2.footer-option.pull-right.btn-round-bottom-right
                   .option-action
-                    = hidden_field_tag 'event_id', @event.id
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-success hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => t('.joining')}
                     = button_tag t('.leave'), :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => t('.leaving')}
       .row
