@@ -80,8 +80,9 @@
       .row
         .col-xs-12
           = render 'comments'
-
-= render 'confirm_appoint'
-= render 'confirm_desappoint'
-= render 'confirm_delete_event'
+- if user_signed_in?
+  = render 'confirm_appoint'
+  = render 'confirm_desappoint'
+- if @event.creator == current_user
+  = render 'confirm_delete_event'
 
