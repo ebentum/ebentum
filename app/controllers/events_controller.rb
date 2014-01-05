@@ -108,11 +108,7 @@ class EventsController < ApplicationController
     # open graph
     @og_title       = @event.name
     @og_type        = 'website'
-    if @event.description.strip == ""
-      @og_description = @event.name
-    else
-      @og_description = @event.description
-    end
+    @og_description = @meta_description
     @og_url         = 'http://www.ebentum.com'+event_path(@event)
     @og_image       = @event.get_picture.photo.url(:medium)
 
