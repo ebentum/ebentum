@@ -8,12 +8,12 @@
       = omniauth_provider_info
       - if is_omniauth_sign_up?
         .row
-          .col-xs-4
+          .col-xs-12.col-md-4
             .thumbnail{:class => 'centered'}
               = image_tag(omniauth_image, :class => 'omniauth_img')
               = f.hidden_field :image_url, :value => omniauth_image
             %br
-          .col-xs-8
+          .col-xs-12.col-md-8
             = render 'form_fields', :form => f
       - else
         .row
