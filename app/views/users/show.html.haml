@@ -156,7 +156,7 @@
         = #
 
 .row
-  .tab-content
+  .col-xs-12.tab-content
     #list_results
       .tab-pane{:id => "userevents", :data => {:url => events_path(:user_id => @user.id) } }
       .tab-pane{:id => "userappointments", :data => {:url => events_path(:user_id => @user.id, :appointments => true) } }

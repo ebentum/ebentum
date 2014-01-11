@@ -1,5 +1,7 @@
 module PicturesHelper
 
+  require "browser"
+
   def adjustCardSize(width, height)
 
     width ||= 230.0
@@ -36,6 +38,22 @@ module PicturesHelper
     end
 
     [image_url, width, height]
+  end
+
+  def getCardStyles(is_mobile, image_url, width, height)
+
+    if is_mobile
+      card_style = "background: url('#{image_url}'); background-repeat:no-repeat; background-attachment:fixed; background-position:center top; background-size: 100%; background-color: #fff"
+      image_style = "width: #{width}px; height: 230px;"
+      card_class = "col-xs-12"
+    else
+      card_style = "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"
+      image_style = "width: #{width}px; height: #{height}px;"
+      card_class = ""
+
+    end
+
+    {:card_style => card_style, :image_style => image_style, :card_class => card_class }
   end
 
 

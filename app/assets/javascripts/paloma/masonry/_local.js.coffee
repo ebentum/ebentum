@@ -4,14 +4,15 @@ Paloma.Masonry =
   loadingPage: false
   lastPage: false
 
-  loadLayout: ->
-    $(".masonry_layout").masonry
-      itemSelector: ".card"
-      columnWidth: 230
-      gutter: 10
-      isFitWidth: true
 
-    console.log 'layouting finished'
+  loadLayout: ->
+
+    unless Paloma.g.isMobile()
+      $(".masonry_layout").masonry
+        itemSelector: ".card"
+        columnWidth: 230
+        gutter: 10
+        isFitWidth: true
 
     $(".masonry_layout").removeClass 'invisible'
 

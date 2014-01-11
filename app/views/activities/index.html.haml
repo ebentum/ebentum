@@ -2,7 +2,11 @@
   .col-xs-12
     #activity_list.masonry_layout.centered.invisible
       - if @activities.count == 0
-        .card{:style => "max-width: 230px; background-size: 230px 300px; background-color: #fff"}
+        - cardStyles = PicturesController.helpers.getCardStyles(browser.mobile?, "", 230, 300)
+        - card_style = cardStyles[:card_style]
+        - card_class = cardStyles[:card_class]
+        - image_style = cardStyles[:image_style]
+        .card{:style => card_style, :class => card_class}
           .card-image-placeholder{:style => "width: 100%; height: 200px;"}
             %a{:href => "/events/event_search"}
               %i.fa.fa-compass.card-icon-big

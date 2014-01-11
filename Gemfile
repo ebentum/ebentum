@@ -28,6 +28,9 @@ gem "i18n-js", "~> 2.1.2"
 # Devise authentication
 gem 'devise', '~> 2.1.2'
 
+# Useragent deteccion
+gem "browser"
+
 # omniauth
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-facebook', '~> 1.4.1'
