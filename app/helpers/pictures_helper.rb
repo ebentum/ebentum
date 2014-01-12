@@ -43,8 +43,8 @@ module PicturesHelper
   def getCardStyles(is_mobile, image_url, width, height)
 
     if is_mobile
-      card_style = "background: url('#{image_url}'); background-repeat:no-repeat; background-attachment:fixed; background-position:center top; background-size: 100%; background-color: #fff"
-      image_style = "width: #{width}px; height: 230px;"
+      card_style = "background: url('#{image_url}'); background-repeat:no-repeat; background-attachment:scroll; background-position:center top; background-size: 100%; background-color: #fff"
+      image_style = "width: 100%; height: 230px;"
       card_class = "col-xs-12"
     else
       card_style = "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"
