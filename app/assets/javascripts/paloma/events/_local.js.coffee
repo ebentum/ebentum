@@ -34,8 +34,8 @@ Paloma.Events =
       $.ajax
         url: "/social/share_event_appoint"
         data:
-          fb_share: !$('#facebook_share').hasClass('toggle-off')
-          tw_share: !$('#twitter_share').hasClass('toggle-off')
+          fb_share: $('#facebook_post').is(':checked')
+          tw_share: $('#twitter_post').is(':checked')
           event_id: button.data('eventid')
         dataType: 'json'
 

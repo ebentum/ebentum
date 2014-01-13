@@ -7,7 +7,7 @@
         - fbPubCheched = false
         - if @fb_access_token.autopublish
           - fbPubChecked = true
-        %input#facebook_share{:type => "checkbox", :checked => fbPubChecked, "data-toggle" => "switch"}
+        %input#facebook_post{:type => "checkbox", :checked => fbPubChecked, "data-toggle" => "switch"}
 
 - if @tw_access_token
   .row
