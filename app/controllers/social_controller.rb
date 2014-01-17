@@ -18,12 +18,12 @@ class SocialController < ActionController::Base
           picture = 'https://s3-eu-west-1.amazonaws.com/ebentum.s3/system/logo.png'
         end
         begin
-          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long), :description => event.description, :picture => event.get_picture.photo.url(:small)})
+          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long), :description => event.description, :picture => picture})
         rescue Koala::Facebook::AuthenticationError
           renew_fbtoken
           # cargamos el graph API y publicamos
           fb = load_graph_api
-          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long), :description => event.description, :picture => event.get_picture.photo.url(:small)})
+          fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long), :description => event.description, :picture => picture})
         end
       end
     end
