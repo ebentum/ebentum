@@ -62,9 +62,13 @@ class SocialController < ActionController::Base
   end
 
   def get_twitter_data
-    tw = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)
-    me = tw.verify_credentials
-    render :json => {:complete_name => me.name, :location => me.location, :web => UrlExpander::Client.expand(me.url), :bio => me.description, :image => me.profile_image_url(:original)}
+    tw  = Twitter::Client.new(:oauth_token => current_user.twtoken.token, :oauth_token_secret => current_user.twtoken.secret)
+    me  = tw.verify_credentials
+    web = ''
+    if me.url != nil
+      web = UrlExpander::Client.expand(me.url)
+    end
+    render :json => {:complete_name => me.name, :location => me.location, :web => web, :bio => me.description, :image => me.profile_image_url(:original)}
   end
 
   private
