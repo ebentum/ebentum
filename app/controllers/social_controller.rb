@@ -13,6 +13,10 @@ class SocialController < ActionController::Base
     if params[:fb_share] == 'true'
       if current_user.fbtoken
         fb = load_graph_api
+        picture = event.get_picture.photo.url(:small)
+        if picture == '/photos/small/missing_event.png' # No hay imagen
+          picture = 'https://s3-eu-west-1.amazonaws.com/ebentum.s3/system/logo.png'
+        end
         begin
           fb.put_wall_post(message, {:name => event.name, :link => event_url, :caption => l(event.start_date, :format => :long), :description => event.description, :picture => event.get_picture.photo.url(:small)})
         rescue Koala::Facebook::AuthenticationError
