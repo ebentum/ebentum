@@ -14,13 +14,13 @@ Paloma.callbacks["devise/passwords/new"] = (params) ->
         # boton en estado loading
         $('#new_password_button').button('loading')
         # asegurarnos que el aviso está oculto
-        $('#new_password_success').fadeOut('slow')
+        $('#new_password_success').addClass('hide')
       success: (data, status, xhr) ->
         # ponemos el email en el mensaje y lo enseñamos
         txt = $('#new_password_ok_text').text()
         txt = txt.replace('EMAIL', $('#email').val())
         $('#new_password_ok_text').text(txt)
-        $('#new_password_success').fadeIn('slow')
+        $('#new_password_success').toggleClass('hide')
         # activar el boton
         $('#new_password_button').button('reset')
       error: (xhr, status, error) ->
