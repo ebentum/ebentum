@@ -14,13 +14,13 @@ Paloma.callbacks["devise/confirmations/new"] = (params) ->
         # boton en estado loading
         $('#new_confirmation_button').button('loading')
         # asegurarnos que el aviso está oculto
-        $('#new_confirmation_success').fadeOut('slow')
+        $('#new_confirmation_success').addClass('hide')
       success: (data, status, xhr) ->
         # ponemos el email en el mensaje y lo enseñamos
         txt = $('#new_confirmation_ok_text').text()
         txt = txt.replace('EMAIL', $('#email').val())
         $('#new_confirmation_ok_text').text(txt)
-        $('#new_confirmation_success').fadeIn('slow')
+        $('#new_confirmation_success').toggleClass('hide')
         # activar el boton
         $('#new_confirmation_button').button('reset')
       error: (xhr, status, error) ->
