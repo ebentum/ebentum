@@ -46,6 +46,7 @@ en:
       change_password: "Change password"
       change_password_error_title: "Error changing password"
       change_password_error_text: "Make sure to provide your old password and the new one matches with the confirmation"
+      change_password_error_text_length: "Remember that the password must be at least 8 characters"
       current_password: "Current password"
       new_password: "New password"
       password_confirmation: "Password confirmation"
