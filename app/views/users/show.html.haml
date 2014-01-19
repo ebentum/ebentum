@@ -61,11 +61,11 @@
                   = t('.following')
             .col-xs-6.col-sm-2.footer-option.pan
               %a{:href => "#userfollowers", "data-toggle" => "pill"}
-                #followers_count_badge.option-header
+                .followers_count_badge.option-header
                   = @user.followers_count
                 .option-content
                   = t('.followers')
-            #user_action_button.col-xs-12.col-sm-2.footer-option.option-active.pull-right.btn-round-bottom-right.pan
+            .user_action_button.col-xs-12.col-sm-2.footer-option.option-active.pull-right.btn-round-bottom-right.pan
               - if @user == current_user
                 %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
                   = t('.edit')
@@ -79,7 +79,7 @@
         = # version para moviles
         = #
 
-        .visible-xs
+        #header_mvl.visible-xs
           .row
             .col-xs-12
               .row
@@ -113,8 +113,8 @@
                       .media-body
                         = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
-          #userpagetabs.row.card-footer
-            #user_action_button.col-xs-12.footer-option.option-active
+          #userpagetabs_mvl.row.card-footer
+            .user_action_button.col-xs-12.footer-option.option-active.pan
               - if @user == current_user
                 %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
                   = t('.edit')
@@ -146,7 +146,7 @@
                   = t('.following')
             .col-xs-6.footer-option.btn-round-bottom-right.pan
               %a{:href => "#userfollowers", "data-toggle" => "pill"}
-                #followers_count_badge.option-header
+                .followers_count_badge.option-header
                   = @user.followers_count
                 .option-content
                   = t('.followers')

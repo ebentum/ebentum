@@ -13,7 +13,7 @@ Paloma.g =
     params
 
   initActionButtons: ->
-    $(document).on "click", "#user_action_button button", (event) ->
+    $(document).on "click", ".user_action_button button", (event) ->
       $(this).button('loading')
 
 
