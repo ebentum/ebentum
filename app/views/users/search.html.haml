@@ -4,10 +4,10 @@
       .card
         .card-content
           .row
-            .col-xs-12.col-md-10
+            .col-xs-12.col-md-10.mts.mbs
               = text_field_tag :q, @q, class: 'form-control', placeholder: t('.person_name')
-            .col-xs-12.col-md-2
-              = submit_tag t('.search'), class: 'btn'
+            .col-xs-12.col-md-2.mts.mbs
+              = submit_tag t('.search'), class: 'btn btn-primary btn-block'
 
 .col-xs-12
   #events_list.masonry_layout.centered
