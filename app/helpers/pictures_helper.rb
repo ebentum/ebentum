@@ -48,7 +48,7 @@ module PicturesHelper
       card_class = "col-xs-12"
     else
       card_style = "background: url('#{image_url}') repeat; max-width: #{width}px; background-size: #{width}px #{height}px; background-color: #fff"
-      image_style = "width: #{width}px; height: #{height}px;"
+      image_style = "width: #{width}px; height: #{height-1}px;"
       card_class = ""
 
     end
