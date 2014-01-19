@@ -73,6 +73,13 @@
                 %i.fa.fa-compass.media-object
               .media-body
                 = t('.explore')
+          %li.list-group-item{ :class => (controller_name == "users" and action_name == "search") ? "active" : nil }
+            %a{:href => "/users/search"}
+              .pull-left
+                %i.fa.fa-users.media-object
+              .media-body
+                = t('.people')
+
           - if user_signed_in?
             %li.list-group-item
               %a.events_new{:href => "#"}
@@ -91,13 +98,13 @@
                     %i.fa.fa-user.media-object
                   .media-body
                     = current_user.complete_name
-            %li.list-group-item
-              %a{:href => edit_user_registration_path(current_user)}
-                .media
-                  .pull-left
-                    %i.fa.fa-cog.media-object
-                  .media-body
-                    = t('.configuration')
+            / %li.list-group-item
+            /   %a{:href => edit_user_registration_path(current_user)}
+            /     .media
+            /       .pull-left
+            /         %i.fa.fa-cog.media-object
+            /       .media-body
+            /         = t('.configuration')
             / %li.divider
             %li.list-group-item
               %a{:href => destroy_user_session_path, :data => {:method => :delete}}
