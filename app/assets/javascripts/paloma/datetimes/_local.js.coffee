@@ -1,7 +1,11 @@
 Paloma.DateTimes =
 
+  setMomentLanguage: ->
+    lang = Paloma.g.getUserLanguage()
+    moment.lang(lang)
+
   format: (selector)->
-    console.log "date times format"
+
     if not selector?
       selector = $('body')
       Paloma.DateTimes.initTimeAgosUpdateInterval()

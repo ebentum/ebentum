@@ -16,6 +16,8 @@ Paloma.g =
     $(document).on "click", ".user_action_button button", (event) ->
       $(this).button('loading')
 
+  getUserLanguage: ->
+    ( navigator.language || navigator.browserLanguage ).slice( 0, 2 )
 
   isMobile: ->
     check = false
