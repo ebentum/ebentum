@@ -59,59 +59,58 @@
                     = t('.bio')
                   .col-sm-8.prl.pll
                     = f.text_area :bio, :class => "form-control input-sm", :rows => "5"
-              .card-footer
-                .row.hidden-xs
-                  - if @user.fbtoken
-                    #option-facebook.col-sm-3.footer-option.option-facebook
-                      .option-action
-                        %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                          %i.fa.fa-facebook
-                          = t('.import_from_facebook')
-                  - else
-                    #option-facebook.col-sm-3
-                  - if @user.twtoken
-                    #option-twitter.col-sm-3.footer-option.option-info
-                      .option-action
-                        %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                          %i.fa.fa-twitter
-                          = t('.import_from_twitter')
-                  - else
-                    #option-twitter.col-sm-3
-                  .col-sm-2.footer-option.option-active
+              .card-footer.row.hidden-xs
+
+                - if @user.fbtoken
+                  #option-facebook.col-sm-3.footer-option.option-facebook
                     .option-action
-                      %button.user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
-                        = t('.save')
-                  .col-sm-2.footer-option
+                      %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                        %i.fa.fa-facebook
+                        = t('.import_from_facebook')
+                - else
+                  #option-facebook.col-sm-3
+                - if @user.twtoken
+                  #option-twitter.col-sm-3.footer-option.option-info
                     .option-action
-                      %a{:href => user_path(@user), :class => "btn btn-inverse"}
-                        = t('.back')
+                      %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                        %i.fa.fa-twitter
+                        = t('.import_from_twitter')
+                - else
+                  #option-twitter.col-sm-3
+                .col-sm-2.footer-option.option-active
+                  .option-action
+                    %button.user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
+                      = t('.save')
+                .col-sm-2.footer-option
+                  .option-action
+                    %a{:href => user_path(@user), :class => "btn btn-inverse"}
+                      = t('.back')
+
+              .card-footer.row.visible-xs
+                - if @user.fbtoken
+                  #option-facebook.col-xs-12.footer-option.option-facebook
+                    .option-action
+                      %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
+                        %i.fa.fa-facebook
+                        = t('.import_from_facebook')
+                - if @user.twtoken
+                  #option-twitter.col-xs-12.footer-option.option-info
+                    .option-action
+                      %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
+                        %i.fa.fa-twitter
+                        = t('.import_from_twitter')
+
+                .col-xs-12.footer-option
+                  .option-action
+                    %a{:href => user_path(@user), :class => "btn btn-inverse"}
+                      = t('.back')
+
+                .col-xs-12.footer-option.option-active.btn-round-bottom
+                  .option-action
+                    %button.user_action_button.btn-round-bottom{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
+                      = t('.save')
 
 
-                .row.visible-xs
-                  - if @user.fbtoken
-                    .row
-                      #option-facebook.col-xs-12.footer-option.option-facebook
-                        .option-action
-                          %a.btn.btn-facebook{:href => "#", :id => 'import_fb', :data => {:provider => 'facebook'}}
-                            %i.fa.fa-facebook
-                            = t('.import_from_facebook')
-                  - if @user.twtoken
-                    .row
-                      #option-twitter.col-xs-12.footer-option.option-info
-                        .option-action
-                          %a.btn.btn-info.btn-twitter{:href => "#", :id => 'import_tw', :data => {:provider => 'twitter'}}
-                            %i.fa.fa-twitter
-                            = t('.import_from_twitter')
-                  .row
-                    .col-xs-12.footer-option.option-active
-                      .option-action
-                        %button.user_action_button{:type => "submit", :class => "btn btn-primary", :data => {'loading-text' => t('.saving')}}
-                          = t('.save')
-                  .row
-                    .col-xs-12.footer-option
-                      .option-action
-                        %a{:href => user_path(@user), :class => "btn btn-inverse"}
-                          = t('.back')
 
 
 
