@@ -13,7 +13,7 @@
         .media-body
           entum
     #nav-collapse-01.collapse.navbar-collapse
-      .hidden-xs
+      .visible-md.visible-lg
         %ul.nav.navbar-nav.navbar-left
           %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
             %a{:href => root_url}
@@ -59,6 +59,52 @@
               = link_to t('.sign_up'), new_user_registration_path
             %li
               = link_to t('.sign_in'), new_user_session_path
+      .visible-sm
+        %ul.nav.navbar-nav.navbar-right.nav-sm
+          %li{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
+            %a{:href => root_url}
+              %i.fa.fa-rss-square
+              = t('.activity')
+          %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+            %a{:href => "/events/event_search"}
+              %i.fa.fa-compass
+              = t('.explore')
+
+          %li{ :class => (controller_name == "users" and action_name == "search") ? "active" : nil }
+            %a{:href => "/users/search"}
+              %i.fa.fa-users
+              = t('.people')
+
+          - if user_signed_in?
+            %li
+              %a.events_new{:href => "#"}
+                %i.fa.fa-plus-square
+                = t('.create')
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+                %i.fa.fa-user
+                = current_user.complete_name
+              %ul.dropdown-menu
+                %li
+                  %a{:href => user_path(current_user)}
+                    %i.fa.fa-user
+                    = t('.profile')
+                %li
+                  %a{:href => edit_user_registration_path(current_user)}
+                    %i.fa.fa-cog
+                    = t('.configuration')
+                %li.divider
+                %li
+                  %a{:href => destroy_user_session_path, :data => {:method => :delete}}
+                    %i.fa.fa-power-off
+                    = t('.logout')
+          - else
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                = link_to t('.sign_up'), new_user_registration_path
+              %li
+                = link_to t('.sign_in'), new_user_session_path
+
       .visible-xs
         %ul.navbar-xs.list-group.mtm
           %li.list-group-item{ :class => (controller_name == "activities" and action_name == "index") ? "active" : nil }
