@@ -43,9 +43,7 @@ Paloma.users =
           Paloma.users.showInfo("loading")
         success: (data) ->
           Paloma.users.hideInfo("loading")
-          console.log data
           if $(".card",data).length > 0
-            console.log "hay datoss...."
             $(contentDiv).html(data)
             Paloma.users.showResults(contentDiv)
             Paloma.Masonry.loadLayout()
@@ -54,7 +52,6 @@ Paloma.users =
             else
               Paloma.Masonry.initPage(contentUrl,"#users_list")
           else
-            console.log "NOOO hay datoss...."
             Paloma.users.showInfo("no_#{contentDiv.substr(1)}")
           # e.target # activated tab
           # e.relatedTarget # previous tab
