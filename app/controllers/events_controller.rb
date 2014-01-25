@@ -60,7 +60,7 @@ class EventsController < ApplicationController
   def index
     @page = params[:page] || 1
 
-    @events = @events.order_by("start_date asc")
+    @events = @events.order_by("start_date desc")
     @events = @events.page(@page)
 
     if request.xhr?
