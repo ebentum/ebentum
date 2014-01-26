@@ -35,7 +35,7 @@ class User
 
   validates_presence_of :encrypted_password
   validates_presence_of :complete_name
-  # validates_presence_of :password, :password_confirmation
+
 
   ## Recoverable
   field :reset_password_token,   :type => String

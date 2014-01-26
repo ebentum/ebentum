@@ -118,7 +118,10 @@ class UsersController < ApplicationController
 
   def update_password
     @user = User.find(current_user.id)
-    if @user.update_with_password(params[:user])
+    if (params[:user][:password] == "" || params[:user][:password_confirmation] == "")
+      @error = true
+      render 'edit_password', :layout => 'no_navbar'
+    elsif @user.update_with_password(params[:user])
       # Sign in the user by passing validation in case his password changed
       sign_in @user, :bypass => true
       redirect_to root_path
