@@ -1,6 +1,6 @@
 = form_for main_picture, :remote => true, :html => { :multipart => true, :id => "main_picture_form" } do |f|
   .card-content
-    = f.file_field :photo, :class => "hidden", :id => "main_picture_field"
+    = f.file_field :photo, :class => "invisible", :style => "height: 0px;", :id => "main_picture_field"
     = link_to "#", :id => 'main_picture_link', :class => 'thumbnail' do
       = image_tag main_picture.photo.url(:medium), :id => "main_picture_preview"
 
