@@ -7,19 +7,19 @@ Paloma.Pictures =
       start: (e, data) ->
         $("#"+objectId+" #main_picture_upload_progress").removeClass("hidden")
         $("#"+formSubmitButtonId).addClass("disabled")
-        $("#"+objectId+" #main_picture_upload_progress .bar").css "width", "10%"
+        $("#"+objectId+" #main_picture_upload_progress .progress-bar").css "width", "10%"
       progressall: (e, data) ->
         progress = parseInt(data.loaded / data.total * 100, 10)-10
-        $("#"+objectId+" #main_picture_upload_progress .bar").css "width", progress + "%"
+        $("#"+objectId+" #main_picture_upload_progress .progress-bar").css "width", progress + "%"
       done: (e, data) ->
-        $("#"+objectId+" #main_picture_upload_progress .bar").css "width", 100 + "%"
+        $("#"+objectId+" #main_picture_upload_progress .progress-bar").css "width", 100 + "%"
         $('#'+objectId+' #main_picture_preview').attr("src", data.result.avatar_url)
         $('#'+inputImageId).val(data.result._id)
-        $("#"+objectId+" #main_picture_upload_progress .bar").css "width", 0
+        $("#"+objectId+" #main_picture_upload_progress .progress-bar").css "width", 0
         $("#"+objectId+" #main_picture_upload_progress").addClass("hidden")
         $("#"+formSubmitButtonId).removeClass("disabled")
       fail: (e, data) ->
-        $("#"+objectId+" #main_picture_upload_progress .bar").css "width", 0
+        $("#"+objectId+" #main_picture_upload_progress .progress-bar").css "width", 0
         $("#"+objectId+" #main_picture_upload_progress").addClass("hidden")
         $("#"+formSubmitButtonId).removeClass("disabled")
 
