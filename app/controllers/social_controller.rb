@@ -7,7 +7,7 @@ class SocialController < ActionController::Base
   def share_event_appoint
     # generar el contenido a compartir
     event     = Event.find(params[:event_id])
-    event_url = 'http://www.ebentum.com/events/'+event.id.to_s
+    event_url = 'http://www.ebentum.com'+event_path(event)
     message   = t(:share_message, :event_name => event.name)
 
     if params[:fb_share] == 'true'
