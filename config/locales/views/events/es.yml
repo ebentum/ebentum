@@ -3,9 +3,9 @@ es:
     comments:
       comments_for: "Comentarios de %{name}"
     event_card:
-      created_by: "Creado por:"
+      created_by: "Compartido por:"
     new:
-      create_event: "Crear evento"
+      create_event: "Compartir evento"
     form:
       add_image: "Añadir imagen"
       date: "Fecha"

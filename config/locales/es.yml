@@ -11,6 +11,9 @@ es:
   #S
   session_started_as: "Sesión iniciada como"
   share_message: "Me acabo de apuntar al evento '%{event_name}' en @ebentumApp ¡Echale un vistazo!"
+  share: "Compartir"
+  share_event: "Compartir Evento"
+  shared_by: "Compartido por"
   #M
   meta_description: "¡Únete a “%{event_name}” en ebentum! ¡Ya se han unido %{joined} personas!"
   meta_description_default: "ebentum es tu portal para descubrir y compartir todo tipo de eventos"

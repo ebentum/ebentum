@@ -39,7 +39,7 @@
                           %i.fa.fa-user
                       .col-xs-10
                         - user = User.find(@event.creator)
-                        = t('.organized_by')
+                        = t('shared_by')
                         %a{:href => user_path(user)}
                           = user.complete_name
                   .card-content

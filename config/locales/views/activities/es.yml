@@ -2,7 +2,7 @@ es:
   activities:
     activity_card:
       join: "se ha unido a %{display_name}"
-      create: "ha creado %{display_name}"
+      create: "ha compartido %{display_name}"
       follow: "ahora sigue a %{display_name}"
     index:
       no_activities1: "No tienes ninguna actividad."

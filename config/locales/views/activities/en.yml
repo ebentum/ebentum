@@ -2,7 +2,7 @@ en:
   activities:
     activity_card:
       join: "joined %{display_name}"
-      create: "created %{display_name}"
+      create: "shared %{display_name}"
       follow: "now follows %{display_name}"
     index:
       no_activities1: "You don't have any activity."
