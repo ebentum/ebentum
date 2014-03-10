@@ -61,10 +61,15 @@
                 .col-xs-12.col-md-6.man
                   #map.block
 
-            .row.card-footer
-
+            .row.card-footer.events-tab-options
               .col-xs-12.col-md-2.footer-option
-                %a#appointed{:href => "#"}
+                %a#comments-tab-option{:href => "#comments-tab", "data-toggle" => "pill"}
+                  .option-header
+                    = 12
+                  .option-content
+                    = t('.comments')
+              .col-xs-12.col-md-2.footer-option
+                %a{:href => "#appointed-tab", "data-toggle" => "pill"}
                   .option-header
                     = @event_users
                   .option-content
@@ -77,8 +82,16 @@
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-success hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => t('.joining')}
                     = button_tag t('.leave'), :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => t('.leaving')}
       .row
-        .col-xs-12
-          = render 'comments'
+        .col-xs-12.tab-content
+          #comments-tab.tab-pane
+            / .fuu
+            /   hola que comments
+            = render 'comments'
+          #appointed-tab.tab-pane
+            .faaa
+              hola que appointed
+
+
 - if user_signed_in?
   = render 'confirm_appoint'
   = render 'confirm_desappoint'

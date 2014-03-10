@@ -196,3 +196,44 @@ Paloma.Events =
         onkeyup: false
         onclick: false
         onfocusout: false
+
+  showTab: (tabId, params)->
+
+    if tabId is '#comments-tab'
+      # cargar comentarios
+      Paloma.Comments.load_event_comments(params['event_id'])
+      Paloma.Comments.initLayout()
+
+      $(document).on "click", "#confirm_delete_event_btn", (event) ->
+        user_id = $(this).data('userid')
+        event.preventDefault()
+        $.ajax
+          url: "/events/"+$(this).data('eventid')
+          type: 'DELETE'
+          dataType: 'json'
+          beforeSend: ->
+            $('#confirm_delete_event').modal('hide')
+            $('#delete_event_btn').button('loading')
+          success: (data, status, xhr) ->
+            window.location = '/users/'+user_id
+    else
+      usersParams = null
+
+      loadingContent = $.ajax
+        url: '/users/'
+        data: usersParams
+        beforeSend: ->
+          # TODO
+        success: (data) ->
+          console.log data
+          if $(".card",data).length > 0
+            $(contentDiv).html(data)
+            Paloma.Masonry.loadLayout()
+            Paloma.Masonry.initPage(contentUrl,"#users_list")
+
+          # e.target # activated tab
+          # e.relatedTarget # previous tab
+        error: (xhr, status, error) ->
+          console.log(error)
+        complete: ->
+          loadingContent = null
