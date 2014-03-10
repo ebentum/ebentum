@@ -32,3 +32,15 @@ Paloma.callbacks["events/show"] = (params) ->
         $('#delete_event_btn').button('loading')
       success: (data, status, xhr) ->
         window.location = '/users/'+user_id
+
+  $(document).on 'click', '#appointed', (event) ->
+    $('#appointed-tab').removeClass('hidden')
+    $('#comments-tab').addClass('hidden')
+
+  $(document).on 'click', '#eventcomments', (event) ->
+    $('#comments-tab').removeClass('hidden')
+    $('#appointed-tab').addClass('hidden')
+
+  $(document).on 'click', '#eventappointed', (event) ->
+    $('#appointed-tab').removeClass('hidden')
+    $('#comments-tab').addClass('hidden')

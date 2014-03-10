@@ -1,0 +1,4 @@
+%ul.media-list.appointed-list{:id => 'event_appoints'}
+  - @event_users.each do |user|
+    - if current_user != user # si no soy yo
+      = render 'appointed_user', :user => user

@@ -1,7 +1,5 @@
 en:
   events:
-    comments:
-      comments_for: "Comments for %{name}"
     event_card:
       created_by: "Created by:"
     new:
@@ -17,6 +15,8 @@ en:
       create: "Create"
       save: "Save changes"
     show:
+      appointed_to: "Appointed to '%{name}'"
+      comments_for: "Comments for '%{name}'"
       join: "Join me!"
       joined: "Joined"
       joining: "Joining..."

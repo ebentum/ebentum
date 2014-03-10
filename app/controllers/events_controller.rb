@@ -96,11 +96,11 @@ class EventsController < ApplicationController
       #   @joined = false
       # end
     end
-    @event_users = @event.users.size
+    @event_users = @event.users
 
     # Temas de mejora de SEO
     @head_title       = @event.name
-    @meta_description = @event.description+' '+t(:meta_description, :event_name => @event.name, :joined => @event_users)
+    @meta_description = @event.description+' '+t(:meta_description, :event_name => @event.name, :joined => @event_users.size)
     @meta_keywords    = @event.description
 
     js_callback :params => {:event_id => @event.id, :lat => @event.lat, :lng => @event.lng, :joined => @joined}

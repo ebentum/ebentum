@@ -1,0 +1,10 @@
+%li.media.card-content
+  %a.pull-left{:href => "#"}
+    = image_tag(user.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
+  .media-body
+    %a{:href => user_path(user)}
+      = user.complete_name
+    .pull-right
+      - if !current_user.follower_of?(user)
+        %button.btn.btn-success.pull-right(type='button')
+          = t('.seguir')

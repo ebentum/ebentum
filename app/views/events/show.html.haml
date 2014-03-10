@@ -65,8 +65,8 @@
 
               .col-xs-12.col-md-2.footer-option
                 %a#appointed{:href => "#"}
-                  .option-header
-                    = @event_users
+                  .option-header#count
+                    = @event_users.size
                   .option-content
                     = t('.joined')
               = render 'share_event'
@@ -77,11 +77,25 @@
                     = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-success hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => t('.joining')}
                     = button_tag t('.leave'), :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => t('.leaving')}
       .row
-        .col-xs-12
-          = render 'comments'
+        .card
+          .row.card-header
+            #eventcomments.col-xs-6.option-header.btn-round-up-left.active
+              %h2
+                %a{:href => "#"}
+                  .option-content
+                    = t('.comments_for', :name => @event.name)
+            #eventappointed.col-xs-6.option-header.btn-round-up-right
+              %h2
+                %a{:href => "#"}
+                  .option-content
+                    = t('.appointed_to', :name => @event.name)
+          #comments-tab
+            = render 'comments'
+          #appointed-tab.hidden
+            = render 'appointed_list'
+
 - if user_signed_in?
   = render 'confirm_appoint'
   = render 'confirm_desappoint'
 - if @event.creator == current_user
   = render 'confirm_delete_event'
-
