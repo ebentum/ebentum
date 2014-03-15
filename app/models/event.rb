@@ -54,15 +54,16 @@ class Event
   end
 
   after_create do |event|
-    Activity.new.fill_data("create", self.creator, self).save
-  end
 
-  after_update do |event|
-    Activity.update_related_activities(event)
-  end
-  
-  after_destroy do |event|
-    Activity.destroy_related_activities(event)
+    Activity.new(
+      :verb => "create",
+      :actor_id => self.creator.id,
+      :object_type => "Event",
+      :object_id => self.id,
+      :receivers => self.creator.all_followers.map {|user| user.id},
+      :date => Time.now
+    ).save
+
   end
 
 end

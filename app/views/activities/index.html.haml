@@ -1,4 +1,4 @@
-- if @page == 1
+- if @last_activity_date.nil?
   .col-xs-12
     #activity_list.masonry_layout.centered.invisible
       - if @activities.count == 0
@@ -16,6 +16,7 @@
                 = t('.no_activities1')
               .media.body.center-text
                 = t('.no_activities2')
-      = render 'list'
+      - else
+        = render 'list'
 - else
   = render 'list'

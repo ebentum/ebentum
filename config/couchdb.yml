@@ -1,0 +1,16 @@
+development:
+  protocol: 'http'
+  host: ebentum.cloudant.com
+  port: 80
+  prefix: dev
+  suffix:
+  username: ebentum
+  password: qK3TyaaV3VeQfn
+production:
+  protocol: 'http'
+  host: ebentum.cloudant.com
+  port: 80
+  prefix:
+  suffix:
+  username: ebentum
+  password: qK3TyaaV3VeQfn

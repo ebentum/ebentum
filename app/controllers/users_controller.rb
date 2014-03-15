@@ -93,7 +93,16 @@ class UsersController < ApplicationController
     current_user.follow(@user)
     @user = User.find(params[:id])
 
-    Activity.new.fill_data("follow", current_user, @user, "subject").save
+    Activity.new(
+      :verb => "follow",
+      :actor_id => current_user.id,
+      :object_type => "User",
+      :object_id => @user.id,
+      :receivers => current_user.all_followers.map {|user| user.id},
+      :date => Time.now
+    ).save
+
+
 
     respond_to do |format|
       format.html { redirect_to @user }
