@@ -33,11 +33,11 @@ gem "browser"
 
 # omniauth
 gem 'omniauth', '~> 1.1.4'
-gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-facebook', '~> 1.6.0'
 gem 'omniauth-twitter', '~> 1.0.0'
 
 # fabebook api
-gem 'koala', "~> 1.6.0"
+gem 'koala', "~> 1.9.0"
 
 # twitter api
 gem "twitter", "~> 4.6.0"
