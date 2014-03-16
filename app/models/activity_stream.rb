@@ -22,8 +22,9 @@ class ActivityStream < CouchRest::Model::Base
     user_ids = []
     activity_stream = []
 
-    event_activities_num = 0
-    user_activities_num = 0
+    event_list = {}
+    user_list = {}
+    receiver_list = {}
 
     if !startDate.nil?
       startkey = [receiver._id, startDate+"0"]
@@ -43,7 +44,7 @@ class ActivityStream < CouchRest::Model::Base
         event_ids << activity.key[3]
 
         activity_stream[activity_index] = {
-          :event => activity_index,
+          :event => activity.key[3],
           :date => activity.key[1],
           :actions => []
         }
@@ -51,7 +52,7 @@ class ActivityStream < CouchRest::Model::Base
         user_ids << activity.key[3]
 
         activity_stream[activity_index] = {
-          :user => activity_index,
+          :user => activity.key[3],
           :date => activity.key[1],
           :actions => []
         }
@@ -65,7 +66,7 @@ class ActivityStream < CouchRest::Model::Base
         end
         activity_stream[activity_index][:actions][action_index] = {
             :verb => action[2],
-            :receiver => receiver_index,
+            :receiver => action[1],
             :date => action[0]
         }
       end
@@ -75,28 +76,38 @@ class ActivityStream < CouchRest::Model::Base
     #find distinct events/users data
     if !event_ids.empty?
       events = Event.find(event_ids)
+
+      events.each_with_index do |event, index|
+        event_list[""+event.id] = index
+      end
     end
 
     if !user_ids.empty?
       users = User.find(user_ids)
+
+      users.each_with_index do |user, index|
+        user_list[""+user.id] = index
+      end
     end
 
     if !receiver_ids.empty?
       receivers = User.find(receiver_ids)
+
+      receivers.each_with_index do |receiver, index|
+        receiver_list[""+receiver.id] = index
+      end
     end
 
     #replace the indexes with data
     activity_stream.each do |activity|
       if !activity[:event].nil?
-        activity[:event] = events[event_activities_num]
-        event_activities_num = event_activities_num + 1
+        activity[:event] = events[event_list[activity[:event]]]
       elsif !activity[:user].nil?
-        activity[:user] = users[user_activities_num]
-        user_activities_num = user_activities_num + 1
+        activity[:user] = users[user_list[activity[:user]]]
       end
 
       activity[:actions].each do |action|
-        action[:receiver] = receivers[action[:receiver]]
+        action[:receiver] = receivers[receiver_list[action[:receiver]]]
       end
 
     end
