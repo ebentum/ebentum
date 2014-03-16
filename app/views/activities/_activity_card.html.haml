@@ -1,31 +1,55 @@
-- cardSize = PicturesController.helpers.adjustCardSize(activity.subject.photoWidth, activity.subject.photoHeight)
+- if !activity[:event].nil?
+  - object_type = :event
+  - picture = EventPicture.new
+  - object_path = event_path(activity[:event])
+  - object_name = activity[:event].name
+- elsif !activity[:user].nil?
+  - object_type = :user
+  - picture = UserPicture.new
+  - object_path = user_path(activity[:user])
+  - object_name = activity[:user].complete_name
+
+- if !activity[object_type].main_picture.nil?
+  - picture = activity[object_type].main_picture
+  - cardSize = PicturesController.helpers.adjustCardSize(picture.photo_dimensions["card"][0], picture.photo_dimensions["card"][1])
+- else
+  - cardSize = PicturesController.helpers.adjustCardSize(nil, nil)
+
+
 - width = cardSize[:width]
 - height = cardSize[:height]
-- image_url = activity.subject.photoUrl
+- image_url = picture.photo.url(:card)
 
 - cardStyles = PicturesController.helpers.getCardStyles(browser.mobile?, image_url, width, height)
 - card_style = cardStyles[:card_style]
 - card_class = cardStyles[:card_class]
 - image_style = cardStyles[:image_style]
 
-.card{:style => card_style, :class => card_class}
+
+.card{:style => card_style, :class => card_class, :data => {:activity_date => activity[:date]}}
   .card-content{:style => "padding: 0;"}
-    %a{:href => activity.subject.url}
+    %a{:href => object_path}
       .card-image-placeholder{:style => image_style}
   .card-content.pts.pbs.plm.prm{:style => "background-color: #fff"}
     %div
-      = activity.subject.displayName
-  .card-footer.card-footer-masonry.pts.pbs.plm.prm
-    .media
-      .pull-left
-        %a{:href => activity.actor.url}
-          = image_tag(activity.actor.photoUrl , :class => 'block media-object thumb_image')
-      .media.body
-        %div
-          = activity.actor.displayName
-        .sub-paragraph
-          = t('.' + activity.verb, :display_name => activity.subject.displayName)
-        .sub-paragraph
-          .format-timeago{:data => {:datevalue => activity.created_at }}
+      = object_name
 
+  - activity[:actions].each do |action|
 
+    - if !action[:receiver].main_picture.nil?
+      - user_picture = activity[object_type].main_picture
+    - else
+      - user_picture = UserPicture.new
+
+    .card-footer.card-footer-masonry.pts.pbs.plm.prm
+      .media
+        .pull-left
+          %a{:href => user_path(action[:receiver])}
+            = image_tag(user_picture.photo.url , :class => 'block media-object thumb_image')
+        .media.body
+          %div
+            = action[:receiver].complete_name
+          .sub-paragraph
+            = t('.' + action[:verb], :display_name => object_name)
+          .sub-paragraph
+            .format-timeago{:data => {:datevalue => action[:date]}}

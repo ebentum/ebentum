@@ -23,6 +23,7 @@ Paloma.Masonry =
           Paloma.Masonry.loadingPage = true
           params = Paloma.g.getUrlparams()
           params.page = Paloma.Masonry.page
+          params.last_activity_date = $('#activity_list .card').last().data('activity-date')
           $.ajax(
             url: url
             data: params

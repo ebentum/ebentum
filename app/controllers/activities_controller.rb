@@ -1,8 +1,8 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @page     = params[:page] || 1
-    @activities = current_user.activities.page(@page)
+    @last_activity_date = params[:last_activity_date]
+    @activities = ActivityStream.user_activity_stream(current_user, @last_activity_date)
 
     if request.xhr?
       js_callback false

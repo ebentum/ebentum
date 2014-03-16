@@ -113,12 +113,7 @@ class User
     end
   end
 
-  after_update do |user|
-    Activity.update_related_activities(user)
-  end
-
   after_destroy do |user|
-    Activity.destroy_related_activities(user)
 
     #TODO Estoy hay que mejorarlo con una relación
     Comment.where("creator._id" => user._id).entries.each do |comment|

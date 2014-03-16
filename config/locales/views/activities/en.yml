@@ -1,8 +1,9 @@
 en:
   activities:
     activity_card:
-      join: "joined %{display_name}"
-      create: "shared %{display_name}"
+      join: "has joined"
+      comment: "commented something"
+      create: "shared this"
       follow: "now follows %{display_name}"
     index:
       no_activities1: "You don't have any activity."

@@ -170,11 +170,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    logger.info "----------------------------0"
-
     @event = Event.find(params[:id])
-
-    logger.info "----------------------------1"
 
     if @event.creator != current_user
       render :json => false
@@ -187,8 +183,6 @@ class EventsController < ApplicationController
           @event.main_picture = picture
         end
       end
-
-    logger.info "----------------------------2"
 
       respond_to do |format|
         if @event.update_attributes(params[:event])
@@ -225,7 +219,14 @@ class EventsController < ApplicationController
     event.users.push(current_user)
     event.appointments_count = event.appointments_count + 1
 
-    Activity.new.fill_data("join", current_user, event).save
+    Activity.new(
+      :verb => "join",
+      :actor_id => current_user.id,
+      :object_type => "Event",
+      :object_id => event.id,
+      :receivers => current_user.all_followers.map {|user| user.id},
+      :date => Time.now
+    ).save
 
     render :json => event.save
   end
@@ -236,9 +237,6 @@ class EventsController < ApplicationController
     user     = current_user
     event.users.delete(user)
     event.appointments_count = event.appointments_count - 1
-
-    activity = Activity.where("verb" => "join", "actor._id" => user._id, "subject._id" => event._id)
-    activity.delete_all
 
     render :json => event.save
   end
