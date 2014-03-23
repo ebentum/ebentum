@@ -43,13 +43,20 @@
 
     .card-footer.card-footer-masonry.pts.pbs.plm.prm
       .media
-        .pull-left
-          %a{:href => user_path(action[:receiver])}
-            = image_tag(user_picture.photo.url , :class => 'block media-object thumb_image')
-        .media.body
-          %div
-            = action[:receiver].complete_name
-          .sub-paragraph
-            = t('.' + action[:verb], :display_name => object_name)
-          .sub-paragraph
-            .format-timeago{:data => {:datevalue => action[:date]}}
+        - if action[:verb] == 'fbregister'
+          .media.body
+            %div
+              = t('.' + action[:verb])
+            .sub-paragraph
+              .format-timeago{:data => {:datevalue => action[:date]}}
+        - else
+          .pull-left
+            %a{:href => user_path(action[:receiver])}
+              = image_tag(user_picture.photo.url , :class => 'block media-object thumb_image')
+          .media.body
+            %div
+              = action[:receiver].complete_name
+            .sub-paragraph
+              = t('.' + action[:verb], :display_name => object_name)
+            .sub-paragraph
+              .format-timeago{:data => {:datevalue => action[:date]}}

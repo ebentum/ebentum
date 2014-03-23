@@ -5,6 +5,7 @@ es:
       comment: "ha comentado algo"
       create: "compartió esto"
       follow: "ahora sigue a %{display_name}"
+      fbregister: "Tu amigo de Facebook está ahora en ebentum"
     index:
       no_activities1: "No tienes ninguna actividad."
       no_activities2: "Pulsa en Explorar si quieres conocer nuevos eventos."
