@@ -80,8 +80,6 @@ class User
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  # has_and_belongs_to_many :activities, inverse_of: :receivers,  order: 'created_at DESC', dependent: :destroy, index: true
-
   has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
 
   has_many :comments, inverse_of: :creator, dependent: :destroy

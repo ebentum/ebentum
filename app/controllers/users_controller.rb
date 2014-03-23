@@ -102,8 +102,6 @@ class UsersController < ApplicationController
       :date => Time.now
     ).save
 
-
-
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
