@@ -72,17 +72,13 @@ class User
   attr_accessor   :user_confirmation_required
   attr_accessible :user_confirmation_required
 
+  has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
   has_many :created_events, class_name: "Event", inverse_of: :creator, dependent: :destroy
-
   has_many :created_pictures, class_name: "Picture", inverse_of: :creator, dependent: :destroy
-
-  has_and_belongs_to_many :events, inverse_of: :users
+  has_many :comments, inverse_of: :creator, dependent: :destroy
+  has_and_belongs_to_many :events, inverse_of: :users  
   embeds_one :fbtoken
   embeds_one :twtoken
-
-  has_one :main_picture, class_name: "UserPicture", as: :pictureable, dependent: :destroy
-
-  has_many :comments, inverse_of: :creator, dependent: :destroy
 
   fulltext_search_in :complete_name
 

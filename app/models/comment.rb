@@ -5,7 +5,6 @@ class Comment
   field :body, type: String
 
   belongs_to :creator, class_name: "User"
-  
   belongs_to :event, inverse_of: :comments
 
   after_create do |event|

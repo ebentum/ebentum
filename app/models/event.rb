@@ -23,14 +23,10 @@ class Event
   reverse_geocoded_by :coordinates
 
   attr_accessible :active, :description, :name, :place, :start_date, :lat, :lng #:photo
-  # attr_readonly :appointments_count
-
   validates :name, :place, :start_date, :lat, :lng, presence: true
 
   belongs_to :creator, class_name: "User", inverse_of: :created_events
-
   has_one :main_picture, class_name: "EventPicture", as: :pictureable, dependent: :destroy
-
   has_and_belongs_to_many :users, inverse_of: :events
   has_many :comments, inverse_of: :event, dependent: :destroy
 

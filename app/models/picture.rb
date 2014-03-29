@@ -7,8 +7,7 @@ class Picture
   field :photo_file_size, type: Integer
   field :photo_updated_at, type: DateTime
   field :photo_dimensions, type: Hash
-                            
-  
+
   belongs_to :creator, class_name: "User", inverse_of: :created_pictures
   belongs_to :pictureable, polymorphic: true
 
