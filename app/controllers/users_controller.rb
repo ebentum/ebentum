@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
       if @event
         @users = @event.users
-        @page = params[:page] || 1
+        @page = params[:page] || '1'
       end
     end
 
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 
   def following
 
-    @page = params[:page] || 1
+    @page = params[:page] || '1'
 
     @user = User.find(params[:id])
     @users = @user.all_followees
@@ -104,7 +104,7 @@ class UsersController < ApplicationController
 
   def followers
 
-    @page = params[:page] || 1
+    @page = params[:page] || '1'
 
     @user = User.find(params[:id])
     @users = @user.all_followers
