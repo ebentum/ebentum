@@ -4,6 +4,9 @@ Paloma.Comments =
   loadingPage: false
   lastPage: false
 
+  updateCommentsCount: (increment=1) ->
+    $('.comments-count').text(parseInt($('.comments-count').text())+increment)
+
   load_event_comments: (event_id=$('#event_id').val()) ->
     Paloma.Comments.loadingPage = true
     $.ajax
@@ -59,6 +62,7 @@ Paloma.Comments =
         success: (data, status, xhr) ->
           $('#comment'+id).fadeOut('fast')
           $('#comment'+id).remove()
+          Paloma.Comments.updateCommentsCount(-1)
           # cerrar modal
           $('#confirm_delete').modal('hide')
 
@@ -103,6 +107,7 @@ Paloma.Comments =
                   $('#event_comments li:first').hide()
                   $('#event_comments li:first').fadeIn('fast')
                   $('#new_comment_textarea').val('')
+                  Paloma.Comments.updateCommentsCount()
                   Paloma.DateTimes.format($('#event_comments'))
 
     $(document).on "keydown", "textarea[id^=edit_comment_textarea_]", (event) ->

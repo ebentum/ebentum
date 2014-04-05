@@ -10,6 +10,19 @@ Paloma.Events =
       $('#appoint').removeClass('hide')
       $('#user-action').addClass('option-success')
 
+    $(document).on "click", "#confirm_delete_event_btn", (event) ->
+        user_id = $(this).data('userid')
+        event.preventDefault()
+        $.ajax
+          url: "/events/"+$(this).data('eventid')
+          type: 'DELETE'
+          dataType: 'json'
+          beforeSend: ->
+            $('#confirm_delete_event').modal('hide')
+            $('#delete_event_btn').button('loading')
+          success: (data, status, xhr) ->
+            window.location = '/users/'+user_id
+
     $(document).on "click", "#confirm_appoint_btn", (event) ->
       button = $(this)
       $.ajax
@@ -29,6 +42,7 @@ Paloma.Events =
           $('#user-action').addClass('option-danger')
           $('#confirm_desappoint_btn').data('appointmentid', data.id)
           # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())+1)
+          $('.joined-count').text(parseInt($('.joined-count').text())+1)
           $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())+1)
 
       $.ajax
@@ -57,6 +71,7 @@ Paloma.Events =
           $('#user-action').removeClass('option-danger')
           $('#user-action').addClass('option-success')
           # $('p#appointed .badge').text(parseInt($('p#appointed .badge').text())-1)
+          $('.joined-count').text(parseInt($('.joined-count').text())-1)
           $('a#appointed .option-header').text(parseInt($('a#appointed .option-header').text())-1)
 
   initEventFormOption : (action, id = null) ->
@@ -204,18 +219,7 @@ Paloma.Events =
       Paloma.Comments.load_event_comments(params['event_id'])
       Paloma.Comments.initLayout()
 
-      $(document).on "click", "#confirm_delete_event_btn", (event) ->
-        user_id = $(this).data('userid')
-        event.preventDefault()
-        $.ajax
-          url: "/events/"+$(this).data('eventid')
-          type: 'DELETE'
-          dataType: 'json'
-          beforeSend: ->
-            $('#confirm_delete_event').modal('hide')
-            $('#delete_event_btn').button('loading')
-          success: (data, status, xhr) ->
-            window.location = '/users/'+user_id
+
     else
       usersParams = null
 

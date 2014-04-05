@@ -98,6 +98,8 @@ class EventsController < ApplicationController
     end
     @event_users = @event.users.size
 
+    @event_comments = @event.comments.size
+
     # Temas de mejora de SEO
     @head_title       = @event.name
     @meta_description = @event.description+' '+t(:meta_description, :event_name => @event.name, :joined => @event_users)
