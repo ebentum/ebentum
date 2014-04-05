@@ -221,23 +221,33 @@ Paloma.Events =
 
 
     else
-      usersParams = null
 
-      loadingContent = $.ajax
-        url: '/users/'
-        data: usersParams
-        beforeSend: ->
-          # TODO
-        success: (data) ->
-          console.log data
-          if $(".card",data).length > 0
-            $(contentDiv).html(data)
-            Paloma.Masonry.loadLayout()
-            Paloma.Masonry.initPage(contentUrl,"#users_list")
+      if tabId is '#appointed-tab'
+        usersParams =
+                page: 1
+                no_layout: true
 
-          # e.target # activated tab
-          # e.relatedTarget # previous tab
-        error: (xhr, status, error) ->
-          console.log(error)
-        complete: ->
-          loadingContent = null
+        url_ = $('#appointed-tab').data('url')
+
+        loadingContent = $.ajax
+          url: url_
+          data: usersParams
+          beforeSend: ->
+            # TODO
+          success: (data) ->
+
+            if $(".card",data).length > 0
+              $(tabId).html(data)
+              Paloma.Masonry.loadLayout()
+
+              urlParams =
+                  event_id: $('#appointed-tab').data('event')
+
+              Paloma.Masonry.initPage(url_,"#users_list",urlParams)
+
+            # e.target # activated tab
+            # e.relatedTarget # previous tab
+          error: (xhr, status, error) ->
+            console.log(error)
+          complete: ->
+            loadingContent = null

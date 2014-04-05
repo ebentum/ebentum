@@ -1,5 +1,40 @@
 class UsersController < ApplicationController
 
+  before_filter :search_users, :only => [:index]
+
+  def search_users
+    if params[:event_id]
+      @event = Event.find(params[:event_id])
+
+      if @event
+        @users = @event.users
+        @page = params[:page] || 1
+      end
+    end
+
+  end
+
+  def index
+
+
+    @users = @users.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render 'index', :layout => nil}
+      else
+        format.html { render 'index', :layout => 'fullwidth' }
+      end
+      format.json { render json: @users }
+    end
+
+
+
+  end
   def show
     id = params[:id]
 

@@ -32,7 +32,7 @@ Ebentum::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :event_appointments
       put :follow, :unfollow
     end
   end

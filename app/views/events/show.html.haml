@@ -87,9 +87,7 @@
             / .fuu
             /   hola que comments
             = render 'comments'
-          #appointed-tab.tab-pane
-            .faaa
-              hola que appointed
+          #appointed-tab.tab-pane{:data => {:url => users_path(:event_id => @event.id), :event => @event.id  } }
 
 
 - if user_signed_in?
