@@ -127,13 +127,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user.follow(@user)
     @user = User.find(params[:id])
+    receivers = current_user.all_followers.map {|user| user.id}
 
     Activity.new(
       :verb => "follow",
       :actor_id => current_user.id,
       :object_type => "User",
       :object_id => @user.id,
-      :receivers => current_user.all_followers.map {|user| user.id},
+      :receivers => receivers,
       :date => Time.now
     ).save
 
