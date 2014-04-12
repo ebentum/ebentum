@@ -1,8 +1,10 @@
-= t('.sign_up_with')
-%a{:href => '/users/auth/facebook'}
-  %i.fa.fa-facebook
-  Facebook
-= t('.or')
-%a{:href => '/users/auth/twitter'}
-  %i.fa.fa-twitter
-  Twitter
+.row
+  .col-xs-12
+    %a.btn.btn-block.btn-social.btn-lg.btn-facebook{:href => '/users/auth/facebook'}
+      %i.fa.fa-facebook
+      = t('.sign_up_with')+" Facebook"
+.row
+  .col-xs-12
+    %a.btn.btn-block.btn-social.btn-lg.btn-twitter{:href => '/users/auth/twitter'}
+      %i.fa.fa-twitter
+      = t('.sign_up_with')+" Twitter"
