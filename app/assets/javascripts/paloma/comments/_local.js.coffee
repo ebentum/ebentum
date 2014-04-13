@@ -88,12 +88,21 @@ Paloma.Comments =
       if event.keyCode == 13
         event.preventDefault()
         if $('#new_comment_textarea').val().trim().length > 0
+
+          text_ = $('#new_comment_textarea').val()
+          # lastPlaceholder = $('#new_comment_textarea').attr('placeholder')
+          # $('#new_comment_textarea').attr('placeholder',"...")
+          $('#new_comment_textarea').attr('disabled','')
+          $('.comment-loading').removeClass 'hidden'
+          # $('#new_comment_textarea').val('')
+
+
           $.ajax
             url: "/comments"
             type: 'POST'
             dataType: 'json'
             data:
-              comment_text: $('#new_comment_textarea').val()
+              comment_text: text_
               event_id: $('#new_comment_textarea').data('eventid')
             success: (data, status, xhr) ->
               comment_id = data._id
@@ -102,11 +111,16 @@ Paloma.Comments =
                 type: 'GET'
                 dataType: 'html'
                 success: (data, status, xhr) ->
+                  $('#new_comment_textarea').val('')
+                  # $('#new_comment_textarea').attr('placeholder',lastPlaceholder)
+                  $('#new_comment_textarea').removeAttr('disabled')
+                  $('.comment-loading').addClass 'hidden'
+                  $('#new_comment_textarea').focus()
                   data = $(data)
                   $('#event_comments').prepend(data)
                   $('#event_comments li:first').hide()
                   $('#event_comments li:first').fadeIn('fast')
-                  $('#new_comment_textarea').val('')
+
                   Paloma.Comments.updateCommentsCount()
                   Paloma.DateTimes.format($('#event_comments'))
 
