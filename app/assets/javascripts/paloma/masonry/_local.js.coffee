@@ -16,14 +16,21 @@ Paloma.Masonry =
 
     $(".masonry_layout").removeClass 'invisible'
 
-  initPage: (url, container)->
+  initPage: (url, container, urlParams={})->
+
     $(document).scroll ->
       if $(window).height() + $(window).scrollTop() >= $(document).height() * 0.75
         if Paloma.Masonry.loadingPage is false and Paloma.Masonry.lastPage is false
           Paloma.Masonry.loadingPage = true
           params = Paloma.g.getUrlparams()
+          params = $.extend params, urlParams
           params.page = Paloma.Masonry.page
-          params.last_activity_date = $('#activity_list .card').last().data('activity-date')
+
+
+          # TODO: quitar esto esta a pinrel
+          date_ = $('#activity_list .card').last().data('activity-date')
+          params.last_activity_date = date_ if date_?
+
           $.ajax(
             url: url
             data: params

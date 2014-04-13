@@ -1,5 +1,40 @@
 class UsersController < ApplicationController
 
+  before_filter :search_users, :only => [:index]
+
+  def search_users
+    if params[:event_id]
+      @event = Event.find(params[:event_id])
+
+      if @event
+        @users = @event.users
+        @page = params[:page] || '1'
+      end
+    end
+
+  end
+
+  def index
+
+
+    @users = @users.page(@page)
+
+    if request.xhr?
+      js_callback false
+    end
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render 'index', :layout => nil}
+      else
+        format.html { render 'index', :layout => 'fullwidth' }
+      end
+      format.json { render json: @users }
+    end
+
+
+
+  end
   def show
     id = params[:id]
 
@@ -47,7 +82,7 @@ class UsersController < ApplicationController
 
   def following
 
-    @page = params[:page] || 1
+    @page = params[:page] || '1'
 
     @user = User.find(params[:id])
     @users = @user.all_followees
@@ -69,7 +104,7 @@ class UsersController < ApplicationController
 
   def followers
 
-    @page = params[:page] || 1
+    @page = params[:page] || '1'
 
     @user = User.find(params[:id])
     @users = @user.all_followers
@@ -92,13 +127,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user.follow(@user)
     @user = User.find(params[:id])
+    receivers = current_user.all_followers.map {|user| user.id}
 
     Activity.new(
       :verb => "follow",
       :actor_id => current_user.id,
       :object_type => "User",
       :object_id => @user.id,
-      :receivers => current_user.all_followers.map {|user| user.id},
+      :receivers => receivers,
       :date => Time.now
     ).save
 

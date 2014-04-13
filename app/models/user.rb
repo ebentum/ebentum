@@ -107,6 +107,12 @@ class User
     end
   end
 
+  def update_picture_from_url(url)
+    picture = UserPicture.new()
+    picture.photo = URI.parse(url)
+    self.main_picture = picture
+  end
+
   after_destroy do |user|
 
     #TODO Estoy hay que mejorarlo con una relación

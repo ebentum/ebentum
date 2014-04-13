@@ -17,6 +17,7 @@ es:
       create: "Crear"
       save: "Guardar cambios"
     show:
+      comments: "Comentarios"
       join: "¡Me uno!"
       joined: "Unidos"
       joining: "Apuntandome..."

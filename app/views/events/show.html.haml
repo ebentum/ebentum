@@ -62,15 +62,15 @@
                   #map.block
 
             .row.card-footer.events-tab-options
-              .col-xs-12.col-md-2.footer-option
+              .col-xs-12.col-md-2.footer-option.btn-round-bottom-left
                 %a#comments-tab-option{:href => "#comments-tab", "data-toggle" => "pill"}
-                  .option-header
-                    = 12
+                  .option-header.comments-count
+                    = @event_comments
                   .option-content
                     = t('.comments')
               .col-xs-12.col-md-2.footer-option
                 %a{:href => "#appointed-tab", "data-toggle" => "pill"}
-                  .option-header
+                  .option-header.joined-count
                     = @event_users
                   .option-content
                     = t('.joined')
@@ -87,9 +87,7 @@
             / .fuu
             /   hola que comments
             = render 'comments'
-          #appointed-tab.tab-pane
-            .faaa
-              hola que appointed
+          #appointed-tab.tab-pane{:data => {:url => users_path(:event_id => @event.id), :event => @event.id  } }
 
 
 - if user_signed_in?

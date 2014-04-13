@@ -50,13 +50,15 @@ class Event
   end
 
   after_create do |event|
+    receivers = self.creator.all_followers.map {|user| user.id}
+    receivers << self.creator.id
 
     Activity.new(
       :verb => "create",
       :actor_id => self.creator.id,
       :object_type => "Event",
       :object_id => self.id,
-      :receivers => self.creator.all_followers.map {|user| user.id},
+      :receivers => receivers,
       :date => Time.now
     ).save
 

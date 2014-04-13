@@ -98,6 +98,8 @@ class EventsController < ApplicationController
     end
     @event_users = @event.users.size
 
+    @event_comments = @event.comments.size
+
     # Temas de mejora de SEO
     @head_title       = @event.name
     @meta_description = @event.description+' '+t(:meta_description, :event_name => @event.name, :joined => @event_users)
@@ -218,13 +220,15 @@ class EventsController < ApplicationController
     event    = Event.find(event_id)
     event.users.push(current_user)
     event.appointments_count = event.appointments_count + 1
+    receivers = current_user.all_followers.map {|user| user.id}
+    receivers << current_user.id
 
     Activity.new(
       :verb => "join",
       :actor_id => current_user.id,
       :object_type => "Event",
       :object_id => event.id,
-      :receivers => current_user.all_followers.map {|user| user.id},
+      :receivers => receivers,
       :date => Time.now
     ).save
 

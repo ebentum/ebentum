@@ -57,8 +57,11 @@ class SocialController < ActionController::Base
       fb = load_graph_api
       me = fb.get_object("me")
     end
-    picture = fb.get_picture(me['username'], :type => :large)
-    render :json => {:complete_name => me['name'], :location => me['location']['name'], :web => me['website'], :bio => me['bio'], :image => picture}
+
+    current_user.update_picture_from_url(fb.get_picture(me['username'], :type => :large))
+    picture_url = current_user.get_picture.photo.url(:medium)
+
+    render :json => {:complete_name => me['name'], :location => me['location']['name'], :web => me['website'], :bio => me['bio'], :image => picture_url}
   end
 
   def get_twitter_data
@@ -68,7 +71,11 @@ class SocialController < ActionController::Base
     if me.url != nil
       web = UrlExpander::Client.expand(me.url)
     end
-    render :json => {:complete_name => me.name, :location => me.location, :web => web, :bio => me.description, :image => me.profile_image_url(:original)}
+
+    current_user.update_picture_from_url(me.profile_image_url(:original))
+    picture_url = current_user.get_picture.photo.url(:medium)
+
+    render :json => {:complete_name => me.name, :location => me.location, :web => web, :bio => me.description, :image => picture_url}
   end
 
   private

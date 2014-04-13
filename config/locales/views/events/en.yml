@@ -17,6 +17,7 @@ en:
       create: "Create"
       save: "Save changes"
     show:
+      comments: "Comments"
       join: "Join me!"
       joined: "Joined"
       joining: "Joining..."

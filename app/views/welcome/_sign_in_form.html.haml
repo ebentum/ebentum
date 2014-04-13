@@ -2,6 +2,12 @@
   .card-header
     = t('.sign_in_welcome')
   .card-content
+    .row.visible-xs.visible-sm.mbm
+      .col-xs-12.centered
+        = render 'sign_in_with'
+    .row.hidden-xs.hidden-sm.mbm
+      .col-xs-12.centered
+        = render 'sign_in_with'
     .row.mbm
       .col-xs-12
         = f.email_field :email, :placeholder => t('.email'), :class => 'form-control input-sm'
@@ -24,14 +30,7 @@
     .row.visible-xs.visible-sm.mbm
       .col-xs-12
         = link_to t('.forgot_your_password'), new_password_path(:user)
-    .row.visible-xs.visible-sm.mbm
-      .col-xs-12
-        = render 'sign_in_with'
-    .row.hidden-xs.hidden-sm.mbm
-      .col-xs-12
-        .pull-left
-          %small
-            = render 'sign_in_with'
+
   .row.card-footer
     .col-xs-5.col-sm-offset-7.footer-option.option-active.pull-right.btn-round-bottom-right
       .option-action.btn-round-bottom-right
