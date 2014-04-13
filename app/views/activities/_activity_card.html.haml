@@ -39,6 +39,8 @@
 
     - if !action[:receiver].main_picture.nil?
       - user_picture = activity[object_type].main_picture
+      - if user_picture.nil?
+        - user_picture = UserPicture.new
     - else
       - user_picture = UserPicture.new
 
