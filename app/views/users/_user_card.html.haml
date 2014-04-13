@@ -17,5 +17,6 @@
         = user.complete_name
         .sub-paragraph
           = user.location
+        = render 'activities/add_to_friends', {:user_id => nil, :user => user}
 
 

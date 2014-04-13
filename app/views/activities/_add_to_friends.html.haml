@@ -1,0 +1,9 @@
+- user = user || User.find(user_id)
+- if current_user != user # si somos nosotros no podemos seguirnos, claro
+  - if !current_user.follower_of?(user)
+    %a{:href => '#'}
+      %div.centered_text.follow-activity{:data => {:user_id => user.id}}
+        %br
+        %i.fa.fa-plus
+        %i.fa.fa-user.fa-2x
+        = t('.add_to_friends')

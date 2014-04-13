@@ -55,7 +55,7 @@
                   = t('.joined_events')
             .col-xs-6.col-sm-2.footer-option.pan
               %a{:href => "#userfollowing", "data-toggle" => "pill"}
-                .option-header
+                .option-header.following_count
                   = @user.followees_count
                 .option-content
                   = t('.following')

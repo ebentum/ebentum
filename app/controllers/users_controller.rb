@@ -104,7 +104,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @user }
-      format.js
+      format.json { render json: @user }
     end
   end
 

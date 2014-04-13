@@ -6,6 +6,8 @@ en:
       create: "shared this"
       follow: "now follows %{display_name}"
       fbregister: "Your Facebook friend is now in ebentum"
+    add_to_friends:
+      add_to_friends: Follow the user!
     index:
       no_activities1: "You don't have any activity."
       no_activities2: "Click Explore if you want to know new events."

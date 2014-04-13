@@ -8,6 +8,7 @@
   - picture = UserPicture.new
   - object_path = user_path(activity[:user])
   - object_name = activity[:user].complete_name
+  - object_id = activity[:user].id
 
 - if !activity[object_type].main_picture.nil?
   - picture = activity[object_type].main_picture
@@ -49,6 +50,7 @@
               = t('.' + action[:verb])
             .sub-paragraph
               .format-timeago{:data => {:datevalue => action[:date]}}
+            = render 'add_to_friends', {:user_id => object_id, :user => nil}
         - else
           .pull-left
             %a{:href => user_path(action[:receiver])}
