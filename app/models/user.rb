@@ -4,8 +4,8 @@ class User
   include Mongoid::Paperclip
   include Mongo::Followable::Followed
   include Mongo::Followable::Follower
-  include Mongo::Followable::History
-  include Mongoid::FullTextSearch
+  #include Mongo::Followable::History
+  include Mixins::Search #TODO Cuando salga mongoid 4.0 esto habrá que sustituirlo
 
   devise :database_authenticatable,
          #:token_authenticatable,
@@ -19,7 +19,9 @@ class User
          :validatable
          #:lockable
 
-  field :username, type: String
+  index({ complete_name: "text" })
+
+  #field :username, type: String
   field :complete_name, type: String
   field :location, type: String
   field :web, type: String
@@ -80,8 +82,6 @@ class User
   embeds_one :fbtoken
   embeds_one :twtoken
 
-  fulltext_search_in :complete_name
-
   # renovación de token de acceso a Facebook
   def update_fbtoken(token, expires_at)
     self.fbtoken.token      = token
@@ -114,12 +114,10 @@ class User
   end
 
   after_destroy do |user|
-
     #TODO Estoy hay que mejorarlo con una relación
     Comment.where("creator._id" => user._id).entries.each do |comment|
       comment.destroy
     end
-
   end
 
   def setCoordinates

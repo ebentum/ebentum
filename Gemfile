@@ -80,6 +80,4 @@ gem 'newrelic_rpm'
 # Urls para seo
 gem "mongoid_slug", "~> 3.2.0"
 
-gem 'mongoid_fulltext', "~> 0.6.1"
-
 gem 'couchrest_model', "~> 2.0.1"

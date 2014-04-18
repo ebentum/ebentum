@@ -186,7 +186,10 @@ class UsersController < ApplicationController
 
   def search
     @q = params[:q]
-    @users = User.fulltext_search(@q)
+
+    if !@q.nil?
+      @users = User.search(@q)
+    end
 
     respond_to do |format|
       if request.xhr?
