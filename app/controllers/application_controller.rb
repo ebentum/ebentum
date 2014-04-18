@@ -13,8 +13,22 @@ class ApplicationController < ActionController::Base
 
   def auth_user
     if !user_signed_in? && !devise_registration_action
-      redirect_to '/welcome'
+      if isAllowedEndPointToCrawlers and isCrawler
+        logger.info 'Allowing content to crawlers'
+      else
+        redirect_to '/welcome'
+      end
     end
+  end
+
+  def isAllowedEndPointToCrawlers
+    controller_name == 'events' and action_name == 'search'
+  end
+
+  # http://snippets.aktagon.com/snippets/221-how-to-detect-traffic-from-the-most-common-search-spiders-with-ruby-
+  def isCrawler
+    user_agent = request.user_agent.downcase
+    ['googlebot'].include?(user_agent)
   end
 
   def user_logged
