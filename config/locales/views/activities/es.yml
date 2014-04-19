@@ -9,5 +9,7 @@ es:
     add_to_friends:
       add_to_friends: ¡Seguir al usuario!
     index:
+      add_fb_friends: "Añade a tus amigos de Facebook"
+      done: "Hecho"
       no_activities1: "No tienes ninguna actividad."
       no_activities2: "Pulsa en Explorar si quieres conocer nuevos eventos."

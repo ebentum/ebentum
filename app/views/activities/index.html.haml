@@ -20,3 +20,26 @@
         = render 'list'
 - else
   = render 'list'
+
+- if @show_fb_friends && @fb_friends.size > 0
+  .modal.fade{:id  => 'show_fb_friends'}
+    .modal-dialog.card
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          = t('.add_fb_friends')
+        .modal-body
+          %ul.media-list.comment-list
+            - for fb_friend in @fb_friends
+              - if !current_user.follower_of?(fb_friend)
+                %li.media.card-content
+                  %a.pull-left{:href => user_path(fb_friend)}
+                    = image_tag(fb_friend.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
+                  .media-body
+                    %a{:href => user_path(fb_friend)}
+                      = fb_friend.complete_name
+                    .pull-right
+                      = render 'activities/add_to_friends', {:user_id => nil, :user => fb_friend}
+        .card-footer
+          %a.btn.btn-primary.btn-round-bottom-right{:href => "#", "data-dismiss" => "modal"}
+            = t('.done')

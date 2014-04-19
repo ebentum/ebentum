@@ -9,5 +9,7 @@ en:
     add_to_friends:
       add_to_friends: Follow the user!
     index:
+      add_fb_friends: "Add your Facebook friends"
+      done: "Done"
       no_activities1: "You don't have any activity."
       no_activities2: "Click Explore if you want to know new events."

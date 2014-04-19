@@ -33,7 +33,10 @@ Paloma.devise.registrations =
           # guardar token de acceso
           Paloma.Tokens.save_access_token data._id, (err) ->
             # redirigir al inicio
-            window.location = '/'
+            # si se ha dado de alta con fb, le vamos a mostrar sus amigos de fb que estan en ebentum
+            provider = $('#user_provider').val()
+            if provider is 'facebook'
+              window.location = '/?show_fb_friends=true'
 
         else
           # guardar token de acceso

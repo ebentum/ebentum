@@ -1,7 +1,7 @@
 - commentid = 'comment'+comment.id.to_s
 
 %li.media.card-content{:id => commentid}
-  %a.pull-left{:href => "#"}
+  %a.pull-left{:href => user_path(comment.creator)}
     = image_tag(comment.creator.get_picture.photo.url(:thumb), :class => 'block media-object thumb_image')
   .media-body
     .media-heading
