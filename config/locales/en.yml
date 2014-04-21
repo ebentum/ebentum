@@ -6,6 +6,8 @@ en:
   error: "Error!"
   explore: "Explore"
   explore_events: "Explore events"
+  #I
+  isfollower: "Follows you"
   #L
   loading: "Loading..."
   #S
@@ -18,4 +20,5 @@ en:
   meta_description: "Join “%{event_name}” event in ebentum! Already joined %{joined} people!"
   meta_description_default: "ebentum is your website to discover and share all kind of events"
   meta_keywords_default: "ebentum, events, parties, concerts, shows, meetings, celebrations"
-
+  #Y
+  you: "You"

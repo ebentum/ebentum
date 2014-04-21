@@ -14,7 +14,13 @@
   .card-footer.card-footer-masonry
     .media
       .media-body.plm.ptm.pbm.prn
-        = user.complete_name
+        - if user == current_user
+          = t('you')
+        - else
+          = user.complete_name
+          - if user.follower_of?(current_user)
+            %span.label.label-default
+              = t('isfollower')
         .sub-paragraph
           = user.location
         = render 'activities/add_to_friends', {:user_id => nil, :user => user}
