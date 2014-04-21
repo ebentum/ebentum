@@ -91,9 +91,8 @@
   // background: #3c4144;
   background: $base;
   text-align: right;
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
+
+  // border-radius: 0 0 0 0;
 
 
   .footer-option{
@@ -146,6 +145,11 @@
   }
 }
 
+.card .card-footer:nth-last-child(1){
+  border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+}
 
 .card-footer-masonry{
   color: rgb(113, 113, 113);
