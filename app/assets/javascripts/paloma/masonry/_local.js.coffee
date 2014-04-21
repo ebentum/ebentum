@@ -18,6 +18,8 @@ Paloma.Masonry =
 
   initPage: (url, container, urlParams={})->
 
+    $(".masonry_layout").masonry()
+
     $(document).scroll ->
       if $(window).height() + $(window).scrollTop() >= $(document).height() * 0.75
         if Paloma.Masonry.loadingPage is false and Paloma.Masonry.lastPage is false
