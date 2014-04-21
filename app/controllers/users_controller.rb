@@ -87,6 +87,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.all_followees
 
+    @users = Kaminari.paginate_array(@users).page(@page)
 
     if request.xhr?
       js_callback false
@@ -108,6 +109,8 @@ class UsersController < ApplicationController
 
     @user = User.find(params[:id])
     @users = @user.all_followers
+
+    @users = Kaminari.paginate_array(@users).page(@page)
 
     if request.xhr?
       js_callback false
