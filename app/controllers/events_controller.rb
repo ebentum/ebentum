@@ -30,18 +30,26 @@ class EventsController < ApplicationController
 
     my_location = [user.coordinates[1], user.coordinates[0]]
 
-    @distanceSelected = params[:distance] || 2 # Cerca
+    @distanceSelected = params[:distance] #|| 2 # Cerca
     @daysSelected     = params[:days]     || 2 # Pronto
+    @text             = params[:text]
     @events           = Event
-    if @distanceSelected.to_i > 0
+
+    if !@distanceSelected.nil? && @distanceSelected.to_i > 0
       @events = @events.near(my_location, @distanceSelected, :units => :km)
     end
-    if @daysSelected.to_i > 0
+    if !@daysSelected.nil? && @daysSelected.to_i > 0
       @events = @events.where(:start_date.gte => Date.today, :start_date.lte => @daysSelected.to_i.days.from_now)
     end
 
     @events = @events.order_by("appointments_count desc")
     @events = @events.page(@page)
+
+
+    if !@text.nil? && @text != ""
+      @events = TextSearch.new(Mongoid.session('default')[:events], @events, "prueba")
+    end
+
 
     if request.xhr?
       js_callback false

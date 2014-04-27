@@ -5,10 +5,15 @@ class Event
   include Paperclip::Glue
   include Geocoder::Model::Mongoid
   include Mongoid::Slug
+  include Mixins::Search #TODO Cuando salga mongoid 4.0 esto habrá que sustituirlo
 
   slug do |cur_object|
     "#{cur_object.name}".parameterize
   end
+
+  index({ start_date: 1, name: "text", appointments_count: -1 })
+  index({ start_date: 1, coordinates: "2d", appointments_count: -1 })
+
 
   field :name, type: String
   field :description, type: String

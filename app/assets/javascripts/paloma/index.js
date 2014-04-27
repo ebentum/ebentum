@@ -11,3 +11,4 @@
 //= require ./masonry/_callbacks.js
 //= require ./datetimes/_callbacks.js
 //= require ./tokens/_callbacks.js
+//= require ./search/_callbacks.js

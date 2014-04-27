@@ -70,5 +70,3 @@ Paloma.users =
     # refresh tabId tab only if it's active
     if tabId == $('#userpagetabs li.active a').attr('href')
       Paloma.users.showTab(tabId)
-
-

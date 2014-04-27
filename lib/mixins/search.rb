@@ -6,11 +6,20 @@ module Mixins
     module ClassMethods
 
       def search(query)
-      	resulttt = []
-        session = Mongoid.session('default')
-        results = session.command({"text" => collection.name, 'search' => query})
+        command = {}
+
+        command[:text] = collection.name
+        command[:search] = query
+
+        command[:filter] = self.criteria.selector
+        if limit = self.criteria.options[:limit]
+          command[:limit] = limit
+        end
+
+        results = Mongoid.session('default').command(command)
+
         results["results"].map do |attributes|
-          Mongoid::Factory.from_db(self, attributes["obj"])
+          Mongoid::Factory.from_db(self, attributes["obj"], command[:project])
         end
 
       end
