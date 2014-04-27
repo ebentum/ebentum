@@ -89,128 +89,133 @@ Paloma.Events =
           $('#modal_window').modal()
 
   initEventForm : (action) ->
-    $("#modal_window").on "hidden", ->
-      $("#modal_window").remove()
-    $("#modal_window").on "shown", ->
+    if $("#modal_window").length > 0
+      $("#modal_window").on "hidden", ->
+        $("#modal_window").remove()
+      $("#modal_window").on "shown", Paloma.Events.initEventFormProcess
+    else
+      Paloma.Events.initEventFormProcess()
 
-      $('#event_description').autosize({append: "\n"})
 
-      event_start_date_object = $("#event_start_date")
-      event_start_date_picker_object = $('#event_start_date_picker')
-      event_start_time_picker_object = $('#event_start_time_picker')
+  initEventFormProcess: ->
+    $('#event_description').autosize({append: "\n"})
 
-      date_format = event_start_date_object.data('date-format')
-      time_format = 'HH:mm'
+    event_start_date_object = $("#event_start_date")
+    event_start_date_picker_object = $('#event_start_date_picker')
+    event_start_time_picker_object = $('#event_start_time_picker')
 
-      event_start_date_picker_object.datepicker
-        autoclose: true
-        language: I18n.locale
-        startDate: Date()
-      .on "changeDate", (e) ->
-        event_start_date_object.val(new moment(e.date).format(date_format) + ' ' + event_start_time_picker_object.val())
-      .on "show", (e) ->
-        alert "show"
+    date_format = event_start_date_object.data('date-format')
+    time_format = 'HH:mm'
 
-      event_start_time_picker_object.timepicker
-        'scrollDefaultNow': true
-        'timeFormat': 'H:i'
+    event_start_date_picker_object.datepicker
+      autoclose: true
+      language: I18n.locale
+      startDate: Date()
+    .on "changeDate", (e) ->
+      event_start_date_object.val(new moment(e.date).format(date_format) + ' ' + event_start_time_picker_object.val())
+    .on "show", (e) ->
+      alert "show"
 
-      event_start_time_picker_object.on "changeTime", ->
-        event_start_date_object.val(new moment(event_start_date_picker_object.datepicker("getDate")).format(date_format) + ' ' + event_start_time_picker_object.val())
+    event_start_time_picker_object.timepicker
+      'scrollDefaultNow': true
+      'timeFormat': 'H:i'
 
-      if event_start_date_object.val() == ""
-        selected_date = new moment(new moment().format(date_format), date_format)
-        selected_time = new moment()
+    event_start_time_picker_object.on "changeTime", ->
+      event_start_date_object.val(new moment(event_start_date_picker_object.datepicker("getDate")).format(date_format) + ' ' + event_start_time_picker_object.val())
+
+    if event_start_date_object.val() == ""
+      selected_date = new moment(new moment().format(date_format), date_format)
+      selected_time = new moment()
+    else
+      selected_date = new moment(new moment(event_start_date_object.val()).format(date_format), date_format)
+      selected_time = new moment(event_start_date_object.val())
+
+
+    event_start_date_picker_object.datepicker("update", selected_date.toDate())
+    event_start_time_picker_object.val(selected_time.utc().format(time_format))
+
+    event_start_date_object.val(selected_date.format(date_format) + ' ' + selected_time.format(time_format))
+
+    $('#create_event_btn').click ->
+      if !$(this).hasClass("disabled")
+        $("."+action+"_event").submit()
+
+    Paloma.Pictures.mainImageForm('event_main_picture_form', 'event_main_picture_input', 'create_event_btn', "/photos/medium/missing_event.png")
+
+    map_options =
+      zoom: 13
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
+    marker = new google.maps.Marker(map: map)
+
+    if navigator.geolocation
+      browserSupportFlag = true
+
+      if $('#event_lat').val() != ""
+        initialLocation = new google.maps.LatLng($('#event_lat').val(), $('#event_lng').val())
+        map.setCenter initialLocation
+        marker.setPosition initialLocation
       else
-        selected_date = new moment(new moment(event_start_date_object.val()).format(date_format), date_format)
-        selected_time = new moment(event_start_date_object.val())
-
-
-      event_start_date_picker_object.datepicker("update", selected_date.toDate())
-      event_start_time_picker_object.val(selected_time.utc().format(time_format))
-
-      event_start_date_object.val(selected_date.format(date_format) + ' ' + selected_time.format(time_format))
-
-      $('#create_event_btn').click ->
-        if !$(this).hasClass("disabled")
-          $("."+action+"_event").submit()
-
-      Paloma.Pictures.mainImageForm('event_main_picture_form', 'event_main_picture_input', 'create_event_btn', "/photos/medium/missing_event.png")
-
-      map_options =
-        zoom: 13
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-
-      map = new google.maps.Map(document.getElementById("map_canvas"), map_options)
-      marker = new google.maps.Marker(map: map)
-
-      if navigator.geolocation
-        browserSupportFlag = true
-
-        if $('#event_lat').val() != ""
-          initialLocation = new google.maps.LatLng($('#event_lat').val(), $('#event_lng').val())
+        navigator.geolocation.getCurrentPosition ((position) ->
+          initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
           map.setCenter initialLocation
-          marker.setPosition initialLocation
-        else
-          navigator.geolocation.getCurrentPosition ((position) ->
-            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-            map.setCenter initialLocation
-          )
+        )
 
-      input = document.getElementById("place_autocomplete")
-      autocomplete = new google.maps.places.SearchBox(input)
-      autocomplete.bindTo "bounds", map
+    input = document.getElementById("place_autocomplete")
+    autocomplete = new google.maps.places.SearchBox(input)
+    autocomplete.bindTo "bounds", map
 
 
-      google.maps.event.addListener autocomplete, "places_changed", ->
-        place = autocomplete.getPlaces()
+    google.maps.event.addListener autocomplete, "places_changed", ->
+      place = autocomplete.getPlaces()
 
-        if !place[0]
-          marker.setMap(null)
-          $('#event_lat').val(null)
-          $('#event_lng').val(null)
-          $('#event_place').val(null)
-          return
-        else
-          marker.setMap(map)
+      if !place[0]
+        marker.setMap(null)
+        $('#event_lat').val(null)
+        $('#event_lng').val(null)
+        $('#event_place').val(null)
+        return
+      else
+        marker.setMap(map)
 
-        if place[0].geometry.viewport
-          map.fitBounds place[0].geometry.viewport
-        else
-          map.setCenter place[0].geometry.location
-          map.setZoom 15
-        marker.setPosition place[0].geometry.location
-        $('#event_lat').val(place[0].geometry.location.lat())
-        $('#event_lng').val(place[0].geometry.location.lng())
-        $('#event_place').val($('#place_autocomplete').val())
+      if place[0].geometry.viewport
+        map.fitBounds place[0].geometry.viewport
+      else
+        map.setCenter place[0].geometry.location
+        map.setZoom 15
+      marker.setPosition place[0].geometry.location
+      $('#event_lat').val(place[0].geometry.location.lat())
+      $('#event_lng').val(place[0].geometry.location.lng())
+      $('#event_place').val($('#place_autocomplete').val())
 
-      $.validator.addMethod "time", ((value, element) ->
-        @optional(element) or /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value)
-      ), "Please enter a valid time."
+    $.validator.addMethod "time", ((value, element) ->
+      @optional(element) or /^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])?$/i.test(value)
+    ), "Please enter a valid time."
 
-      $.validator.addMethod "valid_place", ((value, element) ->
-        if $('#event_place').val() == ""
-          false
-        else
-          true
-      ), "You must indicate a correct place."
-
-      $.validator.addMethod "dateRange", (->
-        today = new moment()
-        event_date = new moment($("#event_start_date").val(),$("#event_start_date").data('date-format').toUpperCase())
-        return true  if event_date >= today
+    $.validator.addMethod "valid_place", ((value, element) ->
+      if $('#event_place').val() == ""
         false
-      ), "Please specify a correct date."
+      else
+        true
+    ), "You must indicate a correct place."
 
-      $("#new_event").validate
-        rules:
-          "event[name]":
-            required: true
-          "place_autocomplete":
-            valid_place: true
-        onkeyup: false
-        onclick: false
-        onfocusout: false
+    $.validator.addMethod "dateRange", (->
+      today = new moment()
+      event_date = new moment($("#event_start_date").val(),$("#event_start_date").data('date-format').toUpperCase())
+      return true  if event_date >= today
+      false
+    ), "Please specify a correct date."
+
+    $("#new_event").validate
+      rules:
+        "event[name]":
+          required: true
+        "place_autocomplete":
+          valid_place: true
+      onkeyup: false
+      onclick: false
+      onfocusout: false
 
   showTab: (tabId, params)->
 
