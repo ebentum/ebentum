@@ -126,7 +126,11 @@ class EventsController < ApplicationController
     @picture = EventPicture.new
 
     respond_to do |format|
-      format.html { render :layout => 'modal_window' }
+      if @native_app == false
+        format.html { render :layout => 'modal_window' }
+      else
+        format.html {}
+      end
       format.json { render :json => @event }
     end
   end
