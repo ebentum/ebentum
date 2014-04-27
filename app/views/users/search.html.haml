@@ -1,13 +1,14 @@
-.container
-  .col-xs-12
-    %form#user_search_form{role: "search"}
-      .card
-        .card-content
-          .row
-            .col-xs-12.col-md-10.mts.mbs
-              = text_field_tag :q, @q, class: 'form-control', placeholder: t('.person_name')
-            .col-xs-12.col-md-2.mts.mbs
-              = submit_tag t('.search'), class: 'btn btn-primary btn-block'
+- if @native_app == false
+  .container
+    .col-xs-12
+      %form#user_search_form{role: "search"}
+        .card
+          .card-content
+            .row
+              .col-xs-12.col-md-10.mts.mbs
+                = text_field_tag :q, @q, class: 'form-control', placeholder: t('.person_name')
+              .col-xs-12.col-md-2.mts.mbs
+                = submit_tag t('.search'), class: 'btn btn-primary btn-block'
 
 - if !@users.nil?
   .col-xs-12

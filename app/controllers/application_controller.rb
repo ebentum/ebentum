@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :auth_user, :get_locale
+  before_filter :auth_user, :get_locale, :check_mobile
 
   layout :layout_by_resource
 
@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
       else
         redirect_to '/welcome'
       end
+    end
+  end
+
+  def check_mobile
+    if params[:native_app]
+      @native_app = true
+    else
+      @native_app = false
     end
   end
 

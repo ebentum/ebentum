@@ -1,7 +1,7 @@
 !!!
 %html{"xmlns:fb" => "http://ogp.me/ns/fb#", :manifest=>"offline.appcache"}
   = render 'layouts/head'
-  %body
+  %body{:class => get_body_class}
     = render 'layouts/fb_js_sdk'
     = render 'layouts/tw_js_sdk'
     = render 'layouts/navbar'

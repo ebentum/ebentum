@@ -13,6 +13,10 @@ body {
   overflow-x:hidden;
 }
 
+body.native-app {
+  padding-top: 10px;
+}
+
 .footer-banner{
   padding: 0px;
   min-height: 30px;
@@ -185,5 +189,5 @@ label.error {
 }
 
 .btn-social {
-  margin-top: 2px;  
+  margin-top: 2px;
 }

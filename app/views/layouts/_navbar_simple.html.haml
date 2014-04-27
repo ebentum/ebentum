@@ -1,10 +1,11 @@
-%nav.navbar.navbar-default.navbar-fixed-top{"role" => "navigation"}
-  .container
-    .navbar-header
-      %a.navbar-brand.media{:href => root_url}
-        .pull-left.navbar-logo-text
-          e
-        .pull-left.navbar-logo
-          = image_tag('logo/ebentum_38.png', "class" => "media-object" )
-        .media-body
-          entum
+- if @native_app == false
+  %nav.navbar.navbar-default.navbar-fixed-top{"role" => "navigation"}
+    .container
+      .navbar-header
+        %a.navbar-brand.media{:href => root_url}
+          .pull-left.navbar-logo-text
+            e
+          .pull-left.navbar-logo
+            = image_tag('logo/ebentum_38.png', "class" => "media-object" )
+          .media-body
+            entum

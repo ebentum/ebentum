@@ -24,4 +24,12 @@ module ApplicationHelper
     end
   end
 
+  def get_body_class
+    if @native_app == true
+      'native-app'
+    else
+      'normal'
+    end
+  end
+
 end

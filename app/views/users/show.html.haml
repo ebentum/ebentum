@@ -2,11 +2,12 @@
   .row
     .col-xs-12.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
       .card
-        .card-header
-          = @user.complete_name
-          - if @user.follower_of?(current_user)
-            .label.label-inverse
-              = t('.isfollower')
+        - if @native_app == false
+          .card-header
+            = @user.complete_name
+            - if @user.follower_of?(current_user)
+              .label.label-inverse
+                = t('.isfollower')
 
         = # oculto para moviles.
         .hidden-xs
@@ -114,16 +115,17 @@
                         = @user.bio.blank? ? raw('&nbsp;') : @user.bio
 
           #userpagetabs_mvl.row.card-footer
-            .user_action_button.col-xs-12.footer-option.option-active.pan
-              - if @user == current_user
-                %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
-                  = t('.edit')
-              - else
-                - if current_user.follower_of?(@user)
-                  = render 'unfollow'
+            - if @native_app == false or @user != current_user
+              .user_action_button.col-xs-12.footer-option.option-active.pan
+                - if @user == current_user
+                  %a.option-action.btn-round-bottom-right{:href => edit_user_registration_path(@user)}
+                    = t('.edit')
                 - else
-                  = render 'follow'
-            .col-xs-6.footer-option.pan
+                  - if current_user.follower_of?(@user)
+                    = render 'unfollow'
+                  - else
+                    = render 'follow'
+            .col-xs-3.footer-option.pan
               %a{:href => "#userevents", "data-toggle" => "pill"}
                 .option-header
                   = @user.created_events.count
@@ -132,19 +134,19 @@
                     = t('.your_events')
                   - else
                     = t('.user_events')
-            .col-xs-6.footer-option.pan
+            .col-xs-3.footer-option.pan
               %a{:href => "#userappointments", "data-toggle" => "pill"}
                 .option-header
                   = @user.events.count
                 .option-content
                   = t('.joined_events')
-            .col-xs-6.footer-option.btn-round-bottom-left.pan
+            .col-xs-3.footer-option.pan
               %a{:href => "#userfollowing", "data-toggle" => "pill"}
                 .option-header
                   = @user.followees_count
                 .option-content
                   = t('.following')
-            .col-xs-6.footer-option.btn-round-bottom-right.pan
+            .col-xs-3.footer-option.btn-round-bottom-right.pan
               %a{:href => "#userfollowers", "data-toggle" => "pill"}
                 .followers_count_badge.option-header
                   = @user.followers_count
