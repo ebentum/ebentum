@@ -1,0 +1,11 @@
+rake assets:precompile
+rake html5_manifest
+commit de eso sin push
+eb init configurar eb todo por defecto
+git aws.push
+
+borrar commit: git reset --hard HEAD^
+
+acceso beanstalk
+AKIAIES4PSLU77UPL5JQ
++sWRAH9Ehk0PlAwXPUwlibSJVgCkeg5DpOrca5D4
