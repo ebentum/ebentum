@@ -16,7 +16,14 @@ class ApplicationController < ActionController::Base
       if isAllowedEndPointToCrawlers and isCrawler
         logger.info 'Allowing content to crawlers'
       else
+        cookies.delete :ebentum_userid
+        cookies.delete :ebentum_username
         redirect_to '/welcome'
+      end
+    else
+      if current_user
+        cookies.permanent[:ebentum_userid] = current_user.id
+        cookies.permanent[:ebentum_username] = current_user.complete_name
       end
     end
   end

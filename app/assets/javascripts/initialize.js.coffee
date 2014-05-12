@@ -7,6 +7,7 @@ Paloma.DateTimes.format()
 $(
   () ->
     Paloma.Events.initEventFormOption("new")
+    FastClick.attach(document.body)
 )
 
 

@@ -36,6 +36,9 @@
 //= require jquery.caret
 
 //= require moment
+//= require fastclick
+
+//= require ebentumApp
 
 //= require i18n
 //= require i18n/translations

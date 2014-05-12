@@ -165,3 +165,5 @@
                 = link_to t('.sign_up'), new_user_registration_path
               %li.list-group-item
                 = link_to t('.sign_in'), new_user_session_path
+- else
+  %a.hidden{:id => "ebentum_native_close_session", :href => destroy_user_session_path, :data => {:method => :delete}}

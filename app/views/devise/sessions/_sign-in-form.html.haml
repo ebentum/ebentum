@@ -1,5 +1,7 @@
 .card
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:method => :post, :id => 'sign_in', :class => 'sign_in'}) do |f|
+    - if @native_app == true
+      %input{:type => "hidden", :name => "native_app", :value => "true"}
     .card-header
       = t('.sign_in')
     .card-content
