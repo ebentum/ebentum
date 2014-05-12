@@ -2,9 +2,9 @@ Paloma.callbacks["events/search"] = (params) ->
 
   #Paloma.Masonry.initPage("/events/search","#events_list")
 
-  $(document).on "change", "#event_search_form select", (event) ->
-    Paloma.Search.searchAjax()
-    true
+  #$(document).on "change", "#event_search_form select", (event) ->
+  #  Paloma.Search.searchAjax()
+  #  true
 
   $(document).on "click", "#filter_type #by_distance", ->
     $("#filter_type #by_distance").addClass("active")

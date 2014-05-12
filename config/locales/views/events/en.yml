@@ -48,8 +48,10 @@ en:
       twitter_share_text: "Take a look to this event!"
     search:
       close_to_me: "Close to me"
+      distance: "Distance"
       farther: "Farther!"
       i_dont_care: "I don't care!"
+      name: "Name"
       now: "Now!"
       right_here: "Right here!"
       search: "Search"

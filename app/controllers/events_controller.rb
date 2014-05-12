@@ -47,7 +47,7 @@ class EventsController < ApplicationController
 
 
     if !@text.nil? && @text != ""
-      @events = TextSearch.new(Mongoid.session('default')[:events], @events, "prueba")
+      @events = TextSearch.new(Mongoid.session('default')[:events], @events, @text)
     end
 
 

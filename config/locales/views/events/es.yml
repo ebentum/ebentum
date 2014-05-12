@@ -48,8 +48,10 @@ es:
       twitter_share_text: "¡Mira este evento!"
     search:
       close_to_me: "Cerca"
+      distance: "Distancia"
       farther: "¡Más lejos!"
       i_dont_care: "¡Me da igual!"
+      name: "Nombre"
       now: "¡Ahora!"
       right_here: "¡Aquí mismo!"
       search: "Buscar"
