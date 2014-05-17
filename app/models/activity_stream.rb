@@ -101,7 +101,11 @@ class ActivityStream < CouchRest::Model::Base
     #replace the indexes with data
     activity_stream.each do |activity|
       if !activity[:event].nil?
-        activity[:event] = events[event_list[activity[:event]]]
+        if event_list.include?(activity[:event])
+          activity[:event] = events[event_list[activity[:event]]]
+        else
+          activity[:event] = nil
+        end
       elsif !activity[:user].nil?
         activity[:user] = users[user_list[activity[:user]]]
       end
@@ -109,7 +113,6 @@ class ActivityStream < CouchRest::Model::Base
       activity[:actions].each do |action|
         action[:receiver] = receivers[receiver_list[action[:receiver]]]
       end
-
     end
 
     activity_stream

@@ -1,2 +1,3 @@
 - for activity in @activities
-  = render partial: 'activity_card', locals: {activity: activity}
+  - if !activity[:event].nil?
+    = render partial: 'activity_card', locals: {activity: activity}
