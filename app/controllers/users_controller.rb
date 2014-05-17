@@ -190,7 +190,7 @@ class UsersController < ApplicationController
   def search
     @q = params[:q]
 
-    if !@q.nil?
+    if !@q.nil? && @q != ""
       @users = User.search(@q)
     end
 

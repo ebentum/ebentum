@@ -19,7 +19,8 @@ class User
          :validatable
          #:lockable
 
-  index({ complete_name: "text" })
+  #Comentados ya que fallan al crearse en la bd de producción proque es experimental. Descomentar en el futuro.
+  #index({ complete_name: "text" })
 
   #field :username, type: String
   field :complete_name, type: String

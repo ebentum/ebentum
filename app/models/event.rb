@@ -11,8 +11,9 @@ class Event
     "#{cur_object.name}".parameterize
   end
 
-  index({ start_date: 1, name: "text", appointments_count: -1 })
-  index({ start_date: 1, coordinates: "2d", appointments_count: -1 })
+  #Comentados ya que fallan al crearse en la bd de producción proque es experimental. Descomentar en el futuro.
+  #index({ start_date: 1, name: "text", appointments_count: -1 })
+  #index({ start_date: 1, coordinates: "2d", appointments_count: -1 })
 
 
   field :name, type: String
