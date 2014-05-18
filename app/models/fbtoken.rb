@@ -12,6 +12,7 @@ class Fbtoken
   embedded_in :user
 
   def get_token_friends_with_ebentum
+    friends = []
     # instanciamos el objeto fb
     fb = Koala::Facebook::API.new(self.token)
     # uids de fb de nuestros amigos de fb que tienen ebentum
@@ -22,18 +23,27 @@ class Fbtoken
     logger.info('fb_uids en fbtoken.rb')
     logger.info(fb_uids)
     users = User.where('fbtoken.uid' => fb_uids).all
-    users
+    if users.count > 0
+      logger.info 'hay resultados'
+      logger.info users.count
+      users.each do |user|
+        friends.push user.id
+      end
+      return friends
+    else
+      return []
+    end
   end
 
   after_create do |fbtoken|
     # obtenemos la lista de usuarios que van a recibir la actividad
     # amigos de fb del usuario que tienen ebentum #y que no seguimos en ebentum
-    receivers = get_token_friends_with_ebentum#.map{|fbfriend| fbfriend if !current_user.follower_of?(fbfriend)}
-    logger.info('receivers en fbtoken.rb')
-    logger.info(receivers)
+    receiver_ids = get_token_friends_with_ebentum#.map{|fbfriend| fbfriend if !current_user.follower_of?(fbfriend)}
+    # logger.info('receivers en fbtoken.rb')
+    # logger.info(receivers)
 
-    # sacamos las ids
-    receiver_ids = receivers.map{|r| r.id}
+    # # sacamos las ids
+    # receiver_ids = receivers.map{|r| r.id}
 
     logger.info('receiver_ids en fbtoken.rb')
     logger.info(receiver_ids)
