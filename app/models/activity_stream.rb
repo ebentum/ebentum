@@ -111,11 +111,15 @@ class ActivityStream < CouchRest::Model::Base
       end
 
       activity[:actions].each do |action|
-        if receiver_list.include?(action[:receiver])
-          action[:receiver] = receivers[receiver_list[action[:receiver]]]
-        else
-          action[:receiver] = nil
+        if !action[:receiver].nil?
+          if receiver_list.include?(action[:receiver])
+            action[:receiver] = receivers[receiver_list[action[:receiver]]]
+          else
+            action[:receiver] = nil
+          end
+        end
       end
+
     end
 
     activity_stream
