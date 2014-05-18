@@ -19,6 +19,8 @@ class Fbtoken
               .select {|user| user.key?('installed')} # nos quedamos con los que tienen ebentum instalado
               .map {|installed| installed['id']} # de los que tienen ebentum instalado nos quedamos con la id de fb
     # obtenemos los usuarios de ebentum que tienen esas uids de en el token de fb
+    logger.info('fb_uids en fbtoken.rb')
+    logger.info(fb_uids)
     User.where('fbtoken.uid' => fb_uids)
   end
 
@@ -28,6 +30,9 @@ class Fbtoken
     receivers = get_token_friends_with_ebentum(self.user).map{|fbfriend| fbfriend if !current_user.follower_of?(fbfriend)}
     # sacamos las ids
     receiver_ids = receivers.map{|r| r.id}
+
+    logger.info('receiver_ids en fbtoken.rb')
+    logger.info(receiver_ids)
 
     if !receiver_ids.empty?
       Activity.new(
