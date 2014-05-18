@@ -21,7 +21,7 @@ class Fbtoken
     # obtenemos los usuarios de ebentum que tienen esas uids de en el token de fb
     logger.info('fb_uids en fbtoken.rb')
     logger.info(fb_uids)
-    users = User.where('fbtoken.uid' => fb_uids)
+    users = User.where('fbtoken.uid' => fb_uids).all
     users
   end
 
