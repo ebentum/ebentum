@@ -23,7 +23,8 @@ class Fbtoken
     logger.info('fb_uids en fbtoken.rb')
     logger.info(fb_uids)
     logger.info 'a ver si hay resultados'
-    users = User.where(:fbtoken[:uid].in => fb_uids)
+    # users = User.where(:fbtoken[:uid].in => fb_uids)
+    users = User.in('fbtoken.uid' => fb_uids)
     if users.count > 0
       logger.info 'hay resultados'
       logger.info users.count
