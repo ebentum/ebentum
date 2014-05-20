@@ -81,3 +81,6 @@ gem 'newrelic_rpm'
 gem "mongoid_slug", "~> 3.2.0"
 
 gem 'couchrest_model', "~> 2.0.1"
+
+# Para poder hacer rails c por ssh
+gem 'minitest', "~> 5.3.4"
