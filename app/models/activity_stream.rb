@@ -107,7 +107,11 @@ class ActivityStream < CouchRest::Model::Base
           activity[:event] = nil
         end
       elsif !activity[:user].nil?
-        activity[:user] = users[user_list[activity[:user]]]
+        if user_list.include?(activity[:user])
+          activity[:user] = users[user_list[activity[:user]]]
+        else
+          activity[:user] = nil
+        end
       end
 
       activity[:actions].each do |action|
