@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
     users = User.in('fbtoken.uid' => fb_uids)
     if users.count > 0
       users.each do |user|
-        friends.push user.id
+        friends.push user#.id Aqui tenemos que pasar el user entero
       end
     end
     logger.info('fb friends with ebentum')
