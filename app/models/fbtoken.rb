@@ -11,11 +11,12 @@ class Fbtoken
 
   embedded_in :user
 
-  def get_token_friends_with_ebentum
+  # funcion que devuelve un array de ids de usuario de ebentum que son amigos nuestros en facebook
+  def get_token_friends_with_ebentum(token)
     # array de ids de ususario de ebentum a los que hay que notificar
     friends = []
     # instanciamos el objeto fb
-    fb = Koala::Facebook::API.new(self.token)
+    fb = Koala::Facebook::API.new(token)
     # uids de fb de nuestros amigos de fb que tienen ebentum
     fb_uids = fb.get_connections("me", "friends", :fields => "id, installed") # amigos de fb. obtenemos id e installed (ebentum)
               .select {|user| user.key?('installed')} # nos quedamos con los que tienen ebentum instalado
@@ -26,19 +27,17 @@ class Fbtoken
       users.each do |user|
         friends.push user.id
       end
-      return friends
-    else
-      return []
     end
+    logger.info('fb friends with ebentum')
+    logger.info(friends)
+    return friends
   end
 
   after_create do |fbtoken|
     # obtenemos la lista de usuarios que van a recibir la actividad
-    # amigos de fb del usuario que tienen ebentum #y que no seguimos en ebentum TODO
-    receiver_ids = get_token_friends_with_ebentum#.map{|fbfriend| fbfriend if !current_user.follower_of?(fbfriend)}
-
-    logger.info('receiver_ids en fbtoken.rb')
-    logger.info(receiver_ids)
+    # amigos de fb del usuario que tienen ebentum
+    # TODO: y que no seguimos en ebentum TODO
+    receiver_ids = get_token_friends_with_ebentum(self.token)#.map{|fbfriend| fbfriend if !current_user.follower_of?(fbfriend)}
 
     if !receiver_ids.empty?
       Activity.new(
