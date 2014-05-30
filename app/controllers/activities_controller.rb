@@ -10,7 +10,9 @@ class ActivitiesController < ApplicationController
 
     @show_fb_friends = params[:show_fb_friends]
 
-    @fb_friends = get_token_friends_with_ebentum(current_user.fbtoken.token)
+    if !current_user.fbtoken.nil?
+      @fb_friends = get_token_friends_with_ebentum(current_user.fbtoken.token)
+    end
 
     respond_to do |format|
       if request.xhr?
