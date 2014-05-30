@@ -130,6 +130,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    minitest (5.3.4)
     mongo_followable (0.3.2)
     mongoid (3.1.6)
       activemodel (~> 3.2)
@@ -271,6 +272,7 @@ DEPENDENCIES
   kaminari (~> 0.14.1)
   koala (~> 1.9.0)
   less-rails
+  minitest (~> 5.3.4)
   mongo_followable (~> 0.3.2)
   mongoid (~> 3.1.2)
   mongoid-paperclip (~> 0.0.8)
