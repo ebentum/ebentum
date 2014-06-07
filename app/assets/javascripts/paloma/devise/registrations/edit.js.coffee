@@ -36,21 +36,27 @@ Paloma.callbacks["devise/registrations/edit"] = (params) ->
     $('#confirm_import_social').modal()
 
   $(document).on 'click', '#confirm_import_social_btn', ->
-    provider = $(this).data('provider')
+    btn = $(this)
+    provider = btn.data('provider')
     $.ajax
       url: "/social/get_social_data"
       type: 'GET'
       dataType: 'json'
       data:
         provider: provider
+      beforeSend: ->
+        btn.button('loading')
       success: (data, status, xhr) ->
-        $('#confirm_import_social').modal('hide')
-        $('#user_complete_name').val(data.complete_name) if $('#import_complete_name').is(':checked')
-        $('#user_location').val(data.location) if $('#import_location').is(':checked')
-        $('#user_web').val(data.web) if $('#import_web').is(':checked')
-        $('#user_bio').val(data.bio) if $('#import_bio').is(':checked')
-        $('#main_picture_preview').attr('src', data.image) if $('#import_image').is(':checked')
-        # $('#image_url').val(data.image) if $('#import_image').is(':checked')
+        # si el usuario ha cerrado el modal no vamos a importar los datos
+        if $('#confirm_import_social').data().modal?.isShown # no lo ha cerrado
+          $('#user_complete_name').val(data.complete_name) if $('#import_complete_name').is(':checked')
+          $('#user_location').val(data.location) if $('#import_location').is(':checked')
+          $('#user_web').val(data.web) if $('#import_web').is(':checked')
+          $('#user_bio').val(data.bio) if $('#import_bio').is(':checked')
+          $('#main_picture_preview').attr('src', data.image) if $('#import_image').is(':checked')
+          $('#confirm_import_social').modal('hide')
+
+        btn.button('reset')
 
   $("#facebook").on "change", (e, data) ->
     switchContainer = $(this).parent()

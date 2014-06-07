@@ -29,5 +29,5 @@
       .card-footer
         %a.btn{:href => "#", "data-dismiss" => "modal"}
           = t('.close')
-        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", :id => 'confirm_import_social_btn', :data => {:provider => 'provider'}}
+        %a.btn.btn-primary.btn-round-bottom-right{:href => "#", :id => 'confirm_import_social_btn', :data => {'loading-text' => t('.importing'), :provider => 'provider'}}
           = t('.import')

@@ -24,6 +24,7 @@ es:
         close: "Cerrar"
         image: "Imagen"
         import: "Importar"
+        importing: "Importando..."
         import_text: "¿Que información quieres importar?"
         location: "Localización"
         web: "Web"

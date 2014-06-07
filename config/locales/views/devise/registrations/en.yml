@@ -24,6 +24,7 @@ en:
         close: "Close"
         image: "Image"
         import: "Import"
+        importing: "Importing..."
         import_text: "What info do you want to import?"
         location: "Location"
         web: "Website"
