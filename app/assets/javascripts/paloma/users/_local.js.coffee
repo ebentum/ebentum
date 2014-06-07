@@ -70,3 +70,20 @@ Paloma.users =
     # refresh tabId tab only if it's active
     if tabId == $('#userpagetabs li.active a').attr('href')
       Paloma.users.showTab(tabId)
+
+  updatePicture: (user_id, img_url, cb) ->
+    if not img_url
+      cb(null)
+    else
+      $.ajax
+        url: "/users/update_picture_from_url"
+        type: 'GET'
+        data:
+          id: user_id
+          picture_url: img_url
+        dataType: 'json'
+        success: (data, status, xhr) ->
+          cb(null)
+        error: (xhr, status, error) ->
+          cb(error)
+

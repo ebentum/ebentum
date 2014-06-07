@@ -79,7 +79,7 @@ class User
   has_many :created_events, class_name: "Event", inverse_of: :creator, dependent: :destroy
   has_many :created_pictures, class_name: "Picture", inverse_of: :creator, dependent: :destroy
   has_many :comments, inverse_of: :creator, dependent: :destroy
-  has_and_belongs_to_many :events, inverse_of: :users  
+  has_and_belongs_to_many :events, inverse_of: :users
   embeds_one :fbtoken
   embeds_one :twtoken
 
@@ -112,6 +112,7 @@ class User
     picture = UserPicture.new()
     picture.photo = URI.parse(url)
     self.main_picture = picture
+    true
   end
 
   after_destroy do |user|

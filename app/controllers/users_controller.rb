@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :search_users, :only => [:index]
+  skip_before_filter :auth_user, :only => [:update_picture_from_url]
 
   def search_users
     if params[:event_id]
@@ -77,6 +78,15 @@ class UsersController < ApplicationController
                         :status => :unprocessable_entity }
         end
       end
+    end
+  end
+
+  def update_picture_from_url
+    user = User.find(params[:id])
+    if user.update_picture_from_url(params[:picture_url])
+      render :json => true
+    else
+      render :json => false
     end
   end
 

@@ -9,6 +9,7 @@ Ebentum::Application.routes.draw do
     match '/users/edit_password'   => 'users#edit_password'
     match '/users/update_password' => 'users#update_password'
     match '/users/update_position' => 'users#update_position'
+    match '/users/update_picture_from_url' => 'users#update_picture_from_url'
   end
 
   resources :activities
