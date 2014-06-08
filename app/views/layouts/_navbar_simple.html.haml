@@ -9,3 +9,25 @@
             = image_tag('logo/ebentum_38.png', "class" => "media-object" )
           .media-body
             entum
+      - if @isCrawler
+        #nav-collapse-01.collapse.navbar-collapse
+          .visible-md.visible-lg
+            %ul.nav.navbar-nav.navbar-left
+              %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+                %a{:href => "/events/search"}
+                  %i.fa.fa-compass
+                  = t('.explore')
+          .visible-sm
+            %ul.nav.navbar-nav.navbar-right.nav-sm
+              %li{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+                %a{:href => "/events/search"}
+                  %i.fa.fa-compass
+                  = t('.explore')
+          .visible-xs
+            %ul.navbar-xs.list-group.mtm
+              %li.list-group-item{ :class => (controller_name == "events" and action_name == "search") ? "active" : nil }
+                %a{:href => "/events/search"}
+                  .pull-left
+                    %i.fa.fa-compass.media-object
+                  .media-body
+                    = t('.explore')

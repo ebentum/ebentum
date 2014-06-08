@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
 
   # http://snippets.aktagon.com/snippets/221-how-to-detect-traffic-from-the-most-common-search-spiders-with-ruby-
   def isCrawler
+    #true
     user_agent = request.user_agent.downcase
     ['googlebot'].include?(user_agent)
   end

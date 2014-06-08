@@ -10,3 +10,5 @@ es:
       profile: "Perfil"
       sign_up: "Regístrate"
       sign_in: "Entra"
+    navbar_simple:
+      explore: "Explorar"

@@ -4,7 +4,9 @@ class WelcomeController < ApplicationController
   before_filter :user_logged, :only => [:index]
 
   def index
-
+    if isCrawler
+      @isCrawler = true
+    end
   end
 
   def sign_up_ok

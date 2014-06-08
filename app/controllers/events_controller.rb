@@ -26,9 +26,13 @@ class EventsController < ApplicationController
 
     @page = params[:page] || 1
 
-    user = current_user
-
-    my_location = [user.coordinates[1], user.coordinates[0]]
+    # ojo si somos un crawler
+    if isCrawler
+      my_location = [43.31833, -1.98123] # San sebastian, ojo ahí
+    else
+      user = current_user
+      my_location = [user.coordinates[1], user.coordinates[0]]
+    end
 
     @distanceSelected = params[:distance] #|| 2 # Cerca
     @daysSelected     = params[:days]     || 2 # Pronto
