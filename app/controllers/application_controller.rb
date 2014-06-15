@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_mobile
-    if params[:native_app]
+    if params[:native_app] || cookies[:ebentum_native] == 'true'
       @native_app = true
     else
       @native_app = false
