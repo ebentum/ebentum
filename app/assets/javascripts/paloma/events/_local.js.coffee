@@ -81,12 +81,16 @@ Paloma.Events =
       url = "/events/"+id+"/edit"
 
     $('.events_'+action).click ->
-      $("#modal_window").remove()
-      $.ajax
-        url: url
-        success: (data) ->
-          $("#modal_windows").append data
-          $('#modal_window').modal()
+
+      if window.ebentumApp.isNative()
+        window.location = url
+      else
+        $("#modal_window").remove()
+        $.ajax
+          url: url
+          success: (data) ->
+            $("#modal_windows").append data
+            $('#modal_window').modal()
 
   initEventForm : (action) ->
     if $("#modal_window").length > 0

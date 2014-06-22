@@ -2,4 +2,11 @@
   %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
   = t("share_event")
 
-= render 'form'
+- if @native_app
+  .container
+    .row
+      .col-xs-12
+        .card
+          = render 'form'
+- else
+  = render 'form'

@@ -22,3 +22,18 @@ window.ebentumApp =
     ####
 
     setCookie("ebentum_native", "true",3650)
+
+  isNative: ->
+
+    getCookie = (cname) ->
+      name = cname + "="
+      ca = document.cookie.split(";")
+      i = 0
+
+      while i < ca.length
+        c = ca[i].trim()
+        return c.substring(name.length, c.length)  if c.indexOf(name) is 0
+        i++
+      ""
+
+    getCookie("ebentum_native") is "true"
