@@ -38,7 +38,7 @@
   - activity[:actions].each do |action|
     - if !action[:receiver].nil?
       - if !action[:receiver].main_picture.nil?
-        - user_picture = activity[object_type].main_picture
+        - user_picture = action[:receiver].main_picture
         - if user_picture.nil?
           - user_picture = UserPicture.new
       - else
