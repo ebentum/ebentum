@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
   before_filter :user_logged, :only => [:index]
 
   def index
+    # para activar el contenido 'especial' para los crawlers
     if isCrawler
       @isCrawler = true
     end
