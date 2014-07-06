@@ -8,9 +8,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     if params[:state] && current_user
       if save_token('facebook')
-        redirect_to edit_user_registration(current_user)
+        redirect_to edit_user_registration_url(current_user)
       else
-        redirect_to edit_user_registration(current_user)+'?already_linked=true'
+        redirect_to edit_user_registration_url(current_user)+'?already_linked=true'
       end
     elsif session[:token_renew]
       session.delete(:token_renew)
@@ -23,9 +23,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     if params[:state] && current_user
       if save_token('twitter')
-        redirect_to edit_user_registration(current_user)
+        redirect_to edit_user_registration_url(current_user)
       else
-        redirect_to edit_user_registration(current_user)+'?already_linked=true'
+        redirect_to edit_user_registration_url(current_user)+'?already_linked=true'
       end
     else
       sign_in_or_register('twitter')
