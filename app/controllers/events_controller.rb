@@ -23,6 +23,10 @@ class EventsController < ApplicationController
   end
 
   def search
+    # para activar el contenido 'especial' para los crawlers
+    if isCrawler
+      @isCrawler = true
+    end
 
     @page = params[:page] || 1
 

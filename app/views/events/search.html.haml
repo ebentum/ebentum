@@ -17,7 +17,10 @@
                 - daysOptions  = [t('.soon'), 2], [t('.one_week'), 7], [t('.one_month'), 30], [t('.i_dont_care'), 0]
                 = select_tag 'days', options_for_select(daysOptions, @daysSelected), {:class => "form-control"}
               .col-xs-12.col-md-2.mbs.mts
-                = submit_tag t('.search'), class: 'btn btn-primary btn-block', id: 'search_button'
+                - if @isCrawler
+                  = submit_tag t('.search'), class: 'btn btn-primary btn-block'
+                - else
+                  = submit_tag t('.search'), class: 'btn btn-primary btn-block', id: 'search_button'
 
 
   .col-xs-12
