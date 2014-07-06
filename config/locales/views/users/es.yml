@@ -13,6 +13,8 @@ es:
       location: "Ubicación habitual"
       bio: "Biografía"
       web: "Web"
+    no_results:
+      no_data_found: "No se han encontrado datos"
     search:
       search: "Buscar"
       person_name: "Nombre de la persona"

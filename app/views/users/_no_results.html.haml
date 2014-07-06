@@ -1,0 +1,12 @@
+- cardStyles = PicturesController.helpers.getCardStyles(browser.mobile?, "", 230, 300)
+- card_style = cardStyles[:card_style]
+- card_class = cardStyles[:card_class]
+- image_style = cardStyles[:image_style]
+.card{:style => card_style, :class => card_class}
+  .card-image-placeholder{:style => "width: 100%; height: 200px;"}
+    %a{:href => "/events/event_search"}
+      %i.fa.fa-search.card-icon-big
+  .card-footer.card-footer-masonry.pts.pbs.plm.prm
+    .media
+      .media.body.center-text
+        = t('.no_data_found')

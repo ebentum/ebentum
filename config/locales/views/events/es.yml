@@ -42,6 +42,8 @@ es:
       close: "Cerrar"
       confirm: "Confirmar"
       confirm_text: "¿Deseas desapuntarte del evento?"
+    no_results:
+      no_data_found: "No se han encontrado datos"
     share:
       share_activity: "Compartir en %{provider}"
     share_event:

@@ -42,6 +42,8 @@ en:
       close: "Close"
       confirm: "Confirm"
       confirm_text: "Do you want leave the event?"
+    no_results:
+      no_data_found: "No data found"
     share:
       share_activity: "Share in %{provider}"
     share_event:

@@ -13,6 +13,8 @@ en:
       location: "Location"
       bio: "Bio"
       web: "Web"
+    no_results:
+      no_data_found: "No data found"
     search:
       search: "Search"
       person_name: "Person name"
