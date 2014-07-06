@@ -10,7 +10,9 @@
               .col-xs-12.col-md-2.mts.mbs
                 = submit_tag t('.search'), class: 'btn btn-primary btn-block'
 
-- if !@users.nil?
-  .col-xs-12
-    #events_list.masonry_layout.centered
+.col-xs-12
+  #events_list.masonry_layout.centered
+    - if !@users.nil? && @users.count != 0
       = render 'list'
+    - else
+      = render 'no_results'
