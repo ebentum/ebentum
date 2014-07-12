@@ -1,19 +1,24 @@
 - url = 'http://www.ebentum.com'+event_path(@event)
 - short_url = Googl.shorten(url).short_url
+- eventName = nil
+- if @event.name.size > 90
+  - eventName = "'"+@event.name.slice(0, 90)+"...'"
+- else
+  - eventName = "'"+@event.name+"'"
 
 - if @native_app
   .col-xs-6.col-md-6.footer-option
     .option-action{:style => "max-width: 100px;"}
-      .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450", "data-href" => url}
+      .fb-like{"data-layout" => "button", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450", "data-href" => url, 'data-share' => 'true'}
 
   .col-xs-6.col-md-6.footer-option
     .option-action{:style => "max-width: 100px;"}
-      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}
+      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => eventName}}
 - else
-  .col-xs-6.col-md-2.footer-option
+  .col-xs-6.col-md-3.footer-option
     .option-action{:style => "max-width: 100px;"}
-      .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450", "data-href" => url}
+      .fb-like{"data-layout" => "button", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450", "data-href" => url, 'data-share' => 'true'}
 
   .col-xs-6.col-md-2.footer-option
     .option-action{:style => "max-width: 100px;"}
-      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => t('.twitter_share_text')}}
+      %a.twitter-share-button{"data-lang" => "es", :href => "https://twitter.com/share", :data => {:url => short_url, :via => 'ebentumApp', :text => eventName}}
