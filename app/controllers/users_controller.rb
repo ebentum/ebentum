@@ -141,6 +141,7 @@ class UsersController < ApplicationController
     current_user.follow(@user)
     @user = User.find(params[:id])
     receivers = current_user.all_followers.map {|user| user.id}
+    receivers << @user.id
 
     Activity.new(
       :verb => "follow",
