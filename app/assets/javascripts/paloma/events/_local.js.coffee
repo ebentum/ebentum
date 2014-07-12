@@ -102,6 +102,10 @@ Paloma.Events =
 
 
   initEventFormProcess: ->
+    $('#new_event').keypress (e) ->
+      code = e.keyCode or e.which
+      false  if code is 13
+
     $('#event_description').autosize({append: "\n"})
 
     event_start_date_object = $("#event_start_date")
