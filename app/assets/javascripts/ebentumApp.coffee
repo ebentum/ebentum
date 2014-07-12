@@ -7,9 +7,9 @@ window.ebentumApp =
   closeSession: ->
     closeBtn = $("#ebentum_native_close_session")
     if closeBtn?
-      closeBtn.trigger("click");
       ebentumApp.deleteCookie("ebentum_userid")
       ebentumApp.deleteCookie("ebentum_username")
+      closeBtn.trigger("click");
 
 
   setNativeCookie: ->
