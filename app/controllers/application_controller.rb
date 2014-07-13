@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
       if current_user
         cookies.permanent[:ebentum_userid] = current_user.id
         cookies.permanent[:ebentum_username] = current_user.complete_name
+      else
+        cookies.delete :ebentum_userid
+        cookies.delete :ebentum_username
       end
     end
   end
