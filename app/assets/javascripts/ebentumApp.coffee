@@ -9,7 +9,10 @@ window.ebentumApp =
     if closeBtn?
       ebentumApp.deleteCookie("ebentum_userid")
       ebentumApp.deleteCookie("ebentum_username")
-      closeBtn.trigger("click");
+      # dar tiempo a que se borren las cookies antes de navegar (= cura en salud)
+      setTimeout =>
+        closeBtn.trigger("click");
+      , 500
 
 
   setNativeCookie: ->
