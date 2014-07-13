@@ -32,21 +32,21 @@ Paloma.devise.registrations =
         id = data._id
         img_url = $('#user_image_url').val()
 
-        Paloma.users.updatePicture id, img_url
+        Paloma.users.updatePicture id, img_url, (err) ->
 
-        if $('#user_user_confirmation_required').val() == 'false'
-          # guardar token de acceso
-          Paloma.Tokens.save_access_token data._id, (err) ->
-            # redirigir al inicio
-            # si se ha dado de alta con fb, le vamos a mostrar sus amigos de fb que estan en ebentum
-            provider = $('#user_provider').val()
-            if provider is 'facebook'
-              window.location = '/?show_fb_friends=true'
+          if $('#user_user_confirmation_required').val() == 'false'
+            # guardar token de acceso
+            Paloma.Tokens.save_access_token data._id, (err) ->
+              # redirigir al inicio
+              # si se ha dado de alta con fb, le vamos a mostrar sus amigos de fb que estan en ebentum
+              provider = $('#user_provider').val()
+              if provider is 'facebook'
+                window.location = '/?show_fb_friends=true'
 
-        else
-          # guardar token de acceso
-          Paloma.Tokens.save_access_token data._id, (err) ->
-            window.location = '/welcome/sign_up_ok?email='+$('#email').val()
+          else
+            # guardar token de acceso
+            Paloma.Tokens.save_access_token data._id, (err) ->
+              window.location = '/welcome/sign_up_ok?email='+$('#email').val()
 
       error: (xhr, status, error) ->
         # ponemos los errores
