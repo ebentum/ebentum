@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '2.5.0'
 end
 
+gem 'rake', '~> 10.1.1'
 gem 'sass-rails',   '~> 3.2.5'
 gem 'bootstrap-sass-rails'
 gem 'compass-rails', '~> 1.0.3'

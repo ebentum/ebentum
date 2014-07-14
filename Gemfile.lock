@@ -285,6 +285,7 @@ DEPENDENCIES
   paperclip (~> 3.4.0)
   paperclip-dimension
   rails (~> 3.2.12)
+  rake (~> 10.1.1)
   sass-rails (~> 3.2.5)
   therubyracer
   thin
