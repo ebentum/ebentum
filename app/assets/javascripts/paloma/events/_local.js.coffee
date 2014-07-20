@@ -102,7 +102,7 @@ Paloma.Events =
 
 
   initEventFormProcess: ->
-    $('#new_event').keypress (e) ->
+    $('#place_autocomplete').keypress (e) ->
       code = e.keyCode or e.which
       false  if code is 13
 
