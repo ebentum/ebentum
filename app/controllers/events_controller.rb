@@ -38,8 +38,8 @@ class EventsController < ApplicationController
       my_location = [user.coordinates[1], user.coordinates[0]]
     end
 
-    @distanceSelected = params[:distance] #|| 2 # Cerca
-    @daysSelected     = params[:days]     || 2 # Pronto
+    @distanceSelected = params[:distance] || 50 # 50 kilometros
+    @daysSelected     = params[:days]     || 30 # Un mes
     @text             = params[:text]
     @events           = Event
 
