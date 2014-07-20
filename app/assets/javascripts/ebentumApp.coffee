@@ -40,3 +40,12 @@ window.ebentumApp =
       ""
 
     getCookie("ebentum_native") is "true"
+
+
+
+  shareEventText: ->
+
+    eventTitle = $('.event-dscr').text().trim()
+    eventUrl = $('#event-short-url').text().trim()
+
+    EbentumAppNative.setShareText("Mira este evento: '#{eventTitle}': " + eventUrl)
