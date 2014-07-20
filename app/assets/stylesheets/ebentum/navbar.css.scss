@@ -28,6 +28,9 @@
   width: 150px;
 }
 
+.navbar .dropdown-menu{
+  left: -70% !important;
+}
 
 .navbar .navbar-toggle{
   margin-top: 8px;
@@ -60,6 +63,13 @@
   visibility: visible !important;
 }
 
+.navbar .dropdown-toggle{
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .mobile-app-banner {
   padding-top: 0;
   padding-bottom: 0;
@@ -77,6 +87,12 @@
   .g-play-link{
     margin-top: 9px;
     margin-right: 15px;
+  }
+}
+
+@media (min-width: 769px){
+  .navbar .dropdown-toggle{
+    width: auto;
   }
 }
 
