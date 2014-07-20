@@ -37,6 +37,12 @@ class ApplicationController < ActionController::Base
     else
       @native_app = false
     end
+
+    @show_mobile_app_banner = false
+
+    if request.user_agent.downcase.include?'android'
+      @show_mobile_app_banner = true
+    end
   end
 
   def isAllowedEndPointToCrawlers

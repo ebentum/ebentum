@@ -1,0 +1,10 @@
+- if @show_mobile_app_banner == true && @native_app == false
+  .alert.alert-success.mobile-app-banner.alert-dismissible{:role => "alert"}
+    %button.banner-close{:type => "button", :class => "close", :data => {:dismiss => "alert"}}
+      %span{"aria-hidden" => "true"} &times;
+      %span{:class => "sr-only"} Close
+    .pull-left
+      %a.btn.btn-primary.g-play-link{:type => "button", :href => "https://play.google.com/store/apps/details?id=com.ebentum.ebentumapp"} Instalar
+    .mobile-banner-msge
+      %p.mob-title ebentum para Android
+      %p Disponible en Google Play
