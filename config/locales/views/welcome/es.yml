@@ -1,5 +1,7 @@
 es:
   welcome:
+    index:
+      discover_share: "Descubre y comparte miles de eventos"
     remember_me:
       remember_me: "Recuérdame"
     sign_in_with:
