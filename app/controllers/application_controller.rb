@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_user
-    if !user_signed_in? && !devise_registration_action
+    if !user_signed_in? && !devise_action && !isWelcomePage
       if isAllowedEndPointToCrawlers and isCrawler
         logger.info 'Allowing content to crawlers'
       else
@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def isWelcomePage
+    controller_name == 'welcome' and action_name == 'index'
+  end
+
   def isAllowedEndPointToCrawlers
     controller_name == 'events' and action_name == 'search'
   end
@@ -61,8 +65,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def devise_registration_action
-    devise_controller? && controller_name == 'registrations' && (action_name == 'new' || action_name == 'create')
+  def devise_action
+    devise_controller? && (controller_name == 'registrations' || controller_name == 'sessions') && (action_name == 'new' || action_name == 'create')
   end
 
   def layout_by_resource
