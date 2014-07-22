@@ -5,24 +5,15 @@
         .row
           %h1
             = t('.discover_share')
-        .row
+        .row.welcome-title-footer
           .col-xs-8
             .fb-login-button
               = render 'login-button'
           .col-xs-4
-            .pull-right
+            .pull-right.welcome-gplay-link
               %a{:href => "https://play.google.com/store/apps/details?id=com.ebentum.ebentumapp"}
                 %img{:alt => "Get it on Google Play", :src => "/images/es_generic_rgb_wo_45.png"}
-  .row
-    .col-xs-8
-      .card
-        .card-content
-          .fb-login-button
-            = render 'login-button'
-    .col-xs-4
-      .pull-right
-        %a{:href => "https://play.google.com/store/apps/details?id=com.ebentum.ebentumapp"}
-          %img{:alt => "Get it on Google Play", :src => "/images/es_generic_rgb_wo_45.png"}
+
 .col-xs-4.hidden-xs.hidden-sm
   .row
     .col-xs-12
