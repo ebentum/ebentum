@@ -1,18 +1,28 @@
 .col-xs-8.hidden-xs.hidden-sm
   .row
-    .col-xs-12
-      .jumbotron
-        %h1
-          = t('.discover_share')
+    .card
+      .card-content
+        .row
+          %h1
+            = t('.discover_share')
+        .row
+          .col-xs-8
+            .fb-login-button
+              = render 'login-button'
+          .col-xs-4
+            .pull-right
+              %a{:href => "https://play.google.com/store/apps/details?id=com.ebentum.ebentumapp"}
+                %img{:alt => "Get it on Google Play", :src => "/images/es_generic_rgb_wo_45.png"}
   .row
     .col-xs-8
-      .fb-login-button
-        = render 'login-button'
+      .card
+        .card-content
+          .fb-login-button
+            = render 'login-button'
     .col-xs-4
       .pull-right
         %a{:href => "https://play.google.com/store/apps/details?id=com.ebentum.ebentumapp"}
           %img{:alt => "Get it on Google Play", :src => "/images/es_generic_rgb_wo_45.png"}
-</a>
 .col-xs-4.hidden-xs.hidden-sm
   .row
     .col-xs-12
