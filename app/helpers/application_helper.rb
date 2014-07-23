@@ -27,6 +27,8 @@ module ApplicationHelper
   def get_body_class
     if @native_app == true
       'native-app'
+    elsif controller_name == 'welcome'
+      'normal welcome'
     else
       'normal'
     end

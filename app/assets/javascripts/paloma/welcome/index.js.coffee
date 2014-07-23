@@ -21,3 +21,8 @@ Paloma.callbacks["welcome/index"] = (params) ->
         window.location = '/welcome/sign_up_ok?email='+$('#welcome_sign_up_form #user_email').val()
       error: (xhr, status, error) ->
         $(form).submit()
+
+  imgNumber = Math.floor(Math.random()*4) + 1
+  className = 'welcome'+imgNumber
+  $('.welcome').addClass(className)
+
