@@ -22,7 +22,7 @@ Paloma.callbacks["welcome/index"] = (params) ->
       error: (xhr, status, error) ->
         $(form).submit()
 
-  imgNumber = Math.floor(Math.random()*5) + 1
+  imgNumber = Math.floor(Math.random()*4) + 1
   className = 'welcome'+imgNumber
   $('.welcome').addClass(className)
 
