@@ -48,4 +48,4 @@ window.ebentumApp =
     eventTitle = $('.event-dscr').text().trim()
     eventUrl = $('#event-short-url').text().trim()
 
-    EbentumAppNative.setShareText("Mira este evento: '#{eventTitle}': " + eventUrl)
+    EbentumAppNative.setShareText("'#{eventTitle}': " + eventUrl)
