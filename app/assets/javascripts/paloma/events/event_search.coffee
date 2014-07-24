@@ -1,6 +1,6 @@
 Paloma.callbacks["events/event_search"] = (params) ->
 
-  window.navigator.geolocation.getCurrentPosition (position) ->
+  success = (position) ->
     lat = position.coords.latitude
     lng = position.coords.longitude
     $.ajax
@@ -13,6 +13,7 @@ Paloma.callbacks["events/event_search"] = (params) ->
       success: (data, status, xhr) ->
         window.location = '/events/search'
 
+  error = (err) ->
+    window.location = '/events/search'
 
-
-
+  navigator.geolocation.getCurrentPosition success, error
