@@ -68,6 +68,10 @@
                     .option-action
                       = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-success hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => t('.joining')}
                       = button_tag t('.leave'), :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => t('.leaving')}
+                - else
+                  #user-action.col-xs-12.col-md-2.footer-option
+                    .option-action
+                      = link_to('¡Me uno!', '/users/sign_up', class: 'btn btn-success')
                 = render 'share_event'
                 .col-xs-6.col-md-6.footer-option.btn-round-bottom-left
                   %a#comments-tab-option{:href => "#comments-tab", "data-toggle" => "pill"}
@@ -105,6 +109,11 @@
                     .option-action
                       = button_tag t('.join'), :href => '#confirm_appoint', :type => 'button', :class => 'btn btn-success hide', :id => 'appoint', :data => {:toggle => 'modal', :target => '#confirm_appoint', 'loading-text' => t('.joining')}
                       = button_tag t('.leave'), :href => '#confirm_desappoint', :type => 'button', :class => 'btn btn-danger hide', :id => 'desappoint', :data => {:toggle => 'modal', :target => '#confirm_desappoint', 'loading-text' => t('.leaving')}
+                - else
+                  #user-action.col-xs-12.col-md-2.footer-option.pull-right.btn-round-bottom-right
+                    .option-action
+                      = link_to('¡Me uno!', '/users/sign_up', class: 'btn btn-success')
+
       .row
         .col-xs-12.tab-content
           #comments-tab.tab-pane
