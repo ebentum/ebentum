@@ -30,7 +30,7 @@ Paloma.Masonry =
 
 
           # TODO: quitar esto esta a pinrel
-          date_ = $('#activity_list .card').first().data('activity-date')
+          date_ = $('#activity_list .card').last().data('activity-date')
           params.last_activity_date = date_ if date_?
 
           $.ajax(

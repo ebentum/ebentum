@@ -27,17 +27,17 @@ class ActivityStream < CouchRest::Model::Base
     receiver_list = {}
 
     if !startDate.nil?
-      startkey = [receiver._id, startDate+"0"]
+      startkey = [receiver._id, startDate]
     else
-      startkey = [receiver._id]
+      startkey = [receiver._id, {}]
     end
 
     #Generate activity_stream with user/events indexes
     ActivityStream.stream
-      .startkey(startkey)
-      .endkey([receiver._id, {}])
-      .limit(Kaminari.config.default_per_page)
       .descending
+      .startkey(startkey)
+      .endkey([receiver._id])
+      .limit(Kaminari.config.default_per_page)
     .rows.each_with_index do |activity, activity_index|
 
       if activity.key[2] == "Event"
