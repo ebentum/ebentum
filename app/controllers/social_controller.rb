@@ -61,7 +61,12 @@ class SocialController < ActionController::Base
     current_user.update_picture_from_url(fb.get_picture(me['username'], :type => :large))
     picture_url = current_user.get_picture.photo.url(:medium)
 
-    render :json => {:complete_name => me['name'], :location => me['location']['name'], :web => me['website'], :bio => me['bio'], :image => picture_url}
+    location = ''
+    if me['location']
+      location = me['location']['name']
+    end
+
+    render :json => {:complete_name => me['name'], :location => location, :web => me['website'], :bio => me['bio'], :image => picture_url}
   end
 
   def get_twitter_data
