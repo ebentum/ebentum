@@ -8,22 +8,17 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_locale
-    logger.info 'SET LOCALE'
     @locale = extract_locale_from_accept_language_header
     I18n.locale = @locale || I18n.default_locale
-    logger.info 'LOCALE FROM BROWSER'+ @locale.to_s
-    logger.info 'DEFAULT LOCALE'+ I18n.default_locale.to_s
-    logger.info 'APP LOCALE'+ I18n.locale.to_s
   end
 
   def auth_user
-    logger.info 'AUTH USER'
     if !user_signed_in? && !devise_action && !isWelcomePage
       if isAllowedEndPointToCrawlers and isCrawler
         logger.info 'Allowing content to crawlers'
       else
-        # cookies.delete :ebentum_userid
-        # cookies.delete :ebentum_username
+        cookies.delete :ebentum_userid
+        cookies.delete :ebentum_username
         redirect_to '/welcome'
       end
     else
@@ -38,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_mobile
-    logger.info 'CHECK MOBILE'
     if params[:native_app] || cookies[:ebentum_native] == 'true'
       @native_app = true
     else
