@@ -1,14 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :auth_user, :get_locale, :check_mobile
+  before_filter :set_locale, :auth_user, :check_mobile
 
   layout :layout_by_resource
 
   protected
 
-  def get_locale
+  def set_locale
     @locale = extract_locale_from_accept_language_header
+    I18n.locale = @locale || I18n.default_locale
+    logger.info 'XXXXXXXXXXXX'+ @locale.to_s
+    logger.info 'XXXXXXXXXXXX'+ I18n.default_locale.to_s
+    logger.info 'XXXXXXXXXXXX'+ I18n.locale.to_s
   end
 
   def auth_user
