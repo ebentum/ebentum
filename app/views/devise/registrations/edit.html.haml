@@ -20,12 +20,13 @@
               .row
                 .col-xs-12
                   = link_to t('.edit_password'), users_edit_password_path, :class => 'btn btn-block btn-warning'
-              %br
-              .row
-                .col-xs-12
-                  %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
-                    %span
-                      = t('.delete_account')
+              - if @native_app == false
+                %br
+                .row
+                  .col-xs-12
+                    %button.btn.btn-block.btn-danger{:id => "delete_account_btn", "data-toggle" => "modal", :href => "#confirm_delete_account", "data-loading-text" => t('.deleting_account')}
+                      %span
+                        = t('.delete_account')
     .col-xs-12.col-sm-8
       = form_for @user, :url => user_path(@user), :html => { :method => :put, :class => 'form-horizontal' } do |f|
         = devise_error_messages!
