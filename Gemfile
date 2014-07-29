@@ -19,7 +19,7 @@ gem "therubyracer", :require => 'v8'
 
 gem 'thin'
 gem 'haml', '~> 4.0.0'
-gem 'jquery-rails', '~> 2.2.0'
+gem 'jquery-rails', '~> 2.3.0'
 gem 'aws-sdk', "~> 1.20.0"
 gem "paperclip", "~> 3.4.0"
 gem "font-awesome-rails"
