@@ -15,7 +15,7 @@ Paloma.devise.registrations =
     form           = $(button).parents('form')
     event.preventDefault()
     # controlar si hay que confirmar el email
-    $('#user_user_confirmation_required').val(Paloma.devise.registrations.user_confirmation_required())
+    $("input[id=user_user_confirmation_required]").val(Paloma.devise.registrations.user_confirmation_required())
     $.ajax
       url: "/users"
       type: 'POST'
