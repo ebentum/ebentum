@@ -44,6 +44,9 @@ es:
       confirm_text: "¿Deseas desapuntarte del evento?"
     no_results:
       no_data_found: "No se han encontrado datos"
+    pagination:
+      next: "Siguiente"
+      previous: "Anterior"
     share:
       share_activity: "Compartir en %{provider}"
     share_event:

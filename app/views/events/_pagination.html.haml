@@ -1,0 +1,18 @@
+- page = @page.to_i
+- if page == 1
+  - previousPage = 1
+- else
+  - previousPage = page - 1
+
+- nextPage = page + 1
+- text ||= ''
+- distanceSelected = @distanceSelected.to_s
+- daysSelected = @daysSelected.to_s
+- search_url = "search?distance="+distanceSelected+"&text="+text+"&days="+daysSelected
+%ul.pagination
+  %li
+    %a{href: search_url+"&page="+previousPage.to_s}
+      = t('.previous')
+  %li
+    %a{href: search_url+"&page="+nextPage.to_s}
+      = t('.next')

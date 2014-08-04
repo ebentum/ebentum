@@ -1,4 +1,4 @@
-- if @page == 1 && !request.xhr?
+- if !request.xhr? # si no es una llamada ajax mostramos el form de busqueda
   .container
     .col-xs-12
       %form.event_search_form#event_search_form
@@ -21,12 +21,14 @@
                   = submit_tag t('.search'), class: 'btn btn-primary btn-block'
                 - else
                   = submit_tag t('.search'), class: 'btn btn-primary btn-block', id: 'search_button'
-
-
   .col-xs-12
     #events_list.masonry_layout.centered
       = render 'no_results'
       = render 'list'
-- else
+  .col-xs-4.col-xs-offset-5
+    - if @isCrawler
+      = render 'pagination'
+
+- else # es una llamada ajax
   = render 'no_results'
   = render 'list'

@@ -44,6 +44,9 @@ en:
       confirm_text: "Do you want leave the event?"
     no_results:
       no_data_found: "No data found"
+    pagination:
+      next: "Next"
+      previous: "Previous"
     share:
       share_activity: "Share in %{provider}"
     share_event:
