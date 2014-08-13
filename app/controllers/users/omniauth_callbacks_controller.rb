@@ -61,7 +61,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def store_omniauth_data
     if request.env["omniauth.auth"] #solo accedemos a los datos si los hay, a veces hay errores.
-      flash[:omniauth_data] = request.env["omniauth.auth"].except('extra')
+      omniauth_data = request.env["omniauth.auth"].except('extra')
+      if omniauth_data.provider == 'facebook'
+        # (intentar) obtener una imagen de FB de unos 150 px de alto
+        omniauth_data.info.image = omniauth_data.info.image + '?width=150'
+      end
+      logger.info omniauth_data
+      flash[:omniauth_data] = omniauth_data
     end
   end
 
