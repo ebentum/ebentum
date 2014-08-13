@@ -58,7 +58,7 @@ class SocialController < ActionController::Base
       me = fb.get_object("me")
     end
 
-    current_user.update_picture_from_url(fb.get_picture(me['username'], :type => :large))
+    current_user.update_picture_from_url(fb.get_picture(me['username'], :width => 350))
     picture_url = current_user.get_picture.photo.url(:medium)
 
     location = ''
